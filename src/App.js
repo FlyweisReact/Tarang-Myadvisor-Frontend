@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+/** @format */
 
-function App() {
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LiveSession from "./pages/CounsellingSession/LiveSession";
+import ChooseDestination from "./pages/StudentAbroad/ChooseDestination";
+import Degree from "./pages/StudentAbroad/Degree";
+import DegreeStatus from "./pages/StudentAbroad/DegreeStatus";
+import DegreeStatus3 from "./pages/StudentAbroad/DegreeStatus3";
+import PreferredIntake from "./pages/StudentAbroad/PreferredIntake";
+import StatusQuery from "./pages/StudentAbroad/StatusQuery";
+import StudentLastStep from "./pages/StudentAbroad/StudentLastStep";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ChooseDestination />} />
+        <Route
+          path="/student-abroad-journery/preffered-intake"
+          element={<PreferredIntake />}
+        />
+        <Route path="/student-abroad-journery/degree" element={<Degree />} />
+        <Route
+          path="/student-abroad-journery/degree-status"
+          element={<StatusQuery />}
+        />
+        <Route
+          path="/student-abroad-journery/degree-status-2"
+          element={<DegreeStatus />}
+        />
+        <Route
+          path="/student-abroad-journery/degree-status-3"
+          element={<DegreeStatus3 />}
+        />
+        <Route
+          path="/student-abroad-journery/last-step"
+          element={<StudentLastStep />}
+        />
+
+        <Route path="/counselling-session/live" element={<LiveSession />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

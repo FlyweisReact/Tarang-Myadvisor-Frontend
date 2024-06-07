@@ -30,7 +30,7 @@ const VerifyOtpModal = (props) => {
         <button className="resend-btn">Resend</button>
         <button
           className="continue"
-          onClick={() => navigate("/counselling-session/live")}
+          onClick={() => navigate(props.link)}
         >
           Proceed
         </button>

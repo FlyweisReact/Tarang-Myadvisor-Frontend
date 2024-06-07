@@ -12,7 +12,11 @@ const StudentLastStep = () => {
 
   return (
     <>
-      <VerifyOtpModal show={open} onHide={() => setOpen(false)} />
+      <VerifyOtpModal
+        show={open}
+        onHide={() => setOpen(false)}
+        link={"/counselling-session/live"}
+      />
       <section className="choose-destination-page">
         <ProgressBar width={"100%"} />
         <div className="page-head">

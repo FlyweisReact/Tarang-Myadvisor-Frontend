@@ -7,8 +7,28 @@ import ukFlag from "./Images/Flags/uk.png";
 import usaFlag from "./Images/Flags/usa.png";
 import touristImg1 from "./Images/1.png";
 import touristImg2 from "./Images/2.png";
-import LoginImg from './Images/3.png'
-import verifyOtpImg from './Images/4.png'
+import LoginImg from "./Images/3.png";
+import verifyOtpImg from "./Images/4.png";
+import liveSessionImg1 from "./Images/5.png";
+import liveSessionImg2 from "./Images/6.png";
+import liveSessionImg3 from "./Images/7.png";
+import liveSessionImg4 from "./Images/8.png";
+import logoImg from "./Images/logo.png";
+import homepageImg from "./Images/9.png";
+import locationIcon from "./Images/location.png";
+import globeIcon from "./Images/globe.png";
+import bookIcon from "./Images/book.png";
+import adwizorImg1 from "./Images/10.png";
+import adwizorImg2 from "./Images/11.png";
+import adwizorImg3 from "./Images/12.png";
+import adwizorImg4 from "./Images/13.png";
+import adwizorImg5 from "./Images/14.png";
+import adwizorImg6 from "./Images/15.png";
+import lineImg from "./Images/line.png";
+import howItWorkImg1 from "./Images/16.png";
+import howItWorkImg2 from "./Images/17.png";
+import howItWorkImg3 from "./Images/18.png";
+import cashIcon from './Images/cash.png'
 
 export {
   journeyImg,
@@ -19,5 +39,25 @@ export {
   touristImg1,
   touristImg2,
   LoginImg,
-  verifyOtpImg
+  verifyOtpImg,
+  liveSessionImg1,
+  liveSessionImg2,
+  liveSessionImg3,
+  liveSessionImg4,
+  logoImg,
+  homepageImg,
+  locationIcon,
+  globeIcon,
+  bookIcon,
+  adwizorImg1,
+  adwizorImg2,
+  adwizorImg3,
+  adwizorImg4,
+  adwizorImg5,
+  adwizorImg6,
+  lineImg,
+  howItWorkImg1,
+  howItWorkImg2,
+  howItWorkImg3,
+  cashIcon
 };

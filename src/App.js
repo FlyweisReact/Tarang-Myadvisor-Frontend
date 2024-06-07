@@ -3,6 +3,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LiveSession from "./pages/CounsellingSession/LiveSession";
+import LiveSession2 from "./pages/CounsellingSession/LiveSession2";
+import HomePage from "./pages/HomePage";
 import ChooseDestination from "./pages/StudentAbroad/ChooseDestination";
 import Degree from "./pages/StudentAbroad/Degree";
 import DegreeStatus from "./pages/StudentAbroad/DegreeStatus";
@@ -39,6 +41,9 @@ const App = () => {
         />
 
         <Route path="/counselling-session/live" element={<LiveSession />} />
+        <Route path="/counselling-session/live-2" element={<LiveSession2 />} />
+
+        <Route path="/home" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );

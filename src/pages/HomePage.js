@@ -3,20 +3,22 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import {
-  homepageImg,
   adwizorImg1,
   adwizorImg2,
   adwizorImg3,
   adwizorImg4,
   adwizorImg5,
   adwizorImg6,
-  howItWorkImg1,
-  howItWorkImg2,
-  howItWorkImg3,
+  collegeIcon,
+  rankingIcon,
 } from "../assest";
-import { Dropdown } from "react-bootstrap";
-import TopAdwizors from "../components/TopAdwizors";
-import Features from "../components/Features";
+import TopAdwizors from "../components/Home/TopAdwizors";
+import Features from "../components/Home/Features";
+import Testimonial from "../components/Home/Testimonial";
+import AdwizorBanner from "../components/Home/AdwizorBanner";
+import HowItWorks from "../components/Home/HowItWorks";
+import TableLayout from "../components/TableLayout";
+import SynopsisSlider from "../components/Home/SynopsisSlider";
 
 const topAdvizors = [
   {
@@ -80,123 +82,310 @@ const topAdvizors = [
     ],
   },
 ];
-
+const thead = [
+  "CH Rank",
+  "College",
+  "Ranking",
+  "Application Date",
+  "Fees",
+  "Cutoff",
+];
+const tbody = [
+  [
+    "#1",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
+  [
+    "#2",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
+  [
+    "#3",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
+  [
+    "#4",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
+  [
+    "#5",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
+];
 const HomePage = () => {
   return (
     <section className="homepage">
       <Navbar />
-
-      <div className="adwizor-banner">
-        <div className="left">
-          <div className="content">
-            <h4 className="highlighted">Connect</h4>
-            <h3>
-              With Top Adwizor for <br /> Specialised & Dedicated guidance
-            </h3>
-          </div>
-          <div className="adwizor-search">
-            <h2>Find Adwizor</h2>
-            <div className="search-bar">
-              <Dropdown>
-                <Dropdown.Toggle variant="none">
-                  <i className="fa-solid fa-location-dot"></i>
-                  City
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Mumbai</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">Banglore</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">Hyderabad</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">Gujrat</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown>
-                <Dropdown.Toggle variant="none">
-                  <i className="fa-solid fa-earth-americas"></i>
-                  Study Destination
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">India</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">USA</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">UK</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">German</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown>
-                <Dropdown.Toggle variant="none">
-                  <i className="fa-solid fa-book"></i>
-                  Subject
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">MS</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">MBA</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">Engineering</Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">MBBS</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <button className="search-icon-button">
-                <i className="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="right">
-          <img src={homepageImg} alt="" />
-        </div>
-      </div>
-
+      <AdwizorBanner />
       <TopAdwizors data={topAdvizors} />
-
-      <section className="how-it-works">
-        <h4 className="heading">How It Works</h4>
-
-        <div className="steps-container">
-          <svg
-            className="curved-line"
-            viewBox="0 0 1000 300"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M 0 100 Q 250 0 500 100 T 1000 100"
-              fill="transparent"
-              stroke="#333"
-              stroke-width="2"
-              stroke-dasharray="5,5"
-            />
-          </svg>
-          <div className="step-card">
-            <img src={howItWorkImg1} alt="" />
-            <h3>Find Your Counsellor</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Congue at auctor mattis
-              odio non magna vulputate at. Et lectus vulputate nisl.
-            </p>
-          </div>
-          <div className="step-card">
-            <img src={howItWorkImg2} alt="" />
-            <h3> Make An Appointment</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Congue at auctor mattis
-              odio non magna vulputate at. Et lectus vulputate nisl.
-            </p>
-          </div>
-          <div className="step-card">
-            <img src={howItWorkImg3
-            } alt="" />
-            <h3>Get Services</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur. Congue at auctor mattis
-              odio non magna vulputate at. Et lectus vulputate nisl.
-            </p>
-          </div>
-        
+      <HowItWorks />
+      <Features />
+      <Testimonial />
+      <section className="college-table">
+        <div className="head">
+          <h4 className="normal-heading">Top 10 Featured Colleges</h4>
+          <a href="/">View All</a>
         </div>
+        <div className="destination">
+          <ul>
+            <li className="active">
+              <i className="fa-solid fa-bars-staggered"></i>Destinations
+              <i className="fa-solid fa-chevron-down"></i>
+            </li>
+            <li>India</li>
+            <li>Australia</li>
+            <li>Uk</li>
+            <li>Australia</li>
+          </ul>
+        </div>
+        <TableLayout thead={thead} tbody={tbody} className="college-table" />
       </section>
 
+      <section className="sypnosis-summary margin-div">
+        <h4 className="normal-heading"> Destination Synopsis / Summary</h4>
+        <SynopsisSlider />
+      </section>
 
-      <Features />
     </section>
   );
 };

@@ -28,9 +28,39 @@ import lineImg from "./Images/line.png";
 import howItWorkImg1 from "./Images/16.png";
 import howItWorkImg2 from "./Images/17.png";
 import howItWorkImg3 from "./Images/18.png";
-import cashIcon from './Images/cash.png'
+import cashIcon from "./Images/cash.png";
+import chooseUs1 from "./Images/chooseUs.png";
+import chooseUs2 from "./Images/document.png";
+import chooseUs3 from "./Images/world.png";
+import pauseIcon from "./Images/pause.png";
+import testimonialIcon from "./Images/testimonial.png";
+import testimonialIcon1 from "./Images/testimonial1.png";
+import testimonialIcon2 from "./Images/testimonial2.png";
+import testimonialIcon3 from "./Images/testimonial3.png";
+import sampleVideo from "./Video/sample.mp4";
+import closeIcon from "./Images/close.png";
+import collegeIcon from "./Images/19.png";
+import rankingIcon from "./Images/20.png";
+import IndianRngFlag from "./Images/Flags/india-rnd.png";
+import degreeImg from "./Images/21.png";
+import dollarIcon from './Images/22.png'
 
 export {
+  dollarIcon ,
+  degreeImg,
+  IndianRngFlag,
+  collegeIcon,
+  rankingIcon,
+  closeIcon,
+  testimonialIcon1,
+  testimonialIcon3,
+  testimonialIcon2,
+  sampleVideo,
+  testimonialIcon,
+  pauseIcon,
+  chooseUs1,
+  chooseUs2,
+  chooseUs3,
   journeyImg,
   autraliaFlag,
   canadaFlag,
@@ -59,5 +89,5 @@ export {
   howItWorkImg1,
   howItWorkImg2,
   howItWorkImg3,
-  cashIcon
+  cashIcon,
 };

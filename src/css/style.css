@@ -548,43 +548,7 @@
   padding: 40px;
   max-width: 1400px;
   margin: auto;
-}
-.header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.header .logo {
-  width: 60px;
-  height: 60px;
-}
-.header .links ul {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  margin: 0;
-}
-.header .links ul li {
-  list-style: none;
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: #1a3b5a;
-}
-.header .login-btn {
-  background-color: #0185c3;
-  width: 100px;
-  height: 37px;
-  color: #fff;
-  border-radius: 50px;
-  border: 1px solid #0185c3;
-  font-size: 14px;
-  font-weight: bold;
+  padding-bottom: 0;
 }
 
 /* Homepage banner */
@@ -1110,28 +1074,266 @@
 .synopsis-slider .Item .cost .item .content p {
   margin: 0;
 }
-.synopsis-slider .Item .cost .item .content p.title{
+.synopsis-slider .Item .cost .item .content p.title {
   font-size: 12px;
   font-weight: 600;
-  color: #1A3B5A;
+  color: #1a3b5a;
 }
-.synopsis-slider .Item .cost .item .content p.dash{
+.synopsis-slider .Item .cost .item .content p.dash {
   font-size: 10px;
-  color: #A1A1A1;
+  color: #a1a1a1;
 }
 
-.synopsis-slider .Item  .guides{
+.synopsis-slider .Item .guides {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-  border-bottom: 1px solid #DFDFDF
-  ;
+  border-bottom: 1px solid #dfdfdf;
   padding-bottom: 4px;
 }
-.synopsis-slider .Item  .guides p {
+.synopsis-slider .Item .guides p {
   margin: 0;
   font-weight: 500;
   font-size: 15px;
-  color: #1A3B5A;
+  color: #1a3b5a;
+}
+
+/* student testimonial */
+
+.student-testimonial-slider {
+  width: 100%;
+  overflow: hidden;
+}
+.student-testimonial-slider .swiper {
+  padding: 20px;
+}
+.student-testimonial-slider .item {
+  margin: auto;
+  padding-top: 84px;
+}
+.student-testimonial-slider .item .img-container {
+  width: 169px;
+  height: 169px;
+  position: absolute;
+  top: -84px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.student-testimonial-slider .item .img-container img {
+  width: 169px;
+  height: 169px;
+  border-radius: 100%;
+}
+
+.student-testimonial-slider .item .content {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 24px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 84px;
+  position: relative;
+}
+.student-testimonial-slider .item .content .title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3d3d3d;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.student-testimonial-slider .item .content .position {
+  font-size: 18px;
+  color: #3d3d3d;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.student-testimonial-slider .item .content .description {
+  font-size: 16px;
+  color: #3d3d3d;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.student-testimonial-slider .prev-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%);
+  left: 2%;
+  background-color: #349dcf;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.student-testimonial-slider .prev-nav-btn i,
+.student-testimonial-slider .next-nav-btn i {
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+.student-testimonial-slider .next-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%);
+  right: -10px;
+  background-color: #349dcf;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.student-testimonial-slider .swiper-wrapper {
+  margin-bottom: 20px;
+}
+
+.adwizor-blog-container {
+  display: grid;
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 20px;
+}
+.adwizor-blogs {
+  width: 280px;
+  height: 306px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 20px;
+  flex-direction: column;
+  background-image: url("../assest/Images/blog1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  gap: 5px;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.adwizor-blogs p {
+  margin: 0;
+}
+.adwizor-blogs p.title {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+}
+.adwizor-blogs p.desc {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.view-more-btn {
+  width: 291px;
+  height: 46px;
+  background-color: #0185c3;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid #0185c3;
+  display: block;
+  margin: auto;
+  border-radius: 5px;
+}
+/* Our success in Number */
+.our-success {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 40px;
+  width: 100%;
+  border-radius: 15px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.our-success p.desc {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.our-success .cards {
+  display: grid;
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: 20px;
+}
+.our-success .cards .item {
+  width: 220px;
+  height: 136px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 20px;
+  border-radius: 10px;
+  margin: auto;
+}
+.our-success .cards .item p {
+  margin: 0;
+}
+.our-success .cards .item .title {
+  font-size: 42px;
+  font-weight: 600;
+}
+.our-success .cards .item .acheivment {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* general-banner */
+.general-banner {
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+  max-height: 550px;
+}
+.general-banner img {
+  width: 100%;
+  height: inherit;
+  max-height: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+.find-an-adwizor-filter .base-btn {
+  width: 339px;
+  height: 56px;
+  background-color: #fff;
+  border: 1px solid #a1a1a1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  outline: none;
+  padding-right: 20px;
+}
+
+.find-an-adwizor-filter .base-btn span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #a1a1a1;
+  font-size: 16px;
+  font-weight: 500;
+}
+.antd-link-a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #a1a1a1;
 }

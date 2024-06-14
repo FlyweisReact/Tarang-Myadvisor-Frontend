@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
 import {
   adwizorImg1,
   adwizorImg2,
@@ -19,6 +18,10 @@ import AdwizorBanner from "../components/Home/AdwizorBanner";
 import HowItWorks from "../components/Home/HowItWorks";
 import TableLayout from "../components/TableLayout";
 import SynopsisSlider from "../components/Home/SynopsisSlider";
+import StudentTestimonial from "../components/Home/StudentTestimonial";
+import AdwizorBlogs from "../components/Home/AdwizorBlogs";
+import OurSuccess from "../components/Home/OurSuccess";
+import WithLayout from "../Layout/WithLayout";
 
 const topAdvizors = [
   {
@@ -354,8 +357,7 @@ const tbody = [
 ];
 const HomePage = () => {
   return (
-    <section className="homepage">
-      <Navbar />
+    <>
       <AdwizorBanner />
       <TopAdwizors data={topAdvizors} />
       <HowItWorks />
@@ -381,13 +383,27 @@ const HomePage = () => {
         <TableLayout thead={thead} tbody={tbody} className="college-table" />
       </section>
 
-      <section className="sypnosis-summary margin-div">
+      <section className="margin-div">
         <h4 className="normal-heading"> Destination Synopsis / Summary</h4>
         <SynopsisSlider />
       </section>
 
-    </section>
+      <section className="margin-div">
+        <h4 className="normal-heading">What Students say about us? </h4>
+        <StudentTestimonial />
+      </section>
+
+      <section className="margin-div">
+        <h4 className="normal-heading">Our Adwizors blogs </h4>
+        <AdwizorBlogs />
+        <button className="view-more-btn mt-4">View More</button>
+      </section>
+
+      <section className="margin-div">
+        <OurSuccess />
+      </section>
+    </>
   );
 };
 
-export default HomePage;
+export default WithLayout(HomePage);

@@ -43,10 +43,52 @@ import collegeIcon from "./Images/19.png";
 import rankingIcon from "./Images/20.png";
 import IndianRngFlag from "./Images/Flags/india-rnd.png";
 import degreeImg from "./Images/21.png";
-import dollarIcon from './Images/22.png'
+import dollarIcon from "./Images/22.png";
+import usaEllipse from "./Images/Flags/usa-ellipse.png";
+import ukEllipse from "./Images/Flags/uk-ellipse.png";
+import canadaEllipse from "./Images/Flags/canadaEllipse.png";
+import studentEllipse from "./Images/student-ellipse.png";
+import studentEllipse1 from "./Images/student-ellipse1.png";
+import studentEllipse2 from "./Images/student-ellipse2.png";
+import adwizorblog1 from "./Images/blog1.png";
+import adwizorblog2 from "./Images/blog2.png";
+import adwizorblog3 from "./Images/blog3.png";
+import adwizorblog4 from "./Images/blog4.png";
+import adwizorblog5 from "./Images/blog5.png";
+import adwizorblog6 from "./Images/blog6.png";
+import adwizorblog7 from "./Images/blog7.png";
+import adwizorblog8 from "./Images/blog8.png";
+import footerLogo from "./Images/footer-logo.png";
+import facebookIcon from "./Images/social-icons/facebook-f.svg";
+import twitterIcon from "./Images/social-icons/twitter.svg";
+import linkedinIcon from "./Images/social-icons/linkedin-in.svg";
+import instaIcon from "./Images/social-icons/instagram.svg";
+import FooterBg from "./Images/footer-bg.png";
+import findAdwizorBanner from "./Images/Banners/find-adwizor.png";
 
 export {
-  dollarIcon ,
+  findAdwizorBanner,
+  FooterBg,
+  facebookIcon,
+  twitterIcon,
+  linkedinIcon,
+  instaIcon,
+  footerLogo,
+  adwizorblog1,
+  adwizorblog2,
+  adwizorblog3,
+  adwizorblog4,
+  adwizorblog5,
+  adwizorblog6,
+  adwizorblog7,
+  adwizorblog8,
+  studentEllipse1,
+  studentEllipse2,
+  studentEllipse,
+  canadaEllipse,
+  usaEllipse,
+  ukEllipse,
+  dollarIcon,
   degreeImg,
   IndianRngFlag,
   collegeIcon,

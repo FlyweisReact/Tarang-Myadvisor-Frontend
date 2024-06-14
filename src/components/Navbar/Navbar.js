@@ -3,13 +3,20 @@
 import React from "react";
 import { logoImg } from "../../assest/index";
 
+import "../../css/navbar.css";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <div className="header">
-      <img src={logoImg} alt="" className="logo" />
+      <Link to={"/home"}>
+        <img src={logoImg} alt="" className="logo" />
+      </Link>
       <div className="links">
         <ul>
-          <li>FInd an Adwizor</li>
+          <li>
+            <Link to={"/find-an-adwizor"}> FInd an Adwizor</Link>
+          </li>
           <li>Study Abroad</li>
           <li>Study India</li>
           <li>

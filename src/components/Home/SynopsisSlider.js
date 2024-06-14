@@ -3,7 +3,57 @@
 import React from "react";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { degreeImg, IndianRngFlag, dollarIcon } from "../../assest/index";
+import {
+  degreeImg,
+  IndianRngFlag,
+  dollarIcon,
+  ukEllipse,
+  usaEllipse,
+  canadaEllipse,
+} from "../../assest/index";
+
+const data = [
+  {
+    flag: IndianRngFlag,
+    title: "Study in INDIA",
+    accordion: [
+      "Why Study in India",
+      "SOP for India",
+      "EXAMS for Studing India",
+      "Post Study Opportunities in India",
+    ],
+  },
+  {
+    flag: usaEllipse,
+    title: "Study in USA",
+    accordion: [
+      "Why Study in USA",
+      "SOP for USA",
+      "EXAMS for Studing USA",
+      "Post Study Opportunities in USA",
+    ],
+  },
+  {
+    flag: ukEllipse,
+    title: "Study in Uk",
+    accordion: [
+      "Why Study in UK",
+      "SOP for UK",
+      "EXAMS for Studing UK",
+      "Post Study Opportunities in UK",
+    ],
+  },
+  {
+    flag: canadaEllipse,
+    title: "Study in CANADA",
+    accordion: [
+      "Why Study in Canada",
+      "SOP for Canada",
+      "EXAMS for Studing Canada",
+      "Post Study Opportunities in Canada",
+    ],
+  },
+];
 
 const SynopsisSlider = () => {
   const swiperConfig = {
@@ -33,300 +83,51 @@ const SynopsisSlider = () => {
   return (
     <section className="synopsis-slider">
       <Swiper {...swiperConfig} pagination={true} modules={[Autoplay]}>
-        <SwiperSlide>
-          <div className="Item">
-            <div className="heading">
-              <img src={IndianRngFlag} alt="" />
-              <div className="content">
-                <p className="title">Study in INDIA</p>
-                <p className="desc">Check 170 colleges {">"}</p>
-              </div>
-            </div>
-
-            <div className="cost">
-              <div className="item">
-                <img src={degreeImg} alt="" />
+        {data.map((i, index) => (
+          <SwiperSlide key={index}>
+            <div className="Item">
+              <div className="heading">
+                <img src={i.flag} alt="" />
                 <div className="content">
-                  <p className="title">1008</p>
-                  <p className="dash">No.of Colleges</p>
+                  <p className="title"> {i.title} </p>
+                  <p className="desc">Check 170 colleges {">"}</p>
                 </div>
               </div>
-              <div className="item">
-                <img src={dollarIcon} alt="" />
-                <div className="content">
-                  <p className="title">32.68 k USD/Year</p>
-                  <p className="dash">Avg. Study Cost</p>
+
+              <div className="cost">
+                <div className="item">
+                  <img src={degreeImg} alt="" />
+                  <div className="content">
+                    <p className="title">1008</p>
+                    <p className="dash">No.of Colleges</p>
+                  </div>
+                </div>
+                <div className="item">
+                  <img src={dollarIcon} alt="" />
+                  <div className="content">
+                    <p className="title">32.68 k USD/Year</p>
+                    <p className="dash">Avg. Study Cost</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="guides ">
-              <p className="fw-bold">Guides</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Why Study in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>SOP for India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>EXAMS for Studing India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Post Study Opportunities in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="Item">
-            <div className="heading">
-              <img src={IndianRngFlag} alt="" />
-              <div className="content">
-                <p className="title">Study in INDIA</p>
-                <p className="desc">Check 170 colleges {">"}</p>
+              <div className="guides ">
+                <p className="fw-bold">Guides</p>
+                <i className="fa-solid fa-chevron-right"></i>
               </div>
-            </div>
-
-            <div className="cost">
-              <div className="item">
-                <img src={degreeImg} alt="" />
-                <div className="content">
-                  <p className="title">1008</p>
-                  <p className="dash">No.of Colleges</p>
+              {i.accordion.map((item, index) => (
+                <div
+                  className="guides"
+                  style={{ cursor: "pointer" }}
+                  key={`accordion${index}`}
+                >
+                  <p> {item} </p>
+                  <i className="fa-solid fa-chevron-right"></i>
                 </div>
-              </div>
-              <div className="item">
-                <img src={dollarIcon} alt="" />
-                <div className="content">
-                  <p className="title">32.68 k USD/Year</p>
-                  <p className="dash">Avg. Study Cost</p>
-                </div>
-              </div>
+              ))}
             </div>
-
-            <div className="guides ">
-              <p className="fw-bold">Guides</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Why Study in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>SOP for India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>EXAMS for Studing India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Post Study Opportunities in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="Item">
-            <div className="heading">
-              <img src={IndianRngFlag} alt="" />
-              <div className="content">
-                <p className="title">Study in INDIA</p>
-                <p className="desc">Check 170 colleges {">"}</p>
-              </div>
-            </div>
-
-            <div className="cost">
-              <div className="item">
-                <img src={degreeImg} alt="" />
-                <div className="content">
-                  <p className="title">1008</p>
-                  <p className="dash">No.of Colleges</p>
-                </div>
-              </div>
-              <div className="item">
-                <img src={dollarIcon} alt="" />
-                <div className="content">
-                  <p className="title">32.68 k USD/Year</p>
-                  <p className="dash">Avg. Study Cost</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="guides ">
-              <p className="fw-bold">Guides</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Why Study in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>SOP for India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>EXAMS for Studing India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Post Study Opportunities in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="Item">
-            <div className="heading">
-              <img src={IndianRngFlag} alt="" />
-              <div className="content">
-                <p className="title">Study in INDIA</p>
-                <p className="desc">Check 170 colleges {">"}</p>
-              </div>
-            </div>
-
-            <div className="cost">
-              <div className="item">
-                <img src={degreeImg} alt="" />
-                <div className="content">
-                  <p className="title">1008</p>
-                  <p className="dash">No.of Colleges</p>
-                </div>
-              </div>
-              <div className="item">
-                <img src={dollarIcon} alt="" />
-                <div className="content">
-                  <p className="title">32.68 k USD/Year</p>
-                  <p className="dash">Avg. Study Cost</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="guides ">
-              <p className="fw-bold">Guides</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Why Study in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>SOP for India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>EXAMS for Studing India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Post Study Opportunities in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="Item">
-            <div className="heading">
-              <img src={IndianRngFlag} alt="" />
-              <div className="content">
-                <p className="title">Study in INDIA</p>
-                <p className="desc">Check 170 colleges {">"}</p>
-              </div>
-            </div>
-
-            <div className="cost">
-              <div className="item">
-                <img src={degreeImg} alt="" />
-                <div className="content">
-                  <p className="title">1008</p>
-                  <p className="dash">No.of Colleges</p>
-                </div>
-              </div>
-              <div className="item">
-                <img src={dollarIcon} alt="" />
-                <div className="content">
-                  <p className="title">32.68 k USD/Year</p>
-                  <p className="dash">Avg. Study Cost</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="guides ">
-              <p className="fw-bold">Guides</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Why Study in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>SOP for India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>EXAMS for Studing India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Post Study Opportunities in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="Item">
-            <div className="heading">
-              <img src={IndianRngFlag} alt="" />
-              <div className="content">
-                <p className="title">Study in INDIA</p>
-                <p className="desc">Check 170 colleges {">"}</p>
-              </div>
-            </div>
-
-            <div className="cost">
-              <div className="item">
-                <img src={degreeImg} alt="" />
-                <div className="content">
-                  <p className="title">1008</p>
-                  <p className="dash">No.of Colleges</p>
-                </div>
-              </div>
-              <div className="item">
-                <img src={dollarIcon} alt="" />
-                <div className="content">
-                  <p className="title">32.68 k USD/Year</p>
-                  <p className="dash">Avg. Study Cost</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="guides ">
-              <p className="fw-bold">Guides</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Why Study in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>SOP for India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>EXAMS for Studing India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            <div className="guides ">
-              <p>Post Study Opportunities in India</p>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

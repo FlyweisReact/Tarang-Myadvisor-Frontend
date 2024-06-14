@@ -82,7 +82,7 @@ const Features = () => {
         <Swiper {...swiperConfig} pagination={true} modules={[Autoplay]}>
           {item.map((i, index) => (
             <SwiperSlide>
-              <div className="slide" key={index}>
+              <div className="slide" key={`featued${index}`}>
                 <img src={i.img} alt="" />
                 <h5> {i.title} </h5>
                 <p>{i.detail}</p>

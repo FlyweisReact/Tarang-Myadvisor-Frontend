@@ -4,6 +4,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LiveSession from "./pages/CounsellingSession/LiveSession";
 import LiveSession2 from "./pages/CounsellingSession/LiveSession2";
+import FindAdwizor from "./pages/FindAdwizor";
 import HomePage from "./pages/HomePage";
 import ChooseDestination from "./pages/StudentAbroad/ChooseDestination";
 import Degree from "./pages/StudentAbroad/Degree";
@@ -39,11 +40,11 @@ const App = () => {
           path="/student-abroad-journery/last-step"
           element={<StudentLastStep />}
         />
-
         <Route path="/counselling-session/live" element={<LiveSession />} />
         <Route path="/counselling-session/live-2" element={<LiveSession2 />} />
 
         <Route path="/home" element={<HomePage />} />
+        <Route path="/find-an-adwizor" element={<FindAdwizor />} />
       </Routes>
     </BrowserRouter>
   );

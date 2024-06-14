@@ -1,0 +1,43 @@
+/** @format */
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.header .logo {
+  width: 60px;
+  height: 60px;
+}
+.header .links ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 0;
+}
+.header .links ul li {
+  list-style: none;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a3b5a;
+}
+.header .links ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+.header .login-btn {
+  background-color: #0185c3;
+  width: 100px;
+  height: 37px;
+  color: #fff;
+  border-radius: 50px;
+  border: 1px solid #0185c3;
+  font-size: 14px;
+  font-weight: bold;
+}

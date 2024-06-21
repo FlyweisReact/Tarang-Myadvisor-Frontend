@@ -65,8 +65,20 @@ import linkedinIcon from "./Images/social-icons/linkedin-in.svg";
 import instaIcon from "./Images/social-icons/instagram.svg";
 import FooterBg from "./Images/footer-bg.png";
 import findAdwizorBanner from "./Images/Banners/find-adwizor.png";
+import verifiedAdwizor from "./Images/23.png";
+import verifiedAdwizor1 from "./Images/24.png";
+import verifiedAdwizor2 from "./Images/25.png";
+import verifiedAdwizor3 from "./Images/26.png";
+import verifiedAdwizor4 from "./Images/27.png";
+import verifiedAdwizor5 from "./Images/28.png";
 
 export {
+  verifiedAdwizor,
+  verifiedAdwizor1,
+  verifiedAdwizor2,
+  verifiedAdwizor3,
+  verifiedAdwizor4,
+  verifiedAdwizor5,
   findAdwizorBanner,
   FooterBg,
   facebookIcon,

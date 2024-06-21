@@ -1,8 +1,55 @@
 /** @format */
 
 import React from "react";
-import { Dropdown } from "react-bootstrap";
 import { homepageImg } from "../../assest/index";
+import {
+  citiesArr,
+  countryArr,
+  prefferedSubjectArr,
+} from "../../constant/constant";
+import { CustomeDropdown } from "../HelpingComponents";
+
+const optionsMenu = [
+  {
+    title: "Your City",
+    items: citiesArr?.map((city, index) => ({
+      label: (
+        <a href={`#${city}`} className="antd-link-a">
+          {city}
+        </a>
+      ),
+      key: index.toString(),
+    })),
+    titleIcon: <i className="fa-solid fa-location-dot"></i>,
+    caretIcon: true,
+  },
+  {
+    title: "Country",
+    items: countryArr?.map((i, index) => ({
+      label: (
+        <a href={`#${i}`} className="antd-link-a">
+          {i}
+        </a>
+      ),
+      key: index.toString(),
+    })),
+    titleIcon: <i className="fa-solid fa-earth-americas"></i>,
+    caretIcon: true,
+  },
+  {
+    title: "Preferred Subject",
+    items: prefferedSubjectArr?.map((city, index) => ({
+      label: (
+        <a href={`#${city}`} className="antd-link-a">
+          {city}
+        </a>
+      ),
+      key: index.toString(),
+    })),
+    titleIcon: <i className="fa-solid fa-book"></i>,
+    caretIcon: true,
+  },
+];
 
 const AdwizorBanner = () => {
   return (
@@ -17,45 +64,17 @@ const AdwizorBanner = () => {
         <div className="adwizor-search">
           <h2>Find Adwizor</h2>
           <div className="search-bar">
-            <Dropdown>
-              <Dropdown.Toggle variant="none">
-                <i className="fa-solid fa-location-dot"></i>
-                City
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Mumbai</Dropdown.Item>
-                <Dropdown.Item href="#/action-1">Banglore</Dropdown.Item>
-                <Dropdown.Item href="#/action-1">Hyderabad</Dropdown.Item>
-                <Dropdown.Item href="#/action-1">Gujrat</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown>
-              <Dropdown.Toggle variant="none">
-                <i className="fa-solid fa-earth-americas"></i>
-                Study Destination
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">India</Dropdown.Item>
-                <Dropdown.Item href="#/action-1">USA</Dropdown.Item>
-                <Dropdown.Item href="#/action-1">UK</Dropdown.Item>
-                <Dropdown.Item href="#/action-1">German</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown>
-              <Dropdown.Toggle variant="none">
-                <i className="fa-solid fa-book"></i>
-                Subject
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">MS</Dropdown.Item>
-                <Dropdown.Item href="#/action-1">MBA</Dropdown.Item>
-                <Dropdown.Item href="#/action-1">Engineering</Dropdown.Item>
-                <Dropdown.Item href="#/action-1">MBBS</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            {optionsMenu.map((i, index) => (
+              <CustomeDropdown
+                items={i.items}
+                className={"dropdown-button"}
+                title={i.title}
+                titleIcon={i.titleIcon}
+                caretIcon={i.caretIcon}
+                key={index}
+              />
+            ))}
+         
             <button className="search-icon-button">
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>

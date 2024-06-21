@@ -11,7 +11,6 @@ import {
   collegeIcon,
   rankingIcon,
 } from "../assest";
-import TopAdwizors from "../components/Home/TopAdwizors";
 import Features from "../components/Home/Features";
 import Testimonial from "../components/Home/Testimonial";
 import AdwizorBanner from "../components/Home/AdwizorBanner";
@@ -22,6 +21,7 @@ import StudentTestimonial from "../components/Home/StudentTestimonial";
 import AdwizorBlogs from "../components/Home/AdwizorBlogs";
 import OurSuccess from "../components/Home/OurSuccess";
 import WithLayout from "../Layout/WithLayout";
+import { AdwizorCards } from "../components/HelpingComponents";
 
 const topAdvizors = [
   {
@@ -359,7 +359,7 @@ const HomePage = () => {
   return (
     <>
       <AdwizorBanner />
-      <TopAdwizors data={topAdvizors} />
+      <AdwizorCards topAdwizor={true} topAdwizorData={topAdvizors} />
       <HowItWorks />
       <Features />
       <Testimonial />

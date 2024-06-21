@@ -4,65 +4,144 @@ import React from "react";
 import Banner from "../components/Banner/Banner";
 import WithLayout from "../Layout/WithLayout";
 import { findAdwizorBanner } from "../assest/index";
-import { Dropdown } from "antd";
+import {
+  citiesArr,
+  countryArr,
+  prefferedSubjectArr,
+} from "../constant/constant";
+import { AdwizorCards, CustomeDropdown } from "../components/HelpingComponents";
+import {
+  verifiedAdwizor,
+  verifiedAdwizor1,
+  verifiedAdwizor2,
+  verifiedAdwizor3,
+  verifiedAdwizor4,
+  verifiedAdwizor5,
+} from "../assest/index";
 
-const items = [
+const optionsMenu = [
   {
-    label: (
-      <a href="#is" className="antd-link-a">
-        Mumbai
-      </a>
-    ),
-    key: "0",
+    title: "Your City",
+    items: citiesArr?.map((city, index) => ({
+      label: (
+        <a href={`#${city}`} className="antd-link-a">
+          {city}
+        </a>
+      ),
+      key: index.toString(),
+    })),
+    titleIcon: <i className="fa-solid fa-location-dot"></i>,
+    caretIcon: true,
   },
-
   {
-    label: (
-      <a href="#is" className="antd-link-a">
-        Banglore
-      </a>
-    ),
-    key: "1",
+    title: "Country",
+    items: countryArr?.map((i, index) => ({
+      label: (
+        <a href={`#${i}`} className="antd-link-a">
+          {i}
+        </a>
+      ),
+      key: index.toString(),
+    })),
+    titleIcon: <i className="fa-solid fa-earth-americas"></i>,
+    caretIcon: true,
   },
-
   {
-    label: (
-      <a href="#is" className="antd-link-a">
-        Hyderabad
-      </a>
-    ),
-    key: "2",
-  },
-
-  {
-    label: (
-      <a href="#is" className="antd-link-a">
-        Gujrat
-      </a>
-    ),
-    key: "3",
+    title: "Preferred Subject",
+    items: prefferedSubjectArr?.map((city, index) => ({
+      label: (
+        <a href={`#${city}`} className="antd-link-a">
+          {city}
+        </a>
+      ),
+      key: index.toString(),
+    })),
+    titleIcon: <i className="fa-solid fa-book"></i>,
+    caretIcon: true,
   },
 ];
+
+const adwizors = [
+  {
+    img: verifiedAdwizor,
+    title: "Nisha Agarwal",
+    rating: "9.5/10",
+    description: [
+      "3+ Years (Accounts).",
+      "Gujrat , India.",
+      "8211 Students Placed",
+    ],
+  },
+  {
+    img: verifiedAdwizor1,
+    title: "Bessie Cooper",
+    rating: "9.5/10",
+    description: [
+      "3+ Years (Accounts).",
+      "Gujrat , India.",
+      "8211 Students Placed",
+    ],
+  },
+  {
+    img: verifiedAdwizor2,
+    title: "Robert Fox",
+    rating: "9.5/10",
+    description: [
+      "3+ Years (Accounts).",
+      "Gujrat , India.",
+      "8211 Students Placed",
+    ],
+  },
+  {
+    img: verifiedAdwizor3,
+    title: "Kristin Watson",
+    rating: "9.5/10",
+    description: [
+      "3+ Years (Accounts).",
+      "Gujrat , India.",
+      "8211 Students Placed",
+    ],
+  },
+  {
+    img: verifiedAdwizor4,
+    title: "Ralph Edwards ",
+    rating: "9.5/10",
+    description: [
+      "3+ Years (Accounts).",
+      "Gujrat , India.",
+      "8211 Students Placed",
+    ],
+  },
+  {
+    img: verifiedAdwizor5,
+    title: "Floyd Miles",
+    rating: "9.5/10",
+    description: [
+      "3+ Years (Accounts).",
+      "Gujrat , India.",
+      "8211 Students Placed",
+    ],
+  },
+];
+
 const FindAdwizor = () => {
   return (
     <>
       <Banner img={findAdwizorBanner} />
       <div className="find-an-adwizor-filter">
-        <Dropdown
-          menu={{
-            items,
-          }}
-          trigger={["click"]}
-        >
-          <button className="base-btn">
-            <span>
-              <i className="fa-solid fa-location-dot"></i>
-              Your City
-            </span>
-            <i className="fa-solid fa-caret-down"></i>
-          </button>
-        </Dropdown>
+        {optionsMenu.map((i, index) => (
+          <CustomeDropdown
+            items={i.items}
+            className={"base-btn"}
+            title={i.title}
+            titleIcon={i.titleIcon}
+            caretIcon={i.caretIcon}
+            key={index}
+          />
+        ))}
       </div>
+      <AdwizorCards allAdwizors={adwizors} topAdwizor={false} />
+      <button className="view-more-btn mb-5">View More</button>
     </>
   );
 };

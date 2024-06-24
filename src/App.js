@@ -13,12 +13,13 @@ import DegreeStatus3 from "./pages/StudentAbroad/DegreeStatus3";
 import PreferredIntake from "./pages/StudentAbroad/PreferredIntake";
 import StatusQuery from "./pages/StudentAbroad/StatusQuery";
 import StudentLastStep from "./pages/StudentAbroad/StudentLastStep";
+import StudyAbroad from "./pages/StudyAbroad";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<ChooseDestination />} />
+        <Route path="/choose-destination" element={<ChooseDestination />} />
         <Route
           path="/student-abroad-journery/preffered-intake"
           element={<PreferredIntake />}
@@ -43,8 +44,9 @@ const App = () => {
         <Route path="/counselling-session/live" element={<LiveSession />} />
         <Route path="/counselling-session/live-2" element={<LiveSession2 />} />
 
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/find-an-adwizor" element={<FindAdwizor />} />
+        <Route path="/study-abroad" element={<StudyAbroad />} />
       </Routes>
     </BrowserRouter>
   );

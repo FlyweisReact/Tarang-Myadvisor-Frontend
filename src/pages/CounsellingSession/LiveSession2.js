@@ -86,11 +86,7 @@ const LiveSession2 = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <VerifyOtpModal
-        show={open}
-        onHide={() => setOpen(false)}
-        link={"/home"}
-      />
+      <VerifyOtpModal show={open} onHide={() => setOpen(false)} link={"/"} />
       <section className="choose-destination-page">
         <div className="page-head">
           <button

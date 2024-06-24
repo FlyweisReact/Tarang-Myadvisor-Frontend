@@ -28,10 +28,7 @@ const VerifyOtpModal = (props) => {
         </div>
         <OtpInput length={6} onChange={handleOtpChange} />
         <button className="resend-btn">Resend</button>
-        <button
-          className="continue"
-          onClick={() => navigate(props.link)}
-        >
+        <button className="continue" onClick={() => navigate(props.link)}>
           Proceed
         </button>
         <div className="hashed-line"></div>

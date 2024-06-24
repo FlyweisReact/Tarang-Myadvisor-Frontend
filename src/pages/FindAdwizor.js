@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import Banner from "../components/Banner/Banner";
 import WithLayout from "../Layout/WithLayout";
 import { findAdwizorBanner } from "../assest/index";
 import {
@@ -9,7 +8,7 @@ import {
   countryArr,
   prefferedSubjectArr,
 } from "../constant/constant";
-import { AdwizorCards, CustomeDropdown } from "../components/HelpingComponents";
+import { AdwizorCards, Banner, CustomeDropdown } from "../components/HelpingComponents";
 import {
   verifiedAdwizor,
   verifiedAdwizor1,

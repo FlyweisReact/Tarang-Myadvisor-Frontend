@@ -71,8 +71,28 @@ import verifiedAdwizor2 from "./Images/25.png";
 import verifiedAdwizor3 from "./Images/26.png";
 import verifiedAdwizor4 from "./Images/27.png";
 import verifiedAdwizor5 from "./Images/28.png";
+import studyAbroadBanner from "./Images/Banners/study-abroad.png";
+import exploreCtry1 from "./Images/Slider/1.png";
+import exploreCtry2 from "./Images/Slider/2.png";
+import exploreCtry3 from "./Images/Slider/3.png";
+import exploreCtry4 from "./Images/Slider/4.png";
+import exploreCtry5 from "./Images/Slider/5.png";
+import exploreCtry6 from "./Images/Slider/6.png";
+import exploreCtry7 from "./Images/Slider/7.png";
+import exploreCtry8 from "./Images/Slider/8.png";
+import filterSlash from './Images/30.png'
 
 export {
+  filterSlash ,
+  exploreCtry1,
+  exploreCtry2,
+  exploreCtry3,
+  exploreCtry4,
+  exploreCtry5,
+  exploreCtry6,
+  exploreCtry7,
+  exploreCtry8,
+  studyAbroadBanner,
   verifiedAdwizor,
   verifiedAdwizor1,
   verifiedAdwizor2,

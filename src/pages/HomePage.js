@@ -22,69 +22,8 @@ import AdwizorBlogs from "../components/Home/AdwizorBlogs";
 import OurSuccess from "../components/Home/OurSuccess";
 import WithLayout from "../Layout/WithLayout";
 import { AdwizorCards } from "../components/HelpingComponents";
+// import { getApi } from "../Repository/Api";
 
-const topAdvizors = [
-  {
-    img: adwizorImg1,
-    name: "Subash Mishra",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Management).",
-      "Gujrat , India.",
-      "2K+ Students , Helped",
-    ],
-  },
-  {
-    img: adwizorImg2,
-    name: "Manisha Roy",
-    rating: "9.5/10",
-    description: [
-      "5+ Years (Civils).",
-      "Gujrat , India.",
-      "2K+ Students , Helped",
-    ],
-  },
-  {
-    img: adwizorImg3,
-    name: "Nisha Agarwal",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Management).",
-      "Gujrat , India.",
-      "2K+ Students , Helped",
-    ],
-  },
-  {
-    img: adwizorImg4,
-    name: "Subash Mishra",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Management).",
-      "Gujrat , India.",
-      "2K+ Students , Helped",
-    ],
-  },
-  {
-    img: adwizorImg5,
-    name: "Manisha Roy",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Management).",
-      "Gujrat , India.",
-      "2K+ Students , Helped",
-    ],
-  },
-  {
-    img: adwizorImg6,
-    name: "Nisha Agarwal",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Management).",
-      "Gujrat , India.",
-      "2K+ Students , Helped",
-    ],
-  },
-];
 const thead = [
   "CH Rank",
   "College",
@@ -355,10 +294,98 @@ const tbody = [
     </div>,
   ],
 ];
+
 const HomePage = () => {
+  // const [topAdwizor, setTopAdwizor] = useState({ data: [] });
+
+  // const fetchTopAdwizors = () => {
+  //   getApi({
+  //     url: "user/getVerified/Advisors",
+  //     setResponse: setTopAdwizor,
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   fetchTopAdwizors();
+  // }, []);
+
+  // const adwizorsData = topAdwizor.data.map((i) => ({
+  //   img: i?.image,
+  //   name: i?.fullname,
+  //   rating: "9.5/10",
+  //   description: [
+  //     "3+ Years (Management).",
+  //     "Gujrat , India.",
+  //     "2K+ Students , Helped",
+  //   ],
+  // }));
+
+  const topAdvizors = [
+    {
+      img: adwizorImg1,
+      name: "Subash Mishra",
+      rating: "9.5/10",
+      description: [
+        "3+ Years (Management).",
+        "Gujrat , India.",
+        "2K+ Students , Helped",
+      ],
+    },
+    {
+      img: adwizorImg2,
+      name: "Manisha Roy",
+      rating: "9.5/10",
+      description: [
+        "5+ Years (Civils).",
+        "Gujrat , India.",
+        "2K+ Students , Helped",
+      ],
+    },
+    {
+      img: adwizorImg3,
+      name: "Nisha Agarwal",
+      rating: "9.5/10",
+      description: [
+        "3+ Years (Management).",
+        "Gujrat , India.",
+        "2K+ Students , Helped",
+      ],
+    },
+    {
+      img: adwizorImg4,
+      name: "Subash Mishra",
+      rating: "9.5/10",
+      description: [
+        "3+ Years (Management).",
+        "Gujrat , India.",
+        "2K+ Students , Helped",
+      ],
+    },
+    {
+      img: adwizorImg5,
+      name: "Manisha Roy",
+      rating: "9.5/10",
+      description: [
+        "3+ Years (Management).",
+        "Gujrat , India.",
+        "2K+ Students , Helped",
+      ],
+    },
+    {
+      img: adwizorImg6,
+      name: "Nisha Agarwal",
+      rating: "9.5/10",
+      description: [
+        "3+ Years (Management).",
+        "Gujrat , India.",
+        "2K+ Students , Helped",
+      ],
+    },
+  ];
   return (
     <>
       <AdwizorBanner />
+      {/* <AdwizorCards topAdwizor={true} topAdwizorData={adwizorsData} /> */}
       <AdwizorCards topAdwizor={true} topAdwizorData={topAdvizors} />
       <HowItWorks />
       <Features />

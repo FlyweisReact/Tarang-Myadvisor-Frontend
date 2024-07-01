@@ -3,11 +3,40 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { LoginImg } from "../../assest";
+import { postApi } from "../../Repository/Api";
 import { EnterOtpModal } from "./Modals";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const LoginModal = (props) => {
-  const [type, setType] = useState("Student");
   const [isOtpModal, setIsOtpModal] = useState(false);
+  const [userType, setUserType] = useState("user");
+  const [fullname, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const payload = {
+    userType,
+    fullname,
+    email,
+    phone,
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    postApi({
+      url: "user/signup",
+      payload,
+      setLoading,
+      additionalFunctions: [() => props.onHide(), () => setIsOtpModal(true)],
+    });
+  };
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+    localStorage.setItem("otpEmail", e.target.value);
+  };
+
   return (
     <>
       <EnterOtpModal show={isOtpModal} onHide={() => setIsOtpModal(false)} />
@@ -19,44 +48,54 @@ const LoginModal = (props) => {
               <img src={LoginImg} alt="" />
             </div>
             <div className="right-div">
-              <form>
+              <form onSubmit={submitHandler}>
                 <h5 className="heading">LOGIN</h5>
                 <div className="select-btn">
                   <button
                     type="button"
-                    onClick={() => setType("Student")}
-                    className={type === "Student" ? "active" : ""}
+                    onClick={() => setUserType("user")}
+                    className={userType === "user" ? "active" : ""}
                   >
                     Student
                   </button>
                   <button
                     type="button"
-                    onClick={() => setType("Adwizor")}
-                    className={type === "Adwizor" ? "active" : ""}
+                    onClick={() => setUserType("Adwizor")}
+                    className={userType === "Adwizor" ? "active" : ""}
                   >
                     Adwizor
                   </button>
                 </div>
 
                 <div>
-                  <input type={"text"} placeholder="Full Name" />
+                  <input
+                    type={"text"}
+                    placeholder="Full Name"
+                    value={fullname}
+                    required
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
                 </div>
                 <div>
-                  <input type={"text"} placeholder="Email Id" />
+                  <input
+                    type={"text"}
+                    placeholder="Email Id"
+                    value={email}
+                    required
+                    onChange={(e) => handleEmail(e)}
+                  />
                 </div>
                 <div>
-                  <input type={"text"} placeholder="Enter your mobile number" />
+                  <input
+                    type={"text"}
+                    placeholder="Enter your mobile number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
                 </div>
 
-                <button
-                  className="submitBtn"
-                  type="button"
-                  onClick={() => {
-                    props.onHide();
-                    setIsOtpModal(true);
-                  }}
-                >
-                  Request OTP
+                <button className="submitBtn" type="submit">
+                  {loading ? <ClipLoader color="#fff" /> : "Request OTP"}
                 </button>
               </form>
             </div>

@@ -23,9 +23,11 @@ const Navbar = () => {
             <li>
               <Link to="/study-abroad">Study Abroad</Link>
             </li>
-            <li>Study India</li>
             <li>
-              Connect with Adwizor({" "}
+              <Link to="/study-india">Study India</Link>
+            </li>
+            <li>
+              <Link to="/connect-with-adwizor">Connect with Adwizor</Link>({" "}
               <span style={{ color: "#F50000" }}>Live*</span> )
             </li>
             <li>Explore More</li>

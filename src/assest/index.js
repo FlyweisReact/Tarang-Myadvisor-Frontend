@@ -80,10 +80,62 @@ import exploreCtry5 from "./Images/Slider/5.png";
 import exploreCtry6 from "./Images/Slider/6.png";
 import exploreCtry7 from "./Images/Slider/7.png";
 import exploreCtry8 from "./Images/Slider/8.png";
-import filterSlash from './Images/30.png'
+import filterSlash from "./Images/30.png";
+import filterImg from "./Images/filter.jpg";
+import usaSquare from "./Images/Flags/usa-square.png";
+import bookmarkImg from "./Images/bookmark.png";
+import heartImg from "./Images/heart.png";
+import collegeImg from "./Images/college.png";
+import locationHollow from "./Images/location-hollow.png";
+import flag from "./Images/private.png";
+import coin from "./Images/coin.png";
+import badgeImg from "./Images/badge.png";
+import donorImg from "./Images/donor.png";
+import examImg from "./Images/eaxm.png";
+import combineUser from "./Images/user-combine.png";
+import ukSquare from "./Images/Flags/uk-square.png";
+import studyIndia from "./Images/Banners/study-india.png";
+import iitDelhiLogo from "./Images/iitLogo.png";
+import dcseLogo from "./Images/dcseLogo.png";
+import iitGuwahitLogo from "./Images/IITGuwahti.png";
+import collegeResult from "./Images/31.png";
+import collegeResult1 from "./Images/32.png";
+import collegeResult2 from "./Images/33.png";
+import collegeResult3 from "./Images/34.png";
+import collegeResult4 from "./Images/35.png";
+import expert1 from "./Images/expert1.png";
+import expert2 from "./Images/expert2.png";
+import expert3 from "./Images/expert3.png";
+import expert4 from "./Images/expert4.png";
 
 export {
-  filterSlash ,
+  expert1,
+  expert2,
+  expert3,
+  expert4,
+  collegeResult,
+  collegeResult1,
+  collegeResult2,
+  collegeResult3,
+  collegeResult4,
+  iitDelhiLogo,
+  iitGuwahitLogo,
+  dcseLogo,
+  ukSquare,
+  studyIndia,
+  combineUser,
+  badgeImg,
+  donorImg,
+  examImg,
+  coin,
+  flag,
+  locationHollow,
+  collegeImg,
+  heartImg,
+  bookmarkImg,
+  usaSquare,
+  filterImg,
+  filterSlash,
   exploreCtry1,
   exploreCtry2,
   exploreCtry3,

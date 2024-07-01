@@ -3,7 +3,18 @@
 import React from "react";
 import { Banner, CustomeDropdown } from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
-import { collegeImg, studyAbroadBanner, ukSquare } from "../assest";
+import {
+  studyIndia,
+  iitDelhiLogo,
+  iitGuwahitLogo,
+  dcseLogo,
+  filterImg,
+  collegeResult,
+  collegeResult1,
+  collegeResult2,
+  collegeResult3,
+  collegeResult4,
+} from "../assest";
 import { ExploreCountrySlider } from "../components/Sliders/Sliders";
 import {
   durationArr,
@@ -11,13 +22,12 @@ import {
   prefferedSubjectArr,
   tutionFees,
 } from "../constant/constant";
-import { filterImg, usaSquare } from "../assest";
+
 import {
   CollegeFilters,
   CollegeResults,
 } from "../components/Study/CollegeSection";
 
-// options
 const optionsMenu = [
   {
     title: "Subject",
@@ -75,43 +85,36 @@ const optionsMenu = [
 
 const colleges = [
   {
-    img: usaSquare,
-    title: "Harvard University , Cambridge , USA",
-    collegeImg: collegeImg,
+    img: dcseLogo,
+    title: "Dhanalakshmi Srinivasan College of Engineering (DSCE), Coimbatore",
+    collegeImg : collegeResult
   },
   {
-    img: usaSquare,
-    title: "University of New Heaven , USA",
-    collegeImg: collegeImg,
+    img: iitDelhiLogo,
+    title: "IIT Madras",
+    collegeImg : collegeResult1
   },
   {
-    img: ukSquare,
-    title: "Ucla University , UK",
-    collegeImg: collegeImg,
+    img: dcseLogo,
+    title: "IIT Mumbai",
+    collegeImg : collegeResult2
   },
   {
-    img: ukSquare,
-    title: "Stanford University , UK",
-    collegeImg: collegeImg,
+    img: iitGuwahitLogo,
+    title: "IIT Guwahati",
+    collegeImg : collegeResult3
   },
   {
-    img: ukSquare,
-    title: "Pride University , UK",
-    collegeImg: collegeImg,
-  },
-  {
-    img: ukSquare,
-    title: "Yale , UK",
-    collegeImg: collegeImg,
+    img: dcseLogo,
+    title: "IIT Kanpur",
+    collegeImg : collegeResult4
   },
 ];
-
-const StudyAbroad = () => {
+const StudyIndia = () => {
   return (
     <>
-      <Banner img={studyAbroadBanner} />
+      <Banner img={studyIndia} />
       <ExploreCountrySlider />
-
       <section className="filter-college-section margin-div">
         <CollegeFilters />
         <div className="result-div">
@@ -138,4 +141,4 @@ const StudyAbroad = () => {
   );
 };
 
-export default WithLayout(StudyAbroad);
+export default WithLayout(StudyIndia);

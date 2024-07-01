@@ -7,6 +7,8 @@ import './css/style.css'
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "swiper/swiper-bundle.css";
+import 'react-notifications-component/dist/theme.css'
+
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

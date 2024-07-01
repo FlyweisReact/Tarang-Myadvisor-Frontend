@@ -1638,3 +1638,427 @@
   color: #000;
   font-weight: 500;
 }
+
+.filter-college-section .result-div {
+  flex: 1;
+  padding: 20px;
+}
+.filter-college-section .result-div .search-div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-college-section .result-div .search-div .dropdown-button {
+  width: 200px;
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 16px;
+  color: #a1a1a1;
+  border: 1px solid #a1a1a1;
+  outline: none;
+  border-radius: 10px;
+}
+.filter-college-section .result-div .search-div .dropdown-button span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.filter-college-section .result-div .search-div .filter-img {
+  width: 40px;
+}
+
+.filter-college-section .result-div .results {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.filter-college-section .result-div .results .main {
+  width: 100%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.filter-college-section .result-div .results .main .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.filter-college-section .result-div .results .main .head .title {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.filter-college-section .result-div .results .main .head .title img {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #e7e7e7;
+  padding: 5px;
+}
+
+.filter-college-section .result-div .results .main .head .title p {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 900;
+}
+.filter-college-section .result-div .results .main .head .actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.filter-college-section .result-div .results .main .head .actions img {
+  width: 23px;
+  height: 23px;
+}
+
+.filter-college-section .result-div .results .main .head .actions .blank {
+  width: 2px;
+  height: 30px;
+  background-color: #d9d9d9;
+  display: block;
+}
+
+.filter-college-section .result-div .results .main .details {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+}
+.filter-college-section .result-div .results .main .details img.college-img {
+  width: 260px;
+  height: 164px;
+}
+.filter-college-section .result-div .results .main .details .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-college-section .result-div .results .main .details .content .tags {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .tags
+  .rating {
+  width: 60px;
+  background-color: #26a373;
+  color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2px;
+  border-radius: 4px;
+  align-items: center;
+}
+.filter-college-section .result-div .results .main .details .content p {
+  margin: 0;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .tags
+  .rating
+  p {
+  margin: 0;
+  font-size: 14px;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .tags
+  .rating
+  i {
+  font-size: 12px;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .tags
+  .review {
+  font-size: 14px;
+  color: #0185c3;
+}
+
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .tags
+  .location {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .tags
+  .location
+  img {
+  width: 15px;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .tags
+  .location
+  p {
+  font-size: 14px;
+  color: #717171;
+}
+
+.filter-college-section .result-div .results .main .details .content .package {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .package
+  .item
+  .upper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .package
+  .item
+  .upper
+  img {
+  width: 20px;
+  height: 20px;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .package
+  .item
+  .upper
+  p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .package
+  .item
+  .faded {
+  padding-left: 30px;
+  font-size: 16px;
+  color: #717171;
+  margin: 0;
+}
+
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .shortlisted-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: #d8f2ff;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .shortlisted-container
+  .user-images {
+  width: 150px;
+  padding: 10px;
+  position: relative;
+}
+
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .shortlisted-container
+  .user-images
+  .skewDiv {
+  width: 100%;
+  height: 44px;
+  background-color: #eef0ff;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform: skew(-45deg);
+  transform-origin: top right;
+}
+
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .shortlisted-container
+  .user-images
+  img {
+  width: 51px;
+  height: 18px;
+  z-index: 2;
+  position: relative;
+}
+
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .details
+  .content
+  .shortlisted-container
+  .shortlisted-text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #349dcf;
+}
+.filter-college-section .result-div .results .main hr {
+  margin: 0;
+}
+
+.filter-college-section .result-div .results .main .brochure {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.filter-college-section .result-div .results .main .brochure ul {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-college-section .result-div .results .main .brochure ul li {
+  color: #0185c3;
+  font-weight: 400;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-college-section .result-div .results .main .brochure ul li i {
+  font-size: 4px;
+  color: #c5c3e5;
+}
+
+.filter-college-section .result-div .results .main .brochure div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.filter-college-section .result-div .results .main .brochure div button {
+  width: 150px;
+  height: 43px;
+  outline: none;
+  font-size: 14px;
+  border: 2px solid #0185c3;
+  font-weight: 600;
+  color: #0185c3;
+  background-color: #fff;
+}
+
+.filter-college-section .result-div .results .main .brochure div button.filled {
+  background-color: #0185c3;
+  color: #fff;
+}
+
+/* Connect with adwizor */
+.book-adwizor {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.book-adwizor .left {
+  width: 569px;
+  height: 639px;
+  background-color: #f9b300;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.book-adwizor .left h2 {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.book-adwizor .left p.desc {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}

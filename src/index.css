@@ -7,10 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code , * , html {
+code,
+*,
+html {
   font-family: "Quicksand" !important;
 }
 
-.fa-solid{
+.fa-classic,
+.fa-regular,
+.fa-solid,
+.far,
+.fas {
   font-family: "Font Awesome 6 Free" !important;
 }

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import StudyIndia from "./components/StudyIndia";
 import LiveSession from "./pages/CounsellingSession/LiveSession";
 import LiveSession2 from "./pages/CounsellingSession/LiveSession2";
 import FindAdwizor from "./pages/FindAdwizor";
@@ -14,10 +15,13 @@ import PreferredIntake from "./pages/StudentAbroad/PreferredIntake";
 import StatusQuery from "./pages/StudentAbroad/StatusQuery";
 import StudentLastStep from "./pages/StudentAbroad/StudentLastStep";
 import StudyAbroad from "./pages/StudyAbroad";
+import { ReactNotifications } from "react-notifications-component";
+import ConnectAdwizor from "./pages/ConnectAdwizor";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ReactNotifications />
       <Routes>
         <Route path="/choose-destination" element={<ChooseDestination />} />
         <Route
@@ -47,6 +51,8 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/find-an-adwizor" element={<FindAdwizor />} />
         <Route path="/study-abroad" element={<StudyAbroad />} />
+        <Route path="/study-india" element={<StudyIndia />} />
+        <Route path="/connect-with-adwizor" element={<ConnectAdwizor />} />
       </Routes>
     </BrowserRouter>
   );

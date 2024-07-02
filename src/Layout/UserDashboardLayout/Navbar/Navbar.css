@@ -1,0 +1,52 @@
+/** @format */
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.header .logo {
+  width: 60px;
+  height: 60px;
+}
+.header div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header div select {
+  width: 207px;
+  height: 40px;
+  color: #0185c3;
+  border: 1px solid #0185c3;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 600;
+}
+
+.header div button {
+  min-width: 120px;
+  color: #0185c3;
+  border: 1px solid #0185c3;
+  background-color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  height: 40px;
+}
+.header div button.filled {
+  background-color: #0185c3;
+  color: #fff;
+}
+.header div img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}

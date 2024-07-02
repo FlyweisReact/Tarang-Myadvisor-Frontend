@@ -91,3 +91,16 @@ export const ExploreCountrySlider = () => {
     </section>
   );
 };
+
+export const Slider = ({ data, swiperConfig, renderSlide ,extraComponent }) => {
+  return (
+    <section className="generic-slider">
+      <Swiper {...swiperConfig}>
+        {data.map((item, index) => (
+          <SwiperSlide key={index}>{renderSlide(item)}</SwiperSlide>
+        ))}
+        {extraComponent}
+      </Swiper>
+    </section>
+  );
+};

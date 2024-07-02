@@ -1,39 +1,20 @@
 /** @format */
 
-import React from "react";
-import {
-  studentEllipse,
-  studentEllipse1,
-  studentEllipse2,
-} from "../../assest/index";
+import React, { useState, useEffect } from "react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-const data = [
-  {
-    img: studentEllipse,
-    title: "Hannah Schmitt",
-    position: "Lead designer",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit cursus pellentesqu  Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit cursus pellentesqu",
-  },
-  {
-    img: studentEllipse1,
-    title: "Hannah Schmitt",
-    position: "Web Designer",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit cursus pellentesqu Consequat duis diam lacus arcu. Faucibus venenatis ",
-  },
-  {
-    img: studentEllipse2,
-    title: "Hannah Schmitt",
-    position: "Nursing Assistant",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit cursus pellentesqu Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit cursus pellentesqu",
-  },
-];
+import { getApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 
 const StudentTestimonial = () => {
+  const [response, setResponse] = useState({});
+
+  useEffect(() => {
+    getApi(endPoints.getAllStudentOpinions, {
+      setResponse,
+    });
+  }, []);
+
   const swiperConfig = {
     spaceBetween: 20,
     loop: false,
@@ -53,16 +34,16 @@ const StudentTestimonial = () => {
           dynamicBullets: true,
         }}
       >
-        {data.map((i, index) => (
+        {response?.data?.map((i, index) => (
           <SwiperSlide key={index}>
             <div className="item">
               <div className="content">
                 <div className="img-container">
-                  <img src={i.img} alt="" />
+                  <img src={i.image} alt="" />
                 </div>
-                <p className="title"> {i.title} </p>
-                <p className="position"> {i.position} </p>
-                <p className="description">{i.description}</p>
+                <p className="title"> {i.name} </p>
+                <p className="position"> {i.title} </p>
+                <p className="description">{i.desc}</p>
               </div>
             </div>
           </SwiperSlide>

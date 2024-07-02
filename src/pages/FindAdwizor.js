@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import WithLayout from "../Layout/WithLayout";
 import { findAdwizorBanner } from "../assest/index";
 import {
@@ -8,7 +8,11 @@ import {
   countryArr,
   prefferedSubjectArr,
 } from "../constant/constant";
-import { AdwizorCards, Banner, CustomeDropdown } from "../components/HelpingComponents";
+import {
+  AdwizorCards,
+  Banner,
+  CustomeDropdown,
+} from "../components/HelpingComponents";
 import {
   verifiedAdwizor,
   verifiedAdwizor1,
@@ -17,6 +21,8 @@ import {
   verifiedAdwizor4,
   verifiedAdwizor5,
 } from "../assest/index";
+import { getApi } from "../Repository/Api";
+import endPoints from "../Repository/apiConfig";
 
 const optionsMenu = [
   {
@@ -124,9 +130,21 @@ const adwizors = [
 ];
 
 const FindAdwizor = () => {
+  const [banner, setBanner] = useState({});
+
+  const fetchBanner = () => {
+    getApi(endPoints.adwizorBanner, {
+      setResponse: setBanner,
+    });
+  };
+
+  useEffect(() => {
+    fetchBanner();
+  }, []);
+
   return (
     <>
-      <Banner img={findAdwizorBanner} />
+      <Banner img={banner?.data?.image} />
       <div className="find-an-adwizor-filter">
         {optionsMenu.map((i, index) => (
           <CustomeDropdown

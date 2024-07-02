@@ -1,9 +1,9 @@
 /** @format */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Banner, CustomeDropdown } from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
-import { collegeImg, studyAbroadBanner, ukSquare } from "../assest";
+import { collegeImg, ukSquare } from "../assest";
 import { ExploreCountrySlider } from "../components/Sliders/Sliders";
 import {
   durationArr,
@@ -16,6 +16,8 @@ import {
   CollegeFilters,
   CollegeResults,
 } from "../components/Study/CollegeSection";
+import { getApi } from "../Repository/Api";
+import endPoints from "../Repository/apiConfig";
 
 // options
 const optionsMenu = [
@@ -107,9 +109,21 @@ const colleges = [
 ];
 
 const StudyAbroad = () => {
+  const [banner, setBanner] = useState({});
+
+  const fetchBanner = () => {
+    getApi(endPoints.studyAbroadBanner, {
+      setResponse: setBanner,
+    });
+  };
+
+  useEffect(() => {
+    fetchBanner();
+  }, []);
+
   return (
     <>
-      <Banner img={studyAbroadBanner} />
+      <Banner img={banner?.data?.image} />
       <ExploreCountrySlider />
 
       <section className="filter-college-section margin-div">

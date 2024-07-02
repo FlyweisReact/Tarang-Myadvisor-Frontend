@@ -1,11 +1,11 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
-import { LoginImg } from "../../assest";
-import { postApi } from "../../Repository/Api";
+import { getApi, postApi } from "../../Repository/Api";
 import { EnterOtpModal } from "./Modals";
 import ClipLoader from "react-spinners/ClipLoader";
+import endPoints from "../../Repository/apiConfig";
 
 const LoginModal = (props) => {
   const [isOtpModal, setIsOtpModal] = useState(false);
@@ -14,6 +14,23 @@ const LoginModal = (props) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState({
+    data: {
+      image: "",
+    },
+  });
+
+  const fetchBanner = () => {
+    getApi(endPoints.getLoginBanner, {
+      setResponse,
+    });
+  };
+
+  useEffect(() => {
+    if (props.show) {
+      fetchBanner();
+    }
+  }, [props]);
 
   const payload = {
     userType,
@@ -24,11 +41,9 @@ const LoginModal = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    postApi({
-      url: "user/signup",
-      payload,
+    postApi(endPoints.userSignup, payload, {
       setLoading,
-      additionalFunctions: [() => props.onHide(), () => setIsOtpModal(true)],
+      additionalFunctions: [props.onHide, () => setIsOtpModal(true)],
     });
   };
 
@@ -45,7 +60,7 @@ const LoginModal = (props) => {
         <Modal.Body className="login-modal">
           <div className="Login-div">
             <div className="left-div">
-              <img src={LoginImg} alt="" />
+              <img src={response.data.image} alt="" />
             </div>
             <div className="right-div">
               <form onSubmit={submitHandler}>

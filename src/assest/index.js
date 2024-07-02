@@ -107,8 +107,28 @@ import expert1 from "./Images/expert1.png";
 import expert2 from "./Images/expert2.png";
 import expert3 from "./Images/expert3.png";
 import expert4 from "./Images/expert4.png";
+import userRounded from "./Images/user-image.png";
+import bellIcon from "./Images/bell.png";
+import HomeSvg from "./svg/Home.svg";
+import adwizorSvg from "./svg/advisorSvg.svg";
+import IcRoundChat from "./svg/ic--round-chat.svg";
+import MdiAbout from "./svg/mdi--about.svg";
+import MdiShare from "./svg/mdi--share.svg";
+import solarCalendarBold from "./svg/solar--calendar-bold.svg";
+import universitySvg from "./svg/universitySvg.svg";
+import healthIconBook from "./svg/healthicons--book.svg";
 
 export {
+  healthIconBook,
+  IcRoundChat,
+  MdiAbout,
+  MdiShare,
+  solarCalendarBold,
+  universitySvg,
+  adwizorSvg,
+  HomeSvg,
+  bellIcon,
+  userRounded,
   expert1,
   expert2,
   expert3,

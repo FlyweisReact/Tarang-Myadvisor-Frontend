@@ -5,6 +5,7 @@ import { Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { postApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 import OtpInput from "../OtpInput";
 
 export const EnterOtpModal = (props) => {
@@ -27,9 +28,7 @@ export const EnterOtpModal = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postApi({
-      url: "user/verifyOtp",
-      payload,
+    postApi(endPoints.verifyOtp, payload, {
       setLoading,
       additionalFunctions: [
         (res) => tokenSaver(res),

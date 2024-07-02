@@ -1,10 +1,9 @@
 /** @format */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Banner, CustomeDropdown } from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
 import {
-  studyIndia,
   iitDelhiLogo,
   iitGuwahitLogo,
   dcseLogo,
@@ -27,6 +26,8 @@ import {
   CollegeFilters,
   CollegeResults,
 } from "../components/Study/CollegeSection";
+import { getApi } from "../Repository/Api";
+import endPoints from "../Repository/apiConfig";
 
 const optionsMenu = [
   {
@@ -87,33 +88,45 @@ const colleges = [
   {
     img: dcseLogo,
     title: "Dhanalakshmi Srinivasan College of Engineering (DSCE), Coimbatore",
-    collegeImg : collegeResult
+    collegeImg: collegeResult,
   },
   {
     img: iitDelhiLogo,
     title: "IIT Madras",
-    collegeImg : collegeResult1
+    collegeImg: collegeResult1,
   },
   {
     img: dcseLogo,
     title: "IIT Mumbai",
-    collegeImg : collegeResult2
+    collegeImg: collegeResult2,
   },
   {
     img: iitGuwahitLogo,
     title: "IIT Guwahati",
-    collegeImg : collegeResult3
+    collegeImg: collegeResult3,
   },
   {
     img: dcseLogo,
     title: "IIT Kanpur",
-    collegeImg : collegeResult4
+    collegeImg: collegeResult4,
   },
 ];
 const StudyIndia = () => {
+  const [banner, setBanner] = useState({});
+
+  const fetchBanner = () => {
+    getApi(endPoints.studyIndiaBanner, {
+      setResponse: setBanner,
+    });
+  };
+
+  useEffect(() => {
+    fetchBanner();
+  }, []);
+
   return (
     <>
-      <Banner img={studyIndia} />
+      <Banner img={banner?.data?.image} />
       <ExploreCountrySlider />
       <section className="filter-college-section margin-div">
         <CollegeFilters />

@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import WithLayout from "../Layout/WithLayout";
-import { findAdwizorBanner } from "../assest/index";
 import {
+  allAdwiozordsArr,
   citiesArr,
   countryArr,
   prefferedSubjectArr,
@@ -13,14 +13,6 @@ import {
   Banner,
   CustomeDropdown,
 } from "../components/HelpingComponents";
-import {
-  verifiedAdwizor,
-  verifiedAdwizor1,
-  verifiedAdwizor2,
-  verifiedAdwizor3,
-  verifiedAdwizor4,
-  verifiedAdwizor5,
-} from "../assest/index";
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
 
@@ -66,69 +58,6 @@ const optionsMenu = [
   },
 ];
 
-const adwizors = [
-  {
-    img: verifiedAdwizor,
-    title: "Nisha Agarwal",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Accounts).",
-      "Gujrat , India.",
-      "8211 Students Placed",
-    ],
-  },
-  {
-    img: verifiedAdwizor1,
-    title: "Bessie Cooper",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Accounts).",
-      "Gujrat , India.",
-      "8211 Students Placed",
-    ],
-  },
-  {
-    img: verifiedAdwizor2,
-    title: "Robert Fox",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Accounts).",
-      "Gujrat , India.",
-      "8211 Students Placed",
-    ],
-  },
-  {
-    img: verifiedAdwizor3,
-    title: "Kristin Watson",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Accounts).",
-      "Gujrat , India.",
-      "8211 Students Placed",
-    ],
-  },
-  {
-    img: verifiedAdwizor4,
-    title: "Ralph Edwards ",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Accounts).",
-      "Gujrat , India.",
-      "8211 Students Placed",
-    ],
-  },
-  {
-    img: verifiedAdwizor5,
-    title: "Floyd Miles",
-    rating: "9.5/10",
-    description: [
-      "3+ Years (Accounts).",
-      "Gujrat , India.",
-      "8211 Students Placed",
-    ],
-  },
-];
-
 const FindAdwizor = () => {
   const [banner, setBanner] = useState({});
 
@@ -157,7 +86,7 @@ const FindAdwizor = () => {
           />
         ))}
       </div>
-      <AdwizorCards allAdwizors={adwizors} topAdwizor={false} />
+      <AdwizorCards allAdwizors={allAdwiozordsArr} topAdwizor={false} />
       <button className="view-more-btn mb-5">View More</button>
     </>
   );

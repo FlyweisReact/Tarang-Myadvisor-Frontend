@@ -11,6 +11,7 @@ const endPoints = {
   connectWithAdwizorBanner: "user/getLive/Banner",
   getAllFeatures: "user/getAll/ChooseUs",
   getAllStudentOpinions: "user/getAll/AboutUs",
+  getVerifiedAdwizors : "user/getVerified/Advisors"
 };
 
 export default endPoints;

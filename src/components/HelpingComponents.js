@@ -1,6 +1,7 @@
 /** @format */
 
 import { Dropdown } from "antd";
+import { Link } from "react-router-dom";
 
 export const CustomeDropdown = ({
   items,
@@ -92,5 +93,13 @@ export const Banner = ({ img, className }) => {
     <section className={`general-banner margin-div ${className}`}>
       <img src={img} alt="" />
     </section>
+  );
+};
+
+export const AppointmentFloatingBtn = () => {
+  return (
+    <Link to={"/connect-with-adwizor"}>
+      <button className="book-appointment">Book an Appointment</button>
+    </Link>
   );
 };

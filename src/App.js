@@ -12,6 +12,8 @@ import StudyAbroad from "./pages/StudyAbroad";
 import { ReactNotifications } from "react-notifications-component";
 import ConnectAdwizor from "./pages/ConnectAdwizor";
 import UserHome from "./pages/UserDashboard/UserHome";
+import UserProfile from "./pages/UserDashboard/UserProfile";
+import UserDocuments from "./pages/UserDashboard/UserDocuments";
 
 const App = () => {
   return (
@@ -27,6 +29,8 @@ const App = () => {
         <Route path="/study-india" element={<StudyIndia />} />
         <Route path="/connect-with-adwizor" element={<ConnectAdwizor />} />
         <Route path="/user-dashboard/home" element={<UserHome />} />
+        <Route path="/user-dashboard/profile" element={<UserProfile />} />
+        <Route path="/user-dashboard/documents" element={<UserDocuments />} />
       </Routes>
     </BrowserRouter>
   );

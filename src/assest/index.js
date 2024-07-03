@@ -117,9 +117,31 @@ import MdiShare from "./svg/mdi--share.svg";
 import solarCalendarBold from "./svg/solar--calendar-bold.svg";
 import universitySvg from "./svg/universitySvg.svg";
 import healthIconBook from "./svg/healthicons--book.svg";
+import userImg from './Images/36.png'
+import userCollege from './Images/37.png'
+import trashIcon from './svg/delete.svg'
+import shareSvg from './svg/share.svg'
+import collegeRnd from './Images/collegeAvatar.png'
+import blankAvatar from './Images/blank.png'
+import quagAvatar from './Images/quag.png'
+import universityImg from './Images/university.png'
+import exportImg from './Images/export.png'
+import uploadSvg from './svg/upload.svg'
+import cancelSvg from './svg/cancel.svg'
 
 export {
+  uploadSvg,
+  cancelSvg,
+  exportImg,
+  blankAvatar,
+  universityImg,
+  quagAvatar,
+  collegeRnd,
+  trashIcon,
+  shareSvg,
+  userCollege,
   healthIconBook,
+  userImg ,
   IcRoundChat,
   MdiAbout,
   MdiShare,

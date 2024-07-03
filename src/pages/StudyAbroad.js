@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import { Banner, CustomeDropdown } from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
 import { collegeImg, ukSquare } from "../assest";
-import { ExploreCountrySlider } from "../components/Sliders/Sliders";
+import { Slider } from "../components/Sliders/Sliders";
 import {
+  abroadCollegeArr,
   durationArr,
   inTakes,
   prefferedSubjectArr,
@@ -18,6 +19,8 @@ import {
 } from "../components/Study/CollegeSection";
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
+import { abroadCollegeConfig } from "../components/Sliders/SwiperConfig";
+import { renderAbroadCollegeItems } from "../components/Sliders/SwiperComponents";
 
 // options
 const optionsMenu = [
@@ -124,7 +127,14 @@ const StudyAbroad = () => {
   return (
     <>
       <Banner img={banner?.data?.image} />
-      <ExploreCountrySlider />
+
+      <section className="explore-country-slider">
+        <Slider
+          data={abroadCollegeArr}
+          swiperConfig={abroadCollegeConfig}
+          renderSlide={renderAbroadCollegeItems}
+        />
+      </section>
 
       <section className="filter-college-section margin-div">
         <CollegeFilters />

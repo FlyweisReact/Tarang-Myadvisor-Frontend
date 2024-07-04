@@ -1,6 +1,7 @@
 /** @format */
 
 import { degreeImg, dollarIcon, exportImg } from "../../assest";
+import { CustomeDropdown } from "../HelpingComponents";
 
 //All Swiper components
 const renderAbroadCollegeItems = (item) => {
@@ -44,7 +45,7 @@ const renderAdwizorCards = (item) => {
 
 const renderUniversityCards = (item) => {
   return (
-    <div className="univeristy-card">
+    <div className="univeristy-card-carousel-item">
       <div className="head">
         <img src={item.img} alt="" />
         <p className="title">{item.collegeName}</p>
@@ -137,10 +138,23 @@ const renderSypnosisItem = (item) => {
   );
 };
 
+const renderFilterItems = (i) => {
+  return (
+    <CustomeDropdown
+      items={i.items}
+      className={"prefilled-filters"}
+      title={i.title}
+      titleIcon={i.titleIcon}
+      caretIcon={i.caretIcon}
+    />
+  );
+};
+
 export {
   renderAbroadCollegeItems,
   renderAdwizorCards,
   renderUniversityCards,
   renderFeatureItems,
   renderSypnosisItem,
+  renderFilterItems,
 };

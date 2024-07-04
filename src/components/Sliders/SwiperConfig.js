@@ -102,7 +102,33 @@ const sypnosisConfig = {
   },
   modules: [Autoplay],
 };
+
+const userProgramConfig = {
+  spaceBetween: 20,
+  loop: true,
+  slidesPerView: 1,
+  autoplay: {
+    delay: 0,
+    disableOnInteraction: false,
+  },
+  speed: 4000,
+  resistance: false,
+  resistanceRatio: 0,
+  breakpoints: {
+    768: {
+      slidesPerView: 1,
+    },
+    900: {
+      slidesPerView: 5,
+    },
+    1024: {
+      slidesPerView: 6,
+    },
+  },
+};
+
 export {
+  userProgramConfig,
   topAdwizorsConfig,
   abroadCollegeConfig,
   featureConfig,

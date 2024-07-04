@@ -1687,6 +1687,7 @@
 .filter-college-section .result-div .results .main {
   width: 100%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fff;
 }
 .filter-college-section .result-div .results .main .head {
   display: flex;
@@ -2021,6 +2022,10 @@
   align-items: center;
 }
 
+.filter-college-section a {
+  text-decoration: none;
+  color: inherit;
+}
 .filter-college-section .result-div .results .main .brochure div button {
   width: 150px;
   height: 43px;
@@ -2030,11 +2035,51 @@
   font-weight: 600;
   color: #0185c3;
   background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 5px;
 }
 
 .filter-college-section .result-div .results .main .brochure div button.filled {
   background-color: #0185c3;
   color: #fff;
+}
+
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .brochure
+  div
+  button.verified {
+  background-color: #2c8a00;
+  color: #fff;
+  border: 2px solid #2c8a00;
+}
+
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .brochure
+  div
+  button.pending {
+  background-color: #f9b300;
+  color: #fff;
+  border: 2px solid #f9b300;
+}
+.filter-college-section
+  .result-div
+  .results
+  .main
+  .brochure
+  div
+  button.rejected {
+  background-color: #ff2525;
+  color: #fff;
+  border: 2px solid #ff2525;
 }
 
 /* Connect with adwizor */
@@ -2560,7 +2605,7 @@
 .user-dashboard-profile .univeristy-tab .my-slider .swiper-slide {
   padding: 20px;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card {
+.univeristy-card-carousel-item {
   width: 300px;
   padding: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -2568,23 +2613,23 @@
   background-color: #fff;
   margin: auto;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card .head {
+.univeristy-card-carousel-item .head {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card .head img {
+.univeristy-card-carousel-item .head img {
   width: 56px;
   height: 56px;
   border-radius: 100%;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card .head p.title {
+.univeristy-card-carousel-item .head p.title {
   margin: 0;
   font-size: 14px;
   font-weight: 900;
   text-decoration: underline;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card p.subject {
+.univeristy-card-carousel-item p.subject {
   margin: 0;
   font-size: 12px;
   color: #363b51;
@@ -2592,54 +2637,44 @@
   font-weight: 600;
   margin-top: 10px;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card .detail {
+.univeristy-card-carousel-item .detail {
   display: flex;
   gap: 10px;
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card .detail p {
+.univeristy-card-carousel-item .detail p {
   margin: 0;
   font-size: 13px;
   color: #363b51;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card hr {
+.univeristy-card-carousel-item hr {
   margin: 0;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card .predection .title {
+.univeristy-card-carousel-item .predection .title {
   font-size: 14px;
   font-weight: 600;
   text-align: center;
   margin: 0;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card .predection .flex-div {
+.univeristy-card-carousel-item .predection .flex-div {
   display: flex;
   justify-content: space-between;
   gap: 10px;
   align-items: center;
   margin-top: 5px;
 }
-.user-dashboard-profile
-  .univeristy-tab
-  .univeristy-card
-  .predection
-  .flex-div
-  p {
+.univeristy-card-carousel-item .predection .flex-div p {
   font-size: 14px;
   color: #363b51;
   font-weight: 600;
   margin: 0;
 }
 
-.user-dashboard-profile
-  .univeristy-tab
-  .univeristy-card
-  .predection
-  .flex-div
-  button {
+.univeristy-card-carousel-item .predection .flex-div button {
   width: 83px;
   background-color: #e48216;
   color: #fff;
@@ -2647,7 +2682,7 @@
   border-radius: 50px;
   font-size: 12px;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card .view-detail {
+.univeristy-card-carousel-item .view-detail {
   background-color: #e2e2e2;
   color: #000;
   font-weight: 500;
@@ -2657,7 +2692,7 @@
   border-radius: 10px;
   height: 40px;
 }
-.user-dashboard-profile .univeristy-tab .univeristy-card .create-application {
+.univeristy-card-carousel-item .create-application {
   background-color: #0185c3;
   color: #fff;
   font-weight: 500;
@@ -2757,11 +2792,415 @@
 .user-dashboard-profile .document-tab .submit-btn {
   width: 264px;
   height: 42px;
-  background-color: #0185C3;
+  background-color: #0185c3;
   color: #fff;
-  border: 1px solid #0185C3;
+  border: 1px solid #0185c3;
   text-align: center;
   border-radius: 10px;
   display: block;
   margin: auto;
+}
+.user-homePage .heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-homePage .heading p {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+}
+.user-homePage .heading button.outlined {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  font-size: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+  width: 99px;
+  height: 40px;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.user-homePage .filter-div-container .filteration-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.user-homePage .filter-div-container .filteration-div button {
+  width: 119px;
+  height: 46px;
+  border-radius: 10px;
+  border: 1px solid #a1a1a1;
+  background-color: #fff;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #a1a1a1;
+  outline: none;
+}
+.user-homePage .filter-div-container .filteration-div button img {
+  width: 20px;
+}
+.user-homePage .filter-div-container .filteration-div .search {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #a1a1a1;
+  background-color: #fff;
+  height: 46px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+}
+.user-homePage .filter-div-container .filteration-div .search i {
+  color: #a1a1a1;
+}
+.user-homePage .filter-div-container .filteration-div .search input {
+  outline: none;
+  border: none;
+  flex: 1;
+  border-left: 1px solid #a1a1a1;
+  padding-left: 10px;
+}
+
+.user-homePage .filter-div-container p.result {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 500;
+}
+.user-homepage-filter-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 200px;
+  padding: 10px;
+  padding-bottom: 0;
+}
+.user-homepage-filter-heading p {
+  margin: 0;
+  font-size: 16px;
+  color: #717171;
+}
+
+.user-homepage-filter-heading i {
+  font-size: 16px;
+  color: #717171;
+}
+.user-homepage-filter-input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  padding-bottom: 0;
+}
+
+.user-homepage-filter-input-container input {
+  width: 14px;
+  height: 14px;
+}
+.user-homepage-filter-input-container p {
+  margin: 0;
+  font-size: 14px;
+}
+.user-homepage-filter-apply-btn {
+  background-color: #0185c3;
+  color: #fff;
+  width: 160px;
+  padding: 10px;
+  border: 1px solid #0185c3;
+  border-radius: 10px;
+  font-size: 14px;
+  display: block;
+  margin: auto;
+}
+
+.prefilled-filters {
+  background-color: #fff;
+  border: 1px solid #a1a1a1;
+  color: #a1a1a1;
+  border-radius: 5px;
+  min-width: 136px;
+  height: 46px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: none;
+}
+
+.antd-english-score {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.antd-english-score p {
+  font-size: 14px;
+  margin: 0;
+}
+.antd-english-score input {
+  border: 1px solid #a1a1a1;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.user-homePage .university-slider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.user-homePage .university-slider .swiper-slide {
+  padding: 20px;
+}
+
+.filter-college-section.user-universities {
+  border: none;
+}
+
+.filter-college-section.user-universities .result-div {
+  padding: 0;
+}
+
+.user-homePage .application-status {
+  width: 100%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+/* styles.css */
+.timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 34%;
+  left: 2%;
+  width: 96%;
+  height: 2px;
+  background: #ccc;
+}
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+.timeline-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.timeline-icon img {
+  width: 28px;
+}
+.timeline-text {
+  margin-top: 10px;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+}
+.timeline-item.applied .timeline-icon {
+  background-color: #0185c3;
+}
+.timeline-item.offer-received .timeline-icon {
+  background-color: #f9b300;
+}
+.timeline-item.accepted .timeline-icon {
+  background-color: #f97700;
+}
+.timeline-item.visa-arrived .timeline-icon {
+  background-color: #2c8a00;
+}
+.timeline-item.applied .timeline-text {
+  color: #0185c3;
+}
+.timeline-item.offer-received .timeline-text {
+  color: #f9b300;
+}
+.timeline-item.accepted .timeline-text {
+  color: #f97700;
+}
+.timeline-item.visa-arrived .timeline-text {
+  color: #2c8a00;
+}
+
+.user-homePage .upload-document p.title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+.user-homePage .upload-document button.upload-doc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0185c3;
+  color: #fff;
+  width: 213px;
+  height: 44px;
+  border-radius: 10px;
+  gap: 10px;
+  border: 1px solid #0185c3;
+  font-size: 16px;
+  margin: auto;
+  margin-top: 20px;
+}
+.user-homePage .upload-document p.requires {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ff2c2c;
+  text-align: center;
+}
+
+.user-homePage .message-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.user-homePage .message-box .item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border-bottom: 1px solid #dddddd;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+.user-homePage .message-box .item:last-child {
+  border: none;
+}
+
+.user-homePage .message-box .item img.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.user-homePage .message-box .item .content {
+  flex: 1;
+}
+.user-homePage .message-box .item .content p {
+  margin: 0;
+}
+.user-homePage .message-box .item .content p.title {
+  font-size: 14px;
+  font-weight: 600;
+}
+.user-homePage .message-box .item .content p.desc {
+  font-size: 13px;
+  color: #717171;
+}
+
+.user-homePage .message-details .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-homePage .message-details .head .profile {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.user-homePage .message-details .head .profile img {
+  width: 40px;
+  height: 40px;
+}
+.user-homePage .message-details .head .profile div p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.user-homePage .message-details .head .profile div span {
+  font-size: 12px;
+}
+
+.user-homePage .message-details .head .call-btn {
+  display: flex;
+  gap: 10px;
+  background-color: #f0effe;
+  color: #615ef0;
+  border: 1px solid #f0effe;
+  width: 94px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.user-homePage .message-details .devider {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.user-homePage .message-details .message-list {
+  padding: 20px 50px;
+}
+
+.user-homePage .message-details .messages {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user-homePage .message-details .messages.end {
+  justify-content: flex-end;
+}
+
+.user-homePage .message-details .messages.end .content p {
+  text-align: right;
+  background-color: #4d4dff;
+  color: white;
+}
+
+.user-homePage .message-details .messages img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.user-homePage .message-details .messages .content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 0 1 auto;
+  max-width: 80%;
+}
+
+.user-homePage .message-details .messages .content p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  padding: 10px;
+  border-radius: 10px;
+  word-wrap: break-word;
 }

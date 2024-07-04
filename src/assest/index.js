@@ -117,21 +117,45 @@ import MdiShare from "./svg/mdi--share.svg";
 import solarCalendarBold from "./svg/solar--calendar-bold.svg";
 import universitySvg from "./svg/universitySvg.svg";
 import healthIconBook from "./svg/healthicons--book.svg";
-import userImg from './Images/36.png'
-import userCollege from './Images/37.png'
-import trashIcon from './svg/delete.svg'
-import shareSvg from './svg/share.svg'
-import collegeRnd from './Images/collegeAvatar.png'
-import blankAvatar from './Images/blank.png'
-import quagAvatar from './Images/quag.png'
-import universityImg from './Images/university.png'
-import exportImg from './Images/export.png'
-import uploadSvg from './svg/upload.svg'
-import cancelSvg from './svg/cancel.svg'
+import userImg from "./Images/36.png";
+import userCollege from "./Images/37.png";
+import trashIcon from "./svg/delete.svg";
+import shareSvg from "./svg/share.svg";
+import collegeRnd from "./Images/collegeAvatar.png";
+import blankAvatar from "./Images/blank.png";
+import quagAvatar from "./Images/quag.png";
+import universityImg from "./Images/university.png";
+import exportImg from "./Images/export.png";
+import uploadSvg from "./svg/upload.svg";
+import cancelSvg from "./svg/cancel.svg";
+import filterSvg from "./svg/filter.svg";
+import progressSvg from "./svg/progress.svg";
+import verifiedSvg from "./svg/verified.svg";
+import fillHeart from "./Images/heart-fill.png";
+import fillBookmark from "./Images/bookmark-fill.png";
+import chatAvatar from "./Images/chat.png";
+import chatAvatar1 from "./Images/chat1.png";
+import chatAvatar2 from "./Images/chat2.png";
+import chatAvatar3 from "./Images/chat3.png";
+import chatAvatar4 from "./Images/chat4.png";
+import callImg from "./Images/call.png";
+import chatAvatar5 from "./Images/chatAvatar5.png";
 
 export {
+  chatAvatar5,
+  callImg,
+  chatAvatar,
+  chatAvatar1,
+  chatAvatar2,
+  chatAvatar3,
+  chatAvatar4,
+  fillHeart,
+  fillBookmark,
+  verifiedSvg,
+  progressSvg,
   uploadSvg,
   cancelSvg,
+  filterSvg,
   exportImg,
   blankAvatar,
   universityImg,
@@ -141,7 +165,7 @@ export {
   shareSvg,
   userCollege,
   healthIconBook,
-  userImg ,
+  userImg,
   IcRoundChat,
   MdiAbout,
   MdiShare,

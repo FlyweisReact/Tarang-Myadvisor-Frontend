@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   filterSlash,
   bookmarkImg,
@@ -12,6 +13,11 @@ import {
   badgeImg,
   donorImg,
   examImg,
+  progressSvg,
+  verifiedSvg,
+  cancelSvg,
+  fillHeart,
+  fillBookmark,
 } from "../../assest";
 
 const filteArr = [
@@ -70,6 +76,42 @@ const CollegeFilters = () => {
 };
 
 const CollegeResults = ({ colleges }) => {
+  const btnStatusCheker = (status, title) => {
+    if (status === "applied") {
+      return <button className="filled"> {title} </button>;
+    } else if (status === "recived") {
+      return (
+        <button className="filled">
+          <img src={progressSvg} alt="" />
+          {title}
+        </button>
+      );
+    } else if (status === "approved") {
+      return (
+        <button className="verified">
+          <img src={verifiedSvg} alt="" />
+          {title}
+        </button>
+      );
+    } else if (status === "pending") {
+      return (
+        <button className="pending">
+          <img src={progressSvg} alt="" />
+          {title}
+        </button>
+      );
+    } else if (status === "decline") {
+      return (
+        <button className="rejected">
+          <img src={cancelSvg} alt="" />
+          {title}
+        </button>
+      );
+    } else {
+      return <button> {title} </button>;
+    }
+  };
+
   return colleges.map((i, index) => (
     <div className="main" key={`college${index}`}>
       <div className="head">
@@ -78,9 +120,17 @@ const CollegeResults = ({ colleges }) => {
           <p> {i.title} </p>
         </div>
         <div className="actions">
-          <img src={heartImg} alt="" />
+          {i.isFav ? (
+            <img src={fillHeart} alt="" />
+          ) : (
+            <img src={heartImg} alt="" />
+          )}
           <div className="blank"></div>
-          <img src={bookmarkImg} alt="" />
+          {i.isSaved ? (
+            <img src={fillBookmark} alt="" />
+          ) : (
+            <img src={bookmarkImg} alt="" />
+          )}
         </div>
       </div>
       <div className="details">
@@ -159,8 +209,10 @@ const CollegeResults = ({ colleges }) => {
         </ul>
 
         <div>
-          <button className="filled">Apply Now</button>
-          <button>Download Brochure</button>
+          {btnStatusCheker(i.status, i.btn1)}
+          <Link to="/user-dashboard/application-status">
+            <button> {i.btn2} </button>
+          </Link>
         </div>
       </div>
     </div>

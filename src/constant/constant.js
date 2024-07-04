@@ -119,18 +119,22 @@ const userDashboardSidebar = [
   {
     icon: <i className="fa-solid fa-school"></i>,
     title: "Program & School",
+    link: "/user-dashboard/programms",
   },
   {
     img: adwizorSvg,
     title: "My Adwizor",
+    link: "/user-dashboard/my-adwizors",
   },
   {
     img: universitySvg,
     title: "My Universities",
+    link: "/user-dashboard/my-universities",
   },
   {
     img: IcRoundChat,
     title: "My Messages",
+    link: "/user-dashboard/my-messages",
   },
   {
     img: solarCalendarBold,
@@ -695,8 +699,43 @@ const collegeDetails = [
   ],
 ];
 
+const programmLevel = [
+  "1 year Degree",
+  "2 year Degree",
+  "3 year Degree",
+  "4 year Bachelor's",
+  "UG",
+  "PG",
+  "1 Year  Masters",
+];
+
+const courseArr = [
+  "Arts",
+  "Buisness",
+  "3 year Degree",
+  "Bachelor's",
+  "Health & Nursing ",
+  "Design",
+  "Creation",
+];
+
+const englishScore = ["Reading", "Writing", "Listening", "Speaking"];
+
+const tutionFess = [
+  "0-10000",
+  "10000-20000",
+  "20000-30000",
+  "30000-40000",
+  "40000-50000",
+  "50000+",
+];
+
 export {
-  collegeDetails ,
+  tutionFess,
+  englishScore,
+  courseArr,
+  programmLevel,
+  collegeDetails,
   allAdwiozordsArr,
   documentTabArr,
   documentTabArr2,

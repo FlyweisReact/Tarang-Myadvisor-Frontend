@@ -14,6 +14,12 @@ import ConnectAdwizor from "./pages/ConnectAdwizor";
 import UserHome from "./pages/UserDashboard/UserHome";
 import UserProfile from "./pages/UserDashboard/UserProfile";
 import UserDocuments from "./pages/UserDashboard/UserDocuments";
+import UserProgramms from "./pages/UserDashboard/UserProgramms";
+import UserAdwizors from "./pages/UserDashboard/UserAdwizors";
+import UserUniversities from "./pages/UserDashboard/UserUniversities";
+import UserApplicationStatus from "./pages/UserDashboard/UserApplicationStatus";
+import UserChat from "./pages/UserDashboard/UserChat";
+import ViewUserChat from "./pages/UserDashboard/ViewUserChat";
 
 const App = () => {
   return (
@@ -31,6 +37,22 @@ const App = () => {
         <Route path="/user-dashboard/home" element={<UserHome />} />
         <Route path="/user-dashboard/profile" element={<UserProfile />} />
         <Route path="/user-dashboard/documents" element={<UserDocuments />} />
+        {/* new page */}
+        <Route path="/user-dashboard/programms" element={<UserProgramms />} />
+        <Route path="/user-dashboard/my-adwizors" element={<UserAdwizors />} />
+        <Route
+          path="/user-dashboard/my-universities"
+          element={<UserUniversities />}
+        />
+        <Route
+          path="/user-dashboard/application-status"
+          element={<UserApplicationStatus />}
+        />
+        <Route path="/user-dashboard/my-messages" element={<UserChat />} />
+        <Route
+          path="/user-dashboard/my-messages/:id"
+          element={<ViewUserChat />}
+        />
       </Routes>
     </BrowserRouter>
   );

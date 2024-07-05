@@ -1,13 +1,13 @@
 /** @format */
 
 import React, { useState } from "react";
-import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import { ProgressBar } from "../../components/HelpingComponents";
 import { autraliaFlag, canadaFlag, ukFlag, usaFlag } from "../../assest/index";
-import TouristImage from "../../components/TouristImg/TouristImage";
 import { useNavigate } from "react-router-dom";
 import endPoints from "../../Repository/apiConfig";
 import { putApi } from "../../Repository/Api";
 import { ClipLoader } from "react-spinners";
+import { TouristImage } from "../../components/HelpingComponents";
 
 const options = [
   {
@@ -812,6 +812,20 @@ const ChooseDestination = () => {
               />
             }
             width={"100%"}
+          />
+        );
+      default:
+        return (
+          <LayoutMaker
+            WrappedComponent={
+              <StepComponent1
+                backStep={backStep}
+                nextStep={nextStep}
+                destinationCountry={destinationCountry}
+                options={options}
+                setDestinationCountry={setDestinationCountry}
+              />
+            }
           />
         );
     }

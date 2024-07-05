@@ -140,8 +140,32 @@ import chatAvatar3 from "./Images/chat3.png";
 import chatAvatar4 from "./Images/chat4.png";
 import callImg from "./Images/call.png";
 import chatAvatar5 from "./Images/chatAvatar5.png";
+import referImg from "./Images/refer.png";
+import customerReview1 from "./Images/customer1.png";
+import customerReview2 from "./Images/customer2.png";
+import BannerInternational from "./Images/Banners/study-international.png";
+import counrtyVecotr from "./Images/country-vector.png";
+import countryCardImg from './Images/countryCard.png'
+import countryCardImg1 from './Images/caountryCard1.png'
+import countryCardImg2 from './Images/countryCard2.png'
+import countryCardImg3 from './Images/countryCard3.png'
+import countryCardImg4 from './Images/countryCard4.png'
+import countryCardImg5 from './Images/caountryCard5.png'
+import countryCardImg6 from './Images/countryCard6.png'
 
 export {
+  countryCardImg,
+  countryCardImg1,
+  countryCardImg2,
+  countryCardImg3,
+  countryCardImg4,
+  countryCardImg5,
+  countryCardImg6,
+  counrtyVecotr,
+  BannerInternational,
+  referImg,
+  customerReview2,
+  customerReview1,
   chatAvatar5,
   callImg,
   chatAvatar,

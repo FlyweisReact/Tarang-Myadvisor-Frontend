@@ -29,8 +29,8 @@ import {
 } from "../components/Study/CollegeSection";
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
-import { abroadCollegeConfig } from "./Sliders/SwiperConfig";
-import { renderAbroadCollegeItems } from "./Sliders/SwiperComponents";
+import { abroadCollegeConfig } from "../components/Sliders/SwiperConfig";
+import { renderAbroadCollegeItems } from "../components/Sliders/SwiperComponents";
 
 const optionsMenu = [
   {

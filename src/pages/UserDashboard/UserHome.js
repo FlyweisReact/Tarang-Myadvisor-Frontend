@@ -1,32 +1,29 @@
 /** @format */
-
-import React, { useState, useEffect } from "react";
 import { topAdwizorsConfig } from "../../components/Sliders/SwiperConfig";
 import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
 import { Slider } from "../../components/Sliders/Sliders";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
-import { getApi } from "../../Repository/Api";
-import endPoints from "../../Repository/apiConfig";
 import { renderAdwizorCards } from "../../components/Sliders/SwiperComponents";
+import { allAdwiozordsArr } from "../../constant/constant";
 
 const UserHome = () => {
-  const [adwizors, setAdwizors] = useState({});
+  // const [adwizors, setAdwizors] = useState({});
 
-  useEffect(() => {
-    getApi(endPoints.getVerifiedAdwizors, {
-      setResponse: setAdwizors,
-    });
-  }, []);
+  // useEffect(() => {
+  //   getApi(endPoints.getVerifiedAdwizors, {
+  //     setResponse: setAdwizors,
+  //   });
+  // }, []);
 
-  const adwizorsData =
-    adwizors?.data?.length > 0
-      ? adwizors?.data?.map((i) => ({
-          img: i?.image,
-          name: i?.fullname,
-          rating: i?.averageRating,
-          description: [i?.experiance, i?.state, i?.helpedStudent],
-        }))
-      : [];
+  // const adwizorsData =
+  //   adwizors?.data?.length > 0
+  //     ? adwizors?.data?.map((i) => ({
+  //         img: i?.image,
+  //         name: i?.fullname,
+  //         rating: i?.averageRating,
+  //         description: [i?.experiance, i?.state, i?.helpedStudent],
+  //       }))
+  //     : [];
 
   return (
     <section className="user-homePage margin-div with-bg-img">
@@ -34,7 +31,7 @@ const UserHome = () => {
         <h4 className="heading">Find Top Adwizors</h4>
         <div className="adwizor-slider">
           <Slider
-            data={adwizorsData}
+            data={allAdwiozordsArr}
             swiperConfig={topAdwizorsConfig}
             renderSlide={renderAdwizorCards}
           />

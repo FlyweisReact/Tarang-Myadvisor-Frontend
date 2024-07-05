@@ -1,6 +1,6 @@
 /** @format */
 
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 //Slider Configurations
 const abroadCollegeConfig = {
@@ -127,10 +127,49 @@ const userProgramConfig = {
   },
 };
 
+const customerReviewConfig = {
+  spaceBetween: 20,
+  loop: true,
+  slidesPerView: 1,
+  navigation: {
+    nextEl: ".next-btn",
+    prevEl: ".prev-btn",
+  },
+  speed: 1500,
+  breakpoints: {
+    768: {
+      slidesPerView: 1,
+    },
+    900: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 2,
+    },
+  },
+  modules: [Navigation],
+};
+
+const studentTestimonialConfig = {
+  spaceBetween: 20,
+  loop: false,
+  slidesPerView: 1,
+  navigation: {
+    nextEl: ".next-nav-btn",
+    prevEl: ".prev-nav-btn",
+  },
+  modules: [Autoplay, Navigation, Pagination],
+  pagination: {
+    dynamicBullets: true,
+  },
+};
+
 export {
   userProgramConfig,
   topAdwizorsConfig,
   abroadCollegeConfig,
   featureConfig,
   sypnosisConfig,
+  customerReviewConfig,
+  studentTestimonialConfig,
 };

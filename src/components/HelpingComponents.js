@@ -1,15 +1,10 @@
 /** @format */
 
 import { Dropdown } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { touristImg1, touristImg2 } from "../assest";
 
-export const CustomeDropdown = ({
-  items,
-  title,
-  caretIcon,
-  titleIcon,
-  className,
-}) => {
+const CustomeDropdown = ({ items, title, caretIcon, titleIcon, className }) => {
   return (
     <Dropdown menu={{ items }} trigger={["click"]}>
       <button className={`${className}`}>
@@ -23,7 +18,8 @@ export const CustomeDropdown = ({
   );
 };
 
-export const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
+const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
+  const navigate = useNavigate();
   if (topAdwizor) {
     return (
       <div className="top-adwizors">
@@ -34,7 +30,7 @@ export const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
               <div className="detail">
                 <img src={i.img} alt="" className="mainImg" />
                 <div className="content">
-                  <p className="title">{i.name} </p>
+                  <p className="title">{i.title} </p>
                   <div className="rating">
                     <i className="fa-solid fa-star"></i>
                     <p> {i.rating} </p>
@@ -48,14 +44,22 @@ export const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
                 </div>
               </div>
               <div className="btn-container">
-                <button>Book Appointment</button>
-                <button>View Profile</button>
+                <button onClick={() => navigate("/connect-with-adwizor")}>
+                  Book Appointment
+                </button>
+                <button
+                  onClick={() => navigate("/user-dashboard/adwizor-profile")}
+                >
+                  View Profile
+                </button>
               </div>
             </div>
           ))}
         </div>
 
-        <button className="all">See All</button>
+        <button className="all" onClick={() => navigate("/find-an-adwizor")}>
+          See All
+        </button>
       </div>
     );
   } else {
@@ -88,7 +92,7 @@ export const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
   }
 };
 
-export const Banner = ({ img, className }) => {
+const Banner = ({ img, className }) => {
   return (
     <section className={`general-banner margin-div ${className}`}>
       <img src={img} alt="" />
@@ -96,10 +100,47 @@ export const Banner = ({ img, className }) => {
   );
 };
 
-export const AppointmentFloatingBtn = () => {
+const AppointmentFloatingBtn = () => {
   return (
     <Link to={"/connect-with-adwizor"}>
       <button className="book-appointment">Book an Appointment</button>
     </Link>
   );
+};
+
+const InfluencerCard = (item) => {
+  const { img, title, desc } = item;
+  return (
+    <div className="adwizor-blogs" style={{ backgroundImage: `url(${img})` }}>
+      <p className="title"> {title} </p>
+      <p className="desc"> {desc} </p>
+    </div>
+  );
+};
+
+const ProgressBar = ({ width }) => {
+  return (
+    <div className="custom-progress-bar">
+      <div className="progress" style={{ width }}></div>
+    </div>
+  );
+};
+
+
+const TouristImage = () => {
+  return (
+    <div className="tourist-img-container">
+      <img src={touristImg1} alt="" />
+      <img src={touristImg2} alt="" />
+    </div>
+  );
+};
+export {
+  InfluencerCard,
+  CustomeDropdown,
+  AdwizorCards,
+  Banner,
+  AppointmentFloatingBtn,
+  ProgressBar,
+  TouristImage
 };

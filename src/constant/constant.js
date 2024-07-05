@@ -30,6 +30,14 @@ import {
   canadaEllipse,
   collegeIcon,
   rankingIcon,
+  adwizorblog1,
+  adwizorblog2,
+  adwizorblog3,
+  adwizorblog4,
+  adwizorblog5,
+  adwizorblog6,
+  adwizorblog7,
+  adwizorblog8,
 } from "../assest";
 
 const citiesArr = ["Mumbai", "Banglore", "Chennai", "Delhi", "Kerala"];
@@ -139,18 +147,22 @@ const userDashboardSidebar = [
   {
     img: solarCalendarBold,
     title: "Events",
+    link: "/user-dashboard/user-events",
   },
   {
     img: MdiShare,
     title: "Refer a friend",
+    link: "/user-dashboard/refer-earn",
   },
   {
     img: healthIconBook,
     title: "Connect with Adwizor",
+    link: "/user-dashboard/connect-with-adwizor",
   },
   {
     img: MdiAbout,
     title: "How It Works",
+    link: "/user-dashboard/how-it-works",
   },
 ];
 
@@ -697,6 +709,266 @@ const collegeDetails = [
       </div>
     </div>,
   ],
+  [
+    "#6",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
+  [
+    "#7",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
+  [
+    "#8",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
+  [
+    "#9",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
+  [
+    "#10",
+    <div className="college-name">
+      <img src={collegeIcon} alt="" />
+      <div className="content">
+        <p className="title">India institute of Management [ IIM ]</p>
+        <p className="desc">
+          Indore, Madhya Pradesh |{" "}
+          <i style={{ color: "#F9B300" }} className="fa-solid fa-star"></i>{" "}
+          8.7/10{" "}
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <img src={rankingIcon} alt="" />
+      <div className="content">
+        <p className="desc">
+          <span className="fw-bold">#7 </span>
+          out of 281 in india 2022
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          12-07-2024
+          <br />
+          <span className="fw-bold"> to </span>
+          <br />
+          07-02-2025
+        </p>
+      </div>
+    </div>,
+    <div className="college-name">
+      <div className="content">
+        <p className="desc text-center">
+          <span className="fw-bold"> ₹ 1000 </span>
+          <br />
+          Application Fee
+        </p>
+      </div>
+    </div>,
+    <div className="college-name ">
+      <div className="content">
+        <p className="desc text-center">
+          CAT 2023 Cut off
+          <br />
+          <span className="fw-bold"> 85 </span>
+        </p>
+      </div>
+    </div>,
+  ],
 ];
 
 const programmLevel = [
@@ -730,7 +1002,52 @@ const tutionFess = [
   "50000+",
 ];
 
+
+const infuluncerCardConstant = [
+  {
+    img: adwizorblog1,
+    title: "Jerome Bell",
+    desc: "100k+ Followers , Canada",
+  },
+  {
+    img: adwizorblog2,
+    title: "Kathryn Murphy",
+    desc: "101k+ Followers , Australia",
+  },
+  {
+    img: adwizorblog3,
+    title: "Albert Flores",
+    desc: "200k+ Followers , Australia",
+  },
+  {
+    img: adwizorblog4,
+    title: "Bessie Cooper",
+    desc: "300k+ Followers , Australia",
+  },
+  {
+    img: adwizorblog5,
+    title: "Jerome Bell",
+    desc: "100k+ Followers , Canada",
+  },
+  {
+    img: adwizorblog6,
+    title: "Kathryn Murphy",
+    desc: "101k+ Followers , Australia",
+  },
+  {
+    img: adwizorblog7,
+    title: "Albert Flores",
+    desc: "200k+ Followers , Australia",
+  },
+  {
+    img: adwizorblog8,
+    title: "Bessie Cooper",
+    desc: "300k+ Followers , Australia",
+  },
+];
+
 export {
+  infuluncerCardConstant,
   tutionFess,
   englishScore,
   courseArr,

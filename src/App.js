@@ -2,7 +2,7 @@
 
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import StudyIndia from "./components/StudyIndia";
+import StudyIndia from "./pages/StudyIndia";
 import LiveSession from "./pages/CounsellingSession/LiveSession";
 import LiveSession2 from "./pages/CounsellingSession/LiveSession2";
 import FindAdwizor from "./pages/FindAdwizor";
@@ -20,6 +20,12 @@ import UserUniversities from "./pages/UserDashboard/UserUniversities";
 import UserApplicationStatus from "./pages/UserDashboard/UserApplicationStatus";
 import UserChat from "./pages/UserDashboard/UserChat";
 import ViewUserChat from "./pages/UserDashboard/ViewUserChat";
+import UserEvents from "./pages/UserDashboard/UserEvents";
+import UserRefer from "./pages/UserDashboard/UserRefer";
+import UserConnectAdwizor from "./pages/UserDashboard/UserConnectAdwizor";
+import UserHowItWorks from "./pages/UserDashboard/UserHowItWorks";
+import UserAdwizorProfile from "./pages/UserDashboard/UserAdwizorProfile";
+import StudyInternational from "./pages/StudyInternational";
 
 const App = () => {
   return (
@@ -37,7 +43,6 @@ const App = () => {
         <Route path="/user-dashboard/home" element={<UserHome />} />
         <Route path="/user-dashboard/profile" element={<UserProfile />} />
         <Route path="/user-dashboard/documents" element={<UserDocuments />} />
-        {/* new page */}
         <Route path="/user-dashboard/programms" element={<UserProgramms />} />
         <Route path="/user-dashboard/my-adwizors" element={<UserAdwizors />} />
         <Route
@@ -52,6 +57,25 @@ const App = () => {
         <Route
           path="/user-dashboard/my-messages/:id"
           element={<ViewUserChat />}
+        />
+        {/* new page */}
+        <Route path="/user-dashboard/user-events" element={<UserEvents />} />
+        <Route path="/user-dashboard/refer-earn" element={<UserRefer />} />
+        <Route
+          path="/user-dashboard/connect-with-adwizor"
+          element={<UserConnectAdwizor />}
+        />
+        <Route
+          path="/user-dashboard/how-it-works"
+          element={<UserHowItWorks />}
+        />
+        <Route
+          path="/user-dashboard/adwizor-profile"
+          element={<UserAdwizorProfile />}
+        />
+        <Route
+          path="/study-international/:name"
+          element={<StudyInternational />}
         />
       </Routes>
     </BrowserRouter>

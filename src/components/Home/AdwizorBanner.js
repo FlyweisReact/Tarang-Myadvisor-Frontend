@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { homepageImg } from "../../assest/index";
 import {
   citiesArr,
@@ -11,7 +12,7 @@ import { CustomeDropdown } from "../HelpingComponents";
 
 const optionsMenu = [
   {
-    title: "Your City",
+    title: "City",
     items: citiesArr?.map((city, index) => ({
       label: (
         <a href={`#${city}`} className="antd-link-a">
@@ -24,7 +25,7 @@ const optionsMenu = [
     caretIcon: true,
   },
   {
-    title: "Country",
+    title: "Study Destination",
     items: countryArr?.map((i, index) => ({
       label: (
         <a href={`#${i}`} className="antd-link-a">
@@ -37,7 +38,7 @@ const optionsMenu = [
     caretIcon: true,
   },
   {
-    title: "Preferred Subject",
+    title: "Subject",
     items: prefferedSubjectArr?.map((city, index) => ({
       label: (
         <a href={`#${city}`} className="antd-link-a">
@@ -52,6 +53,7 @@ const optionsMenu = [
 ];
 
 const AdwizorBanner = () => {
+  const navigate = useNavigate();
   return (
     <section className="adwizor-banner">
       <div className="left">
@@ -74,8 +76,11 @@ const AdwizorBanner = () => {
                 key={index}
               />
             ))}
-         
-            <button className="search-icon-button">
+
+            <button
+              className="search-icon-button"
+              onClick={() => navigate("/find-an-adwizor")}
+            >
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>

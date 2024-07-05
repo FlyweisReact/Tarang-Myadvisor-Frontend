@@ -1,5 +1,5 @@
 /** @format */
-
+import { Link } from "react-router-dom";
 import { degreeImg, dollarIcon, exportImg } from "../../assest";
 import { CustomeDropdown } from "../HelpingComponents";
 
@@ -20,9 +20,13 @@ const renderAdwizorCards = (item) => {
   return (
     <div className="card">
       <div className="detail">
-        <img src={item.img} alt="" className="mainImg" />
+        <Link to="/user-dashboard/adwizor-profile">
+          <img src={item.img} alt="" className="mainImg" />
+        </Link>
         <div className="content">
-          <p className="title"> {item.name} </p>
+          <Link to="/user-dashboard/adwizor-profile">
+            <p className="title"> {item.title} </p>
+          </Link>
           <div className="rating">
             <i className="fa-solid fa-star"></i>
             <p>{item.rating} </p>
@@ -36,8 +40,12 @@ const renderAdwizorCards = (item) => {
         </div>
       </div>
       <div className="btn-container">
-        <button>Book Appointment</button>
-        <button>View Profile</button>
+        <Link to="/connect-with-adwizor">
+          <button>Book Appointment</button>
+        </Link>
+        <Link to="/user-dashboard/adwizor-profile">
+          <button>View Profile</button>
+        </Link>
       </div>
     </div>
   );
@@ -98,7 +106,9 @@ const renderSypnosisItem = (item) => {
       <div className="heading">
         <img src={item.flag} alt="" />
         <div className="content">
-          <p className="title"> {item.title} </p>
+          <Link to={`/study-international/${item.title}`}>
+            <p className="title"> {item.title} </p>
+          </Link>
           <p className="desc">Check 170 colleges {">"}</p>
         </div>
       </div>
@@ -150,11 +160,49 @@ const renderFilterItems = (i) => {
   );
 };
 
+const renderCustomerReviewsCard = (i) => {
+  return (
+    <div className="customer-review-card">
+      <div className="rating">
+        <img src={i.img} alt="" />
+        <div>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star-half-stroke"></i>
+          <i className="fa-regular fa-star"></i>
+        </div>
+      </div>
+      <div className="content">
+        <p className="title"> {i.title} </p>
+        <p className="description">{i.desc}</p>
+      </div>
+    </div>
+  );
+};
+
+const renderStudentTestimonialCard = (i) => {
+  return (
+    <div className="item">
+      <div className="content">
+        <div className="img-container">
+          <img src={i.image} alt="" />
+        </div>
+        <p className="title"> {i.name} </p>
+        <p className="position"> {i.title} </p>
+        <p className="description">{i.desc}</p>
+      </div>
+    </div>
+  );
+};
+
 export {
   renderAbroadCollegeItems,
+  renderCustomerReviewsCard,
   renderAdwizorCards,
   renderUniversityCards,
   renderFeatureItems,
   renderSypnosisItem,
   renderFilterItems,
+  renderStudentTestimonialCard,
 };

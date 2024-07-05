@@ -8,7 +8,7 @@ import {
   liveSessionImg3,
   liveSessionImg4,
 } from "../../assest/index";
-import TouristImage from "../../components/TouristImg/TouristImage";
+import { TouristImage } from "../../components/HelpingComponents";
 
 const Item = [
   {

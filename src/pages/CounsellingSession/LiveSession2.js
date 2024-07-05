@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import VerifyOtpModal from "../../components/Modals/VerifyOtpModal";
-import TouristImage from "../../components/TouristImg/TouristImage";
+import { TouristImage } from "../../components/HelpingComponents";
 
 const Item = [
   {

@@ -17,7 +17,7 @@ import {
   AppointmentFloatingBtn,
 } from "../../components/HelpingComponents";
 import { Slider } from "../../components/Sliders/Sliders";
-import { renderUniversityCards } from "../../components/Sliders/SwiperComponents";
+import { RenderUniversityCards } from "../../components/Sliders/SwiperComponents";
 import { topAdwizorsConfig } from "../../components/Sliders/SwiperConfig";
 import {
   allAdwiozordsArr,
@@ -350,7 +350,7 @@ const UniversityTab = () => {
 
         <div className="my-slider">
           <Slider
-            renderSlide={renderUniversityCards}
+            RenderSlide={RenderUniversityCards}
             data={universityCardArr}
             swiperConfig={topAdwizorsConfig}
           />

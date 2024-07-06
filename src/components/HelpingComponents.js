@@ -2,7 +2,7 @@
 
 import { Dropdown } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import { touristImg1, touristImg2 } from "../assest";
+import { GoToTopImg, touristImg1, touristImg2 } from "../assest";
 
 const CustomeDropdown = ({ items, title, caretIcon, titleIcon, className }) => {
   return (
@@ -67,9 +67,19 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
       <div className="verfied-adwizor margin-div">
         {allAdwizors.map((i, index) => (
           <div className="main" key={`allAdwizor${index}`}>
-            <img src={i.img} alt=" " />
+            <img
+              src={i.img}
+              alt=" "
+              onClick={() => navigate("/user-dashboard/adwizor-profile")}
+            />
             <div className="content">
-              <p className="title"> {i.title} </p>
+              <p
+                className="title"
+                onClick={() => navigate("/user-dashboard/adwizor-profile")}
+              >
+                {" "}
+                {i.title}{" "}
+              </p>
 
               <div className="rating">
                 <i className="fa-solid fa-star"></i>
@@ -81,8 +91,17 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
                 </p>
               ))}
               <div className="btn-container">
-                <button className="outlined">Chat</button>
-                <button>Call</button>
+                <button
+                  className="outlined"
+                  onClick={() =>
+                    navigate("/user-dashboard/my-messages/Marvin%20McKinney")
+                  }
+                >
+                  Chat
+                </button>
+                <button onClick={() => navigate("/connect-with-adwizor")}>
+                  Call
+                </button>
               </div>
             </div>
           </div>
@@ -126,7 +145,6 @@ const ProgressBar = ({ width }) => {
   );
 };
 
-
 const TouristImage = () => {
   return (
     <div className="tourist-img-container">
@@ -135,12 +153,26 @@ const TouristImage = () => {
     </div>
   );
 };
+
+const GoToTop = () => {
+  const goToTop = () => {
+    window.scrollTo(0, 0);
+  };
+  return (
+    <div className="go-to-top" onClick={() => goToTop()}>
+      {" "}
+      <img src={GoToTopImg} alt="" />{" "}
+    </div>
+  );
+};
+
 export {
   InfluencerCard,
+  GoToTop,
   CustomeDropdown,
   AdwizorCards,
   Banner,
   AppointmentFloatingBtn,
   ProgressBar,
-  TouristImage
+  TouristImage,
 };

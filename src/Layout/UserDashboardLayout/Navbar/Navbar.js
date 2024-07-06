@@ -1,12 +1,13 @@
 /** @format */
 
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logoImg, userRounded, bellIcon } from "../../../assest";
 import "./Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <>
       <div className="header">
@@ -23,7 +24,16 @@ const Navbar = () => {
             <option>Study India</option>
           </select>
 
-          <button>Write Review</button>
+          <button
+            className={
+              location.pathname === "/user-dashboard/write-a-review"
+                ? "filled"
+                : ""
+            }
+            onClick={() => navigate("/user-dashboard/write-a-review")}
+          >
+            Write Review
+          </button>
           <button
             className="filled"
             onClick={() => navigate("/user-dashboard/home")}

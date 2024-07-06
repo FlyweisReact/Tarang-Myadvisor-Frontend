@@ -1373,6 +1373,7 @@
   height: 207px;
   object-fit: cover;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .verfied-adwizor .main .content {
@@ -1384,6 +1385,7 @@
 }
 .verfied-adwizor .main .content p.title {
   font-weight: 600;
+  cursor: pointer;
 }
 .verfied-adwizor .main .content .rating {
   display: flex;
@@ -3570,13 +3572,6 @@
   font-weight: 600;
 }
 
-.grid-container-for-3 {
-  display: grid;
-  grid-gap: 20px;
-  align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-}
-
 .why-study-international {
   background-color: #0185c3;
   border: 1px solid #0185c3;
@@ -3602,8 +3597,9 @@
   font-weight: lighter;
 }
 .why-study-international button.read-more {
-  width: 279px;
-  height: 58px;
+  max-width: 279px;
+  width: 100%;
+  padding: 10px;
   background-color: #ffcf2d;
   color: #000;
   border: 1px solid #ffcf2d;
@@ -3612,4 +3608,523 @@
   font-weight: 600;
   font-size: 20px;
   border-radius: 10px;
+}
+.why-study-international .count-list {
+  list-style: decimal;
+  margin: 0;
+}
+.why-study-international .count-list li {
+  font-size: 20px;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.top-universities-card {
+  width: 380px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 20px;
+  margin: auto;
+}
+.top-universities-card .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.top-universities-card .head .title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.top-universities-card .head .title img {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #e7e7e7;
+  padding: 2px;
+}
+.top-universities-card .head .title p {
+  margin: 0;
+  font-size: 18px;
+  color: #050038;
+  font-weight: 600;
+}
+.top-universities-card .head .heart-img {
+  width: 23px;
+  height: 23px;
+}
+.top-universities-card .content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.top-universities-card .content .description {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.top-universities-card .content .description img {
+  width: 24px;
+  height: 24px;
+}
+
+.top-universities-card .content .description div {
+  flex: 1;
+}
+.top-universities-card .content .description div p {
+  margin: 0;
+}
+.top-universities-card .content .description div p.faded {
+  font-size: 14px;
+  color: #717171;
+}
+.top-universities-card .content .description div p.title {
+  font-size: 14px;
+  color: #050038;
+  font-weight: 600;
+}
+
+.top-universities-card .content button.apply {
+  height: 43px;
+  background-color: #0185c3;
+  color: #fff;
+  border: 1px solid #0185c3;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.top-universities-container .card-collector {
+  padding: 25px 0;
+}
+
+.top-universities-container .dream-university {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  background-color: #ffcf2d;
+  border: 1px solid #ffcf2d;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  display: block;
+  padding: 10px;
+}
+
+.top-program-card {
+  width: 303px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 0;
+  cursor: pointer;
+  margin: auto;
+}
+.top-program-card .main-img {
+  max-width: 60px;
+}
+.top-program-card .fa-angle-right {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  text-align: right;
+}
+.top-program-card .content {
+  flex: 1;
+}
+.top-program-card .content p {
+  margin: 0;
+}
+.top-program-card .content p.title {
+  font-size: 24px;
+  color: #474747;
+  font-weight: 600;
+}
+.top-program-card .content p.desc {
+  font-size: 15px;
+  color: #474747;
+}
+
+.top-programm-container .boxShadow-container {
+  border: 1px solid #349dcf;
+}
+
+.visa-banner {
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 25px 15px;
+}
+
+.visa-banner .main-img {
+  max-width: 260px;
+  width: 100%;
+}
+.visa-banner .content {
+  flex: 1;
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.visa-banner .content p,
+.visa-banner .content h4 {
+  margin: 0;
+  text-align: center;
+}
+
+.visa-banner .content h4.title {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 600;
+}
+.visa-banner .content p.desc {
+  font-size: 24px;
+  color: #fff;
+}
+.visa-banner .content p.desc-2 {
+  font-size: 22px;
+  color: #fff;
+}
+
+.monthly-expenses-container h4,
+.monthly-expenses-container p {
+  margin: 0;
+}
+.monthly-expenses-container h4 {
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.monthly-expenses-container .pie-img {
+  max-width: 368px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.monthly-expense-card {
+  width: 240px;
+  margin: auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.monthly-expense-card img {
+  width: 72px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.monthly-expense-card .title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+  margin: 0;
+}
+.monthly-expense-card .desc {
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+  margin: 0;
+}
+
+.monthly-expenses-container .grid-container-for-4 {
+  padding: 25px 0;
+}
+
+.work-oppurtunity {
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 40px;
+}
+
+.work-oppurtunity .grid-container-for-2 {
+  padding: 20px;
+  justify-content: center;
+}
+.work-oppurtunity h4 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+.work-oppurtunity-card {
+  max-width: 485px;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin: auto;
+}
+.work-oppurtunity-card p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+.work-oppurtunity-card img {
+  width: 104px;
+  height: auto;
+}
+
+.univeristy-accordion h4.title {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+.univeristy-accordion .main-img {
+  max-width: 286px;
+  display: block;
+  margin: auto;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.faq-accordion {
+  padding: 0 40px;
+}
+.faq-accordion .accordion-item {
+  margin-top: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 20px !important;
+  border: 1px solid #fff;
+  background-color: #fff;
+}
+.faq-accordion .accordion-button {
+  font-weight: 600;
+}
+
+.explore-destinations h4 {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.explore-destination-card {
+  max-width: 380px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 20px;
+}
+.explore-destination-card img {
+  width: 100%;
+}
+.explore-destination-card button {
+  background-color: #0185c3;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid #0185c3;
+  border-radius: 5px;
+}
+
+.explore-destinations .grid-container-for-3 {
+  padding: 20px;
+}
+.international-section {
+  position: relative;
+}
+.go-to-top {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.text-banner {
+  width: 100%;
+  background-image: url("../assest/Images/Banners/study-internation1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 327px;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.text-banner h1 {
+  color: #fff;
+  font-weight: 600;
+  margin: 0;
+  font-size: 54px;
+}
+.text-banner button {
+  max-width: 423px;
+  width: 100%;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.college-features {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.college-features h4,
+.college-features p {
+  margin: 0;
+}
+.college-features .main-heading {
+  font-size: 32px;
+  font-weight: 600;
+  color: #0185c3;
+}
+.college-features .desc {
+  font-size: 18px;
+  color: #818181;
+}
+.college-features .title {
+  font-size: 18px;
+  color: #000;
+  font-weight: 600;
+}
+.college-features .list {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 18px;
+  color: #818181;
+}
+.college-features .list i {
+  font-size: 5px;
+}
+.college-features button {
+  max-width: 279px;
+  width: 100%;
+  padding: 10px;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.user-homePage .write-a-review form div.main {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.user-homePage .write-a-review form label {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.user-homePage .write-a-review form select {
+  width: 100%;
+  border: 1px solid #a1a1a1;
+  padding: 10px;
+  padding-right: 20px;
+  outline: none;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #3f3f3f;
+}
+
+.user-homePage .write-a-review form div.main .stars {
+  display: flex;
+  gap: 10px;
+}
+.user-homePage .write-a-review form div.main .stars i {
+  color: #d9d9d9;
+  font-size: 16px;
+}
+
+.user-homePage .write-a-review form textarea {
+  width: 100%;
+  border: 1px solid #a1a1a1;
+  padding: 10px;
+  padding-right: 20px;
+  outline: none;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #3f3f3f;
+}
+.user-homePage .write-a-review form button {
+  width: 264px;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  color: #fff;
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.college-navbar-section {
+  background-image: url("../assest/Images/Banners/college-banner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 515px;
+  padding: 50px 70px;
+}
+
+.college-navbar-section .college-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+}
+.college-navbar-section .college-nav .logo {
+  width: 60px;
+  height: 60px;
+}
+.college-navbar-section .college-nav ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 0;
+  list-style: none;
 }

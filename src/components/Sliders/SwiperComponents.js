@@ -1,22 +1,25 @@
 /** @format */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { degreeImg, dollarIcon, exportImg } from "../../assest";
 import { CustomeDropdown } from "../HelpingComponents";
 
 //All Swiper components
-const renderAbroadCollegeItems = (item) => {
+const RenderAbroadCollegeItems = (item) => {
+  const navigate = useNavigate();
   return (
     <div className="Item">
       <img src={item?.img} alt="" />
       <div className="content">
         <p className="title"> {item?.title} </p>
-        <button>Explore Now</button>
+        <button onClick={() => navigate(`/study-international/${item.title}`)}>
+          Explore Now
+        </button>
       </div>
     </div>
   );
 };
 
-const renderAdwizorCards = (item) => {
+const RenderAdwizorCards = (item) => {
   return (
     <div className="card">
       <div className="detail">
@@ -51,7 +54,7 @@ const renderAdwizorCards = (item) => {
   );
 };
 
-const renderUniversityCards = (item) => {
+const RenderUniversityCards = (item) => {
   return (
     <div className="univeristy-card-carousel-item">
       <div className="head">
@@ -90,7 +93,7 @@ const renderUniversityCards = (item) => {
   );
 };
 
-const renderFeatureItems = (item) => {
+const RenderFeatureItems = (item) => {
   return (
     <div className="slide">
       <img src={item.img} alt="" />
@@ -100,7 +103,7 @@ const renderFeatureItems = (item) => {
   );
 };
 
-const renderSypnosisItem = (item) => {
+const RenderSypnosisItem = (item) => {
   return (
     <div className="Item">
       <div className="heading">
@@ -148,7 +151,7 @@ const renderSypnosisItem = (item) => {
   );
 };
 
-const renderFilterItems = (i) => {
+const RenderFilterItems = (i) => {
   return (
     <CustomeDropdown
       items={i.items}
@@ -160,7 +163,7 @@ const renderFilterItems = (i) => {
   );
 };
 
-const renderCustomerReviewsCard = (i) => {
+const RenderCustomerReviewsCard = (i) => {
   return (
     <div className="customer-review-card">
       <div className="rating">
@@ -181,7 +184,7 @@ const renderCustomerReviewsCard = (i) => {
   );
 };
 
-const renderStudentTestimonialCard = (i) => {
+const RenderStudentTestimonialCard = (i) => {
   return (
     <div className="item">
       <div className="content">
@@ -197,12 +200,12 @@ const renderStudentTestimonialCard = (i) => {
 };
 
 export {
-  renderAbroadCollegeItems,
-  renderCustomerReviewsCard,
-  renderAdwizorCards,
-  renderUniversityCards,
-  renderFeatureItems,
-  renderSypnosisItem,
-  renderFilterItems,
-  renderStudentTestimonialCard,
+  RenderAbroadCollegeItems,
+  RenderCustomerReviewsCard,
+  RenderAdwizorCards,
+  RenderUniversityCards,
+  RenderFeatureItems,
+  RenderSypnosisItem,
+  RenderFilterItems,
+  RenderStudentTestimonialCard,
 };

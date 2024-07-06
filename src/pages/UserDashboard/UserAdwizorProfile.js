@@ -10,7 +10,7 @@ import {
 } from "../../assest";
 import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
 import { Slider } from "../../components/Sliders/Sliders";
-import { renderCustomerReviewsCard } from "../../components/Sliders/SwiperComponents";
+import { RenderCustomerReviewsCard } from "../../components/Sliders/SwiperComponents";
 import { customerReviewConfig } from "../../components/Sliders/SwiperConfig";
 import { documentTabArr } from "../../constant/constant";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
@@ -191,7 +191,7 @@ const UserAdwizorProfile = () => {
             <Slider
               data={data}
               swiperConfig={customerReviewConfig}
-              renderSlide={renderCustomerReviewsCard}
+              RenderSlide={RenderCustomerReviewsCard}
               ExtraComponent={ExtraComponent}
             />
           </div>

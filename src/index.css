@@ -20,3 +20,30 @@ html {
 .fas {
   font-family: "Font Awesome 6 Free" !important;
 }
+.grid-container-for-4 {
+  display: grid;
+  grid-gap: 20px;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+}
+
+.grid-container-for-3 {
+  display: grid;
+  grid-gap: 20px;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+}
+.grid-container-for-2 {
+  display: grid;
+  grid-gap: 20px;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.boxShadow-container {
+  width: 100%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+}

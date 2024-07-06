@@ -3,7 +3,7 @@ import { topAdwizorsConfig } from "../../components/Sliders/SwiperConfig";
 import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
 import { Slider } from "../../components/Sliders/Sliders";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
-import { renderAdwizorCards } from "../../components/Sliders/SwiperComponents";
+import { RenderAdwizorCards } from "../../components/Sliders/SwiperComponents";
 import { allAdwiozordsArr } from "../../constant/constant";
 
 const UserHome = () => {
@@ -33,7 +33,7 @@ const UserHome = () => {
           <Slider
             data={allAdwiozordsArr}
             swiperConfig={topAdwizorsConfig}
-            renderSlide={renderAdwizorCards}
+            RenderSlide={RenderAdwizorCards}
           />
         </div>
       </div>

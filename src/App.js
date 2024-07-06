@@ -26,6 +26,9 @@ import UserConnectAdwizor from "./pages/UserDashboard/UserConnectAdwizor";
 import UserHowItWorks from "./pages/UserDashboard/UserHowItWorks";
 import UserAdwizorProfile from "./pages/UserDashboard/UserAdwizorProfile";
 import StudyInternational from "./pages/StudyInternational";
+import StudyInternationalFeature from "./pages/StudyInternationalFeature";
+import UserWriteReview from "./pages/UserDashboard/UserWriteReview";
+import CollegeHomepage from "./pages/Colleges/CollegeHomepage";
 
 const App = () => {
   return (
@@ -58,7 +61,6 @@ const App = () => {
           path="/user-dashboard/my-messages/:id"
           element={<ViewUserChat />}
         />
-        {/* new page */}
         <Route path="/user-dashboard/user-events" element={<UserEvents />} />
         <Route path="/user-dashboard/refer-earn" element={<UserRefer />} />
         <Route
@@ -73,10 +75,21 @@ const App = () => {
           path="/user-dashboard/adwizor-profile"
           element={<UserAdwizorProfile />}
         />
+
+        {/* new page */}
+        <Route
+          path="/user-dashboard/write-a-review"
+          element={<UserWriteReview />}
+        />
         <Route
           path="/study-international/:name"
           element={<StudyInternational />}
         />
+        <Route
+          path="/study-international/features"
+          element={<StudyInternationalFeature />}
+        />
+        <Route path="/college/homepage" element={<CollegeHomepage />} />
       </Routes>
     </BrowserRouter>
   );

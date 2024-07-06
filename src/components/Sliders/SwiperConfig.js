@@ -1,6 +1,6 @@
 /** @format */
 
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 
 //Slider Configurations
 const abroadCollegeConfig = {
@@ -164,6 +164,25 @@ const studentTestimonialConfig = {
   },
 };
 
+const callExpertConfig = {
+  spaceBetween: 0,
+  loop: true,
+  slidesPerView: 1,
+  autoplay: {
+    delay: 1500,
+    disableOnInteraction: false,
+  },
+  effect: "fade",
+  fadeEffect: {
+    crossFade: true,
+  },
+  pagination: {
+    dynamicBullets: true,
+    clickable: true,
+  },
+  modules: [Autoplay, EffectFade, Pagination],
+};
+
 export {
   userProgramConfig,
   topAdwizorsConfig,
@@ -172,4 +191,5 @@ export {
   sypnosisConfig,
   customerReviewConfig,
   studentTestimonialConfig,
+  callExpertConfig,
 };

@@ -2,16 +2,24 @@
 
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { userDashboardSidebar } from "../../../constant/constant";
+import {
+  userDashboardSidebar,
+  userDashboardSidebar2,
+} from "../../../constant/constant";
 
 const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const newArr =
+    location.pathname === "/user-dashboard/write-a-review"
+      ? userDashboardSidebar2
+      : userDashboardSidebar;
+
   return (
     <div className="user-sidebar">
       <ul>
-        {userDashboardSidebar.map((i, index) => (
+        {newArr.map((i, index) => (
           <li
             key={index}
             className={`${location.pathname === i.link ? "active" : ""}`}

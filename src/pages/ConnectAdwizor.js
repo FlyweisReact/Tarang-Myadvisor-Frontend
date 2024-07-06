@@ -2,37 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import WithLayout from "../Layout/WithLayout";
-import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import OtpInput from "../components/OtpInput";
 import { useNavigate } from "react-router-dom";
 import { Slider } from "../components/Sliders/Sliders";
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
+import { callExpertConfig } from "../components/Sliders/SwiperConfig";
 
 const ConnectAdwizor = () => {
-  const [banner, setBanner] = useState({});
+  const [banner, setBanner] = useState({ data: [] });
   const [step, setStep] = useState(1);
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
-
-  const swiperConfig = {
-    spaceBetween: 0,
-    loop: true,
-    slidesPerView: 1,
-    autoplay: {
-      delay: 1500,
-      disableOnInteraction: false,
-    },
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true,
-    },
-    pagination: {
-      dynamicBullets: true,
-      clickable: true,
-    },
-    modules: [Autoplay, EffectFade, Pagination],
-  };
 
   const fetchBanner = () => {
     getApi(endPoints.connectWithAdwizorBanner, {
@@ -44,15 +25,13 @@ const ConnectAdwizor = () => {
     fetchBanner();
   }, []);
 
-  const images =
-    banner?.data?.length > 0 ? banner?.data?.map((i) => i.image) : [];
   const handleOtpChange = (otpValue) => {
     setOtp(otpValue);
     console.log(otp);
   };
 
-  const renderSlide = (item) => {
-    return <img src={item} alt="" />;
+  const RenderSlide = (item) => {
+    return <img src={item?.image} alt="" />;
   };
 
   return (
@@ -66,9 +45,9 @@ const ConnectAdwizor = () => {
           </p>
           <div className="swiper-container">
             <Slider
-              data={images}
-              swiperConfig={swiperConfig}
-              renderSlide={renderSlide}
+              data={banner?.data}
+              swiperConfig={callExpertConfig}
+              RenderSlide={RenderSlide}
             />
           </div>
         </div>

@@ -17,9 +17,9 @@ import {
   sypnosisConfig,
 } from "../components/Sliders/SwiperConfig";
 import {
-  renderFeatureItems,
-  renderStudentTestimonialCard,
-  renderSypnosisItem,
+  RenderFeatureItems,
+  RenderStudentTestimonialCard,
+  RenderSypnosisItem,
 } from "../components/Sliders/SwiperComponents";
 import {
   allAdwiozordsArr,
@@ -89,7 +89,7 @@ const HomePage = () => {
           <Slider
             data={featureData}
             swiperConfig={featureConfig}
-            renderSlide={renderFeatureItems}
+            RenderSlide={RenderFeatureItems}
           />
         </div>
       </section>
@@ -133,7 +133,7 @@ const HomePage = () => {
           <Slider
             data={sypnosisData}
             swiperConfig={sypnosisConfig}
-            renderSlide={renderSypnosisItem}
+            RenderSlide={RenderSypnosisItem}
           />
         </section>
       </section>
@@ -144,7 +144,7 @@ const HomePage = () => {
           <Slider
             data={studentThoughts?.data}
             swiperConfig={studentTestimonialConfig}
-            renderSlide={renderStudentTestimonialCard}
+            RenderSlide={RenderStudentTestimonialCard}
             ExtraComponent={StudentNavigation}
           />
         </section>

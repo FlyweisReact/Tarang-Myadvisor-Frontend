@@ -18,8 +18,8 @@ import {
   userProgramConfig,
 } from "../../components/Sliders/SwiperConfig";
 import {
-  renderFilterItems,
-  renderUniversityCards,
+  RenderFilterItems,
+  RenderUniversityCards,
 } from "../../components/Sliders/SwiperComponents";
 import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
 
@@ -245,14 +245,14 @@ const UserProgramms = () => {
 
       <div>
         <Slider
-          renderSlide={renderFilterItems}
+          RenderSlide={RenderFilterItems}
           data={optionsMenu}
           swiperConfig={userProgramConfig}
         />
       </div>
       <div className="university-slider">
         <Slider
-          renderSlide={renderUniversityCards}
+          RenderSlide={RenderUniversityCards}
           data={universityCardArr}
           swiperConfig={topAdwizorsConfig}
         />

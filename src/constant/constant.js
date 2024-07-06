@@ -38,6 +38,30 @@ import {
   adwizorblog6,
   adwizorblog7,
   adwizorblog8,
+  bagVector,
+  chipVector,
+  lawVector,
+  tubeVector,
+  cartVector,
+  artVector,
+  paraVectory,
+  capVector,
+  healthVector,
+  houseVector,
+  foodVector,
+  busVector,
+  musicVector,
+  workOppurutunity1,
+  workOppurutunity2,
+  workOppurutunity3,
+  workOppurutunity4,
+  workOppurutunity5,
+  workOppurutunity6,
+  workOppurutunity7,
+  workOppurutunity8,
+  exploreDestination1,
+  exploreDestination2,
+  exploreDestination3,
 } from "../assest";
 
 const citiesArr = ["Mumbai", "Banglore", "Chennai", "Delhi", "Kerala"];
@@ -163,6 +187,29 @@ const userDashboardSidebar = [
     img: MdiAbout,
     title: "How It Works",
     link: "/user-dashboard/how-it-works",
+  },
+];
+
+const userDashboardSidebar2 = [
+  {
+    img: HomeSvg,
+    title: "Home",
+    link: "/user-dashboard/home",
+  },
+  {
+    img: MdiShare,
+    title: "Refer a friend",
+    link: "/user-dashboard/refer-earn",
+  },
+  {
+    img: universitySvg,
+    title: "My Universities",
+    link: "/user-dashboard/my-universities",
+  },
+  {
+    icon: <i className="fa-solid fa-file"></i>,
+    title: "My Documents",
+    link: "/user-dashboard/documents",
   },
 ];
 
@@ -1002,7 +1049,6 @@ const tutionFess = [
   "50000+",
 ];
 
-
 const infuluncerCardConstant = [
   {
     img: adwizorblog1,
@@ -1046,7 +1092,153 @@ const infuluncerCardConstant = [
   },
 ];
 
+const topProgrammsArr = [
+  {
+    img: bagVector,
+    title: "Management",
+    desc: "461 Colleges",
+  },
+  {
+    img: chipVector,
+    title: "Engineering",
+    desc: "461 Colleges",
+  },
+  {
+    img: lawVector,
+    title: "Law",
+    desc: "461 Colleges",
+  },
+  {
+    img: tubeVector,
+    title: "Science",
+    desc: "461 Colleges",
+  },
+  {
+    img: cartVector,
+    title: "Commerce",
+    desc: "461 Colleges",
+  },
+  {
+    img: artVector,
+    title: "Arts",
+    desc: "461 Colleges",
+  },
+  {
+    img: paraVectory,
+    title: "Paramedical",
+    desc: "461 Colleges",
+  },
+  {
+    img: capVector,
+    title: "Paramedical",
+    desc: "461 Colleges",
+  },
+  {
+    img: healthVector,
+    title: "Pharmacy",
+    desc: "461 Colleges",
+  },
+];
+
+const expenseArr = [
+  {
+    img: houseVector,
+    title: "Rent",
+    desc: "AU$ 600 - AU$ 1760",
+  },
+  {
+    img: foodVector,
+    title: "Food",
+    desc: "AU$ 565 - AU$ 1120",
+  },
+  {
+    img: busVector,
+    title: "Transport",
+    desc: "AU$ 120 - AU$ 240",
+  },
+  {
+    img: musicVector,
+    title: "Miscellaneous",
+    desc: "AU$ 182 - AU$ 364",
+  },
+];
+
+const workOppurtunityArr = [
+  {
+    img: workOppurutunity1,
+    title: "Arts and Humanities",
+  },
+  {
+    img: workOppurutunity2,
+    title: "Social Sciences",
+  },
+  {
+    img: workOppurutunity3,
+    title: "Law and Legal Studies",
+  },
+  {
+    img: workOppurutunity4,
+    title: "Engineering and Technology",
+  },
+  {
+    img: workOppurutunity5,
+    title: "Architecture",
+  },
+  {
+    img: workOppurutunity6,
+    title: "Design",
+  },
+  {
+    img: workOppurutunity7,
+    title: "Medicine and Life Sciences",
+  },
+  {
+    img: workOppurutunity8,
+    title: "Natural Sciences",
+  },
+];
+
+const faqArr = [
+  {
+    title: "How  Does a student Earn in Australia ? ",
+    desc: "A student is entitled to earn a minimum wage of $18.23 (INR 1,354) per hour or $719.20 (INR 53,452) per week for working both on-campus and off-campus during the period of their full-time study",
+  },
+  {
+    title: "What is the Cost to Student in Australia ? ",
+    desc: "A student is entitled to earn a minimum wage of $18.23 (INR 1,354) per hour or $719.20 (INR 53,452) per week for working both on-campus and off-campus during the period of their full-time study",
+  },
+  {
+    title: "How  Do  you get a PR in Australia ?",
+    desc: "A student is entitled to earn a minimum wage of $18.23 (INR 1,354) per hour or $719.20 (INR 53,452) per week for working both on-campus and off-campus during the period of their full-time study",
+  },
+  {
+    title: "How  Does a Best Course in Australia ?  ",
+    desc: "A student is entitled to earn a minimum wage of $18.23 (INR 1,354) per hour or $719.20 (INR 53,452) per week for working both on-campus and off-campus during the period of their full-time study",
+  },
+  {
+    title: "What is the Best University in Australia ? ",
+    desc: "A student is entitled to earn a minimum wage of $18.23 (INR 1,354) per hour or $719.20 (INR 53,452) per week for working both on-campus and off-campus during the period of their full-time study",
+  },
+];
+
+const exploreDestinationArr = [
+  {
+    img: exploreDestination1,
+    title: "Explore US",
+  },
+  {
+    img: exploreDestination2,
+    title: "Explore UK",
+  },
+  {
+    img: exploreDestination3,
+    title: "Explore Canada",
+  },
+];
+
 export {
+  userDashboardSidebar2,
+  exploreDestinationArr,
   infuluncerCardConstant,
   tutionFess,
   englishScore,
@@ -1067,4 +1259,8 @@ export {
   userDashboardSidebar,
   universityCardArr,
   sypnosisData,
+  topProgrammsArr,
+  expenseArr,
+  workOppurtunityArr,
+  faqArr,
 };

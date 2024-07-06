@@ -145,15 +145,79 @@ import customerReview1 from "./Images/customer1.png";
 import customerReview2 from "./Images/customer2.png";
 import BannerInternational from "./Images/Banners/study-international.png";
 import counrtyVecotr from "./Images/country-vector.png";
-import countryCardImg from './Images/countryCard.png'
-import countryCardImg1 from './Images/caountryCard1.png'
-import countryCardImg2 from './Images/countryCard2.png'
-import countryCardImg3 from './Images/countryCard3.png'
-import countryCardImg4 from './Images/countryCard4.png'
-import countryCardImg5 from './Images/caountryCard5.png'
-import countryCardImg6 from './Images/countryCard6.png'
+import countryCardImg from "./Images/countryCard.png";
+import countryCardImg1 from "./Images/caountryCard1.png";
+import countryCardImg2 from "./Images/countryCard2.png";
+import countryCardImg3 from "./Images/countryCard3.png";
+import countryCardImg4 from "./Images/countryCard4.png";
+import countryCardImg5 from "./Images/caountryCard5.png";
+import countryCardImg6 from "./Images/countryCard6.png";
+import fileSvg from "./svg/file.svg";
+import rangkingSvg from "./svg/ranking.svg";
+import locationSvg from "./svg/location.svg";
+import bagVector from "./Images/Top Program/bag.png";
+import chipVector from "./Images/Top Program/chip.png";
+import lawVector from "./Images/Top Program/law.png";
+import tubeVector from "./Images/Top Program/tube.png";
+import cartVector from "./Images/Top Program/cart.png";
+import artVector from "./Images/Top Program/paint.png";
+import paraVectory from "./Images/Top Program/laptop.png";
+import capVector from "./Images/Top Program/lawyer.png";
+import healthVector from "./Images/Top Program/health.png";
+import flightVector from "./Images/flight.png";
+import pieVector from "./Images/pie.png";
+import houseVector from "./Images/house.png";
+import busVector from "./Images/bus.png";
+import foodVector from "./Images/food.png";
+import musicVector from "./Images/music.png";
+import workOppurutunity1 from "./Images/WorkOppurtunity/1.png";
+import workOppurutunity2 from "./Images/WorkOppurtunity/2.png";
+import workOppurutunity3 from "./Images/WorkOppurtunity/3.png";
+import workOppurutunity4 from "./Images/WorkOppurtunity/4.png";
+import workOppurutunity5 from "./Images/WorkOppurtunity/5.png";
+import workOppurutunity6 from "./Images/WorkOppurtunity/6.png";
+import workOppurutunity7 from "./Images/WorkOppurtunity/7.png";
+import workOppurutunity8 from "./Images/WorkOppurtunity/8.png";
+import faqVector from "./Images/faq.png";
+import exploreDestination1 from "./Images/Explore Destination/1.png";
+import exploreDestination2 from "./Images/Explore Destination/2.png";
+import exploreDestination3 from "./Images/Explore Destination/3.png";
+import GoToTopImg from "./Images/toTop.png";
+import studyInternationBanner from "./Images/Banners/study-internation1.png";
 
 export {
+  studyInternationBanner,
+  GoToTopImg,
+  exploreDestination1,
+  exploreDestination2,
+  exploreDestination3,
+  faqVector,
+  workOppurutunity1,
+  workOppurutunity2,
+  workOppurutunity3,
+  workOppurutunity4,
+  workOppurutunity5,
+  workOppurutunity6,
+  workOppurutunity7,
+  workOppurutunity8,
+  busVector,
+  foodVector,
+  musicVector,
+  houseVector,
+  pieVector,
+  flightVector,
+  bagVector,
+  chipVector,
+  lawVector,
+  tubeVector,
+  cartVector,
+  artVector,
+  paraVectory,
+  capVector,
+  healthVector,
+  fileSvg,
+  rangkingSvg,
+  locationSvg,
   countryCardImg,
   countryCardImg1,
   countryCardImg2,

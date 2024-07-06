@@ -30,7 +30,7 @@ import {
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
 import { abroadCollegeConfig } from "../components/Sliders/SwiperConfig";
-import { renderAbroadCollegeItems } from "../components/Sliders/SwiperComponents";
+import { RenderAbroadCollegeItems } from "../components/Sliders/SwiperComponents";
 
 const optionsMenu = [
   {
@@ -148,7 +148,7 @@ const StudyIndia = () => {
         <Slider
           data={abroadCollegeArr}
           swiperConfig={abroadCollegeConfig}
-          renderSlide={renderAbroadCollegeItems}
+          RenderSlide={RenderAbroadCollegeItems}
         />
       </section>
       <section className="filter-college-section margin-div">

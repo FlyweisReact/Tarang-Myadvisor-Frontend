@@ -1,0 +1,141 @@
+/** @format */
+
+.college-navbar-section {
+  background-image: url("../../../assest/Images/Banners/college-banner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 515px;
+  padding: 50px 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.college-navbar-section .college-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  padding: 10px 50px;
+  /* position: relative; */
+}
+.college-navbar-section .college-nav .logo {
+  width: 60px;
+  height: 60px;
+}
+.college-navbar-section .college-nav ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.college-navbar-section .college-nav ul li {
+  font-size: 15px;
+  color: #1a3b5a;
+  font-weight: 600;
+  position: relative;
+  cursor: pointer;
+}
+.college-navbar-section .user-rounded {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+}
+
+.above-links:hover .custom-dropdown,
+.above-links:hover .triangle,
+.above-links:hover #nav-cover {
+  display: block;
+}
+
+.custom-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+  top: 60px;
+  top: 40px;
+  white-space: nowrap;
+  max-width: 1000px;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 0px;
+  min-width: 800px;
+}
+
+.triangle {
+  display: none;
+  transition: 0.3s ease-in-out;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent; /* Adjust size and color as needed */
+  border-right: 20px solid transparent; /* Adjust size and color as needed */
+  border-bottom: 30px solid #fff; /* Adjust size and color as needed */
+  position: absolute;
+  top: 34px;
+  top: 18px;
+  z-index: 6;
+  left: 20px;
+}
+#nav-cover {
+  background-color: #000;
+  height: 100%;
+  left: 0;
+  min-width: 100%;
+  opacity: 0.4;
+  top: 0;
+  transform: translateZ(0);
+  width: 100%;
+  z-index: 5;
+  position: fixed;
+  display: none;
+}
+
+.custom-dropdown .title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+.custom-dropdown .flex-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 40px;
+}
+.custom-dropdown .flex-container .Item {
+  padding: 20px;
+  border-right: 1px solid #000;
+  padding-top: 0;
+  align-self: stretch;
+  width: 25%;
+}
+.custom-dropdown .flex-container .Item:last-child {
+  border: none;
+}
+
+.custom-dropdown .flex-container .title {
+  font-size: 18px;
+  color: #000;
+  text-align: center;
+}
+.custom-dropdown .flex-container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.custom-dropdown .flex-container ul li {
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+}

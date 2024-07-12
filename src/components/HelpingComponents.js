@@ -166,6 +166,31 @@ const GoToTop = () => {
   );
 };
 
+const BannerSearchComponent = () => {
+  return (
+    <div className="banner-search-div">
+      <h1>Let’s Start your Career Journey.</h1>
+      <div className="search-div">
+        <input
+          type={"search"}
+          placeholder="Search for colleges, exams, Q & A, Articles..."
+        />
+        <i className="fa-solid fa-magnifying-glass"></i>
+      </div>
+
+      <button className="explore-btn">Explore College & Univesity</button>
+    </div>
+  );
+};
+
+const BlinkingHeading = ({ text }) => {
+  return (
+    <div className="animated-heading">
+      <p>{text}</p>
+    </div>
+  );
+};
+
 export {
   InfluencerCard,
   GoToTop,
@@ -174,5 +199,7 @@ export {
   Banner,
   AppointmentFloatingBtn,
   ProgressBar,
+  BannerSearchComponent,
   TouristImage,
+  BlinkingHeading
 };

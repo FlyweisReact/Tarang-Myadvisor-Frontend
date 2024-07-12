@@ -91,10 +91,56 @@ const MonthlyExpenseCard = (item) => {
   );
 };
 
+const NearCollegeCard = (item) => {
+  const { img, collegeName, yearly } = item;
+  return (
+    <div className="near-college-card">
+      <div className="img-container">
+        <img src={img} alt="" className="college-img" />
+        <div className="rating">
+          <i className="fa-solid fa-star"></i>
+          <p>9.5/10</p>
+        </div>
+      </div>
+
+      <div className="description">
+        <div className="college-title">
+          <p className="name">{collegeName} </p>
+          <div className="reviews">
+            <p className="rev"> {yearly} yearly</p>
+            <p className="count">20.5k Reviews</p>
+          </div>
+        </div>
+
+        <div className="desc-point">
+          <p>View all courses and fees</p>
+          <i className="fa-solid fa-angle-right"></i>
+        </div>
+        <div className="desc-point">
+          <p>Download Brochures</p>
+          <i className="fa-solid fa-angle-right"></i>
+        </div>
+        <div className="desc-point">
+          <p>Compare</p>
+          <i className="fa-solid fa-angle-right"></i>
+        </div>
+        <div className="desc-point">
+          <p>Speak to Expert</p>
+          <i className="fa-solid fa-angle-right"></i>
+        </div>
+
+        <button className="outlined-btn">Add to Common Application Form</button>
+        <button className="apply-btn">Apply Now </button>
+      </div>
+    </div>
+  );
+};
+
 export {
   WorkOppurtunityCard,
   ExploreDestinationCard,
   TopUniversitiesCard,
   TopProgramCard,
   MonthlyExpenseCard,
+  NearCollegeCard,
 };

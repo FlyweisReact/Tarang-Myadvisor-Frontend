@@ -62,6 +62,16 @@ import {
   exploreDestination1,
   exploreDestination2,
   exploreDestination3,
+  CitiesImg1,
+  CitiesImg2,
+  CitiesImg3,
+  CitiesImg4,
+  CitiesImg5,
+  CitiesImg6,
+  NearlyCollege1,
+  NearlyCollege2,
+  NearlyCollege3,
+  NearlyCollege4,
 } from "../assest";
 
 const citiesArr = ["Mumbai", "Banglore", "Chennai", "Delhi", "Kerala"];
@@ -1236,7 +1246,173 @@ const exploreDestinationArr = [
   },
 ];
 
+const topCitiesArr = [
+  {
+    img: CitiesImg1,
+    title: "Delhi",
+  },
+  {
+    img: CitiesImg2,
+    title: "Mumbai",
+  },
+  {
+    img: CitiesImg3,
+    title: "Kolkata",
+  },
+  {
+    img: CitiesImg4,
+    title: "Chennai",
+  },
+  {
+    img: CitiesImg5,
+    title: "Agra",
+  },
+  {
+    img: CitiesImg6,
+    title: "Jaipur",
+  },
+  {
+    img: CitiesImg1,
+    title: "Delhi",
+  },
+  {
+    img: CitiesImg2,
+    title: "Mumbai",
+  },
+  {
+    img: CitiesImg3,
+    title: "Kolkata",
+  },
+  {
+    img: CitiesImg4,
+    title: "Chennai",
+  },
+  {
+    img: CitiesImg5,
+    title: "Agra",
+  },
+  {
+    img: CitiesImg6,
+    title: "Jaipur",
+  },
+];
+
+const nearCollegeArr = [
+  {
+    img: NearlyCollege1,
+    collegeName: "Jamia millia islamia",
+    yearly: "30,000",
+  },
+  {
+    img: NearlyCollege2,
+    collegeName: "Delhi Technology University",
+    yearly: "500,000",
+  },
+  {
+    img: NearlyCollege3,
+    collegeName: "Miranda House",
+    yearly: "350,000",
+  },
+  {
+    img: NearlyCollege4,
+    collegeName: "National Institute Design",
+    yearly: "350,000",
+  },
+  {
+    img: NearlyCollege1,
+    collegeName: "Jamia millia islamia",
+    yearly: "30,000",
+  },
+  {
+    img: NearlyCollege2,
+    collegeName: "Delhi Technology University",
+    yearly: "500,000",
+  },
+  {
+    img: NearlyCollege3,
+    collegeName: "Miranda House",
+    yearly: "350,000",
+  },
+  {
+    img: NearlyCollege4,
+    collegeName: "National Institute Design",
+    yearly: "350,000",
+  },
+];
+
+const topDelhiUniversities = [
+  "Jawahar lal Nehru",
+  "IGNOU",
+  "Jamia Miliya Islamia",
+  "IP University",
+  "Miranda House",
+  "Hindu College",
+  "Atma Ram Sanatan Dharma",
+  "Hansraj",
+  "St. Stephen's",
+  "Acharya Narendra Dev",
+  "Deen Dayal Upadhyaya ",
+  "Gargi College",
+  "Jesus and Mary",
+];
+
+const mumbaiColleges = [
+  "University of Mumbai",
+  "IIT Bombay",
+  "Kishan Chand",
+  "NMIMS",
+  "Whistling Wood International",
+  "Amity University",
+  "S.P. Jain",
+  "TISS",
+  "Sardar Patel Institute",
+  "C.U. Shah College",
+  "Thakur Institute",
+  "KJ Somaiya",
+  "Vivekanand College",
+];
+
+const chennaiColleges = [
+  "Anna University",
+  "Indian Institute of Technology Madras (IIT Madras)",
+  "Madras Christian College (MCC)",
+  "Loyola College",
+  "Stella Maris College",
+  "Madras Institute of Technology (MIT)",
+  "Ethiraj College for Women",
+  "SRM Institute of Science and Technology",
+  "Vellore Institute of Technology (Chennai Campus)",
+  "Hindustan Institute of Technology and Science (HITS)",
+  "Vel Tech Rangarajan Dr. Sagunthala R&D Institute of Science and Technology",
+  "Sathyabama Institute of Science and Technology",
+  "DG Vaishnav College",
+  "MOP Vaishnav College for Women",
+];
+
+const bangaloreColleges = [
+  "Indian Institute of Science (IISc)",
+  "Indian Institute of Management Bangalore (IIMB)",
+  "Christ University",
+  "National Institute of Fashion Technology (NIFT)",
+  "PES University",
+  "BMS College of Engineering",
+  "St. Joseph's College",
+  "Mount Carmel College",
+  "RV College of Engineering",
+  "Jain University",
+  "Bangalore Medical College and Research Institute (BMCRI)",
+  "MS Ramaiah Institute of Technology",
+  "Dayananda Sagar College of Engineering",
+  "Bangalore Institute of Technology (BIT)",
+];
+
+
+
 export {
+  bangaloreColleges ,
+  chennaiColleges,
+  mumbaiColleges,
+  topDelhiUniversities,
   userDashboardSidebar2,
   exploreDestinationArr,
   infuluncerCardConstant,
@@ -1263,4 +1439,6 @@ export {
   expenseArr,
   workOppurtunityArr,
   faqArr,
+  topCitiesArr,
+  nearCollegeArr,
 };

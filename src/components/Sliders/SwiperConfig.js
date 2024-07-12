@@ -183,6 +183,50 @@ const callExpertConfig = {
   modules: [Autoplay, EffectFade, Pagination],
 };
 
+const topCitiesSwiperConfig = {
+  spaceBetween: 20,
+  loop: true,
+  slidesPerView: 9,
+  navigation: {
+    nextEl: ".next-nav-btn",
+    prevEl: ".prev-nav-btn",
+  },
+  modules: [Navigation],
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+    },
+    900: {
+      slidesPerView: 7,
+    },
+    1024: {
+      slidesPerView: 9,
+    },
+  },
+};
+
+const nearCollegeSwiperConfig = {
+  spaceBetween: 20,
+  loop: true,
+  slidesPerView: 1,
+  navigation: {
+    nextEl: ".next-nav-btn",
+    prevEl: ".prev-nav-btn",
+  },
+  modules: [Navigation],
+  breakpoints: {
+    768: {
+      slidesPerView: 1,
+    },
+    900: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 4,
+    },
+  },
+};
+
 export {
   userProgramConfig,
   topAdwizorsConfig,
@@ -192,4 +236,6 @@ export {
   customerReviewConfig,
   studentTestimonialConfig,
   callExpertConfig,
+  topCitiesSwiperConfig,
+  nearCollegeSwiperConfig
 };

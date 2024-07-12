@@ -199,6 +199,15 @@ const RenderStudentTestimonialCard = (i) => {
   );
 };
 
+const RenderTopCityCard = (i) => {
+  return (
+    <div className="Item">
+      <img src={i.img} alt="" />
+      <p>{i.title}</p>
+    </div>
+  );
+};
+
 export {
   RenderAbroadCollegeItems,
   RenderCustomerReviewsCard,
@@ -208,4 +217,5 @@ export {
   RenderSypnosisItem,
   RenderFilterItems,
   RenderStudentTestimonialCard,
+  RenderTopCityCard,
 };

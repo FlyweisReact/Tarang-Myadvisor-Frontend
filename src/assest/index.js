@@ -184,8 +184,38 @@ import exploreDestination2 from "./Images/Explore Destination/2.png";
 import exploreDestination3 from "./Images/Explore Destination/3.png";
 import GoToTopImg from "./Images/toTop.png";
 import studyInternationBanner from "./Images/Banners/study-internation1.png";
+import CitiesImg1 from './Images/Slider/Cities/1.png'
+import CitiesImg2 from './Images/Slider/Cities/2.png'
+import CitiesImg3 from './Images/Slider/Cities/3.png'
+import CitiesImg4 from './Images/Slider/Cities/4.png'
+import CitiesImg5 from './Images/Slider/Cities/5.png'
+import CitiesImg6 from './Images/Slider/Cities/6.png'
+import NearlyCollege1 from './Images/NearColleges/1.png'
+import NearlyCollege2 from './Images/NearColleges/2.png'
+import NearlyCollege3 from './Images/NearColleges/3.png'
+import NearlyCollege4 from './Images/NearColleges/4.png'
+import CollegeImg38 from './Images/38.png'
+import whiteDoc from './Images/white-doc.png'
+import whiteCap from './Images/white-cap.png'
+import whiteMsg from './Images/white-chat.png'
+import whiteUser from './Images/white-user.png'
 
 export {
+  whiteDoc,
+  whiteCap,
+  whiteMsg,
+  whiteUser,
+  CollegeImg38,
+  NearlyCollege1,
+  NearlyCollege2,
+  NearlyCollege3,
+  NearlyCollege4,
+  CitiesImg1,
+  CitiesImg2,
+  CitiesImg3,
+  CitiesImg4,
+  CitiesImg5,
+  CitiesImg6,
   studyInternationBanner,
   GoToTopImg,
   exploreDestination1,

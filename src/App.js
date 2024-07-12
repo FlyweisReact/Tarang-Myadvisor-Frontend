@@ -29,6 +29,8 @@ import StudyInternational from "./pages/StudyInternational";
 import StudyInternationalFeature from "./pages/StudyInternationalFeature";
 import UserWriteReview from "./pages/UserDashboard/UserWriteReview";
 import CollegeHomepage from "./pages/Colleges/CollegeHomepage";
+import ScholarshipTest from "./pages/ScholarshipTest";
+import Scholarship from "./pages/Scholarship";
 
 const App = () => {
   return (
@@ -76,7 +78,6 @@ const App = () => {
           element={<UserAdwizorProfile />}
         />
 
-        {/* new page */}
         <Route
           path="/user-dashboard/write-a-review"
           element={<UserWriteReview />}
@@ -89,7 +90,11 @@ const App = () => {
           path="/study-international/features"
           element={<StudyInternationalFeature />}
         />
+        {/* new page */}
         <Route path="/college/homepage" element={<CollegeHomepage />} />
+        <Route path="/college/scholarship-test" element={<ScholarshipTest />} />
+        <Route path="/college/scholarship" element={<Scholarship />} />
+
       </Routes>
     </BrowserRouter>
   );

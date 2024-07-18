@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
+import { logoImg } from "../../assest";
 import { postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import OtpInput from "../OtpInput";
@@ -50,6 +51,54 @@ export const EnterOtpModal = (props) => {
             </button>
           </form>
           <p className="not-recieved">Not received your code? 0:22</p>
+        </div>
+      </Modal.Body>
+    </Modal>
+  );
+};
+
+export const AlertModal = (props) => {
+  return (
+    <Modal {...props} centered>
+      <Modal.Body>
+        <div className="get-alert-modal">
+          <div className="mod-header">
+            <img src={logoImg} alt="" />
+            <h4>Register Now To Apply</h4>
+          </div>
+          <form>
+            <div className="input-div">
+              <i className="fa-regular fa-user"></i>
+              <input type={"text"} placeholder="Full Name" />
+            </div>
+            <div className="input-div mt-3">
+              <i className="fa-solid fa-envelope"></i>
+              <input type={"email"} placeholder="Email" />
+            </div>
+            <div className="flex-div mt-3">
+              <div className="input-div">
+                <input type={"tel"} placeholder="Mobile Number" />
+              </div>
+              <button className="send-otp">SEND OTP</button>
+            </div>
+            <div className="input-div mt-3">
+              <i className="fa-solid fa-location-dot"></i>
+              <input type={"text"} placeholder="City you live in" />
+            </div>
+            <div className="input-div mt-3">
+              <i className="fa-solid fa-graduation-cap"></i>
+              <input type={"text"} placeholder="Course" />
+            </div>
+
+            <p className="term-of-use mt-3">
+              By Submitting this form you accept <br /> and agree to our{" "}
+              <span style={{ color: "#349DCF" }}>Terms Of Use.</span>
+            </p>
+            <p className="term-of-use mt-3">Enter OTP</p>
+            <OtpInput length={4}/>
+
+            <button className="submit-btn mt-3">Submit</button>
+          </form>
         </div>
       </Modal.Body>
     </Modal>

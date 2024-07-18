@@ -180,7 +180,7 @@ const CollegeNavbar = ({ Children }) => {
   return (
     <div className="college-navbar-section">
       <div className="college-nav">
-        <Link to={"/"}>
+        <Link to={"/college/homepage"}>
           <img src={logoImg} alt="" className="logo" />
         </Link>
 

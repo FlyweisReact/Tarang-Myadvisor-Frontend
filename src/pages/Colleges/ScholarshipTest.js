@@ -1,9 +1,9 @@
 /** @format */
 
 import React from "react";
-import { whiteDoc, whiteCap, whiteMsg, whiteUser } from "../assest";
-import { BlinkingHeading } from "../components/HelpingComponents";
-import CollegePageLayout from "../Layout/CollegeLayout/Layout/CollegePageLayout";
+import { whiteDoc, whiteCap, whiteMsg, whiteUser } from "../../assest";
+import { BlinkingHeading } from "../../components/HelpingComponents";
+import CollegePageLayout from "../../Layout/CollegeLayout/Layout/CollegePageLayout";
 
 const data = [
   {

@@ -20,34 +20,16 @@ import {
   fillBookmark,
 } from "../../assest";
 
-const filteArr = [
-  {
-    title: "Courses",
-    placeholder: "Find Courses",
-    list: ["MBA / PGDMA", "B.E / B.Tech", "B.SC", "BA", "BBA / MBA"],
-  },
-  {
-    title: "State",
-    placeholder: "Find State",
-    list: ["Luci", "Snafro", "Jamesy", "Willion", "Canii"],
-  },
-  {
-    title: "Stream",
-    placeholder: "Find Stream",
-    list: ["Management", "Science", "Arts", "Computer Science", "Commerce"],
-  },
-];
-
-const CollegeFilters = () => {
+const CollegeFilters = ({ data }) => {
   return (
     <div className="filters-div">
-      <p className="title">Private Colleges / Government Colleges</p>
-      <h4>Filter</h4>
-      <p className="result-text">Found 5503 Colleges</p>
+      <p className="title"> {data?.title} </p>
+      <h4> {data?.heading} </h4>
+      <p className="result-text"> {data?.foundCount} </p>
 
       <div className="content-div">
         <div className="flex-div">
-          {filteArr.map((i, index) => (
+          {data?.options?.map((i, index) => (
             <div className="Items" key={`filterArr${index}`}>
               <div className="heading">
                 <p className="title">{i.title}</p>

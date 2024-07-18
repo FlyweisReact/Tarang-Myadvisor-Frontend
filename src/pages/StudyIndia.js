@@ -128,6 +128,30 @@ const colleges = [
     btn2: "Download Brochure",
   },
 ];
+
+const filterationData = {
+  title: "Private Colleges / Government Colleges",
+  heading: "Filter",
+  foundCount: "Found 5503 Colleges",
+  options: [
+    {
+      title: "Courses",
+      placeholder: "Find Courses",
+      list: ["MBA / PGDMA", "B.E / B.Tech", "B.SC", "BA", "BBA / MBA"],
+    },
+    {
+      title: "State",
+      placeholder: "Find State",
+      list: ["Luci", "Snafro", "Jamesy", "Willion", "Canii"],
+    },
+    {
+      title: "Stream",
+      placeholder: "Find Stream",
+      list: ["Management", "Science", "Arts", "Computer Science", "Commerce"],
+    },
+  ],
+};
+
 const StudyIndia = () => {
   const [banner, setBanner] = useState({});
 
@@ -152,7 +176,7 @@ const StudyIndia = () => {
         />
       </section>
       <section className="filter-college-section margin-div">
-        <CollegeFilters />
+        <CollegeFilters data={filterationData} />
         <div className="result-div">
           <div className="search-div">
             {optionsMenu.map((i, index) => (

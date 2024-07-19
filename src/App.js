@@ -32,6 +32,10 @@ import CollegeHomepage from "./pages/Colleges/CollegeHomepage";
 import ScholarshipTest from "./pages/Colleges/ScholarshipTest";
 import Scholarship from "./pages/Colleges/Scholarship";
 import CollegeDetails from "./pages/Colleges/CollegeDetails";
+import ExploreColleges from "./pages/ExploreColleges";
+import CollegeMicroInfo from "./pages/CollegeMicroInfo";
+import ShortlistedCollege from "./pages/ShortlistedCollege";
+import PaymentPage from "./pages/PaymentPage";
 
 const App = () => {
   return (
@@ -94,9 +98,13 @@ const App = () => {
 
         <Route path="/college/homepage" element={<CollegeHomepage />} />
         <Route path="/college/scholarship-test" element={<ScholarshipTest />} />
-        {/* new page */}
         <Route path="/college/scholarship" element={<Scholarship />} />
         <Route path="/college/read-more" element={<CollegeDetails />} />
+        {/* new page */}
+        <Route path="/college/explore-colleges" element={<ExploreColleges />} />
+        <Route path="/college-micro-info" element={<CollegeMicroInfo />} />
+        <Route path="/shortlisted-college" element={<ShortlistedCollege />} />
+        <Route path="/payment-page" element={<PaymentPage />} />
       </Routes>
     </BrowserRouter>
   );

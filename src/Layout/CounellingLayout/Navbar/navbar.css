@@ -1,0 +1,61 @@
+/** @format */
+
+.college-navbar-section-2 {
+  padding: 20px 0;
+}
+
+.college-navbar-section-2 .college-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 50px;
+}
+.college-navbar-section-2 .college-nav .logo {
+  width: 96px;
+  height: 96px;
+}
+
+.college-navbar-section-2 .college-nav .search-box {
+  display: flex;
+  gap: 20px;
+  max-width: 667px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 50px;
+  padding: 10px 50px;
+  align-items: center;
+}
+.college-navbar-section-2 .college-nav .search-box i {
+  color: #1a3b5a;
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+}
+
+.college-navbar-section-2 .college-nav .search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #4B4B4B;
+}
+.college-navbar-section-2 .college-nav button.info{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  max-width: 207px;
+  width: 100%;
+  background-color: #0185C3;
+  border: 1px solid #0185C3;
+  color: #fff;
+  border-radius: 50px;
+  justify-content: space-evenly;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: lighter;
+}
+.college-navbar-section-2 .college-nav button.info i {
+font-size: 20px;
+}

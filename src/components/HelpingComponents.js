@@ -167,6 +167,7 @@ const GoToTop = () => {
 };
 
 const BannerSearchComponent = () => {
+  const navigate = useNavigate();
   return (
     <div className="banner-search-div">
       <h1>Let’s Start your Career Journey.</h1>
@@ -178,7 +179,12 @@ const BannerSearchComponent = () => {
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
 
-      <button className="explore-btn">Explore College & Univesity</button>
+      <button
+        className="explore-btn"
+        onClick={() => navigate("/college/explore-colleges")}
+      >
+        Explore College & Univesity
+      </button>
     </div>
   );
 };
@@ -201,5 +207,5 @@ export {
   ProgressBar,
   BannerSearchComponent,
   TouristImage,
-  BlinkingHeading
+  BlinkingHeading,
 };

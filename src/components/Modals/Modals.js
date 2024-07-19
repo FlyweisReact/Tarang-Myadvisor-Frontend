@@ -1,7 +1,7 @@
 /** @format */
 
 import { useState } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Offcanvas } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { logoImg } from "../../assest";
@@ -64,7 +64,8 @@ export const AlertModal = (props) => {
         <div className="get-alert-modal">
           <div className="mod-header">
             <img src={logoImg} alt="" />
-            <h4>Register Now To Apply</h4>
+
+            <h4>{props?.title ? props?.title : "Register Now To Apply"}</h4>
           </div>
           <form>
             <div className="input-div">
@@ -95,12 +96,33 @@ export const AlertModal = (props) => {
               <span style={{ color: "#349DCF" }}>Terms Of Use.</span>
             </p>
             <p className="term-of-use mt-3">Enter OTP</p>
-            <OtpInput length={4}/>
+            <OtpInput length={4} />
 
             <button className="submit-btn mt-3">Submit</button>
           </form>
         </div>
       </Modal.Body>
     </Modal>
+  );
+};
+
+export const CollegeShortlistedCanvas = ({ show, handleClose }) => {
+  const navigate = useNavigate();
+  return (
+    <Offcanvas show={show} onHide={handleClose} placement="bottom">
+      <Offcanvas.Header closeButton></Offcanvas.Header>
+      <Offcanvas.Body>
+        <div className="college-shortlisted-canvas">
+          <h5 className="title">College Selected (1)</h5>
+          <hr />
+          <button
+            className="next-btn"
+            onClick={() => navigate("/shortlisted-college")}
+          >
+            Next
+          </button>
+        </div>
+      </Offcanvas.Body>
+    </Offcanvas>
   );
 };

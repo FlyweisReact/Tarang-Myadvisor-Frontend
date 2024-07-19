@@ -184,23 +184,59 @@ import exploreDestination2 from "./Images/Explore Destination/2.png";
 import exploreDestination3 from "./Images/Explore Destination/3.png";
 import GoToTopImg from "./Images/toTop.png";
 import studyInternationBanner from "./Images/Banners/study-internation1.png";
-import CitiesImg1 from './Images/Slider/Cities/1.png'
-import CitiesImg2 from './Images/Slider/Cities/2.png'
-import CitiesImg3 from './Images/Slider/Cities/3.png'
-import CitiesImg4 from './Images/Slider/Cities/4.png'
-import CitiesImg5 from './Images/Slider/Cities/5.png'
-import CitiesImg6 from './Images/Slider/Cities/6.png'
-import NearlyCollege1 from './Images/NearColleges/1.png'
-import NearlyCollege2 from './Images/NearColleges/2.png'
-import NearlyCollege3 from './Images/NearColleges/3.png'
-import NearlyCollege4 from './Images/NearColleges/4.png'
-import CollegeImg38 from './Images/38.png'
-import whiteDoc from './Images/white-doc.png'
-import whiteCap from './Images/white-cap.png'
-import whiteMsg from './Images/white-chat.png'
-import whiteUser from './Images/white-user.png'
+import CitiesImg1 from "./Images/Slider/Cities/1.png";
+import CitiesImg2 from "./Images/Slider/Cities/2.png";
+import CitiesImg3 from "./Images/Slider/Cities/3.png";
+import CitiesImg4 from "./Images/Slider/Cities/4.png";
+import CitiesImg5 from "./Images/Slider/Cities/5.png";
+import CitiesImg6 from "./Images/Slider/Cities/6.png";
+import NearlyCollege1 from "./Images/NearColleges/1.png";
+import NearlyCollege2 from "./Images/NearColleges/2.png";
+import NearlyCollege3 from "./Images/NearColleges/3.png";
+import NearlyCollege4 from "./Images/NearColleges/4.png";
+import CollegeImg38 from "./Images/38.png";
+import whiteDoc from "./Images/white-doc.png";
+import whiteCap from "./Images/white-cap.png";
+import whiteMsg from "./Images/white-chat.png";
+import whiteUser from "./Images/white-user.png";
+import JamiaBanner from "./Images/jamiaBanner.png";
+import collegeHighlight1 from './Images/higlight/1.png'
+import collegeHighlight2 from './Images/higlight/2.png'
+import collegeHighlight3 from './Images/higlight/3.png'
+import collegeHighlight4 from './Images/higlight/4.png'
+import collegeHighlight5 from './Images/higlight/5.png'
+import collegeHighlight6 from './Images/higlight/6.png'
+import collegeHighlight7 from './Images/higlight/7.png'
+import img1 from './Images/higlight/8.png'
+import Img2 from './Images/news.png'
+import Img3 from './Images/Infa/1.png'
+import Img4 from './Images/Infa/2.png'
+import Img5 from './Images/Infa/3.png'
+import Img6 from './Images/Infa/4.png'
+import Img7 from './Images/Infa/5.png'
+import Img8 from './Images/Infa/6.png'
+import Img9 from './Images/39.png'
+import Img10 from './Images/40.png'
 
 export {
+  Img10,
+  Img9,
+  Img2,
+  Img3,
+  Img4,
+  Img5,
+  Img6,
+  Img7,
+  Img8,
+  img1,
+  collegeHighlight1,
+  collegeHighlight2,
+  collegeHighlight3,
+  collegeHighlight4,
+  collegeHighlight5,
+  collegeHighlight6,
+  collegeHighlight7,
+  JamiaBanner,
   whiteDoc,
   whiteCap,
   whiteMsg,

@@ -4709,7 +4709,7 @@
   text-align: center;
   margin-top: 20px;
 }
-.popular-applied-links .Item li:first-child{
+.popular-applied-links .Item li:first-child {
   margin: 0;
 }
 .popular-applied-links .Item.college-desc {
@@ -4756,114 +4756,1083 @@
   font-size: 12px;
 }
 
-.higlight-table{
-  border:2px solid #B0B0B0;
-width: 827px;
-margin: auto;
+.higlight-table {
+  border: 2px solid #b0b0b0;
+  width: 827px;
+  margin: auto;
 }
 
 .higlight-table thead tr th {
   padding: 10px;
-  border: 1px solid #E7E7E7;
+  border: 1px solid #e7e7e7;
 }
-.higlight-table tbody tr td{
+.higlight-table tbody tr td {
   padding: 10px;
-  border: 1px solid #E7E7E7;
+  border: 1px solid #e7e7e7;
 }
 
-.description-box .desc{
+.description-box .desc {
   margin: 0;
   font-size: 16px;
 }
 
-.get-alert-modal{
+.get-alert-modal {
   padding: 20px;
 }
-.get-alert-modal .mod-header{
+.get-alert-modal .mod-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
 }
-.get-alert-modal .mod-header img{
+.get-alert-modal .mod-header img {
   width: 118px;
   height: 118px;
   border-radius: 100%;
- }
- .get-alert-modal .mod-header h4{
+}
+.get-alert-modal .mod-header h4 {
   font-size: 25px;
   font-weight: 600;
- }
- .get-alert-modal form {
+}
+.get-alert-modal form {
   margin-top: 20px;
   margin-bottom: 20px;
- }
- .get-alert-modal form  .input-div{
+}
+.get-alert-modal form .input-div {
   display: flex;
   gap: 20px;
   align-items: center;
-  border: 2px solid #349DCF;
+  border: 2px solid #349dcf;
   border-radius: 10px;
   padding: 10px 20px;
- }
- .get-alert-modal form  .flex-div{
+}
+.get-alert-modal form .flex-div {
   display: flex;
   align-items: center;
   width: 100%;
- }
- .get-alert-modal form  .flex-div .input-div {
+}
+.get-alert-modal form .flex-div .input-div {
   flex: 1;
   border-radius: 10px 0 0px 10px !important;
- }
- .get-alert-modal form  .flex-div button.send-otp
- {
-  background-color: #0185C3;
+}
+.get-alert-modal form .flex-div button.send-otp {
+  background-color: #0185c3;
   color: #fff;
-  border: 1px solid #0185C3;
+  border: 1px solid #0185c3;
   border-radius: 0 10px 10px 0px;
   height: 50px;
   width: 120px;
   font-size: 14px;
- }
+}
 
- .get-alert-modal form  .input-div i {
+.get-alert-modal form .input-div i {
   font-size: 20px;
-  color: #349DCF;
- }
- .get-alert-modal form  .input-div input {
+  color: #349dcf;
+}
+.get-alert-modal form .input-div input {
   outline: none;
-  color: #128DC6;
+  color: #128dc6;
   border: none;
   flex: 1;
- }
- .get-alert-modal form  .input-div input::placeholder{
+}
+.get-alert-modal form .input-div input::placeholder {
   color: #0185c3;
- }
- .get-alert-modal form  .term-of-use{
+}
+.get-alert-modal form .term-of-use {
   font-size: 16px;
   color: #000;
   font-weight: 600;
   text-align: center;
   margin: 0;
- }
- .get-alert-modal .otp-input input{
-  border: 1px solid #0185C3;
- }
+}
+.get-alert-modal .otp-input input {
+  border: 1px solid #0185c3;
+}
 
- .get-alert-modal .submit-btn{
-max-width: 348px;
-width: 100%;
+.get-alert-modal .submit-btn {
+  max-width: 348px;
+  width: 100%;
+  background-color: #349dcf;
+  border: 1px solid #349dcf;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+}
 
-background-color: #349DCF;
-border: 1px solid #349DCF;
-color: #fff;
-font-size: 16px;
-display: block;
-margin: auto;
-padding: 10px;
-border-radius: 10px;
+.filter-college-section .result-div .top-colleges .top-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.filter-college-section .result-div .top-colleges .top-heading p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+.filter-college-section
+  .result-div
+  .top-colleges
+  .top-heading
+  .dropdown-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #1a3b5a;
+  font-size: 16px;
+  color: #1a3b5a;
+  border-radius: 50px;
+  min-width: 150px;
+  background-color: #fff;
+  width: auto;
+  padding: 10px;
+  max-width: 330px;
+}
+.filter-college-section
+  .result-div
+  .top-colleges
+  .top-heading
+  .dropdown-button
+  span
+  i {
+  margin-right: 10px;
+}
 
- }
+.top-colleges .near-college-card {
+  width: 234px;
+  padding-bottom: 10px;
+}
+.top-colleges .near-college-card .description {
+  padding: 0;
+}
+.top-colleges .near-college-card .description .college-title .name {
+  color: #1a3b5a;
+  font-size: 14px;
+}
+
+.top-colleges .near-college-card .description .college-title {
+  padding: 2px 10px;
+  border: none;
+}
+.top-colleges .near-college-card .description .college-title .location {
+  color: #333333;
+  font-size: 10px;
+  font-weight: 400;
+}
+.top-colleges .near-college-card .description .college-title .location i {
+  color: #333333;
+  margin-right: 10px;
+  font-size: 10px;
+}
+.top-colleges .near-college-card .description .points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0 10px;
+  margin-top: 10px;
+}
+.top-colleges .near-college-card .description .points li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.top-colleges .near-college-card .description .points li p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+.top-colleges .near-college-card .description .points li i {
+  font-size: 4px;
+  margin: 0;
+}
+.top-colleges .near-college-card .btn-container {
+  display: flex;
+  gap: 10px;
+  padding: 0 10px;
+  padding-bottom: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+.top-colleges .near-college-card .outlined-btn {
+  box-shadow: none;
+}
+.top-colleges .near-college-card .btn-container button {
+  font-size: 12px;
+  font-size: 10px;
+  width: 50%;
+  margin: 0;
+}
+.top-colleges .about-us-doubt .detail {
+  flex: 1;
+}
+.top-colleges .about-us-doubt .detail h1 {
+  font-size: 30px;
+}
+.top-colleges .about-us-doubt img {
+  max-width: 450px;
+}
+
+.download-broacher {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.download-broacher p.text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.download-broacher div {
+  display: flex;
+  gap: 10px;
+}
+.download-broacher button {
+  background-color: #33bdff;
+  color: #fff;
+  border: 1px solid #33bdff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.college-tabs {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 3rem;
+  padding: 20px;
+  list-style: none;
+  gap: 20px;
+  justify-content: space-between;
+}
+.college-tabs li {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.college-tabs li.active {
+  color: #006c9f;
+  border-bottom: 1px solid #006c9f;
+}
+
+.college-micro-info-page .college-info {
+  display: flex;
+  gap: 20px;
+}
+.college-micro-info-page .college-info .left {
+  width: 70%;
+}
+.college-micro-info-page .college-info .right {
+  flex: 1;
+}
+
+.college-micro-info-page .college-info .left .detail-box .heading {
+  font-size: 23px;
+  font-weight: 600;
+  text-align: center;
+}
+.college-micro-info-page .college-info .left .detail-box .sub-heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1d3969;
+  text-align: left;
+}
+.college-micro-info-page .college-info .left .detail-box .review-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.college-micro-info-page .college-info .left .detail-box .review-box .user-img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+}
+.college-micro-info-page .college-info .left .detail-box .review-box .title p {
+  margin: 0;
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+}
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .review-box
+  .title
+  .stars {
+  margin-top: 5px;
+  display: flex;
+  gap: 5px;
+}
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .review-box
+  .title
+  .stars
+  i {
+  color: #f9b300;
+}
+.college-micro-info-page .college-info .left .detail-box .review-box .point {
+  margin: 0;
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.college-micro-info-page .college-info .left .detail-box .infa-box {
+  width: 168px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: auto;
+}
+.college-micro-info-page .college-info .left .detail-box .grid-container-for-3 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.college-micro-info-page .college-info .left .detail-box .infa-box img {
+  max-width: 50px;
+}
+
+.college-micro-info-page .college-info .left .detail-box .infa-box p {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.college-micro-info-page .college-info .left .detail-box .review-box .point i {
+  font-size: 4px;
+}
+.college-micro-info-page .college-info .left .detail-box .last-date {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin: 20px 0;
+}
+.college-micro-info-page .college-info .left .detail-box .last-date p {
+  margin: 0;
+}
+.college-micro-info-page .college-info .left .detail-box .last-date p.date {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ff3232;
+}
+.college-micro-info-page .college-info .left .detail-box .last-date p.desc {
+  font-size: 15px;
+}
+
+.college-micro-info-page .college-info .left .detail-box .key-points {
+  padding-left: 1rem;
+}
+.college-micro-info-page .college-info .left .detail-box .key-points li {
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.college-micro-info-page .college-info .left .detail-box .highlights {
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.college-micro-info-page .college-info .left .detail-box .highlights .item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.college-micro-info-page .college-info .left .detail-box .highlights .item p {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  margin: 0;
+}
+
+.college-micro-info-page .college-info .left .detail-box .gallery-container {
+  width: 100%;
+}
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .gallery-container
+  .whole-img {
+  max-width: 700px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  max-height: 282px;
+  height: auto;
+}
+
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .gallery-container
+  .flexbox-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .gallery-container
+  .flexbox-container
+  img {
+  width: 151px;
+  height: 73px;
+  object-fit: cover;
+  object-position: center;
+}
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .gallery-container
+  .flexbox-container {
+  gap: 40px;
+}
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .gallery-container
+  .flexbox-container
+  button.see-more {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 10px;
+  background-color: #fff;
+  font-size: 12px;
+  color: #000;
+  font-weight: 600;
+  width: 120px;
+  border: 1px solid #fff;
+}
+
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .highlights
+  .item
+  .img-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .highlights
+  .item
+  .img-container
+  img {
+  max-width: 30px;
+  width: auto;
+}
+
+.college-ranking-table {
+  width: 100%;
+  text-align: center;
+}
+.college-ranking-table td {
+  font-size: 16px;
+  font-weight: 600;
+}
+.college-ranking-table tbody img {
+  max-width: 60px;
+}
+
+.college-ranking-table tbody tr td {
+  padding: 20px;
+}
+.college-ranking-table thead tr th button {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  background-color: #1d3969;
+  border: 1px solid #1d3969;
+  outline: none;
+  padding: 10px;
+  max-width: 200px;
+  width: 100%;
+  margin: auto;
+}
+.college-micro-info-page .college-info .left .detail-box .description {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+.college-micro-info-page .college-info .left .detail-box .show-more {
+  color: #1d3969;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 600;
+  max-width: 250px;
+  width: 100%;
+  display: block;
+  margin: auto;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid #1a3b5a;
+  border-radius: 5px;
+}
+.college-micro-info-page .college-info .left .detail-box.detail-box-2 {
+  padding: 40px 0;
+}
+.college-micro-info-page .college-info .left .detail-box .border-heading {
+  color: #1a3b5a;
+  border-bottom: 1px solid #bcbcbc;
+  text-align: left;
+  padding: 10px 40px;
+}
+.college-micro-info-page .college-info .left .detail-box .content {
+  padding: 0px 40px;
+}
+
+.college-micro-info-page .college-info .left .detail-box .course-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.college-micro-info-page .college-info .left .detail-box .course-flex p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a3b5a;
+}
+.college-micro-info-page .college-info .left .detail-box .course-flex button {
+  width: 175px;
+  border: 1px solid #33bdff;
+  background-color: #33bdff;
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+}
+.college-micro-info-page .college-info .left .about-us-doubt h1 {
+  font-size: 30px;
+}
+.college-micro-info-page .college-info .left .detail-box .last-btns {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.college-micro-info-page .college-info .left .detail-box .last-btns button {
+  width: 175px;
+  border: 1px solid #33bdff;
+  background-color: #33bdff;
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.college-micro-info-page
+  .college-info
+  .left
+  .detail-box
+  .last-btns
+  button.outline {
+  background-color: transparent;
+  border: 1px solid #1d3969;
+  color: #1d3969;
+  font-weight: 600;
+}
+
+.college-micro-info-page .right .placement-report .upper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.college-micro-info-page .right .placement-report .upper img {
+  max-width: 65px;
+}
+.college-micro-info-page .right .placement-report .upper p {
+  font-size: 20px;
+  margin: 0;
+}
+.college-micro-info-page .right .placement-report .btn-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.college-micro-info-page .right .placement-report .btn-container button {
+  max-width: 154px;
+  font-size: 14px;
+  background-color: #33bdff;
+  border: 1px solid #33bdff;
+  border-radius: 5px;
+  color: #fff;
+  margin: auto;
+  padding: 10px 15px;
+}
+.college-micro-info-page .right .placement-report .btn-container button.dark {
+  background-color: #349dcf;
+  border: 1px solid #349dcf;
+}
+
+.college-micro-info-page .college-info .right .featured-news {
+  padding: 40px 0;
+}
+.college-micro-info-page .college-info.right .featured-news ul {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  justify-content: space-evenly;
+  list-style: none;
+  border-bottom: 1px solid #bcbcbc;
+  margin-bottom: 20px;
+}
+.college-micro-info-page .college-info .right .featured-news ul li {
+  color: #4d4d4d;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.college-micro-info-page .college-info .right .featured-news ul li.active {
+  color: #349dcf;
+  border-bottom: 2px solid #349dcf;
+}
+
+.college-micro-info-page
+  .college-info
+  .right
+  .featured-news
+  .news-container
+  .Item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid #bcbcbc;
+}
+.college-micro-info-page
+  .college-info
+  .right
+  .featured-news
+  .news-container
+  .Item:last-child {
+  border: none;
+}
+
+.college-micro-info-page
+  .college-info
+  .right
+  .featured-news
+  .news-container
+  .Item
+  img {
+  width: 150px;
+}
+.college-micro-info-page
+  .college-info
+  .right
+  .featured-news
+  .news-container
+  .Item
+  p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.college-shortlisted-canvas h5.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.college-shortlisted-canvas .next-btn {
+  width: 163px;
+  height: 39px;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  margin: auto;
+}
+
+.shortlisted-college-page {
+  padding: 40px;
+}
+.shortlisted-college-page h4.heading {
+  font-size: 25px;
+  font-weight: 600;
+}
+.shortlisted-college-page .cart {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.shortlisted-college-page .cart .left {
+  width: 70%;
+}
+.shortlisted-college-page .cart .right {
+  flex: 1;
+}
+.shortlisted-college-page .cart .left table {
+  width: 100%;
+}
+.shortlisted-college-page .cart .left table th,
+.shortlisted-college-page .cart .left table td {
+  border: 1px solid #5e5e5e;
+  padding: 10px;
+}
+.shortlisted-college-page .cart .left table tbody .desc {
+  color: #5f5e5e;
+  font-weight: 600;
+}
+.shortlisted-college-page .cart .left table tbody select {
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #000;
+  outline: none;
+  width: 100%;
+}
+.shortlisted-college-page .cart .left table tbody .amount {
+  font-size: 16px;
+  color: #1a3b5a;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+}
+.shortlisted-college-page .cart .left table tbody .amount .fa-trash-can {
+  color: #d60000;
+}
+.shortlisted-college-page .cart .left .coupon-div .main {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.shortlisted-college-page .cart .left .coupon-div .main button {
+  width: 163px;
+  padding: 10px;
+  background-color: #fff;
+  color: #0185c3;
+  border: 2px solid #0185c3;
+  font-weight: 600;
+}
+.shortlisted-college-page .cart .left .coupon-div .main input {
+  flex: 1;
+  outline: none;
+  padding: 10px;
+  border: 1px solid #000;
+  font-size: 16px;
+}
+.shortlisted-college-page .cart .left .coupon-div button.proceed-btn {
+  width: 163px;
+  padding: 10px;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  color: #fff;
+  font-size: 16px;
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+}
+
+.shortlisted-college-page .cart .right .payment-summary {
+  padding: 20px 10px;
+  border-radius: 0;
+}
+.shortlisted-college-page .cart .right .payment-summary h6.heading {
+  font-size: 16px;
+  font-weight: 600;
+}
+.shortlisted-college-page .cart .right .payment-summary .checkbox-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.shortlisted-college-page .cart .right .payment-summary .checkbox-container p {
+  margin: 0;
+}
+.shortlisted-college-page
+  .cart
+  .right
+  .payment-summary
+  .checkbox-container
+  input {
+  width: 30px;
+  height: 30px;
+}
+.shortlisted-college-page .cart .right .payment-summary .checkbox-container p {
+  color: #5f5e5e;
+  font-weight: 600;
+  font-size: 14px;
+}
+.shortlisted-college-page .cart .right .payment-summary .payment-detail p {
+  margin: 0;
+}
+.shortlisted-college-page
+  .cart
+  .right
+  .payment-summary
+  .payment-detail
+  p.heading {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+}
+
+.shortlisted-college-page
+  .cart
+  .right
+  .payment-summary
+  .payment-detail
+  .price-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.shortlisted-college-page
+  .cart
+  .right
+  .payment-summary
+  .payment-detail
+  .price-item
+  p.text {
+  color: #434343;
+  font-size: 14px;
+  font-weight: 600;
+}
+.shortlisted-college-page
+  .cart
+  .right
+  .payment-summary
+  .payment-detail
+  .price-item
+  p.price {
+  color: #1a3b5a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.shortlisted-college-page .cart .right .payment-summary .details {
+  background-color: #e7e7e7;
+  border-radius: 5px;
+  border: 2px solid #707070;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px;
+}
+.shortlisted-college-page .cart .right .payment-summary .pay-btn {
+  width: 163px;
+  padding: 10px;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  color: #fff;
+  font-size: 14px;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.payment-page .tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.payment-page .tabs li {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.payment-page .tabs li button {
+  width: 117px;
+  height: 117px;
+  background-color: #929292;
+  border: 1px solid #929292;
+  border-radius: 100%;
+}
+.payment-page .tabs li button.active {
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+}
+
+.payment-page .tabs li button i {
+  color: #fff;
+  font-size: 25px;
+}
+.payment-page .tabs li p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.payment-page h4.heading {
+  font-size: 20px;
+  font-weight: 600;
+}
+.payment-page .details .input-div {
+  max-width: 285px;
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.payment-page .details .input-div p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.payment-page .details .input-div input {
+  width: 100%;
+  outline: none;
+  padding: 10px;
+  border: 2px solid #707070;
+  background-color: #e7e7e7;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.payment-page .details .btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 0;
+}
+.payment-page .details .btn-container .main{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex: 1;
+}
+.payment-page .details .btn-container button {
+  max-width: 173px;
+  padding: 10px;
+  width: 100%;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  color: #fff;
+  font-size: 16px;
+}
+
+.payment-page .details h6.heading {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.payment-page .details table {
+  width: 100%;
+}
+.payment-page .details table td,
+.payment-page .details table th {
+  border: 1px solid #757575;
+  padding: 10px;
+}
+.payment-page .details table td .input-div {
+  width: 100%;
+}
+.payment-page .details table td .input-div ,
+.payment-page .details table td .input-div input
+{
+  margin: 0;
+}
+.payment-page .details .radio-container{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.payment-page .details .radio-container .item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.payment-page .details .radio-container .item label{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.payment-page .details p.description{
+  max-width: 700px;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+}
+
+.payment-page .payment-reciept  h6.heading{
+  font-size: 20px;
+  text-align: center;
+}
+.payment-page .payment-reciept  h6.description{
+  font-size: 16px;
+  font-weight: 600;
+}
+.payment-page .acknowledgement-application .head{
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.payment-page .acknowledgement-application .head img{
+  width: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+.payment-page .acknowledgement-application .head .content {
+  flex: 1;
+  text-align: center;
+}
+.payment-page .acknowledgement-application .head .content p{
+  margin: 0;
+}
+.payment-page .acknowledgement-application .head .content p.university-title{
+  font-size: 24px;
+  font-weight: 900;
+  
+}
+.payment-page .acknowledgement-application .head .content p.field{
+  font-size: 20;
+  font-weight: 600;
+}
+.payment-page .acknowledgement-application .head .content p.application-num{
+  font-size: 20;
+}
+.payment-page .acknowledgement-application .input-div{
+  max-width: 100%;
+}
+
 
 /** Keyframes for the animation **/
 @keyframes highlightAnimation {

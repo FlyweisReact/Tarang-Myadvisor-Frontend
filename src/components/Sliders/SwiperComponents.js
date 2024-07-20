@@ -1,7 +1,11 @@
 /** @format */
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { degreeImg, dollarIcon, exportImg } from "../../assest";
+import { postApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 import { CustomeDropdown } from "../HelpingComponents";
+import { ClipLoader } from "react-spinners";
 
 //All Swiper components
 const RenderAbroadCollegeItems = (item) => {
@@ -55,6 +59,19 @@ const RenderAdwizorCards = (item) => {
 };
 
 const RenderUniversityCards = (item) => {
+  const [loading, setLoading] = useState(false);
+
+  const payload = {
+    universityId: item?.id,
+  };
+
+  const submitHandler = () => {
+    postApi(endPoints.applyOnUniversities, payload, {
+      setLoading,
+      successMsg: "Applied Successfully",
+    });
+  };
+
   return (
     <div className="univeristy-card-carousel-item">
       <div className="head">
@@ -71,7 +88,7 @@ const RenderUniversityCards = (item) => {
       ))}
 
       <hr />
-      <div className="predection">
+      {/* <div className="predection">
         <p className="title">Success prediction</p>
         <div className="flex-div">
           <p>Sep 2024</p>
@@ -83,12 +100,18 @@ const RenderUniversityCards = (item) => {
           <button>Very High</button>
           <button>Very High</button>
         </div>
-      </div>
+      </div> */}
       <button className="view-detail">View Details</button>
-      <button className="create-application">
-        Create application
-        <img src={exportImg} alt="" />
-      </button>
+      {loading ? (
+        <button className="create-application">
+          <ClipLoader color="#fff" />
+        </button>
+      ) : (
+        <button className="create-application" onClick={() => submitHandler()}>
+          Create application
+          <img src={exportImg} alt="" />
+        </button>
+      )}
     </div>
   );
 };
@@ -200,8 +223,13 @@ const RenderStudentTestimonialCard = (i) => {
 };
 
 const RenderTopCityCard = (i) => {
+  const navigate = useNavigate();
   return (
-    <div className="Item">
+    <div
+      className="Item"
+      style={{ cursor: "pointer" }}
+      onClick={() => navigate("/college/explore-colleges")}
+    >
       <img src={i.img} alt="" />
       <p>{i.title}</p>
     </div>

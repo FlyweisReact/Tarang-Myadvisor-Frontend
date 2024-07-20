@@ -6,7 +6,7 @@ import { Store } from "react-notifications-component";
 const Baseurl = process.env.React_App_Baseurl;
 const errorMessage = "Something went wrong !";
 
-const showMsg = (title, message, type) => {
+export const showMsg = (title, message, type) => {
   Store.addNotification({
     title,
     message,
@@ -48,11 +48,12 @@ const apiRequest = async (method, url, payload = null, options = {}) => {
   } = options;
   if (setLoading) setLoading(true);
   try {
-    const response = await axios[method](
-      `${Baseurl}${url}`,
-      payload,
-      getHeaders()
-    );
+    let response;
+    if (method === "get" || method === "delete") {
+      response = await axios[method](`${Baseurl}${url}`, getHeaders());
+    } else {
+      response = await axios[method](`${Baseurl}${url}`, payload, getHeaders());
+    }
     if (setResponse) setResponse(response.data);
     if (successMsg) showMsg("", successMsg, "success");
     additionalFunctions.forEach(

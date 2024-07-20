@@ -1,12 +1,28 @@
 /** @format */
 
+import { Link, useNavigate } from "react-router-dom";
 import {
+  badgeImg,
+  bookmarkImg,
+  cancelSvg,
+  coin,
+  combineUser,
+  donorImg,
+  examImg,
   fileSvg,
+  fillBookmark,
+  fillHeart,
+  flag,
   heartImg,
+  locationHollow,
   locationSvg,
+  progressSvg,
   rangkingSvg,
   ukSquare,
+  verifiedSvg,
 } from "../../assest";
+import { postApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 
 const WorkOppurtunityCard = (item) => {
   const { img, title } = item;
@@ -92,11 +108,19 @@ const MonthlyExpenseCard = (item) => {
 };
 
 const NearCollegeCard = (item) => {
-  const { img, collegeName, yearly } = item;
+  const navigate = useNavigate();
+  const { img, collegeName } = item;
+
   return (
     <div className="near-college-card">
       <div className="img-container">
-        <img src={img} alt="" className="college-img" />
+        <img
+          src={img}
+          alt=""
+          className="college-img"
+          onClick={() => navigate("/college-micro-info")}
+          style={{cursor : 'pointer'}}
+        />
         <div className="rating">
           <i className="fa-solid fa-star"></i>
           <p>9.5/10</p>
@@ -107,7 +131,7 @@ const NearCollegeCard = (item) => {
         <div className="college-title">
           <p className="name">{collegeName} </p>
           <div className="reviews">
-            <p className="rev"> {yearly} yearly</p>
+            <p className="rev"> 5000 yearly</p>
             <p className="count">20.5k Reviews</p>
           </div>
         </div>
@@ -136,6 +160,200 @@ const NearCollegeCard = (item) => {
   );
 };
 
+const ShortlistedUniversities = (item) => {
+  const navigate = useNavigate();
+
+  const btnStatusCheker = (status) => {
+    if (status === "APPLIED") {
+      return (
+        <button className="filled">
+          <img src={progressSvg} alt="" />
+          Applied
+        </button>
+      );
+    } else if (status === "OFFER") {
+      return (
+        <button className="filled">
+          <img src={progressSvg} alt="" />
+          Offer
+        </button>
+      );
+    } else if (status === "ENROLLMENT") {
+      return (
+        <button className="verified">
+          <img src={verifiedSvg} alt="" />
+          Enrollment
+        </button>
+      );
+    } else if (status === "SHORTLIST") {
+      return (
+        <button className="pending">
+          <img src={progressSvg} alt="" />
+          Shortlist
+        </button>
+      );
+    } else if (status === "Apply Now") {
+      return (
+        <button className="filled" onClick={applyHandler}>
+          Apply Now
+        </button>
+      );
+    }
+    //  else if (status === "decline") {
+    //   return (
+    //     <button className="rejected">
+    //       <img src={cancelSvg} alt="" />
+    //       {title}
+    //     </button>
+    //   );
+    // }
+    else {
+      return <button> {status} </button>;
+    }
+  };
+
+  const { collegeImg, flagImg, title, isFav, location, status, btn2, id } =
+    item;
+
+  const payload = {
+    universityId: id,
+  };
+
+  const shortlistHandler = () => {
+    postApi(endPoints.shortlistUniversity, payload, {
+      successMsg: "Shortlisted",
+    });
+  };
+
+  const applyHandler = () => {
+    postApi(endPoints.applyOnUniversities, payload, {
+      successMsg: "Applied Successfully",
+    });
+  };
+
+  return (
+    <div className="main">
+      <div className="head">
+        <div className="title">
+          <img src={flagImg} alt="flag" />
+          <Link to="/college-micro-info">
+            <p> {title} </p>
+          </Link>
+        </div>
+        <div className="actions">
+          {isFav ? (
+            <img src={fillHeart} alt="" />
+          ) : (
+            <img
+              src={heartImg}
+              alt=""
+              style={{ cursor: "pointer" }}
+              onClick={shortlistHandler}
+            />
+          )}
+          <div className="blank"></div>
+          {isFav ? (
+            <img src={fillBookmark} alt="" />
+          ) : (
+            <img
+              src={bookmarkImg}
+              style={{ cursor: "pointer" }}
+              alt=""
+              onClick={shortlistHandler}
+            />
+          )}
+        </div>
+      </div>
+      <div className="details">
+        <img src={collegeImg} alt="" className="college-img" />
+        <div className="content">
+          <div className="tags">
+            <div className="rating">
+              <p>4.1</p> <i className="fa-solid fa-star"></i>
+            </div>
+            <p className="review">(9 Reviews)</p>
+
+            <div className="location">
+              <img src={locationHollow} alt="" />
+              <p> {location} </p>
+            </div>
+            <div className="location">
+              <img src={flag} alt="" />
+              <p>Private</p>
+            </div>
+          </div>
+
+          <div className="package">
+            <div className="item">
+              <div className="upper">
+                <img src={coin} alt="" />
+                <p>85 K - 2.4 Lacs</p>
+              </div>
+              <p className="faded">Fees</p>
+            </div>
+            <div className="item">
+              <div className="upper">
+                <img src={donorImg} alt="" />
+                <p>4.8 Lacs</p>
+              </div>
+              <p className="faded">Avg Package</p>
+            </div>
+            <div className="item">
+              <div className="upper">
+                <img src={examImg} alt="" />
+                <p>TNEA...s</p>
+              </div>
+              <p className="faded">Exams</p>
+            </div>
+            <div className="item">
+              <div className="upper">
+                <img src={badgeImg} alt="" />
+                <p>NBA...</p>
+              </div>
+              <p className="faded">Accredition</p>
+            </div>
+          </div>
+
+          <div className="shortlisted-container">
+            <div className="user-images">
+              <img src={combineUser} alt="" className="user-image" />
+              <div className="skewDiv"></div>
+            </div>
+            <p className="shortlisted-text">Shortlisted by 1545+ students</p>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div className="brochure">
+        <ul>
+          <li>
+            <i className="fa-solid fa-circle"></i>Fees and Courses (10)
+          </li>
+          <li>
+            <i className="fa-solid fa-circle"></i>Admission
+          </li>
+          <li>
+            <i className="fa-solid fa-circle"></i>Placement
+          </li>
+        </ul>
+
+        <div>
+          {btnStatusCheker(status)}
+          {btn2 ? (
+            <button> {btn2} </button>
+          ) : (
+            <Link to="/user-dashboard/application-status">
+              <button> View Status </button>
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export {
   WorkOppurtunityCard,
   ExploreDestinationCard,
@@ -143,4 +361,5 @@ export {
   TopProgramCard,
   MonthlyExpenseCard,
   NearCollegeCard,
+  ShortlistedUniversities,
 };

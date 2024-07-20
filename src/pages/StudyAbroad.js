@@ -1,169 +1,146 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Banner, CustomeDropdown } from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
-import { collegeImg, ukSquare } from "../assest";
 import { Slider } from "../components/Sliders/Sliders";
 import {
   abroadCollegeArr,
   durationArr,
   inTakes,
-  prefferedSubjectArr,
   tutionFees,
 } from "../constant/constant";
 import { filterImg, usaSquare } from "../assest";
-import {
-  CollegeFilters,
-  CollegeResults,
-} from "../components/Study/CollegeSection";
+import { CollegeFilters } from "../components/Study/CollegeSection";
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
 import { abroadCollegeConfig } from "../components/Sliders/SwiperConfig";
 import { RenderAbroadCollegeItems } from "../components/Sliders/SwiperComponents";
-
-// options
-const optionsMenu = [
-  {
-    title: "Subject",
-    items: prefferedSubjectArr?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-    titleIcon: <i className="fa-solid fa-book"></i>,
-    caretIcon: true,
-  },
-  {
-    title: "Tution Fee (USD)",
-    items: tutionFees?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-    titleIcon: <i className="fa-solid fa-money-bill-wave"></i>,
-    caretIcon: true,
-  },
-  {
-    title: "In Takes",
-    items: inTakes?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-    titleIcon: <i className="fa-solid fa-calendar-days"></i>,
-    caretIcon: true,
-  },
-  {
-    title: "Duration",
-    items: durationArr?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-    titleIcon: <i className="fa-solid fa-clock"></i>,
-    caretIcon: true,
-  },
-];
-
-const colleges = [
-  {
-    img: usaSquare,
-    title: "Harvard University , Cambridge , USA",
-    collegeImg: collegeImg,
-    btn1: "Apply Now",
-    btn2: "Download Brochure",
-    status: "applied",
-  },
-  {
-    img: usaSquare,
-    title: "University of New Heaven , USA",
-    collegeImg: collegeImg,
-    btn1: "Apply Now",
-    btn2: "Download Brochure",
-    status: "applied",
-  },
-  {
-    img: ukSquare,
-    title: "Ucla University , UK",
-    collegeImg: collegeImg,
-    btn1: "Apply Now",
-    btn2: "Download Brochure",
-    status: "applied",
-  },
-  {
-    img: ukSquare,
-    title: "Stanford University , UK",
-    collegeImg: collegeImg,
-    btn1: "Apply Now",
-    btn2: "Download Brochure",
-    status: "applied",
-  },
-  {
-    img: ukSquare,
-    title: "Pride University , UK",
-    collegeImg: collegeImg,
-    btn1: "Apply Now",
-    btn2: "Download Brochure",
-    status: "applied",
-  },
-  {
-    img: ukSquare,
-    title: "Yale , UK",
-    collegeImg: collegeImg,
-    btn1: "Apply Now",
-    btn2: "Download Brochure",
-    status: "applied",
-  },
-];
-
-const filterationData = {
-  title: "Private Colleges / Government Colleges",
-  heading: "Filter",
-  foundCount: "Found 5503 Colleges",
-  options: [
-    {
-      title: "Courses",
-      placeholder: "Find Courses",
-      list: ["MBA / PGDMA", "B.E / B.Tech", "B.SC", "BA", "BBA / MBA"],
-    },
-    {
-      title: "State",
-      placeholder: "Find State",
-      list: ["Luci", "Snafro", "Jamesy", "Willion", "Canii"],
-    },
-    {
-      title: "Stream",
-      placeholder: "Find Stream",
-      list: ["Management", "Science", "Arts", "Computer Science", "Commerce"],
-    },
-  ],
-};
+import { ShortlistedUniversities } from "../components/Cards/AllCards";
 
 const StudyAbroad = () => {
   const [banner, setBanner] = useState({});
+  const [universities, setUniversities] = useState({ data: [] });
+  const [courses, setCourses] = useState({ courses: [] });
+  const [allStates, setAllStates] = useState({ states: [] });
+  const [allStreams, setAllStreams] = useState({ streams: [] });
 
-  const fetchBanner = () => {
+  const fetchUniversities = useCallback(() => {
+    getApi(endPoints.filterUniversities("", 1, 200), {
+      setResponse: setUniversities,
+    });
+  }, []);
+
+  useEffect(() => {
     getApi(endPoints.studyAbroadBanner, {
       setResponse: setBanner,
     });
-  };
+    getApi(endPoints.getAllCourse, {
+      setResponse: setCourses,
+    });
+    getApi(endPoints.getAllStates, {
+      setResponse: setAllStates,
+    });
+    getApi(endPoints.getAllStreams, {
+      setResponse: setAllStreams,
+    });
+  }, []);
 
   useEffect(() => {
-    fetchBanner();
-  }, []);
+    fetchUniversities();
+  }, [fetchUniversities]);
+
+  const universityArr =
+    universities?.data?.length > 0
+      ? universities?.data?.map((i) => ({
+          flagImg: usaSquare,
+          title: i?.UniversityName,
+          collegeImg: i?.ImageUrl?.[0],
+          isFav: false,
+          status: "Apply Now",
+          location: i?.location,
+          btn2: "Download Brochure",
+          id: i._id,
+        }))
+      : [];
+
+  const filterationData = {
+    title: "Private Colleges / Government Colleges",
+    heading: "Filter",
+    foundCount: `Found ${universities?.data?.length} Colleges`,
+    options: [
+      {
+        title: "Courses",
+        placeholder: "Find Courses",
+        list: courses?.courses?.map((i) => i?.courseName),
+      },
+      {
+        title: "State",
+        placeholder: "Find State",
+        list: allStates?.states?.map((i) => i?.stateName),
+      },
+      {
+        title: "Stream",
+        placeholder: "Find Stream",
+        list: allStreams?.streams?.map((i) => i?.streamName),
+      },
+    ],
+  };
+
+  const optionsMenu = [
+    {
+      title: "Subject",
+      items: courses?.courses?.map((city, index) => ({
+        label: (
+          <a href={`#${city}`} className="antd-link-a">
+            {city?.courseName}
+          </a>
+        ),
+        key: index.toString(),
+      })),
+      titleIcon: <i className="fa-solid fa-book"></i>,
+      caretIcon: true,
+    },
+    {
+      title: "Tution Fee (USD)",
+      items: tutionFees?.map((city, index) => ({
+        label: (
+          <a href={`#${city}`} className="antd-link-a">
+            {city}
+          </a>
+        ),
+        key: index.toString(),
+      })),
+      titleIcon: <i className="fa-solid fa-money-bill-wave"></i>,
+      caretIcon: true,
+    },
+    {
+      title: "In Takes",
+      items: inTakes?.map((city, index) => ({
+        label: (
+          <a href={`#${city}`} className="antd-link-a">
+            {city}
+          </a>
+        ),
+        key: index.toString(),
+      })),
+      titleIcon: <i className="fa-solid fa-calendar-days"></i>,
+      caretIcon: true,
+    },
+    {
+      title: "Duration",
+      items: durationArr?.map((city, index) => ({
+        label: (
+          <a href={`#${city}`} className="antd-link-a">
+            {city}
+          </a>
+        ),
+        key: index.toString(),
+      })),
+      titleIcon: <i className="fa-solid fa-clock"></i>,
+      caretIcon: true,
+    },
+  ];
 
   return (
     <>
@@ -195,7 +172,9 @@ const StudyAbroad = () => {
           </div>
 
           <div className="results">
-            <CollegeResults colleges={colleges} />
+            {universityArr.map((i, index) => (
+              <ShortlistedUniversities key={index} {...i} />
+            ))}
           </div>
         </div>
       </section>

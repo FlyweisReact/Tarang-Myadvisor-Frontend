@@ -1,7 +1,7 @@
 /** @format */
 
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import StudyIndia from "./pages/StudyIndia";
 import LiveSession from "./pages/CounsellingSession/LiveSession";
 import LiveSession2 from "./pages/CounsellingSession/LiveSession2";
@@ -36,10 +36,23 @@ import ExploreColleges from "./pages/ExploreColleges";
 import CollegeMicroInfo from "./pages/CollegeMicroInfo";
 import ShortlistedCollege from "./pages/ShortlistedCollege";
 import PaymentPage from "./pages/PaymentPage";
+import CollegeLists from "./pages/CollegeLists";
+import CompareColleges from "./pages/CompareColleges";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ReactNotifications />
       <Routes>
         <Route path="/choose-destination" element={<ChooseDestination />} />
@@ -100,11 +113,13 @@ const App = () => {
         <Route path="/college/scholarship-test" element={<ScholarshipTest />} />
         <Route path="/college/scholarship" element={<Scholarship />} />
         <Route path="/college/read-more" element={<CollegeDetails />} />
-        {/* new page */}
         <Route path="/college/explore-colleges" element={<ExploreColleges />} />
         <Route path="/college-micro-info" element={<CollegeMicroInfo />} />
         <Route path="/shortlisted-college" element={<ShortlistedCollege />} />
         <Route path="/payment-page" element={<PaymentPage />} />
+        {/* new page */}
+        <Route path="/college-list" element={<CollegeLists />} />
+        <Route path="/compare-colleges" element={<CompareColleges />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,15 +2,19 @@
 
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { Img10 } from "../assest";
 import WrappedComponent from "../Layout/CounellingLayout/Layout/WrappedComponent";
 
 const PaymentPage = () => {
   const [step, setStep] = useState(1);
+  const navigate = useNavigate();
 
   const backStep = () => {
     if (step > 1) {
       setStep(step - 1);
+    } else {
+      navigate(-1);
     }
   };
   const nextStep = () => {
@@ -116,7 +120,7 @@ const PaymentPage = () => {
               </div>
             </form>
             <div className="btn-container">
-              <button>Save & Exit</button>
+              <button onClick={backStep}> Save & Exit</button>
               <button onClick={nextStep}>Next</button>
             </div>
           </div>
@@ -718,8 +722,8 @@ const PaymentPage = () => {
               className="btn-container"
               style={{ justifyContent: "flex-end" }}
             >
-               <button onClick={backStep}>Back</button>
-                <button>Print</button>
+              <button onClick={backStep}>Back</button>
+              <button>Print</button>
             </div>
           </div>
         </>

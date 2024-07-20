@@ -126,7 +126,7 @@ const CollegeResults = ({ colleges }) => {
 
             <div className="location">
               <img src={locationHollow} alt="" />
-              <p>Cambridge , USA</p>
+              <p> {i?.location} </p>
             </div>
             <div className="location">
               <img src={flag} alt="" />

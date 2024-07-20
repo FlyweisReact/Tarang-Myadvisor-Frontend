@@ -1,167 +1,72 @@
 /** @format */
 
-import React, { useState } from "react";
-import { collegeImg, ukSquare, usaSquare } from "../../assest";
+import React, { useState, useEffect } from "react";
+import { usaSquare } from "../../assest";
+import { ShortlistedUniversities } from "../../components/Cards/AllCards";
 import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
-import { CollegeResults } from "../../components/Study/CollegeSection";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
+import { postApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 
-const nav = ["All", "Engaged", "Applied", "Visa", "Rejected"];
-
-const colleges = [
+const nav = [
   {
-    img: usaSquare,
-    title: "Harvard University , Cambridge , USA",
-    collegeImg: collegeImg,
-    btn1: "Applied",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "recived",
+    label: "All",
+    value: "All",
   },
   {
-    img: usaSquare,
-    title: "University of New Heaven , USA",
-    collegeImg: collegeImg,
-    btn1: "Visa Arrived",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "approved",
+    label: "Shortlisted",
+    value: "SHORTLIST",
   },
   {
-    img: ukSquare,
-    title: "Ucla University , UK",
-    collegeImg: collegeImg,
-    btn1: "Offer Recieved",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "pending",
+    label: "Applied",
+    value: "APPLIED",
   },
   {
-    img: ukSquare,
-    title: "Stanford University , UK",
-    collegeImg: collegeImg,
-    btn1: "Rejected",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "decline",
-  },
-];
-
-const EngagedColleges = [
-  {
-    img: usaSquare,
-    title: "University of New Heaven , USA",
-    collegeImg: collegeImg,
-    btn1: "Engaged",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "applied",
+    label: "Offer",
+    value: "OFFER",
   },
   {
-    img: usaSquare,
-    title: "Harvard University , Cambridge , USA",
-    collegeImg: collegeImg,
-    btn1: "Engaged",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "applied",
-  },
-];
-
-const appliedColleges = [
-  {
-    img: usaSquare,
-    title: "Ucla University , UK",
-    collegeImg: collegeImg,
-    btn1: "Applied",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "recived",
-  },
-  {
-    img: usaSquare,
-    title: "Harvard University , Cambridge , USA",
-    collegeImg: collegeImg,
-    btn1: "Applied",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "recived",
-  },
-  {
-    img: usaSquare,
-    title: "Harvard University , Cambridge , USA",
-    collegeImg: collegeImg,
-    btn1: "Applied",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "recived",
-  },
-];
-
-const visaColleges = [
-  {
-    img: usaSquare,
-    title: "New Heaven  University , USA",
-    collegeImg: collegeImg,
-    btn1: "Visa Arrived",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "approved",
-  },
-  {
-    img: usaSquare,
-    title: "University of New Heaven , USA",
-    collegeImg: collegeImg,
-    btn1: "Visa Arrived",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "approved",
-  },
-];
-
-const rejectedColleges = [
-  {
-    img: usaSquare,
-    title: "Ucla University , UK",
-    collegeImg: collegeImg,
-    btn1: "Rejected",
-    btn2: "View Status",
-    isFav: true,
-    isSaved: true,
-    status: "decline",
+    label: "Enrollment",
+    value: "ENROLLMENT",
   },
 ];
 
 const UserUniversities = () => {
   const [type, setType] = useState("All");
+  const [data, setData] = useState({});
 
-  const renderSwitchComponent = () => {
-    switch (type) {
-      case "All":
-        return <CollegeResults colleges={colleges} />;
-      case "Engaged":
-        return <CollegeResults colleges={EngagedColleges} />;
-      case "Applied":
-        return <CollegeResults colleges={appliedColleges} />;
-      case "Visa":
-        return <CollegeResults colleges={visaColleges} />;
-      case "Rejected":
-        return <CollegeResults colleges={rejectedColleges} />;
-      default:
-        return <CollegeResults colleges={colleges} />;
-    }
+  let payload;
+  if (type === "All") {
+    payload = {};
+  } else {
+    payload = {
+      applicationStatus: type,
+    };
+  }
+
+  const fetchUniversities = () => {
+    postApi(endPoints.allShortlistedUniversity, payload, {
+      setResponse: setData,
+    });
   };
+
+  useEffect(() => {
+    fetchUniversities();
+  }, [type]);
+
+  const universityArr =
+    data?.data?.length > 0
+      ? data?.data?.map((i) => ({
+          flagImg: usaSquare,
+          title: i?.universityId?.UniversityName,
+          collegeImg: i?.universityId?.ImageUrl?.[0],
+          isFav: i?.applicationStatus === "SHORTLIST" ? true : false,
+          isSaved: i?.applicationStatus === "SHORTLIST" ? true : false,
+          status: i?.applicationStatus,
+          location: i?.universityId?.location,
+          id: i?.universityId?._id,
+        }))
+      : [];
 
   return (
     <section className="user-homePage mt-3 with-bg-img">
@@ -174,11 +79,11 @@ const UserUniversities = () => {
             {nav.map((i, index) => (
               <li
                 key={index}
-                className={`${type === i ? "active" : ""}`}
-                onClick={() => setType(i)}
+                className={`${type === i.value ? "active" : ""}`}
+                onClick={() => setType(i.value)}
               >
                 {" "}
-                {i}{" "}
+                {i.label}{" "}
               </li>
             ))}
           </ul>
@@ -187,7 +92,11 @@ const UserUniversities = () => {
 
       <section className="filter-college-section mt-3 user-universities">
         <div className="result-div">
-          <div className="results">{renderSwitchComponent()}</div>
+          <div className="results">
+            {universityArr.map((i, index) => (
+              <ShortlistedUniversities {...i} key={index} />
+            ))}
+          </div>
         </div>
       </section>
 

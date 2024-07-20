@@ -5,7 +5,10 @@ import { CollegeFilters } from "../components/Study/CollegeSection";
 import WrappedComponent from "../Layout/CounellingLayout/Layout/WrappedComponent";
 import { CustomeDropdown } from "../components/HelpingComponents";
 import { CollegeImg38, NearlyCollege1 } from "../assest";
-import { AlertModal } from "../components/Modals/Modals";
+import {
+  AlertModal,
+  CollegeShortlistedCanvas,
+} from "../components/Modals/Modals";
 import { useNavigate } from "react-router-dom";
 
 const filterationData = {
@@ -117,6 +120,7 @@ const boxStyle = {
 const ExploreColleges = () => {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
+  const [openCanvas, setOpenCanvas] = useState(false);
   const navigate = useNavigate();
 
   const ApplicationCard = () => {
@@ -177,9 +181,14 @@ const ExploreColleges = () => {
             <button className="apply-btn" onClick={() => setOpen(true)}>
               Expert Talk{" "}
             </button>
-            <button className="outlined-btn">Compare</button>
+            <button
+              className="outlined-btn"
+              onClick={() => navigate("/compare-colleges")}
+            >
+              Compare
+            </button>
           </div>
-          <button className="outlined-btn">
+          <button className="outlined-btn" onClick={() => setOpenCanvas(true)}>
             Add to common Application Form
           </button>
         </div>
@@ -189,6 +198,10 @@ const ExploreColleges = () => {
 
   return (
     <>
+      <CollegeShortlistedCanvas
+        show={openCanvas}
+        handleClose={() => setOpenCanvas(false)}
+      />
       <AlertModal show={open} onHide={() => setOpen(false)} />
       <AlertModal
         show={open1}

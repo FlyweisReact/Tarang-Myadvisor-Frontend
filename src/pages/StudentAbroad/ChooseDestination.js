@@ -578,6 +578,13 @@ const StepComponent7 = ({
   submitHandler,
   loading,
   navigate,
+  setImage,
+  setDob,
+  dob,
+  setGender,
+  setMartialStatus,
+  setCity,
+  setState,
 }) => {
   return (
     <>
@@ -600,6 +607,11 @@ const StepComponent7 = ({
       <div className="choose-from-options-page">
         <h4>Just one last step to get an University Shortlist</h4>
         <input
+          type="file"
+          onChange={(e) => setImage(e.target.files[0])}
+          style={{ border: "none", height: "auto" }}
+        />
+        <input
           type="text"
           placeholder="Name"
           onChange={(e) => setFullName(e.target.value)}
@@ -616,6 +628,39 @@ const StepComponent7 = ({
           placeholder="Phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
+        />
+        <h4
+          className="mb-2"
+          style={{ textAlign: "left", width: "100%", maxWidth: "600px" }}
+        >
+          Date of Birth
+        </h4>
+        <input
+          type="date"
+          placeholder="Date of Birth"
+          value={dob}
+          onChange={(e) => setDob(e.target.value)}
+        />
+        <select onChange={(e) => setGender(e.target.value)}>
+          <option>Select Gender</option>
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+          <option value="OTHER">Other</option>
+        </select>
+        <select onChange={(e) => setMartialStatus(e.target.value)}>
+          <option>Maritial Status</option>
+          <option value="YES">Yes</option>
+          <option value="NO">No</option>
+        </select>
+        <input
+          type="text"
+          placeholder="City"
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="State"
+          onChange={(e) => setState(e.target.value)}
         />
 
         <button className="continue" onClick={submitHandler}>
@@ -645,6 +690,12 @@ const ChooseDestination = () => {
   const [lookingFor, setLookingFor] = useState("");
   const [bookingConfirmation, setBookingConfirmation] = useState("");
   const [givenGRE, setGivenGRE] = useState("");
+  const [image, setImage] = useState("");
+  const [dob, setDob] = useState("");
+  const [gender, setGender] = useState("");
+  const [martialStatus, setMartialStatus] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -663,6 +714,12 @@ const ChooseDestination = () => {
 
   const fd = new FormData();
   fd.append("fullname", fullname);
+  fd.append("image", image);
+  fd.append("dob", dob);
+  fd.append("gender", gender);
+  fd.append("martialStatus", martialStatus);
+  fd.append("city", city);
+  fd.append("state", state);
   fd.append("email", email);
   fd.append("phone", phone);
   fd.append("destinationCountry", destinationCountry);
@@ -809,6 +866,13 @@ const ChooseDestination = () => {
                 submitHandler={submitHandler}
                 loading={loading}
                 navigate={navigate}
+                setImage={setImage}
+                setDob={setDob}
+                dob={dob}
+                setGender={setGender}
+                setMartialStatus={setMartialStatus}
+                setCity={setCity}
+                setState={setState}
               />
             }
             width={"100%"}

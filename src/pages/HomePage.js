@@ -22,11 +22,11 @@ import {
   RenderSypnosisItem,
 } from "../components/Sliders/SwiperComponents";
 import {
-  allAdwiozordsArr,
   collegeDetails,
   infuluncerCardConstant,
   sypnosisData,
 } from "../constant/constant";
+import { Link } from "react-router-dom";
 
 const StudentNavigation = () => {
   return (
@@ -44,7 +44,7 @@ const StudentNavigation = () => {
 const HomePage = () => {
   const [features, setFeatures] = useState({});
   const [studentThoughts, setStudentThoughts] = useState({ data: [] });
-  // const [adwizors, setAdwizors] = useState({});
+  const [adwizors, setAdwizors] = useState({});
 
   const featureData =
     features?.data?.length > 0
@@ -62,25 +62,25 @@ const HomePage = () => {
     getApi(endPoints.getAllStudentOpinions, {
       setResponse: setStudentThoughts,
     });
-    // getApi(endPoints.getVerifiedAdwizors, {
-    //   setResponse: setAdwizors,
-    // });
+    getApi(endPoints.getVerifiedAdwizors, {
+      setResponse: setAdwizors,
+    });
   }, []);
 
-  // const adwizorsData =
-  //   adwizors?.data?.length > 0
-  //     ? adwizors?.data?.slice(0, 6)?.map((i) => ({
-  //         img: i?.image,
-  //         name: i?.fullname,
-  //         rating: i?.averageRating,
-  //         description: [i?.experiance, i?.state, i?.helpedStudent],
-  //       }))
-  //     : [];
+  const adwizorsData =
+    adwizors?.data?.length > 0
+      ? adwizors?.data?.slice(0, 6)?.map((i) => ({
+          img: i?.image,
+          title: i?.fullname,
+          rating: i?.averageRating,
+          description: [i?.experiance, i?.state, i?.helpedStudent],
+        }))
+      : [];
 
   return (
     <>
       <AdwizorBanner />
-      <AdwizorCards topAdwizor={true} topAdwizorData={allAdwiozordsArr} />
+      <AdwizorCards topAdwizor={true} topAdwizorData={adwizorsData} />
       <HowItWorks />
 
       <section className="features">
@@ -98,7 +98,7 @@ const HomePage = () => {
       <section className="college-table">
         <div className="head">
           <h4 className="normal-heading">Top 10 Featured Colleges</h4>
-          <a href="/">View All</a>
+          <Link to={'/college-list'}>View All</Link>
         </div>
         <div className="destination">
           <ul>

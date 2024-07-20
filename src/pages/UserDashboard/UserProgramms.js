@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { filterSvg } from "../../assest";
 import { Dropdown } from "antd";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
@@ -10,7 +10,6 @@ import {
   englishScore,
   programmLevel,
   tutionFess,
-  universityCardArr,
 } from "../../constant/constant";
 import { Slider } from "../../components/Sliders/Sliders";
 import {
@@ -21,7 +20,13 @@ import {
   RenderFilterItems,
   RenderUniversityCards,
 } from "../../components/Sliders/SwiperComponents";
-import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
+import {
+  AppointmentFloatingBtn,
+  LoaderComponent,
+} from "../../components/HelpingComponents";
+import { getApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
+import { debouncedSetQuery } from "../../utils/utils";
 
 const items = [
   {
@@ -216,6 +221,58 @@ const optionsMenu = [
 ];
 
 const UserProgramms = () => {
+  const [query, setQuery] = useState("");
+  const [data, setData] = useState({ data: [] });
+  const [loading, setLoading] = useState(false);
+  const page = 1;
+  const limit = 200;
+
+  const fetchHandler = useCallback(() => {
+    getApi(endPoints.filterUniversities(query, page, limit), {
+      setResponse: setData,
+      setLoading,
+    });
+  }, [query]);
+
+  useEffect(() => {
+    fetchHandler();
+  }, [fetchHandler]);
+
+  const universityArr =
+    data?.data?.length > 0
+      ? data?.data?.map((i) => ({
+          id: i?._id,
+          img: i?.ImageUrl?.[0],
+          collegeName: i?.UniversityName,
+          subject: i?.CourseTitle,
+          description: [
+            {
+              title: "Location",
+              desc: i?.location,
+            },
+            {
+              title: "Campus city",
+              desc: i?.campusName,
+            },
+            {
+              title: "Gross tuition fee",
+              desc: i?.grossTuition,
+            },
+            {
+              title: "Application fee",
+              desc: `$${i?.applicationFee}`,
+            },
+            {
+              title: "Duration",
+              desc: i?.programLength,
+            },
+          ],
+        }))
+      : [];
+
+
+
+
   return (
     <section className="user-homePage mt-2  with-bg-img">
       <div className="heading">
@@ -229,6 +286,7 @@ const UserProgramms = () => {
             <input
               type={"search"}
               placeholder="Search for Program , School & Other Keywords"
+              onChange={(e) => debouncedSetQuery(e.target.value, setQuery)}
             />
           </div>
           <Dropdown menu={{ items }} trigger={["click"]}>
@@ -239,7 +297,7 @@ const UserProgramms = () => {
           </Dropdown>
         </div>
 
-        <p className="result">2000+ Results & Programs</p>
+        <p className="result"> {data?.data?.length}+ Results & Programs</p>
         <hr />
       </div>
 
@@ -250,13 +308,18 @@ const UserProgramms = () => {
           swiperConfig={userProgramConfig}
         />
       </div>
-      <div className="university-slider">
-        <Slider
-          RenderSlide={RenderUniversityCards}
-          data={universityCardArr}
-          swiperConfig={topAdwizorsConfig}
-        />
-      </div>
+      {loading === true ? (
+        <LoaderComponent />
+      ) : (
+        <div className="university-slider">
+          <Slider
+            RenderSlide={RenderUniversityCards}
+            data={universityArr}
+            swiperConfig={topAdwizorsConfig}
+          />
+        </div>
+      )}
+
       <AppointmentFloatingBtn />
     </section>
   );

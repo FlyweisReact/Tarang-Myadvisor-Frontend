@@ -225,13 +225,13 @@ const userDashboardSidebar2 = [
 
 const userProfileTab = [
   "Profile Overview",
-  "Activities",
-  "Notes",
+  // "Activities",
+  // "Notes",
   "Addresses",
-  "History",
+  // "History",
   "My Universities",
-  "Documents",
-  "Adwizor",
+  // "Documents",
+  // "Adwizor",
 ];
 
 const universityCardArr = [

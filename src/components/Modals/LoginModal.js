@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
-import { getApi, postApi } from "../../Repository/Api";
+import { getApi, postApi, showMsg } from "../../Repository/Api";
 import { EnterOtpModal } from "./Modals";
 import ClipLoader from "react-spinners/ClipLoader";
 import endPoints from "../../Repository/apiConfig";
@@ -39,11 +39,20 @@ const LoginModal = (props) => {
     phone,
   };
 
+  const showOtp = (res) => {
+    const otp = res.data.otp
+    showMsg("" , otp , "success" )
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     postApi(endPoints.userSignup, payload, {
       setLoading,
-      additionalFunctions: [props.onHide, () => setIsOtpModal(true)],
+      additionalFunctions: [
+        props.onHide,
+        () => setIsOtpModal(true),
+        (res) => showOtp(res),
+      ],
     });
   };
 

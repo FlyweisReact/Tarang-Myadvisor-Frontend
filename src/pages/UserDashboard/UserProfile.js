@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   blankAvatar,
   cancelSvg,
@@ -27,8 +27,10 @@ import {
   userProfileTab,
 } from "../../constant/constant";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
+import { getApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 
-const ProfileTab = () => {
+const ProfileTab = ({ data }) => {
   return (
     <>
       <div className="basic-details margin-div">
@@ -37,19 +39,19 @@ const ProfileTab = () => {
           <h4>Basic Details</h4>
           <div className="item">
             <p>Full Name</p>
-            <p>Vandana</p>
+            <p> {data?.fullname} </p>
           </div>
           <div className="item">
             <p>D.O.B</p>
-            <p>12-09-2000</p>
+            <p> {data?.dob} </p>
           </div>
           <div className="item">
             <p>Gender</p>
-            <p>Female</p>
+            <p> {data?.gender} </p>
           </div>
           <div className="item">
             <p>Martial Status</p>
-            <p>No</p>
+            <p> {data?.martialStatus} </p>
           </div>
         </div>
         <div className="blank" />
@@ -57,19 +59,19 @@ const ProfileTab = () => {
           <h4>Contact Details</h4>
           <div className="item">
             <p>Mobile</p>
-            <p>+911234567890</p>
+            <p> {data?.phone} </p>
           </div>
           <div className="item">
             <p>Email</p>
-            <p>Darshini@gmail.com</p>
+            <p> {data?.email} </p>
           </div>
           <div className="item">
             <p>City</p>
-            <p>Banglore</p>
+            <p>{data?.city}</p>
           </div>
           <div className="item">
             <p>State</p>
-            <p>Karnataka</p>
+            <p>{data?.state}</p>
           </div>
         </div>
       </div>
@@ -80,42 +82,42 @@ const ProfileTab = () => {
           <div className="content">
             <div className="detail">
               <p>Study Level</p>
-              <p>Post Graduate</p>
+              <p> {data?.preferredDegree} </p>
             </div>
             <div className="detail">
               <p>Course Admmission</p>
-              <p>Yes</p>
+              <p> {data?.alreadyUniversityAdmit} </p>
             </div>
-            <div className="detail">
+            {/* <div className="detail">
               <p>Visa</p>
               <p>Pending</p>
             </div>
             <div className="detail">
               <p>Plan of Study</p>
               <p>Feb,2025</p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="Item">
           <h5>Intakes</h5>
           <div className="content">
             <div className="detail">
-              <p>Intake 01</p>
-              <p>12-02-23</p>
+              <p>Intake</p>
+              <p> {data?.preferredIntake} </p>
             </div>
-            <div className="detail">
+            {/* <div className="detail">
               <p>Status</p>
               <p>No</p>
-            </div>
-            <hr style={{ margin: 0 }} />
-            <div className="detail">
+            </div> */}
+            {/* <hr style={{ margin: 0 }} /> */}
+            {/* <div className="detail">
               <p>Intake 02</p>
               <p>12-02-23</p>
             </div>
             <div className="detail">
               <p>Status</p>
               <p>Yes</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -251,7 +253,7 @@ const NotesTab = () => {
   );
 };
 
-const AddressTab = () => {
+const AddressTab = ({ data }) => {
   return (
     <>
       <div className="notes margin-div">
@@ -259,12 +261,12 @@ const AddressTab = () => {
           <div className="content">
             <h5>Addresses</h5>
             <ul>
-              <li>
-                12, Ramanuja Plaza, 5th Cross, Near Githanali Talkies, <br />
-                Malleshwaram
-              </li>
-              <li>Bangalore, Karnataka, 560003</li>
-              <li>23565689</li>
+              {data?.map((i, index) => (
+                <li key={`address${index}`}>
+                  {" "}
+                  {i?.destinationCountry} , {i?.city} , {i?.state}{" "}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -342,19 +344,52 @@ const HistoryTab = () => {
   );
 };
 
-const UniversityTab = () => {
+const UniversityTab = ({ data }) => {
+  const universityArr =
+    data?.length > 0
+      ? data?.map((i) => ({
+          id: i?._id,
+          img: i?.ImageUrl?.[0],
+          collegeName: i?.UniversityName,
+          subject: i?.CourseTitle,
+          description: [
+            {
+              title: "Location",
+              desc: i?.location,
+            },
+            {
+              title: "Campus city",
+              desc: i?.campusName,
+            },
+            {
+              title: "Gross tuition fee",
+              desc: i?.grossTuition,
+            },
+            {
+              title: "Application fee",
+              desc: `$${i?.applicationFee}`,
+            },
+            {
+              title: "Duration",
+              desc: i?.programLength,
+            },
+          ],
+        }))
+      : [];
+
   return (
     <>
       <div className="univeristy-tab margin-div">
         <h4>My Universities</h4>
-
-        <div className="my-slider">
-          <Slider
-            RenderSlide={RenderUniversityCards}
-            data={universityCardArr}
-            swiperConfig={topAdwizorsConfig}
-          />
-        </div>
+        {universityArr?.length > 0 && (
+          <div className="my-slider">
+            <Slider
+              RenderSlide={RenderUniversityCards}
+              data={universityArr}
+              swiperConfig={topAdwizorsConfig}
+            />
+          </div>
+        )}
       </div>
     </>
   );
@@ -423,21 +458,40 @@ const AdwizorTab = () => {
 
 const UserProfile = () => {
   const [activeTab, setActveTab] = useState("Profile Overview");
+  const [profileData, setProfileData] = useState({});
+  const [address, setAddress] = useState({});
+  const [allUniversities, setAllUniversities] = useState({
+    data: {
+      universities: {},
+    },
+  });
+
+  useEffect(() => {
+    getApi(endPoints.getUserProfile, {
+      setResponse: setProfileData,
+    });
+    getApi(endPoints.getUserAddress, {
+      setResponse: setAddress,
+    });
+    getApi(endPoints.getAllUniversities(1, 50), {
+      setResponse: setAllUniversities,
+    });
+  }, []);
 
   const renderComponent = () => {
     switch (activeTab) {
       case "Profile Overview":
-        return <ProfileTab />;
+        return <ProfileTab data={profileData?.data} />;
       case "Activities":
         return <ActivitiesTab />;
       case "Notes":
         return <NotesTab />;
       case "Addresses":
-        return <AddressTab />;
+        return <AddressTab data={address?.data} />;
       case "History":
         return <HistoryTab />;
       case "My Universities":
-        return <UniversityTab />;
+        return <UniversityTab data={allUniversities.data.universities} />;
       case "Documents":
         return <DocumentTab />;
       case "Adwizor":

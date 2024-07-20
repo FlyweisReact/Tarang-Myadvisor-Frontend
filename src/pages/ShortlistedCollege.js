@@ -43,7 +43,9 @@ const ShortlistedCollege = () => {
           </table>
           <div className="coupon-div margin-div">
             <div className="main">
-              <button>More Colleges</button>
+              <button onClick={() => navigate("/college/homepage")}>
+                More Colleges
+              </button>
               <input type="text" placeholder="Enter Coupon Code" />
             </div>
             <button

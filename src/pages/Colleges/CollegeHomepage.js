@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Slider } from "../../components/Sliders/Sliders";
 import {
   topCitiesArr,
@@ -21,6 +21,8 @@ import TableLayout from "../../components/TableLayout";
 import { CollegeImg38 } from "../../assest";
 import CollegePageLayout from "../../Layout/CollegeLayout/Layout/CollegePageLayout";
 import { BlinkingHeading } from "../../components/HelpingComponents";
+import endPoints from "../../Repository/apiConfig";
+import { getApi } from "../../Repository/Api";
 
 const NavigationComponent = () => {
   return (
@@ -36,6 +38,24 @@ const NavigationComponent = () => {
 };
 
 const CollegeHomepage = () => {
+  const [topColleges, setTopColleges] = useState({ data: [] });
+  const page = 1;
+  const limit = 200;
+
+  useEffect(() => {
+    getApi(endPoints.filterUniversities("", page, limit), {
+      setResponse: setTopColleges,
+    });
+  }, []);
+
+  console.log(topColleges)
+
+  const universityArr = topColleges?.data?.map((i) => ({
+    id : i?._id ,
+    img : i?.ImageUrl?.[0],
+    collegeName : i?.UniversityName
+  }))
+
   return (
     <section>
       <BlinkingHeading
@@ -61,7 +81,7 @@ const CollegeHomepage = () => {
         <h4 className="normal-heading text-start">Top Colleges Near Me</h4>
         <div className="custom-slider">
           <Slider
-            data={nearCollegeArr}
+            data={universityArr}
             swiperConfig={nearCollegeSwiperConfig}
             RenderSlide={NearCollegeCard}
             ExtraComponent={NavigationComponent}

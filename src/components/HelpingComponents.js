@@ -2,6 +2,7 @@
 
 import { Dropdown } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import { GoToTopImg, touristImg1, touristImg2 } from "../assest";
 
 const CustomeDropdown = ({ items, title, caretIcon, titleIcon, className }) => {
@@ -197,6 +198,16 @@ const BlinkingHeading = ({ text }) => {
   );
 };
 
+const LoaderComponent = ({ isLoading }) => {
+  return (
+    isLoading && (
+      <div className="loader-component">
+        <ClipLoader />{" "}
+      </div>
+    )
+  );
+};
+
 export {
   InfluencerCard,
   GoToTop,
@@ -208,4 +219,5 @@ export {
   BannerSearchComponent,
   TouristImage,
   BlinkingHeading,
+  LoaderComponent,
 };

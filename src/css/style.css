@@ -948,6 +948,33 @@
   align-items: center;
   cursor: pointer;
 }
+.college-table .button-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.college-table .button-container button.filled{
+  font-size: 12px;
+  width: 100%;
+  background-color: #0185C3;
+  border: 1px solid #0185C3;
+  color: #fff;
+  border-radius: 10px;
+  padding: 6px;
+}
+.college-table .button-container button.outline{
+  font-size: 12px;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: #349DCF;
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-weight: 600;
+}
 .college-table .destination ul li.active {
   background-color: #0185c3;
   color: #fff;
@@ -4322,25 +4349,25 @@
 }
 .near-college-card .description .outlined-btn {
   width: 220px;
-  padding: 10px;
+  padding: 6px;
   font-size: 12px;
   color: #0185c3;
   border: 1px solid #0185c3;
   background-color: #fff;
-  border-radius: 10px;
   font-weight: 600;
   display: block;
   margin: auto;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 50px;
 }
 .near-college-card .description .apply-btn {
   width: 130px;
-  padding: 10px;
+  padding: 6px;
   font-size: 12px;
   color: #fff;
   border: 1px solid #0185c3;
   background-color: #0185c3;
-  border-radius: 5px;
+  border-radius: 50px;
   display: block;
   margin: auto;
   margin-top: 10px;
@@ -4435,6 +4462,7 @@
 }
 .about-us-doubt .detail {
   padding: 20px;
+  flex: 1;
 }
 .about-us-doubt .detail h1 {
   font-size: 40px;
@@ -5832,7 +5860,10 @@
 .payment-page .acknowledgement-application .input-div{
   max-width: 100%;
 }
-
+.loader-component{
+  padding: 20px;
+  text-align: center;
+}
 
 /** Keyframes for the animation **/
 @keyframes highlightAnimation {

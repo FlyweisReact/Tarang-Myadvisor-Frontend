@@ -27,13 +27,29 @@ export const EnterOtpModal = (props) => {
     localStorage.setItem("user-token", res.token);
   };
 
+  let url;
+  if (props.userType === "advisor") {
+    url = endPoints.verifyAdwizorOtp;
+  } else {
+    url = endPoints.verifyOtp;
+  }
+
+  const navigationHandler = () => {
+    if (props.userType === "advisor") {
+      navigate("/");
+    } else {
+      navigate("/choose-destination");
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    postApi(endPoints.verifyOtp, payload, {
+    postApi(url, payload, {
       setLoading,
       additionalFunctions: [
         (res) => tokenSaver(res),
-        () => navigate("/choose-destination"),
+        props.onHide(),
+        navigationHandler,
       ],
     });
   };

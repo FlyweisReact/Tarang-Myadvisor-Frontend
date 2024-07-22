@@ -48,13 +48,11 @@ const CollegeHomepage = () => {
     });
   }, []);
 
-  console.log(topColleges)
-
   const universityArr = topColleges?.data?.map((i) => ({
-    id : i?._id ,
-    img : i?.ImageUrl?.[0],
-    collegeName : i?.UniversityName
-  }))
+    id: i?._id,
+    img: i?.ImageUrl?.[0],
+    collegeName: i?.UniversityName,
+  }));
 
   return (
     <section>
@@ -111,7 +109,7 @@ const CollegeHomepage = () => {
         <h4 className="normal-heading text-start">Top Universities</h4>
         <div className="custom-slider">
           <Slider
-            data={nearCollegeArr}
+            data={universityArr}
             swiperConfig={nearCollegeSwiperConfig}
             RenderSlide={NearCollegeCard}
             ExtraComponent={NavigationComponent}

@@ -200,25 +200,39 @@ import whiteCap from "./Images/white-cap.png";
 import whiteMsg from "./Images/white-chat.png";
 import whiteUser from "./Images/white-user.png";
 import JamiaBanner from "./Images/jamiaBanner.png";
-import collegeHighlight1 from './Images/higlight/1.png'
-import collegeHighlight2 from './Images/higlight/2.png'
-import collegeHighlight3 from './Images/higlight/3.png'
-import collegeHighlight4 from './Images/higlight/4.png'
-import collegeHighlight5 from './Images/higlight/5.png'
-import collegeHighlight6 from './Images/higlight/6.png'
-import collegeHighlight7 from './Images/higlight/7.png'
-import img1 from './Images/higlight/8.png'
-import Img2 from './Images/news.png'
-import Img3 from './Images/Infa/1.png'
-import Img4 from './Images/Infa/2.png'
-import Img5 from './Images/Infa/3.png'
-import Img6 from './Images/Infa/4.png'
-import Img7 from './Images/Infa/5.png'
-import Img8 from './Images/Infa/6.png'
-import Img9 from './Images/39.png'
-import Img10 from './Images/40.png'
+import collegeHighlight1 from "./Images/higlight/1.png";
+import collegeHighlight2 from "./Images/higlight/2.png";
+import collegeHighlight3 from "./Images/higlight/3.png";
+import collegeHighlight4 from "./Images/higlight/4.png";
+import collegeHighlight5 from "./Images/higlight/5.png";
+import collegeHighlight6 from "./Images/higlight/6.png";
+import collegeHighlight7 from "./Images/higlight/7.png";
+import img1 from "./Images/higlight/8.png";
+import Img2 from "./Images/news.png";
+import Img3 from "./Images/Infa/1.png";
+import Img4 from "./Images/Infa/2.png";
+import Img5 from "./Images/Infa/3.png";
+import Img6 from "./Images/Infa/4.png";
+import Img7 from "./Images/Infa/5.png";
+import Img8 from "./Images/Infa/6.png";
+import Img9 from "./Images/39.png";
+import Img10 from "./Images/40.png";
+import Img11 from "./Images/AdwizorDashboard/1.png";
+import Img12 from "./Images/AdwizorDashboard/2.png";
+import Img13 from "./Images/AdwizorDashboard/3.png";
+import Img14 from "./Images/AdwizorDashboard/4.png";
+import Img15 from "./Images/AdwizorDashboard/5.png";
+import Img16 from "./Images/AdwizorDashboard/6.png";
+import Img17 from "./Images/AdwizorDashboard/7.png";
 
 export {
+  Img11,
+  Img12,
+  Img13,
+  Img14,
+  Img15,
+  Img16,
+  Img17,
   Img10,
   Img9,
   Img2,

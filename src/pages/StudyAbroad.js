@@ -1,7 +1,11 @@
 /** @format */
 
 import React, { useState, useEffect, useCallback } from "react";
-import { Banner, CustomeDropdown } from "../components/HelpingComponents";
+import {
+  Banner,
+  CustomeDropdown,
+  LoaderComponent,
+} from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
 import { Slider } from "../components/Sliders/Sliders";
 import {
@@ -17,6 +21,7 @@ import endPoints from "../Repository/apiConfig";
 import { abroadCollegeConfig } from "../components/Sliders/SwiperConfig";
 import { RenderAbroadCollegeItems } from "../components/Sliders/SwiperComponents";
 import { ShortlistedUniversities } from "../components/Cards/AllCards";
+import { pushInArr } from "../utils/utils";
 
 const StudyAbroad = () => {
   const [banner, setBanner] = useState({});
@@ -24,12 +29,15 @@ const StudyAbroad = () => {
   const [courses, setCourses] = useState({ courses: [] });
   const [allStates, setAllStates] = useState({ states: [] });
   const [allStreams, setAllStreams] = useState({ streams: [] });
+  const [keyword, setKeyword] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchUniversities = useCallback(() => {
-    getApi(endPoints.filterUniversities("", 1, 200), {
+    getApi(endPoints.filterUniversities(keyword.join(","), 1, 200), {
       setResponse: setUniversities,
+      setLoading,
     });
-  }, []);
+  }, [keyword]);
 
   useEffect(() => {
     getApi(endPoints.studyAbroadBanner, {
@@ -73,18 +81,28 @@ const StudyAbroad = () => {
         title: "Courses",
         placeholder: "Find Courses",
         list: courses?.courses?.map((i) => i?.courseName),
+        setValue: setKeyword,
+        value: keyword,
       },
       {
         title: "State",
         placeholder: "Find State",
         list: allStates?.states?.map((i) => i?.stateName),
+        setValue: setKeyword,
+        value: keyword,
       },
       {
         title: "Stream",
         placeholder: "Find Stream",
         list: allStreams?.streams?.map((i) => i?.streamName),
+        setValue: setKeyword,
+        value: keyword,
       },
     ],
+  };
+
+  const searchKeyword = (item) => {
+    pushInArr(item, setKeyword);
   };
 
   const optionsMenu = [
@@ -100,6 +118,7 @@ const StudyAbroad = () => {
       })),
       titleIcon: <i className="fa-solid fa-book"></i>,
       caretIcon: true,
+      setValue: searchKeyword,
     },
     {
       title: "Tution Fee (USD)",
@@ -113,6 +132,7 @@ const StudyAbroad = () => {
       })),
       titleIcon: <i className="fa-solid fa-money-bill-wave"></i>,
       caretIcon: true,
+      setValue: searchKeyword,
     },
     {
       title: "In Takes",
@@ -126,6 +146,7 @@ const StudyAbroad = () => {
       })),
       titleIcon: <i className="fa-solid fa-calendar-days"></i>,
       caretIcon: true,
+      setValue: searchKeyword,
     },
     {
       title: "Duration",
@@ -139,6 +160,7 @@ const StudyAbroad = () => {
       })),
       titleIcon: <i className="fa-solid fa-clock"></i>,
       caretIcon: true,
+      setValue: searchKeyword,
     },
   ];
 
@@ -166,12 +188,15 @@ const StudyAbroad = () => {
                 titleIcon={i.titleIcon}
                 caretIcon={i.caretIcon}
                 key={index}
+                setValue={i.setValue}
               />
             ))}
             <img src={filterImg} alt="" className="filter-img" />
           </div>
 
           <div className="results">
+            <LoaderComponent isLoading={loading} />
+
             {universityArr.map((i, index) => (
               <ShortlistedUniversities key={index} {...i} />
             ))}

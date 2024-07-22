@@ -270,9 +270,6 @@ const UserProgramms = () => {
         }))
       : [];
 
-
-
-
   return (
     <section className="user-homePage mt-2  with-bg-img">
       <div className="heading">

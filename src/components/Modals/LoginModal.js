@@ -40,8 +40,8 @@ const LoginModal = (props) => {
   };
 
   const showOtp = (res) => {
-    const otp = res.data.otp
-    showMsg("" , otp , "success" )
+    const otp = res.data.otp;
+    showMsg("", otp, "success");
   };
 
   const submitHandler = (e) => {
@@ -63,7 +63,11 @@ const LoginModal = (props) => {
 
   return (
     <>
-      <EnterOtpModal show={isOtpModal} onHide={() => setIsOtpModal(false)} />
+      <EnterOtpModal
+        show={isOtpModal}
+        onHide={() => setIsOtpModal(false)}
+        userType={userType}
+      />
 
       <Modal {...props} size="xl" centered>
         <Modal.Body className="login-modal">
@@ -84,8 +88,8 @@ const LoginModal = (props) => {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setUserType("Adwizor")}
-                    className={userType === "Adwizor" ? "active" : ""}
+                    onClick={() => setUserType("advisor")}
+                    className={userType === "advisor" ? "active" : ""}
                   >
                     Adwizor
                   </button>

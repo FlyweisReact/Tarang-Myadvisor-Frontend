@@ -1,17 +1,44 @@
 /** @format */
 
-import { Dropdown } from "antd";
+import { Dropdown, Menu } from "antd";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { GoToTopImg, touristImg1, touristImg2 } from "../assest";
 
-const CustomeDropdown = ({ items, title, caretIcon, titleIcon, className }) => {
+const CustomeDropdown = ({
+  items,
+  title,
+  caretIcon,
+  titleIcon,
+  className,
+  setValue,
+}) => {
+  const [selectedValue, setSelectedValue] = useState(null);
+
+  const handleMenuClick = (e) => {
+    const itemKey = e.key;
+    const selectedItem = items.find((item) => item.key === itemKey);
+    if (selectedItem) {
+      const value = selectedItem.label.props.children;
+      setSelectedValue(value);
+      if (setValue) {
+        setValue(value);
+      }
+    }
+  };
+
+  const menu = {
+    items,
+    onClick: handleMenuClick,
+  };
+
   return (
-    <Dropdown menu={{ items }} trigger={["click"]}>
+    <Dropdown menu={menu} trigger={["click"]}>
       <button className={`${className}`}>
         <span>
           {titleIcon}
-          {title}
+          {selectedValue ? selectedValue : title}
         </span>
         {caretIcon && <i className="fa-solid fa-caret-down"></i>}
       </button>
@@ -202,7 +229,7 @@ const LoaderComponent = ({ isLoading }) => {
   return (
     isLoading && (
       <div className="loader-component">
-        <ClipLoader />{" "}
+        <ClipLoader color="#000" />{" "}
       </div>
     )
   );

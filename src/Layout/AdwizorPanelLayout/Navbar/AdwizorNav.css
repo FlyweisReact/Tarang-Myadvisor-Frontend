@@ -1,0 +1,27 @@
+/** @format */
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.header .logo {
+  width: 60px;
+  height: 60px;
+}
+.header div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header div img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}

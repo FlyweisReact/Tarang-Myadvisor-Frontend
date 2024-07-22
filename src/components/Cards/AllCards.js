@@ -7,6 +7,7 @@ import {
   cancelSvg,
   coin,
   combineUser,
+  customerReview1,
   donorImg,
   examImg,
   fileSvg,
@@ -119,7 +120,7 @@ const NearCollegeCard = (item) => {
           alt=""
           className="college-img"
           onClick={() => navigate("/college-micro-info")}
-          style={{cursor : 'pointer'}}
+          style={{ cursor: "pointer" }}
         />
         <div className="rating">
           <i className="fa-solid fa-star"></i>
@@ -354,7 +355,60 @@ const ShortlistedUniversities = (item) => {
   );
 };
 
+const BlogCard = () => {
+  return (
+    <div className="main">
+      <div className="head">
+        <img src={customerReview1} alt="" />
+        <div className="detail">
+          <p className="title">Get Placed In Good Colleges In UK</p>
+          <p className="published-on">Published on : 12-04-2024</p>
+        </div>
+      </div>
+      <div className="content">
+        <p className="desc">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          sint. Velit officia consequat duis enim velit mollit. Exercitation
+          veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
+          ullamco est sit aliqua dolor do amet sint. Velit officia consequat
+          duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+          amet.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const ReviewCard = () => {
+  return (
+    <div className="main">
+      <div className="head">
+        <img src={customerReview1} alt="" />
+        <div className="detail">
+          <p className="title">Get Placed In Good Colleges In UK</p>
+          <p className="published-on">Published on : 12-04-2024</p>
+        </div>
+      </div>
+      <div className="content">
+        <p className="desc">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          sint. Velit officia consequat duis enim velit mollit. Exercitation
+          veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
+          ullamco est sit aliqua dolor do amet sint. Velit officia consequat
+          duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+          amet.
+        </p>
+        <div className="btn-container">
+          <button>Review </button>
+          <button className="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export {
+  ReviewCard,
   WorkOppurtunityCard,
   ExploreDestinationCard,
   TopUniversitiesCard,
@@ -362,4 +416,5 @@ export {
   MonthlyExpenseCard,
   NearCollegeCard,
   ShortlistedUniversities,
+  BlogCard,
 };

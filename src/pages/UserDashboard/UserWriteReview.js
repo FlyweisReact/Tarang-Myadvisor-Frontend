@@ -1,10 +1,39 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ClipLoader } from "react-spinners";
 import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
+import { postApi, getApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 
 const UserWriteReview = () => {
+  const [allAdwizors, setAllAdwizors] = useState({ data: [] });
+  const [advisorId, setAdwizorsId] = useState("");
+  const [rating, setRating] = useState(1);
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const payload = {
+    advisorId,
+    rating,
+    description,
+  };
+
+  useEffect(() => {
+    getApi(endPoints.getVerifiedAdwizors, {
+      setResponse: setAllAdwizors,
+    });
+  }, []);
+
+  const submitReview = (e) => {
+    e.preventDefault();
+    postApi(endPoints.giveReview, payload, {
+      successMsg: "Review Submitted",
+      setLoading,
+    });
+  };
+
   return (
     <section className="user-homePage mt-3 with-bg-img">
       <div className="heading">
@@ -12,29 +41,43 @@ const UserWriteReview = () => {
       </div>
 
       <div className="boxShadow-container write-a-review mt-5 mb-5">
-        <form>
+        <form onSubmit={submitReview}>
           <div className="main">
             <label>Choose Adwizor</label>
-            <select>
+            <select
+              onChange={(e) => setAdwizorsId(e.target.value)}
+              value={advisorId}
+            >
               <option>Select Adwizor</option>
-              <option></option>
+              {allAdwizors.data.map((i, index) => (
+                <option key={`verifiedAdwizor${index}`} value={i._id}>
+                  {" "}
+                  {i.fullname}{" "}
+                </option>
+              ))}
             </select>
           </div>
           <div className="main">
             <label>Select Rating</label>
             <div className="stars">
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
-              <i className="fa-solid fa-star"></i>
+              {[1, 2, 3, 4, 5].map((value) => (
+                <i
+                  key={value}
+                  className={`fa-solid fa-star ${
+                    rating >= value ? "selected" : ""
+                  }`}
+                  onClick={() => setRating(value)}
+                ></i>
+              ))}
             </div>
           </div>
           <div className="main">
             <label>Add Description</label>
-            <textarea value="Lorem ipsum dolor sit amet consectetur. Eu hendrerit facilisis amet nunc urna a elit in nibh. Tincidunt sollicitudin erat elementum at feugiat dolor egestas. Ut ullamcorper curabitur a congue. Gravida dignissim nec duis eget vulputate facilisi. Arcu elit eget interdum tristique." />
+            <textarea onChange={(e) => setDescription(e.target.value)} />
           </div>
-          <button>Submit</button>
+          <button type="submit">
+            {loading ? <ClipLoader color="#fff" /> : "Submit"}
+          </button>
         </form>
       </div>
 

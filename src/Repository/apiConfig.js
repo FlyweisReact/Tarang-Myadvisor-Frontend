@@ -23,9 +23,19 @@ const endPoints = {
   allShortlistedUniversity: `user/getMylistedUniversities`,
   shortlistUniversity: "user/addUniversityInMyProfile",
   uploadUserDocument: "user/createUserDocument",
-  getAllCourse : "admin/getAllCourses",
-  getAllStates : "admin/getAllStates",
-  getAllStreams : "admin/getAllStreams"
+  getAllCourse: "admin/getAllCourses",
+  getAllStates: "admin/getAllStates",
+  getAllStreams: "admin/getAllStreams",
+  // new api
+  giveReview: "user/writeReviewToSelectedAdvisor",
+  verifyAdwizorOtp: "advisor/verifyOtp",
+  searchAdwizor: (search, page, limit) =>
+    `user/searchAdvisor?keyword=${search ? search : ""}&page=${
+      page ? page : 1
+    }&limit=${limit ? limit : 10}`,
+    getAllCities : "admin/getAllCities",
+    getAdwizorProfile : "advisor/getadvisorProfile",
+    updateAdwizorProfile : "advisor/updateAdvisorProfile"
 };
 
 export default endPoints;

@@ -1406,10 +1406,62 @@ const bangaloreColleges = [
   "Bangalore Institute of Technology (BIT)",
 ];
 
-
+const adwizorSidebarArr = [
+  {
+    img: HomeSvg,
+    title: "Dashboard",
+    link: "/adwizor-panel/dashboard",
+  },
+  {
+    icon: <i className="fa-solid fa-school"></i>,
+    title: "Program & School",
+    link: "/adwizor-dashboard",
+  },
+  {
+    icon: <i className="fa-solid fa-graduation-cap"></i>,
+    title: "Students",
+    link: "/adwizor-dashboard",
+  },
+  {
+    icon: <i className="fa-solid fa-file"></i>,
+    title: "Applications",
+    link: "/adwizor-dashboard",
+  },
+  {
+    icon: <i className="fa-solid fa-calendar-days"></i>,
+    title: "My Appointments",
+    link: "/adwizor-dashboard",
+  },
+  {
+    icon: <i className="fa-solid fa-clipboard-check"></i>,
+    title: "My Task",
+    link: "/adwizor-dashboard",
+  },
+  {
+    icon: <i className="fa-solid fa-spinner"></i>,
+    title: "Train Hub",
+    link: "/adwizor-dashboard",
+  },
+  {
+    icon: <i className="fa-solid fa-flag"></i>,
+    title: "Flagged",
+    link: "/adwizor-dashboard",
+  },
+  {
+    icon: <i className="fa-solid fa-arrow-trend-up"></i>,
+    title: "Analysis",
+    link: "/adwizor-dashboard",
+  },
+  {
+    icon: <i className="fa-solid fa-user"></i>,
+    title: "My Profile",
+    link: "/adwizor-panel/my-profile",
+  },
+];
 
 export {
-  bangaloreColleges ,
+  adwizorSidebarArr,
+  bangaloreColleges,
   chennaiColleges,
   mumbaiColleges,
   topDelhiUniversities,

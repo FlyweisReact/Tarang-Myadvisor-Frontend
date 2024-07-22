@@ -8,6 +8,7 @@ import {
   customerReview2,
   userImg,
 } from "../../assest";
+import { BlogCard } from "../../components/Cards/AllCards";
 import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
 import { Slider } from "../../components/Sliders/Sliders";
 import { RenderCustomerReviewsCard } from "../../components/Sliders/SwiperComponents";
@@ -80,30 +81,6 @@ const ExtraComponent = () => {
       </div>
       <div className="next-btn">
         <i className="fa-solid fa-angle-right"></i>
-      </div>
-    </div>
-  );
-};
-
-const UserBlogs = () => {
-  return (
-    <div className="main">
-      <div className="head">
-        <img src={customerReview1} alt="" />
-        <div className="detail">
-          <p className="title">Get Placed In Good Colleges In UK</p>
-          <p className="published-on">Published on : 12-04-2024</p>
-        </div>
-      </div>
-      <div className="content">
-        <p className="desc">
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit. Exercitation
-          veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
-          ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-          duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-          amet.
-        </p>
       </div>
     </div>
   );
@@ -206,8 +183,8 @@ const UserAdwizorProfile = () => {
           </p>
 
           <div className="cards">
-            <UserBlogs />
-            <UserBlogs />
+            <BlogCard />
+            <BlogCard />
           </div>
         </div>
       </div>

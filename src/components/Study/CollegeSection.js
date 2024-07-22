@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   filterSlash,
@@ -19,6 +19,7 @@ import {
   fillHeart,
   fillBookmark,
 } from "../../assest";
+import { pushInArr } from "../../utils/utils";
 
 const CollegeFilters = ({ data }) => {
   return (
@@ -44,7 +45,11 @@ const CollegeFilters = ({ data }) => {
               <ul>
                 {i.list.map((item, index) => (
                   <li key={`${item}/${index}`}>
-                    <input type={"checkbox"} />
+                    <input
+                      type={"checkbox"}
+                      checked={i?.value?.includes(item)}
+                      onClick={() => pushInArr(item, i.setValue)}
+                    />
                     <span> {item} </span>
                   </li>
                 ))}

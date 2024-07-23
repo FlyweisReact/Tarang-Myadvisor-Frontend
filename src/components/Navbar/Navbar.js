@@ -10,6 +10,7 @@ import { userRounded } from "../../assest/index";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const isLoggedIn = localStorage.getItem("user-token") ? true : false;
+  const userType = localStorage.getItem("user-type");
   return (
     <>
       <LoginModal show={open} onHide={() => setOpen(false)} />
@@ -38,9 +39,15 @@ const Navbar = () => {
           </ul>
         </div>
         {isLoggedIn ? (
-          <Link to="/user-dashboard/home">
-            <img src={userRounded} alt="" className="user-img" />
-          </Link>
+          userType === "advisor" ? (
+            <Link to="/adwizor-panel/my-profile">
+              <img src={userRounded} alt="" className="user-img" />
+            </Link>
+          ) : (
+            <Link to="/user-dashboard/home">
+              <img src={userRounded} alt="" className="user-img" />
+            </Link>
+          )
         ) : (
           <button className="login-btn" onClick={() => setOpen(true)}>
             Log In

@@ -16,6 +16,11 @@ const Sidebar = () => {
       ? userDashboardSidebar2
       : userDashboardSidebar;
 
+  const LogOutHandler = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <div className="user-sidebar">
       <ul>
@@ -30,6 +35,11 @@ const Sidebar = () => {
             <span> {i.title} </span>
           </li>
         ))}
+
+        <li onClick={LogOutHandler}>
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span> Log Out </span>
+        </li>
       </ul>
     </div>
   );

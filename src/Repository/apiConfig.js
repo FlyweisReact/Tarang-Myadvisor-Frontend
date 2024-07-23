@@ -33,9 +33,20 @@ const endPoints = {
     `user/searchAdvisor?keyword=${search ? search : ""}&page=${
       page ? page : 1
     }&limit=${limit ? limit : 10}`,
-    getAllCities : "admin/getAllCities",
-    getAdwizorProfile : "advisor/getadvisorProfile",
-    updateAdwizorProfile : "advisor/updateAdvisorProfile"
+  getAllCities: "admin/getAllCities",
+  getAdwizorProfile: "advisor/getadvisorProfile",
+  updateAdwizorProfile: "advisor/updateAdvisorProfile",
+  createAppointmentWithAdwizor: "user/createAppointment",
+  getAllCountries: "admin/getAllCountries",
+  confirmBooking: "user/verifyOtpAndBookAppointment",
+  userAdwizors: "user/assign/advisor",
+  adwizorStudent: "advisor/myStudent",
+  getTopTenColleges: (search, page, limit) =>
+    `user/getTopTenUniversitiesCountry?contryType=${
+      search ? search : ""
+    }&page=${page}&limit=${limit}`,
+  filterIndianUniversitites: (search, page, limit) =>
+    `user/universityByContry?contryType=India&keyword=${search}&page=${page}&limit=${limit}`,
 };
 
 export default endPoints;

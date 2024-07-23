@@ -3,11 +3,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import WithLayout from "../Layout/WithLayout";
 import {
-  citiesArr,
-  countryArr,
-  prefferedSubjectArr,
-} from "../constant/constant";
-import {
   AdwizorCards,
   Banner,
   CustomeDropdown,
@@ -25,6 +20,7 @@ const FindAdwizor = () => {
   const [limit, setLimit] = useState(10);
   const [allCities, setAllCities] = useState({ cities: [] });
   const [allCourse, setAllCourse] = useState({ courses: [] });
+  const [allCountries, setAllCountries] = useState({ data: [] });
 
   const fetchAllAdwizor = useCallback(() => {
     getApi(endPoints.searchAdwizor(search.join(","), 1, limit), {
@@ -47,6 +43,9 @@ const FindAdwizor = () => {
     getApi(endPoints.getAllCities, {
       setResponse: setAllCities,
     });
+    getApi(endPoints.getAllCountries, {
+      setResponse: setAllCountries,
+    });
   }, []);
 
   useEffect(() => {
@@ -55,12 +54,14 @@ const FindAdwizor = () => {
 
   const allCourseArr = allCourse.courses.map((i) => i.courseName);
   const allCitiesArr = allCities.cities.map((i) => i.cityName);
+  const allCountriesArr = allCountries.data.map((i) => i.ContryName);
 
   const adwizorsData = allAdwizors?.data?.map((i) => ({
     img: i?.image,
     title: i?.fullname,
     rating: i?.averageRating,
     description: [i?.experiance, i?.state, i?.helpedStudent],
+    id: i._id,
   }));
 
   const searchKeyword = (item) => {
@@ -84,7 +85,7 @@ const FindAdwizor = () => {
     },
     {
       title: "Country",
-      items: countryArr?.map((i, index) => ({
+      items: allCountriesArr?.map((i, index) => ({
         label: (
           <a href={`#${i}`} className="antd-link-a">
             {i}
@@ -138,7 +139,7 @@ const FindAdwizor = () => {
           />
         ))}
       </div>
-      <LoaderComponent isLoading={loading} />
+      {loading && <LoaderComponent />}
       <AdwizorCards allAdwizors={adwizorsData} topAdwizor={false} />
       {morePages ? (
         <button className="view-more-btn mb-5" onClick={viewMore}>

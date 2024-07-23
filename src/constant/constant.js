@@ -1415,7 +1415,7 @@ const adwizorSidebarArr = [
   {
     icon: <i className="fa-solid fa-school"></i>,
     title: "Program & School",
-    link: "/adwizor-dashboard",
+    link: "/adwizor-panel/programs",
   },
   {
     icon: <i className="fa-solid fa-graduation-cap"></i>,

@@ -37,6 +37,7 @@ import UserRefer from "../pages/UserDashboard/UserRefer";
 import UserUniversities from "../pages/UserDashboard/UserUniversities";
 import UserWriteReview from "../pages/UserDashboard/UserWriteReview";
 import ViewUserChat from "../pages/UserDashboard/ViewUserChat";
+import AdwizorProgramms from '../pages/AdwizorPanel/AdwizorProgramms'
 
 const allRoutes = [
   {
@@ -179,7 +180,6 @@ const allRoutes = [
     route: "/compare-colleges",
     component: <CompareColleges />,
   },
-  // --new pages
   {
     route: "/adwizor-panel/dashboard",
     component: <AdwizorDashboard />,
@@ -187,6 +187,12 @@ const allRoutes = [
   {
     route: "/adwizor-panel/my-profile",
     component: <AdwizorProfile />,
+  },
+
+  // --new pages
+  {
+    route: "/adwizor-panel/programs",
+    component: <AdwizorProgramms />,
   },
 ];
 

@@ -3,7 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { usaSquare } from "../../assest";
 import { ShortlistedUniversities } from "../../components/Cards/AllCards";
-import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
+import {
+  AppointmentFloatingBtn,
+  LoaderComponent,
+} from "../../components/HelpingComponents";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
@@ -34,6 +37,7 @@ const nav = [
 const UserUniversities = () => {
   const [type, setType] = useState("All");
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false);
 
   let payload;
   if (type === "All") {
@@ -47,6 +51,7 @@ const UserUniversities = () => {
   const fetchUniversities = () => {
     postApi(endPoints.allShortlistedUniversity, payload, {
       setResponse: setData,
+      setLoading,
     });
   };
 
@@ -57,7 +62,7 @@ const UserUniversities = () => {
   const universityArr =
     data?.data?.length > 0
       ? data?.data?.map((i) => ({
-          flagImg: usaSquare,
+          flagImg: i?.universityId?.ImageUrl?.[0],
           title: i?.universityId?.UniversityName,
           collegeImg: i?.universityId?.ImageUrl?.[0],
           isFav: i?.applicationStatus === "SHORTLIST" ? true : false,
@@ -65,6 +70,12 @@ const UserUniversities = () => {
           status: i?.applicationStatus,
           location: i?.universityId?.location,
           id: i?.universityId?._id,
+          reviews: i?.universityId?.Review,
+          fees: i?.universityId?.Fees,
+          star: i?.universityId?.Star,
+          avgPackage: i?.universityId?.AveragePackageOffered,
+          elegibility: i?.universityId?.Eligibility,
+          approvedBy: i?.universityId?.ApprovedBy,
         }))
       : [];
 
@@ -93,6 +104,7 @@ const UserUniversities = () => {
       <section className="filter-college-section mt-3 user-universities">
         <div className="result-div">
           <div className="results">
+            {loading && <LoaderComponent />}
             {universityArr.map((i, index) => (
               <ShortlistedUniversities {...i} key={index} />
             ))}

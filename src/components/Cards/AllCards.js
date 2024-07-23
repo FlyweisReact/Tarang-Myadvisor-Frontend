@@ -1,6 +1,8 @@
 /** @format */
 
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import {
   badgeImg,
   bookmarkImg,
@@ -24,6 +26,7 @@ import {
 } from "../../assest";
 import { postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
+import { stringCutter } from "../../utils/utils";
 
 const WorkOppurtunityCard = (item) => {
   const { img, title } = item;
@@ -162,8 +165,6 @@ const NearCollegeCard = (item) => {
 };
 
 const ShortlistedUniversities = (item) => {
-  const navigate = useNavigate();
-
   const btnStatusCheker = (status) => {
     if (status === "APPLIED") {
       return (
@@ -196,29 +197,36 @@ const ShortlistedUniversities = (item) => {
     } else if (status === "Apply Now") {
       return (
         <button className="filled" onClick={applyHandler}>
-          Apply Now
+          {isLoading ? <ClipLoader color="#fff" /> : "Apply Now"}
         </button>
       );
-    }
-    //  else if (status === "decline") {
-    //   return (
-    //     <button className="rejected">
-    //       <img src={cancelSvg} alt="" />
-    //       {title}
-    //     </button>
-    //   );
-    // }
-    else {
+    } else {
       return <button> {status} </button>;
     }
   };
 
-  const { collegeImg, flagImg, title, isFav, location, status, btn2, id } =
-    item;
+  const {
+    collegeImg,
+    flagImg,
+    title,
+    isFav,
+    location,
+    status,
+    btn2,
+    id,
+    reviews,
+    fees,
+    star,
+    avgPackage,
+    elegibility,
+    approvedBy,
+  } = item;
 
   const payload = {
     universityId: id,
   };
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const shortlistHandler = () => {
     postApi(endPoints.shortlistUniversity, payload, {
@@ -229,6 +237,7 @@ const ShortlistedUniversities = (item) => {
   const applyHandler = () => {
     postApi(endPoints.applyOnUniversities, payload, {
       successMsg: "Applied Successfully",
+      setLoading: setIsLoading,
     });
   };
 
@@ -270,9 +279,9 @@ const ShortlistedUniversities = (item) => {
         <div className="content">
           <div className="tags">
             <div className="rating">
-              <p>4.1</p> <i className="fa-solid fa-star"></i>
+              <p>{star} </p> <i className="fa-solid fa-star"></i>
             </div>
-            <p className="review">(9 Reviews)</p>
+            <p className="review">({reviews} Reviews)</p>
 
             <div className="location">
               <img src={locationHollow} alt="" />
@@ -285,34 +294,43 @@ const ShortlistedUniversities = (item) => {
           </div>
 
           <div className="package">
-            <div className="item">
-              <div className="upper">
-                <img src={coin} alt="" />
-                <p>85 K - 2.4 Lacs</p>
+            {fees && (
+              <div className="item">
+                <div className="upper">
+                  <img src={coin} alt="" />
+                  <p> {fees} </p>
+                </div>
+                <p className="faded">Fees</p>
               </div>
-              <p className="faded">Fees</p>
-            </div>
-            <div className="item">
-              <div className="upper">
-                <img src={donorImg} alt="" />
-                <p>4.8 Lacs</p>
+            )}
+            {avgPackage && (
+              <div className="item">
+                <div className="upper">
+                  <img src={donorImg} alt="" />
+                  <p> {avgPackage} </p>
+                </div>
+                <p className="faded">Avg Package</p>
               </div>
-              <p className="faded">Avg Package</p>
-            </div>
-            <div className="item">
-              <div className="upper">
-                <img src={examImg} alt="" />
-                <p>TNEA...s</p>
+            )}
+            {elegibility && (
+              <div className="item">
+                <div className="upper">
+                  <img src={examImg} alt="" />
+                  <p> {stringCutter(elegibility, 20)} </p>
+                </div>
+                <p className="faded">Exams</p>
               </div>
-              <p className="faded">Exams</p>
-            </div>
-            <div className="item">
-              <div className="upper">
-                <img src={badgeImg} alt="" />
-                <p>NBA...</p>
+            )}
+
+            {approvedBy && (
+              <div className="item">
+                <div className="upper">
+                  <img src={badgeImg} alt="" />
+                  <p> {stringCutter(approvedBy, 20)} </p>
+                </div>
+                <p className="faded">Accredition</p>
               </div>
-              <p className="faded">Accredition</p>
-            </div>
+            )}
           </div>
 
           <div className="shortlisted-container">

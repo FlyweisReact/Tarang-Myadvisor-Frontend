@@ -72,7 +72,9 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
                 </div>
               </div>
               <div className="btn-container">
-                <button onClick={() => navigate("/connect-with-adwizor")}>
+                <button
+                  onClick={() => navigate(`/connect-with-adwizor?id=${i.id}`)}
+                >
                   Book Appointment
                 </button>
                 <button
@@ -122,12 +124,14 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
                 <button
                   className="outlined"
                   onClick={() =>
-                    navigate("/user-dashboard/my-messages/Marvin%20McKinney")
+                    navigate(`/user-dashboard/my-messages/${i.title}`)
                   }
                 >
                   Chat
                 </button>
-                <button onClick={() => navigate("/connect-with-adwizor")}>
+                <button
+                  onClick={() => navigate(`/connect-with-adwizor?id=${i.id}`)}
+                >
                   Call
                 </button>
               </div>
@@ -225,17 +229,83 @@ const BlinkingHeading = ({ text }) => {
   );
 };
 
-const LoaderComponent = ({ isLoading }) => {
+const LoaderComponent = () => {
   return (
-    isLoading && (
-      <div className="loader-component">
-        <ClipLoader color="#000" />{" "}
+    <div className="loader-component">
+      <ClipLoader color="#000" />{" "}
+    </div>
+  );
+};
+
+const ButtonComponent = ({ className, value, label, setValue }) => {
+  return (
+    <button type="button" className={className} onClick={() => setValue(value)}>
+      {" "}
+      {label}{" "}
+    </button>
+  );
+};
+
+const AdwizorGridLayoutCard = ({
+  data,
+  isChat = true,
+  isCall = true,
+  showBtns = true,
+}) => {
+  const navigate = useNavigate();
+  const { img, title, rating, description, id } = data;
+  return (
+    <div className="main">
+      <img
+        src={img}
+        alt=" "
+        onClick={() => navigate("/user-dashboard/adwizor-profile")}
+      />
+      <div className="content">
+        <p
+          className="title"
+          onClick={() => navigate("/user-dashboard/adwizor-profile")}
+        >
+          {" "}
+          {title}{" "}
+        </p>
+
+        <div className="rating">
+          <i className="fa-solid fa-star"></i>
+          <p> {rating} </p>
+        </div>
+        {description.map((item, index) => (
+          <p className="faded" key={`desc${index}`}>
+            {item}
+          </p>
+        ))}
+        {showBtns && (
+          <div className="btn-container">
+            {isChat && (
+              <button
+                className="outlined"
+                onClick={() => navigate(`/user-dashboard/my-messages/${title}`)}
+              >
+                Chat
+              </button>
+            )}
+            {isCall && (
+              <button
+                onClick={() => navigate(`/connect-with-adwizor?id=${id}`)}
+              >
+                Call
+              </button>
+            )}
+          </div>
+        )}
       </div>
-    )
+    </div>
   );
 };
 
 export {
+  AdwizorGridLayoutCard,
+  ButtonComponent,
   InfluencerCard,
   GoToTop,
   CustomeDropdown,

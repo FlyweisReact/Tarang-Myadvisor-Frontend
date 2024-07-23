@@ -1,11 +1,11 @@
 /** @format */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, Offcanvas } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { logoImg } from "../../assest";
-import { postApi } from "../../Repository/Api";
+import { getApi, postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import OtpInput from "../OtpInput";
 
@@ -36,7 +36,7 @@ export const EnterOtpModal = (props) => {
 
   const navigationHandler = () => {
     if (props.userType === "advisor") {
-      navigate("/");
+      navigate("/adwizor-panel/my-profile");
     } else {
       navigate("/choose-destination");
     }
@@ -140,5 +140,53 @@ export const CollegeShortlistedCanvas = ({ show, handleClose }) => {
         </div>
       </Offcanvas.Body>
     </Offcanvas>
+  );
+};
+
+export const StudentElegibility = (props) => {
+  const [myStudents, setMyStudents] = useState({ data: [] });
+
+  useEffect(() => {
+    if (props.show === true) {
+      getApi(endPoints.adwizorStudent, {
+        setResponse: setMyStudents,
+      });
+    }
+  }, [props]);
+
+  // console.log(myStudents)
+
+  return (
+    <Modal {...props} centered>
+      <Modal.Body>
+        <div className="student-elegibility-modal">
+          <div className="heading mb-3">
+            <p>Student Eligibility</p>
+            <i
+              className="fa-regular fa-circle-xmark"
+              onClick={() => props.onHide()}
+            ></i>
+          </div>
+          <p className="desc mb-3">
+            Select a student below, and we will provide a list of qualified
+            programs based on their profile.
+          </p>
+          <form>
+            <p className="heading mb-2">Student a Student</p>
+            <select>
+              <option value='' >Select a student below</option>
+              {/* {myStudents.data.map((i , index) => (
+                <option>  </option>
+              ))} */}
+            </select>
+
+            <div className="btn-container mt-3">
+              <button className="cancel">Cancel</button>
+              <button className="save">Save</button>
+            </div>
+          </form>
+        </div>
+      </Modal.Body>
+    </Modal>
   );
 };

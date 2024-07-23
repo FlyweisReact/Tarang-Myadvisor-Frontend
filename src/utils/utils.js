@@ -1,7 +1,7 @@
 /** @format */
 
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const debouncedSetQuery = (term, setSearch) => {
   clearTimeout(debouncedSetQuery.timeoutId);
@@ -20,7 +20,6 @@ const pushInArr = (item, setValue) => {
   });
 };
 
-
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -31,6 +30,25 @@ const ScrollToTop = () => {
   return null;
 };
 
+const LogOutHandler = () => {
+  const navigate = useNavigate();
+  localStorage.clear();
+  navigate("/");
+};
 
+const stringCutter = (text, length) => {
+  if (text?.length > length) {
+    console.log(text)
+    return `${text?.slice(0 ,length)}...`;
+  } else {
+    return text;
+  }
+};
 
-export { debouncedSetQuery, pushInArr ,ScrollToTop };
+export {
+  debouncedSetQuery,
+  pushInArr,
+  ScrollToTop,
+  LogOutHandler,
+  stringCutter,
+};

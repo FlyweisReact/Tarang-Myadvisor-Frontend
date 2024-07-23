@@ -922,7 +922,6 @@
 }
 .college-table .destination ul {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
@@ -1011,6 +1010,9 @@
 .overflow-table-order .college-table tbody tr td .college-name img {
   width: 45px;
   height: 45px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
 }
 .overflow-table-order .college-table tbody tr td .college-name .content {
   flex: 1;
@@ -2188,6 +2190,10 @@
   font-size: 14px;
   font-weight: 400;
   border-radius: 10px;
+}
+.book-adwizor .form-div .main-div .btn-container button.active{
+  background-color: #697386;
+  color: #fff;
 }
 .book-adwizor .form-div .main-div .btn-container button.active {
   background-color: #ced1d9;
@@ -6051,6 +6057,85 @@
   border-radius: 10px;
   font-size: 14px;
   
+}
+
+.adwizor-panel .select-student-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.adwizor-panel .select-student-container  button{
+  width: 200px;
+  padding: 10px;
+  background-color: #0185C3;
+  border: 1px solid #0185C3;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.adwizor-panel .select-student-container p{
+  margin: 0;
+}
+
+.student-elegibility-modal div.heading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.student-elegibility-modal div.heading p{
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.student-elegibility-modal div.heading i {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.student-elegibility-modal p.desc{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+.student-elegibility-modal form p.heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.student-elegibility-modal form select{
+  width: 100%;
+  padding: 10px;
+  border:1px solid #000;
+  font-size: 14px;
+  outline: none;
+  font-weight: 600;
+  border-radius: 10px;
+}
+.student-elegibility-modal form .btn-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+}
+.student-elegibility-modal form .btn-container button{
+  width: 164px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  color: #fff;
+}
+.student-elegibility-modal form .btn-container button.cancel{
+  background-color: #BABCBD;
+  border: 1px solid #BABCBD;
+}
+.student-elegibility-modal form .btn-container button.save{
+  background-color: #0185C3;
+  border: 1px solid #0185C3;
 }
 
 /** Keyframes for the animation **/

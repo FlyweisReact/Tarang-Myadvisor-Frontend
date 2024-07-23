@@ -53,6 +53,7 @@ const OtpInput = ({ length = 6, onChange }) => {
           maxLength="1"
           key={index}
           value={data}
+          required
           onChange={(e) => handleChange(e.target, index)}
           onFocus={(e) => e.target.select()}
           onKeyDown={(e) => handleKeyDown(e, index)}

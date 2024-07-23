@@ -94,6 +94,7 @@ const AdwizorProfile = () => {
     bankStatement: "",
     cv: "",
     professionalExperiance: "",
+    passport: "",
   });
 
   const handleFileChange = (e) => {
@@ -134,7 +135,7 @@ const AdwizorProfile = () => {
   fd.append("pincode", pincode);
   fd.append("landMark", landMark);
   fd.append("otherInfo", otherInfo);
-  fd.append("aboutME", aboutME);
+  fd.append("aboutMe", aboutME);
 
   const fetchHandler = () => {
     getApi(endPoints.getAdwizorProfile, {
@@ -148,7 +149,7 @@ const AdwizorProfile = () => {
 
   const mandatoryDocuments = [
     {
-      key: "professionalExperience",
+      key: "professionalExperiance",
       title: "Professional Experience",
       link: profile?.data?.professionalExperiance
         ? profile?.data?.professionalExperiance
@@ -170,7 +171,7 @@ const AdwizorProfile = () => {
       link: profile?.data?.bankStatement ? profile?.data?.bankStatement : "#",
     },
     {
-      key: "cv",
+      key: "passport",
       title: "Passport",
       link: profile?.data?.cv ? profile?.data?.cv : "#",
     },
@@ -213,7 +214,7 @@ const AdwizorProfile = () => {
       setPincode(profile?.data?.pincode);
       setLandmark(profile?.data?.landMark);
       setOtherInfo(profile?.data?.otherInfo);
-      setAboutme(profile?.data?.aboutME);
+      setAboutme(profile?.data?.aboutMe);
       setSubjectExpertise(profile?.data?.subjectExperties);
     }
   }, [profile]);

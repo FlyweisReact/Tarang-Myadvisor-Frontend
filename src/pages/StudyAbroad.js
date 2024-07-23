@@ -8,12 +8,7 @@ import {
 } from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
 import { Slider } from "../components/Sliders/Sliders";
-import {
-  abroadCollegeArr,
-  durationArr,
-  inTakes,
-  tutionFees,
-} from "../constant/constant";
+import { durationArr, inTakes, tutionFees } from "../constant/constant";
 import { filterImg, usaSquare } from "../assest";
 import { CollegeFilters } from "../components/Study/CollegeSection";
 import { getApi } from "../Repository/Api";
@@ -31,6 +26,7 @@ const StudyAbroad = () => {
   const [allStreams, setAllStreams] = useState({ streams: [] });
   const [keyword, setKeyword] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [allCountries, setAllCountries] = useState({ data: [] });
 
   const fetchUniversities = useCallback(() => {
     getApi(endPoints.filterUniversities(keyword.join(","), 1, 200), {
@@ -51,6 +47,9 @@ const StudyAbroad = () => {
     });
     getApi(endPoints.getAllStreams, {
       setResponse: setAllStreams,
+    });
+    getApi(endPoints.getAllCountries, {
+      setResponse: setAllCountries,
     });
   }, []);
 
@@ -164,13 +163,18 @@ const StudyAbroad = () => {
     },
   ];
 
+  const countriesArr = allCountries.data.map((i) => ({
+    img: i?.image,
+    title: i?.ContryName,
+  }));
+
   return (
     <>
       <Banner img={banner?.data?.image} />
 
       <section className="explore-country-slider">
         <Slider
-          data={abroadCollegeArr}
+          data={countriesArr}
           swiperConfig={abroadCollegeConfig}
           RenderSlide={RenderAbroadCollegeItems}
         />
@@ -195,7 +199,7 @@ const StudyAbroad = () => {
           </div>
 
           <div className="results">
-            <LoaderComponent isLoading={loading} />
+            {loading && <LoaderComponent />}
 
             {universityArr.map((i, index) => (
               <ShortlistedUniversities key={index} {...i} />

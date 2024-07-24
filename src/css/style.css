@@ -1530,6 +1530,7 @@
 .explore-country-slider .Item img {
   width: 100%;
   height: auto;
+  max-height: 160px;
 }
 
 .explore-country-slider .Item p.title {

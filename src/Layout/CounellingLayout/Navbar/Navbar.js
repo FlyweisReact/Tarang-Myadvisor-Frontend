@@ -16,7 +16,7 @@ const Navbar = () => {
       />
       <div className="college-navbar-section-2">
         <div className="college-nav">
-          <Link to={"/college/homepage"}>
+          <Link to={"/"}>
             <img src={logoImg} alt="" className="logo" />
           </Link>
 

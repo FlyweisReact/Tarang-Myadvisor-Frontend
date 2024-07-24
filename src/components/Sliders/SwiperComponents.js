@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { degreeImg, dollarIcon, exportImg } from "../../assest";
 import { postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
-import { CustomeDropdown } from "../HelpingComponents";
+import { CustomeDropdown, RatingComponent } from "../HelpingComponents";
 import { ClipLoader } from "react-spinners";
 
 //All Swiper components
@@ -187,21 +187,16 @@ const RenderFilterItems = (i) => {
 };
 
 const RenderCustomerReviewsCard = (i) => {
+  const { img, rating, title, description } = i;
   return (
     <div className="customer-review-card">
       <div className="rating">
-        <img src={i.img} alt="" />
-        <div>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star"></i>
-          <i className="fa-solid fa-star-half-stroke"></i>
-          <i className="fa-regular fa-star"></i>
-        </div>
+        <img src={img} alt="" />
+        <RatingComponent num={rating} />
       </div>
       <div className="content">
-        <p className="title"> {i.title} </p>
-        <p className="description">{i.desc}</p>
+        <p className="title"> {title} </p>
+        <p className="description">{description}</p>
       </div>
     </div>
   );
@@ -222,16 +217,15 @@ const RenderStudentTestimonialCard = (i) => {
   );
 };
 
-const RenderTopCityCard = (i) => {
-  const navigate = useNavigate();
+const RenderTopCityCard = ({ item, onClickEvent }) => {
   return (
     <div
       className="Item"
       style={{ cursor: "pointer" }}
-      onClick={() => navigate("/college/explore-colleges")}
+      onClick={() => onClickEvent(item.title)}
     >
-      <img src={i.img} alt="" />
-      <p>{i.title}</p>
+      <img src={item.img} alt="" />
+      <p>{item.title}</p>
     </div>
   );
 };

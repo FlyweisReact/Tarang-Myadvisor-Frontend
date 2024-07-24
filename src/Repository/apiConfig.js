@@ -47,6 +47,19 @@ const endPoints = {
     }&page=${page}&limit=${limit}`,
   filterIndianUniversitites: (search, page, limit) =>
     `user/universityByContry?contryType=India&keyword=${search}&page=${page}&limit=${limit}`,
+  // ---
+  getUniversityDetails: (id) => `user/getUniversityById/${id}`,
+  getNews: (search) => `user/getNewsByType/${search}`,
+  getAdwizorsBlogs: "user/getAllBlogs/VERIFIED",
+  adwizorOwnBlogs: "advisor/getAllBlogs",
+  updateAdwizorStatus: "advisor/updateAdvisorLiveStatus",
+  getHowItWorks: "user/getAll/HowItWork",
+  user: {
+    getAdwizorSlots: "advisor/getAdvisor/ByIdSlot",
+    createAppointment: (id) => `user/createAppointment/${id}`,
+    confirmAppointment : "user/verifyOtpAndBookAppointment",
+    getAdwizorProfile : (id) =>  `admin/getAdvisorById/${id}`
+  },
 };
 
 export default endPoints;

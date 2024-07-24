@@ -459,7 +459,7 @@
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
-.live-session-date-selector .Item {
+.live-session-date-selector-Item {
   border: 1px solid #a1a1a1;
   border-radius: 10px;
   background-color: #fff;
@@ -470,15 +470,16 @@
   align-items: center;
   flex-direction: column;
   margin: auto;
+  cursor: pointer;
 }
-.live-session-date-selector .Item.active {
+.live-session-date-selector-Item.active {
   background-color: #0185c3;
   border: 1px solid #0185c3;
 }
-.live-session-date-selector .Item.active p {
+.live-session-date-selector-Item.active p {
   color: #fff;
 }
-.live-session-date-selector .Item p {
+.live-session-date-selector-Item p {
   margin: 0;
   color: #a1a1a1;
   font-size: 14px;
@@ -518,6 +519,7 @@
   align-items: center;
   padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
 }
 .live-session-select-timing .grid-container .item.active {
   background-color: #0185c3;
@@ -2191,7 +2193,7 @@
   font-weight: 400;
   border-radius: 10px;
 }
-.book-adwizor .form-div .main-div .btn-container button.active{
+.book-adwizor .form-div .main-div .btn-container button.active {
   background-color: #697386;
   color: #fff;
 }
@@ -2469,6 +2471,8 @@
   width: 118px;
   height: 118px;
   border-radius: 10px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .user-dashboard-profile .basic-details .content p {
@@ -3461,6 +3465,8 @@
   width: 60px;
   height: 60px;
   border-radius: 0;
+  object-fit: contain;
+  object-position: center;
 }
 .customer-review-card .rating div {
   display: flex;
@@ -5265,6 +5271,7 @@
   height: 73px;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 }
 .college-micro-info-page
   .college-info
@@ -5432,6 +5439,23 @@
   align-items: center;
   margin-bottom: 1rem;
 }
+.college-micro-info-page .right .placement-report .content-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.college-micro-info-page .right .placement-report .content-flex p.bold {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.college-micro-info-page .right .placement-report .content-flex p {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+}
 
 .college-micro-info-page .right .placement-report .upper img {
   max-width: 65px;
@@ -5463,7 +5487,7 @@
 .college-micro-info-page .college-info .right .featured-news {
   padding: 40px 0;
 }
-.college-micro-info-page .college-info.right .featured-news ul {
+.college-micro-info-page .college-info .right .featured-news ul {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -5478,6 +5502,7 @@
   color: #4d4d4d;
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .college-micro-info-page .college-info .right .featured-news ul li.active {
@@ -6019,36 +6044,35 @@
   padding: 10px 0;
   border-bottom: 1px solid #bebebe;
   font-size: 16px;
-
 }
 
 .adwizor-panel .task-table table a.visit-link {
   font-size: 16px;
   color: #0185c3;
 }
-.adwizor-panel .task-table table button{
-  background-color: #F9B300;
+.adwizor-panel .task-table table button {
+  background-color: #f9b300;
   color: #fff;
   padding: 10px;
   font-size: 16px;
   border-radius: 10px;
-  border: 1px solid #F9B300;
+  border: 1px solid #f9b300;
   font-weight: 600;
 }
-.adwizor-panel .task-table table button.status-orange{
-  background-color: #F08105;
-  border: 1px solid #F08105;
+.adwizor-panel .task-table table button.status-orange {
+  background-color: #f08105;
+  border: 1px solid #f08105;
 }
-.adwizor-panel .task-table table button.status-success{
-  background-color: #07A646;
-  border: 1px solid #07A646;
+.adwizor-panel .task-table table button.status-success {
+  background-color: #07a646;
+  border: 1px solid #07a646;
 }
 
-.adwizor-panel .task-table button.show-all{
+.adwizor-panel .task-table button.show-all {
   max-width: 410px;
   width: 100%;
-  background-color: #0185C3;
-  border:1px solid #0185C3;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
   color: #fff;
   display: block;
   margin: auto;
@@ -6056,7 +6080,6 @@
   padding: 10px;
   border-radius: 10px;
   font-size: 14px;
-  
 }
 
 .adwizor-panel .select-student-container {
@@ -6066,26 +6089,26 @@
   gap: 10px;
 }
 
-.adwizor-panel .select-student-container  button{
+.adwizor-panel .select-student-container button {
   width: 200px;
   padding: 10px;
-  background-color: #0185C3;
-  border: 1px solid #0185C3;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
   color: #fff;
   border-radius: 10px;
 }
 
-.adwizor-panel .select-student-container p{
+.adwizor-panel .select-student-container p {
   margin: 0;
 }
 
-.student-elegibility-modal div.heading{
+.student-elegibility-modal div.heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
-.student-elegibility-modal div.heading p{
+.student-elegibility-modal div.heading p {
   font-size: 16px;
   font-weight: 600;
   margin: 0;
@@ -6095,7 +6118,7 @@
   cursor: pointer;
 }
 
-.student-elegibility-modal p.desc{
+.student-elegibility-modal p.desc {
   margin: 0;
   font-size: 14px;
   font-weight: 500;
@@ -6105,23 +6128,22 @@
   font-weight: 600;
   margin: 0;
 }
-.student-elegibility-modal form select{
+.student-elegibility-modal form select {
   width: 100%;
   padding: 10px;
-  border:1px solid #000;
+  border: 1px solid #000;
   font-size: 14px;
   outline: none;
   font-weight: 600;
   border-radius: 10px;
 }
-.student-elegibility-modal form .btn-container{
+.student-elegibility-modal form .btn-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-
 }
-.student-elegibility-modal form .btn-container button{
+.student-elegibility-modal form .btn-container button {
   width: 164px;
   padding: 10px;
   border-radius: 10px;
@@ -6129,14 +6151,72 @@
   outline: none;
   color: #fff;
 }
-.student-elegibility-modal form .btn-container button.cancel{
-  background-color: #BABCBD;
-  border: 1px solid #BABCBD;
+.student-elegibility-modal form .btn-container button.cancel {
+  background-color: #babcbd;
+  border: 1px solid #babcbd;
 }
-.student-elegibility-modal form .btn-container button.save{
-  background-color: #0185C3;
-  border: 1px solid #0185C3;
+.student-elegibility-modal form .btn-container button.save {
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
 }
+.live-session-date-selector-buttons_container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 100px;
+}
+.live-session-date-selector-buttons_container i {
+  cursor: pointer;
+}
+
+.adwizor-profile-section .info {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+.adwizor-profile-section .info .profile-img {
+  width: 248px;
+  height: 248px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
+}
+.adwizor-profile-section .info .content p {
+  margin: 0;
+  font-size: 18px;
+}
+.adwizor-profile-section .info .content h4 {
+  font-size: 28px;
+  font-weight: 600;
+}
+.adwizor-profile-section .info .content .btn-container {
+  display: flex;
+  gap: 10px;
+}
+.adwizor-profile-section .info .content .btn-container button.outline {
+  background-color: #ffff;
+  color: #0185c3;
+}
+.adwizor-profile-section .info .content .btn-container button {
+  width: 291px;
+  height: 46px;
+  background-color: #0185c3;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid #0185c3;
+  border-radius: 5px;
+}
+.adwizor-profile-section  .about-sec {
+  margin:20px 0;
+} 
+.adwizor-profile-section  .about-sec h4{
+  font-weight: 600;
+} 
+.adwizor-profile-section  .about-sec p{
+  font-size: 16px;
+} 
 
 /** Keyframes for the animation **/
 @keyframes highlightAnimation {

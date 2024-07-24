@@ -32,10 +32,6 @@ const data = [
     img: Img16,
     title: "Paid(< 9months)",
   },
-  {
-    img: Img17,
-    title: "Student Current Year",
-  },
 ];
 
 const tableBody = [

@@ -21,7 +21,7 @@ const UserWriteReview = () => {
   };
 
   useEffect(() => {
-    getApi(endPoints.getVerifiedAdwizors, {
+    getApi(endPoints.searchAdwizor("" , 1 ,100), {
       setResponse: setAllAdwizors,
     });
   }, []);

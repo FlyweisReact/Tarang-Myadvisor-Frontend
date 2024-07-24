@@ -1,6 +1,6 @@
 /** @format */
 
-import { Dropdown, Menu } from "antd";
+import { Dropdown } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
@@ -56,7 +56,7 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
           {topAdwizorData.map((i, index) => (
             <div className="item" key={`topadwizor${index}`}>
               <div className="detail">
-                <img src={i.img} alt="" className="mainImg" />
+                <img src={i.img} alt="" className="mainImg"  onClick={() => navigate(`/user-dashboard/adwizor-profile/${i.id}`)}/>
                 <div className="content">
                   <p className="title">{i.title} </p>
                   <div className="rating">
@@ -73,7 +73,9 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
               </div>
               <div className="btn-container">
                 <button
-                  onClick={() => navigate(`/connect-with-adwizor?id=${i.id}`)}
+                  onClick={() =>
+                    navigate(`/counselling-session/live-2/${i.id}`)
+                  }
                 >
                   Book Appointment
                 </button>
@@ -100,7 +102,7 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
             <img
               src={i.img}
               alt=" "
-              onClick={() => navigate("/user-dashboard/adwizor-profile")}
+              onClick={() => navigate(`/user-dashboard/adwizor-profile/${i.id}`)}
             />
             <div className="content">
               <p
@@ -130,7 +132,7 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
                   Chat
                 </button>
                 <button
-                  onClick={() => navigate(`/connect-with-adwizor?id=${i.id}`)}
+                  onClick={() => navigate(`/counselling-session/live-2/${i.id}`)}
                 >
                   Call
                 </button>
@@ -303,6 +305,57 @@ const AdwizorGridLayoutCard = ({
   );
 };
 
+const RatingComponent = ({ num }) => {
+  if (num === 1) {
+    return <i className="fa-solid fa-star"></i>;
+  } else if (num === 2) {
+    return (
+      <div>
+        {" "}
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+      </div>
+    );
+  } else if (num === 3) {
+    return (
+      <div>
+        {" "}
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+      </div>
+    );
+  } else if (num === 4) {
+    return (
+      <div>
+        {" "}
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+      </div>
+    );
+  } else if (num === 5) {
+    return (
+      <div>
+        {" "}
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        {" "}
+        <i className="fa-solid fa-star"></i>
+      </div>
+    );
+  }
+};
+
 export {
   AdwizorGridLayoutCard,
   ButtonComponent,
@@ -317,4 +370,5 @@ export {
   TouristImage,
   BlinkingHeading,
   LoaderComponent,
+  RatingComponent,
 };

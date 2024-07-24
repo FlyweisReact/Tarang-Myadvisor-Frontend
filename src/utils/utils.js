@@ -38,12 +38,13 @@ const LogOutHandler = () => {
 
 const stringCutter = (text, length) => {
   if (text?.length > length) {
-    console.log(text)
     return `${text?.slice(0 ,length)}...`;
   } else {
     return text;
   }
 };
+
+
 
 export {
   debouncedSetQuery,

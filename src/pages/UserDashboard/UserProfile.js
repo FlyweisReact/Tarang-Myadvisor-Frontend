@@ -10,7 +10,6 @@ import {
   trashIcon,
   uploadSvg,
   userCollege,
-  userImg,
 } from "../../assest";
 import {
   AdwizorCards,
@@ -23,7 +22,6 @@ import {
   allAdwiozordsArr,
   documentTabArr,
   documentTabArr2,
-  universityCardArr,
   userProfileTab,
 } from "../../constant/constant";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
@@ -34,7 +32,7 @@ const ProfileTab = ({ data }) => {
   return (
     <>
       <div className="basic-details margin-div">
-        <img src={userImg} alt="" className="user-img" />
+        <img src={data?.image} alt="" className="user-img" />
         <div className="content">
           <h4>Basic Details</h4>
           <div className="item">

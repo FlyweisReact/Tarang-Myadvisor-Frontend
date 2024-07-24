@@ -8,8 +8,9 @@ import { Slider } from "../../components/Sliders/Sliders";
 import { RenderCustomerReviewsCard } from "../../components/Sliders/SwiperComponents";
 import { customerReviewConfig } from "../../components/Sliders/SwiperConfig";
 import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
-import { getApi, postApi, putApi } from "../../Repository/Api";
+import { getApi, putApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
+import Form from "react-bootstrap/Form";
 
 const mainStyle = {
   backgroundColor: "transparent",
@@ -61,7 +62,7 @@ const ExtraComponent = () => {
 };
 
 const AdwizorProfile = () => {
-  const [profile, setProfile] = useState({});
+  const [profile, setProfile] = useState({ findReview : []});
   const [fullname, setFullname] = useState("");
   const [state, setState] = useState("");
   const [destinationCountry, setDestinationCountry] = useState("");
@@ -96,6 +97,7 @@ const AdwizorProfile = () => {
     professionalExperiance: "",
     passport: "",
   });
+  const [blogs, setBlogs] = useState({ data: [] });
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
@@ -219,10 +221,51 @@ const AdwizorProfile = () => {
     }
   }, [profile]);
 
+  useEffect(() => {
+    getApi(endPoints.adwizorOwnBlogs, {
+      setResponse: setBlogs,
+    });
+  }, []);
+
+  const blogsList = blogs.data.map((i) => ({
+    img: i?.imagePath,
+    title: i?.title,
+    description: i?.content,
+    publishedOn: i?.createdAt?.slice(0, 10),
+  }));
+
+
+  const reviewsList = profile.findReview.map((i) => (
+    {
+      img : i?.userId?.image , 
+      rating  : i?.rating,
+      title : i?.userId?.fullname , 
+      description :i?.description
+    }
+  ))
+
+  const updateStatus = () => {
+    const payload = {
+      liveStatus: !profile?.data?.liveStatus,
+    };
+    putApi(endPoints.updateAdwizorStatus, payload, {
+      successMsg: "Status Updated !",
+      additionalFunctions : [fetchHandler]
+    });
+  };
+
   return (
     <section className="adwizor-panel">
       <div className="section-heading">
         <p className="title">Adwizor Profile</p>
+        <Form.Check
+          type="switch"
+          id="custom-switch"
+          label="Status"
+          checked={profile?.data?.liveStatus}
+          onClick={updateStatus}
+          style={{cursor : 'pointer'}}
+        />
       </div>
 
       <div className="section-sub-heading mt-3">
@@ -513,7 +556,7 @@ const AdwizorProfile = () => {
 
               <div className="slider-container">
                 <Slider
-                  data={data}
+                  data={reviewsList}
                   swiperConfig={customerReviewConfig}
                   RenderSlide={RenderCustomerReviewsCard}
                   ExtraComponent={ExtraComponent}
@@ -524,28 +567,10 @@ const AdwizorProfile = () => {
 
           <div className="user-blogs mt-5">
             <h5 className="blog-heading">Blogs</h5>
-            <p className="blog-desc">
-              {" "}
-              mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-              Velit o
-            </p>
-
             <div className="cards">
-              <BlogCard />
-              <BlogCard />
-            </div>
-          </div>
-
-          <div className="user-blogs review-card mt-5">
-            <h5 className="blog-heading">Review </h5>
-            <p className="blog-desc">
-              mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-              Velit o
-            </p>
-
-            <div className="cards">
-              <ReviewCard />
-              <ReviewCard />
+              {blogsList.map((i, index) => (
+                <BlogCard key={`blogs${index}`} {...i} />
+              ))}
             </div>
           </div>
         </div>

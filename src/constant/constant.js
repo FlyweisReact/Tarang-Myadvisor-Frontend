@@ -178,20 +178,11 @@ const userDashboardSidebar = [
     title: "My Messages",
     link: "/user-dashboard/my-messages",
   },
-  {
-    img: solarCalendarBold,
-    title: "Events",
-    link: "/user-dashboard/user-events",
-  },
+
   {
     img: MdiShare,
     title: "Refer a friend",
     link: "/user-dashboard/refer-earn",
-  },
-  {
-    img: healthIconBook,
-    title: "Connect with Adwizor",
-    link: "/user-dashboard/connect-with-adwizor",
   },
   {
     img: MdiAbout,
@@ -1442,11 +1433,7 @@ const adwizorSidebarArr = [
     title: "Train Hub",
     link: "/adwizor-dashboard",
   },
-  {
-    icon: <i className="fa-solid fa-flag"></i>,
-    title: "Flagged",
-    link: "/adwizor-dashboard",
-  },
+
   {
     icon: <i className="fa-solid fa-arrow-trend-up"></i>,
     title: "Analysis",

@@ -53,7 +53,7 @@ const allRoutes = [
     component: <LiveSession />,
   },
   {
-    route: "/counselling-session/live-2",
+    route: "/counselling-session/live-2/:id",
     component: <LiveSession2 />,
   },
   {
@@ -125,7 +125,7 @@ const allRoutes = [
     component: <UserHowItWorks />,
   },
   {
-    route: "/user-dashboard/adwizor-profile",
+    route: "/user-dashboard/adwizor-profile/:id",
     component: <UserAdwizorProfile />,
   },
   {
@@ -161,7 +161,7 @@ const allRoutes = [
     component: <ExploreColleges />,
   },
   {
-    route: "/college-micro-info",
+    route: "/college-micro-info/:id",
     component: <CollegeMicroInfo />,
   },
   {

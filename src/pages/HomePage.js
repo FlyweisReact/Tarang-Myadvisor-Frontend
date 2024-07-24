@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Testimonial from "../components/Home/Testimonial";
 import AdwizorBanner from "../components/Home/AdwizorBanner";
-import HowItWorks from "../components/Home/HowItWorks";
 import TableLayout from "../components/TableLayout";
 import OurSuccess from "../components/Home/OurSuccess";
 import WithLayout from "../Layout/WithLayout";
@@ -21,9 +20,9 @@ import {
   RenderStudentTestimonialCard,
   RenderSypnosisItem,
 } from "../components/Sliders/SwiperComponents";
-import { infuluncerCardConstant, sypnosisData } from "../constant/constant";
+import { sypnosisData } from "../constant/constant";
 import { Link } from "react-router-dom";
-import { collegeIcon, rankingIcon } from "../assest";
+import { HowItWorkCard } from "../components/Cards/AllCards";
 
 const StudentNavigation = () => {
   return (
@@ -45,6 +44,14 @@ const HomePage = () => {
   const [allCountries, setAllCountries] = useState({ data: [] });
   const [countryName, setCountryName] = useState("Us");
   const [topColleges, setTopColleges] = useState({ data: [] });
+  const [blogs, setBlogs] = useState({ data: [] });
+  const [howItWorks, setHowItWorks] = useState({ data: [] });
+
+  const howItWorksList = howItWorks.data.map((i) => ({
+    img: i?.image,
+    title: i?.title,
+    description: i?.description,
+  }));
 
   const featureData =
     features?.data?.length > 0
@@ -77,6 +84,12 @@ const HomePage = () => {
     });
     getApi(endPoints.getAllCountries, {
       setResponse: setAllCountries,
+    });
+    getApi(endPoints.getAdwizorsBlogs, {
+      setResponse: setBlogs,
+    });
+    getApi(endPoints.getHowItWorks, {
+      setResponse: setHowItWorks,
     });
   }, []);
 
@@ -137,11 +150,45 @@ const HomePage = () => {
     </div>,
   ]);
 
+  const blogsList = blogs.data.map((i) => ({
+    img: i?.imagePath,
+    title: i?.title,
+    desc: i?.content,
+  }));
+
+  let url;
+  if (countryName?.toLocaleLowerCase() === "india") {
+    url = "/study-india";
+  } else {
+    url = "/study-abroad";
+  }
+
   return (
     <>
       <AdwizorBanner />
       <AdwizorCards topAdwizor={true} topAdwizorData={adwizorsData} />
-      <HowItWorks />
+
+      <section className="how-it-works">
+        <h4 className="normal-heading">How It Works</h4>
+        <div className="steps-container">
+          <svg
+            className="curved-line"
+            viewBox="0 0 1000 300"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M 0 100 Q 250 0 500 100 T 1000 100"
+              fill="transparent"
+              stroke="#333"
+              stroke-width="2"
+              stroke-dasharray="5,5"
+            />
+          </svg>
+          {howItWorksList.map((i, index) => (
+            <HowItWorkCard {...i} key={`work${index}`} />
+          ))}
+        </div>
+      </section>
 
       <section className="features">
         <h4 className="normal-heading">Why Choose Us</h4>
@@ -158,7 +205,7 @@ const HomePage = () => {
       <section className="college-table">
         <div className="head">
           <h4 className="normal-heading">Top 10 Featured Colleges</h4>
-          <Link to={"/college-list"}>View All</Link>
+          <Link to={url}>View All</Link>
         </div>
         <div className="destination">
           <ul>
@@ -218,11 +265,11 @@ const HomePage = () => {
       <section className="margin-div">
         <h4 className="normal-heading">Our Adwizors blogs </h4>
         <div className="adwizor-blog-container">
-          {infuluncerCardConstant.map((i, index) => (
+          {blogsList.map((i, index) => (
             <InfluencerCard key={`infulencerCard${index}`} {...i} />
           ))}
         </div>
-        <button className="view-more-btn mt-4">View More</button>
+        {/* <button className="view-more-btn mt-4">View More</button> */}
       </section>
 
       <section className="margin-div">

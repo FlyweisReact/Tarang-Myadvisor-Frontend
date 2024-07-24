@@ -220,6 +220,7 @@ const ShortlistedUniversities = (item) => {
     avgPackage,
     elegibility,
     approvedBy,
+    courseTitle,
   } = item;
 
   const payload = {
@@ -246,9 +247,12 @@ const ShortlistedUniversities = (item) => {
       <div className="head">
         <div className="title">
           <img src={flagImg} alt="flag" />
-          <Link to="/college-micro-info">
-            <p> {title} </p>
-          </Link>
+          <div>
+            <Link to={`/college-micro-info/${id}`}>
+              <p> {title} </p>
+            </Link>
+            <p style={{ fontSize: "25px" }}> {courseTitle} </p>
+          </div>
         </div>
         <div className="actions">
           {isFav ? (
@@ -373,25 +377,19 @@ const ShortlistedUniversities = (item) => {
   );
 };
 
-const BlogCard = () => {
+const BlogCard = (item) => {
+  const { img, title, description, publishedOn } = item;
   return (
     <div className="main">
       <div className="head">
-        <img src={customerReview1} alt="" />
+        <img src={img} alt="" />
         <div className="detail">
-          <p className="title">Get Placed In Good Colleges In UK</p>
-          <p className="published-on">Published on : 12-04-2024</p>
+          <p className="title"> {title} </p>
+          <p className="published-on"> {publishedOn} </p>
         </div>
       </div>
       <div className="content">
-        <p className="desc">
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit. Exercitation
-          veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
-          ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-          duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-          amet.
-        </p>
+        <p className="desc">{description}</p>
       </div>
     </div>
   );
@@ -425,6 +423,17 @@ const ReviewCard = () => {
   );
 };
 
+const HowItWorkCard = (item) => {
+  const { img, title, description } = item;
+  return (
+    <div className="step-card">
+      <img src={img} alt="" />
+      <h3> {title} </h3>
+      <p>{description}</p>
+    </div>
+  );
+};
+
 export {
   ReviewCard,
   WorkOppurtunityCard,
@@ -435,4 +444,5 @@ export {
   NearCollegeCard,
   ShortlistedUniversities,
   BlogCard,
+  HowItWorkCard
 };

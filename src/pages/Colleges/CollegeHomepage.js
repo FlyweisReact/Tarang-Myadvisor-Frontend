@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Slider } from "../../components/Sliders/Sliders";
 import {
   topCitiesArr,
-  nearCollegeArr,
   topProgrammsArr,
   collegeDetails,
 } from "../../constant/constant";

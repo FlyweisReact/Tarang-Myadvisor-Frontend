@@ -7,26 +7,39 @@ import {
   LoaderComponent,
 } from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
-import { filterImg, usaSquare } from "../assest";
-import { Slider } from "../components/Sliders/Sliders";
+import { filterImg } from "../assest";
 import { durationArr, inTakes, tutionFees } from "../constant/constant";
 import { CollegeFilters } from "../components/Study/CollegeSection";
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
-import { abroadCollegeConfig } from "../components/Sliders/SwiperConfig";
-import { RenderAbroadCollegeItems } from "../components/Sliders/SwiperComponents";
 import { pushInArr } from "../utils/utils";
 import { ShortlistedUniversities } from "../components/Cards/AllCards";
+import { topCitiesSwiperConfig } from "../components/Sliders/SwiperConfig";
+import { RenderTopCityCard } from "../components/Sliders/SwiperComponents";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+const NavigationComponent = () => {
+  return (
+    <>
+      <div className="prev-nav-btn">
+        <i className="fa-solid fa-arrow-left"></i>
+      </div>
+      <div className="next-nav-btn">
+        <i className="fa-solid fa-arrow-right"></i>
+      </div>
+    </>
+  );
+};
 
 const StudyIndia = () => {
   const [banner, setBanner] = useState({});
-  const [allCountries, setAllCountries] = useState({ data: [] });
   const [universities, setUniversities] = useState({ data: [] });
   const [courses, setCourses] = useState({ courses: [] });
   const [allStates, setAllStates] = useState({ states: [] });
   const [allStreams, setAllStreams] = useState({ streams: [] });
   const [keyword, setKeyword] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [allCities, setAllCities] = useState({ cities: [] });
 
   const fetchUniversities = useCallback(() => {
     getApi(endPoints.filterIndianUniversitites(keyword.join(","), 1, 200), {
@@ -39,9 +52,8 @@ const StudyIndia = () => {
     getApi(endPoints.studyIndiaBanner, {
       setResponse: setBanner,
     });
-
-    getApi(endPoints.getAllCountries, {
-      setResponse: setAllCountries,
+    getApi(endPoints.getAllCities, {
+      setResponse: setAllCities,
     });
     getApi(endPoints.getAllCourse, {
       setResponse: setCourses,
@@ -54,20 +66,21 @@ const StudyIndia = () => {
     });
   }, []);
 
+  const allCitiesArr = allCities.cities.map((i) => ({
+    img: i.cityImage,
+    title: i.cityName,
+  }));
+
   useEffect(() => {
     fetchUniversities();
   }, [fetchUniversities]);
-
-  const countriesArr = allCountries.data.map((i) => ({
-    img: i?.image,
-    title: i?.ContryName,
-  }));
 
   const universityArr =
     universities?.data?.length > 0
       ? universities?.data?.map((i) => ({
           flagImg: i?.ImageUrl?.[0],
-          title: i?.UniversityName,
+          title: `${i?.UniversityName} `,
+          courseTitle: i?.CourseTitle,
           collegeImg: i?.ImageUrl?.[0],
           isFav: false,
           status: "Apply Now",
@@ -178,13 +191,22 @@ const StudyIndia = () => {
   return (
     <>
       <Banner img={banner?.data?.image} />
-      <section className="explore-country-slider">
-        <Slider
-          data={countriesArr}
-          swiperConfig={abroadCollegeConfig}
-          RenderSlide={RenderAbroadCollegeItems}
-        />
+
+      <section className="top-cities-slider margin-div">
+        <h4 className="normal-heading text-start">Top Cities</h4>
+
+        <section className="generic-slider">
+          <Swiper {...topCitiesSwiperConfig}>
+            {allCitiesArr.map((item, index) => (
+              <SwiperSlide key={index}>
+                <RenderTopCityCard item={item} onClickEvent={searchKeyword} />
+              </SwiperSlide>
+            ))}
+            <NavigationComponent />
+          </Swiper>
+        </section>
       </section>
+
       <section className="filter-college-section margin-div">
         <CollegeFilters data={filterationData} />
         <div className="result-div">

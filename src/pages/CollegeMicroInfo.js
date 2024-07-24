@@ -46,7 +46,7 @@ const CollegeMicroInfo = () => {
   const [newsType, setNewsType] = useState("Featured");
 
   useEffect(() => {
-    getApi(endPoints.getUniversityDetails(id), {
+    getApi(endPoints.user.getUniversitiesCourse(id), {
       setResponse: setDetail,
     });
   }, [id]);
@@ -303,263 +303,33 @@ const CollegeMicroInfo = () => {
             <div className="left">
               <div className="detail-box boxShadow-container margin-div">
                 <h4 className="heading mb-2">
-                  Jamia Miliya Islamia, Delhi Course & Fees 2023{" "}
+                  {detail?.data?.UniversityName} Course & Fees{" "}
                 </h4>
 
                 <table className="college-ranking-table margin-div">
                   <thead>
                     <tr>
                       <th>
-                        <button>Ranking</button>
+                        <button>Course</button>
                       </th>
-                      <th>
+                      {/* <th>
                         <button>Publisher</button>
                       </th>
                       <th>
                         <button>Stream</button>
-                      </th>
+                      </th> */}
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>B. Tech </td>
-                      <td>₹ 113,00 </td>
-                      <td>4 Years </td>
-                    </tr>
-                    <tr>
-                      <td>MBA </td>
-                      <td>₹ 113,00 </td>
-                      <td>2 Years </td>
-                    </tr>
-                    <tr>
-                      <td>M. Tech </td>
-                      <td>₹ 113,00 </td>
-                      <td>4 Years </td>
-                    </tr>
-                    <tr>
-                      <td>PGD </td>
-                      <td>₹ 113,00 </td>
-                      <td>2 Years </td>
-                    </tr>
-                    <tr>
-                      <td>BSC </td>
-                      <td>₹ 113,00 </td>
-                      <td>4 Years </td>
-                    </tr>
-                    <tr>
-                      <td>MSW </td>
-                      <td>₹ 113,00 </td>
-                      <td>2 Years </td>
-                    </tr>
-                    <tr>
-                      <td>BA </td>
-                      <td>₹ 113,00 </td>
-                      <td>4 Years </td>
-                    </tr>
-                    <tr>
-                      <td>MA </td>
-                      <td>₹ 113,00 </td>
-                      <td>2 Years </td>
-                    </tr>
-                    <tr>
-                      <td>Msc </td>
-                      <td>₹ 113,00 </td>
-                      <td>4 Years </td>
-                    </tr>
+                    {detail?.data?.CourseTitles?.map((i, index) => (
+                      <tr key={`course${index}`}>
+                        <td> {i} </td>
+                        {/* <td>₹ 113,00 </td>
+                        <td>4 Years </td> */}
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
-
-                <button className="show-more">More Courses </button>
-              </div>
-
-              <div className="detail-box boxShadow-container margin-div">
-                <p className="description mt-3">
-                  Borem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  eu turpis molestie, dictum est a, mattis tellus. Sed
-                  dignissim, metus nec fringilla accumsan, risus sem
-                  sollicitudin lacus, ut interdum tellus elit sed risus.
-                  Maecenas eget condimentum velit, sit amet feugiat lectus.
-                  Class aptent taciti sociosqu ad litora torquent per conubia
-                  nostra, per inceptos himenaeos. Praesent auctor purus luctus
-                  enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus
-                  ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel
-                  bibendum lorem. Morbi convallis convallis diam sit amet
-                  lacinia. Aliquam in elementu
-                </p>
-                <h4
-                  className="heading mb-2 border-heading p-0 mt-3"
-                  style={{ border: "none" }}
-                >
-                  Jamia Miliya Islamia, Course & Fees Structure{" "}
-                </h4>
-                <p className="description mt-3">
-                  Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  vulputate libero et velit interdum, ac aliquet odio mattis.
-                  Class aptent taciti sociosqu ad litora torquent per conubia
-                  nostra, per inceptos himenaeos.
-                </p>
-
-                <table className="college-ranking-table margin-div">
-                  <thead>
-                    <tr>
-                      <th>
-                        <button>Courses</button>
-                      </th>
-                      <th>
-                        <button>Total Tuition Fees</button>
-                      </th>
-                      <th>
-                        <button>Eligibility</button>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        B.Sc Anaesthesia <br /> Technology (AT){" "}
-                      </td>
-                      <td>2,346,45 </td>
-                      <td>Graduation </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        B.Sc Anaesthesia <br /> Technology (AT){" "}
-                      </td>
-                      <td>2,346,45 </td>
-                      <td>Graduation </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        B.Sc Anaesthesia <br /> Technology (AT){" "}
-                      </td>
-                      <td>2,346,45 </td>
-                      <td>Graduation </td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <h4
-                  className="heading mb-2 border-heading p-0 mt-3"
-                  style={{ border: "none" }}
-                >
-                  Entrance Exams Accepted by Jamia Miliya Islamia{" "}
-                </h4>
-                <p className="description mt-3">
-                  Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  vulputate libero et velit interdum, ac aliquet odio mattis.
-                  Class aptent taciti sociosqu ad litora torquent per conubia
-                  nostra, per inceptos himenaeos.
-                </p>
-                <h4
-                  className="heading mb-2 border-heading p-0 mt-3"
-                  style={{ border: "none" }}
-                >
-                  {" "}
-                  Jamia Miliya Islamia Fee Payment Guidelines{" "}
-                </h4>
-                <p className="description mt-3">
-                  Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  vulputate libero et velit interdum, ac aliquet odio mattis.
-                  Class aptent taciti sociosqu ad litora torquent per conubia
-                  nostra, per inceptos himenaeos.
-                </p>
-                <button className="show-more mt-5" style={{ border: "none" }}>
-                  Show More
-                </button>
-              </div>
-
-              <div className="detail-box boxShadow-container margin-div">
-                <div className="course-flex">
-                  <p>
-                    B.Tech [Bachelor of Technology] <br />
-                    Full Time • On Campus
-                  </p>
-                  <p>
-                    ₹ 11,70,000 (4 Years) <br />
-                  </p>
-                </div>
-                <div className="last-btns">
-                  <button className="outline">Intrested</button>
-                  <button>
-                    Brochure <i className="fa-solid fa-download" />{" "}
-                  </button>
-                </div>
-
-                <h4
-                  className="heading mb-2 border-heading p-0 mt-3"
-                  style={{ border: "none" }}
-                >
-                  All Branches of technology{" "}
-                </h4>
-                <div className="course-flex mt-3">
-                  <p>
-                    <span style={{ color: "#000" }}>
-                      {" "}
-                      Bachelor of Technology [B.Tech] <br /> (Aerospace
-                      Engineering)
-                    </span>
-                    <br />
-                    Check Eligibility
-                  </p>
-                  <p>
-                    <span style={{ color: "#FF4141" }}> ₹ 1,00,000</span>
-                    <br />
-                    View Detail Fees
-                  </p>
-                  <button>Apply Now</button>
-                </div>
-
-                <div className="course-flex mt-3">
-                  <p>
-                    <span style={{ color: "#000" }}>
-                      {" "}
-                      Bachelor of Technology [B.Tech] <br /> (Aerospace
-                      Engineering)
-                    </span>
-                    <br />
-                    Check Eligibility
-                  </p>
-                  <p>
-                    <span style={{ color: "#FF4141" }}> ₹ 1,00,000</span>
-                    <br />
-                    View Detail Fees
-                  </p>
-                  <button>Apply Now</button>
-                </div>
-                <div className="course-flex mt-3">
-                  <p>
-                    <span style={{ color: "#000" }}>
-                      {" "}
-                      Bachelor of Technology [B.Tech] <br /> (Aerospace
-                      Engineering)
-                    </span>
-                    <br />
-                    Check Eligibility
-                  </p>
-                  <p>
-                    <span style={{ color: "#FF4141" }}> ₹ 1,00,000</span>
-                    <br />
-                    View Detail Fees
-                  </p>
-                  <button>Apply Now</button>
-                </div>
-                <div className="course-flex mt-3">
-                  <p>
-                    <span style={{ color: "#000" }}>
-                      {" "}
-                      Bachelor of Technology [B.Tech] <br /> (Aerospace
-                      Engineering)
-                    </span>
-                    <br />
-                    Check Eligibility
-                  </p>
-                  <p>
-                    <span style={{ color: "#FF4141" }}> ₹ 1,00,000</span>
-                    <br />
-                    View Detail Fees
-                  </p>
-                  <button>Apply Now</button>
-                </div>
               </div>
             </div>
             <ArticleComponent />
@@ -810,6 +580,8 @@ const CollegeMicroInfo = () => {
         );
     }
   };
+
+  console.log(detail?.data?.CourseTitles);
 
   return (
     <>

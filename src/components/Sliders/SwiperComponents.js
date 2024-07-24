@@ -27,13 +27,11 @@ const RenderAdwizorCards = (item) => {
   return (
     <div className="card">
       <div className="detail">
-        <Link to="/user-dashboard/adwizor-profile">
+        <Link to={`/user-dashboard/adwizor-profile/${item.id}`}>
           <img src={item.img} alt="" className="mainImg" />
         </Link>
         <div className="content">
-          <Link to="/user-dashboard/adwizor-profile">
             <p className="title"> {item.title} </p>
-          </Link>
           <div className="rating">
             <i className="fa-solid fa-star"></i>
             <p>{item.rating} </p>
@@ -50,7 +48,7 @@ const RenderAdwizorCards = (item) => {
         <Link to="/connect-with-adwizor">
           <button>Book Appointment</button>
         </Link>
-        <Link to="/user-dashboard/adwizor-profile">
+        <Link to={`/user-dashboard/adwizor-profile/${item.id}`}>
           <button>View Profile</button>
         </Link>
       </div>

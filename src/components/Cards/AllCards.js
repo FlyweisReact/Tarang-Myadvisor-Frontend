@@ -248,7 +248,7 @@ const ShortlistedUniversities = (item) => {
         <div className="title">
           <img src={flagImg} alt="flag" />
           <div>
-            <Link to={`/college-micro-info/${id}`}>
+            <Link to={`/college-micro-info/${title}`}>
               <p> {title} </p>
             </Link>
             <p style={{ fontSize: "25px" }}> {courseTitle} </p>
@@ -414,10 +414,7 @@ const ReviewCard = () => {
           duis enim velit mollit. Exercitation veniam consequat sunt nostrud
           amet.
         </p>
-        <div className="btn-container">
-          <button>Review </button>
-          <button className="cancel">Cancel</button>
-        </div>
+     
       </div>
     </div>
   );

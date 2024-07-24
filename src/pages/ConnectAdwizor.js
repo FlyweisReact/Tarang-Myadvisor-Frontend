@@ -8,7 +8,7 @@ import { Slider } from "../components/Sliders/Sliders";
 import { getApi, postApi, showMsg } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
 import { callExpertConfig } from "../components/Sliders/SwiperConfig";
-import { ButtonComponent } from "../components/HelpingComponents";
+import { AdwizorCards, ButtonComponent } from "../components/HelpingComponents";
 import { ClipLoader } from "react-spinners";
 
 function useQuery() {
@@ -19,7 +19,6 @@ const ConnectAdwizor = () => {
   const [banner, setBanner] = useState({ data: [] });
   const [step, setStep] = useState(1);
   const [otp, setOtp] = useState("");
-  const navigate = useNavigate();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const id = query.get("id");
@@ -31,6 +30,7 @@ const ConnectAdwizor = () => {
   const [allCountries, setAllCountries] = useState({ data: [] });
   const [loading, setLoading] = useState(false);
   const [appointmentId, setAppointmentId] = useState("");
+  const [adwizors, setAdwizors] = useState({ data: [] });
 
   const showOtp = (res) => {
     const otp = res?.data?.otp;
@@ -88,9 +88,24 @@ const ConnectAdwizor = () => {
     return <img src={item?.image} alt="" />;
   };
 
+  useEffect(() => {
+    getApi(endPoints.user.getLiveAdwizors, {
+      setResponse: setAdwizors,
+    });
+  }, []);
+
+  const adwizorsData = adwizors.data.map((i) => ({
+    img: i?.image,
+    title: i?.fullname,
+    rating: i?.averageRating,
+    description: [i?.experiance, i?.state, i?.helpedStudent],
+    id: i._id,
+  }));
+
   return (
     <>
-      <div className="book-adwizor margin-div">
+      <AdwizorCards allAdwizors={adwizorsData} topAdwizor={false} />
+      {/* <div className="book-adwizor margin-div">
         <div className="left">
           <h2>Book your 1-1 call with Experts</h2>
           <p className="desc">
@@ -299,7 +314,7 @@ const ConnectAdwizor = () => {
             </>
           )}
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

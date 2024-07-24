@@ -58,7 +58,9 @@ const endPoints = {
     getAdwizorSlots: "advisor/getAdvisor/ByIdSlot",
     createAppointment: (id) => `user/createAppointment/${id}`,
     confirmAppointment : "user/verifyOtpAndBookAppointment",
-    getAdwizorProfile : (id) =>  `admin/getAdvisorById/${id}`
+    getAdwizorProfile : (id) =>  `user/getadvisorProfileReviewAndBlog/${id}`,
+    getUniversitiesCourse : (name) => `user/university/courses/${name}?page=1&limit=10`,
+    getLiveAdwizors  : "user/getAllAdvisorsLiveStatus"
   },
 };
 

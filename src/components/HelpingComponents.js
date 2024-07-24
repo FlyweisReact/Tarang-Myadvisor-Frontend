@@ -56,7 +56,14 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
           {topAdwizorData.map((i, index) => (
             <div className="item" key={`topadwizor${index}`}>
               <div className="detail">
-                <img src={i.img} alt="" className="mainImg"  onClick={() => navigate(`/user-dashboard/adwizor-profile/${i.id}`)}/>
+                <img
+                  src={i.img}
+                  alt=""
+                  className="mainImg"
+                  onClick={() =>
+                    navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+                  }
+                />
                 <div className="content">
                   <p className="title">{i.title} </p>
                   <div className="rating">
@@ -80,7 +87,9 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
                   Book Appointment
                 </button>
                 <button
-                  onClick={() => navigate("/user-dashboard/adwizor-profile")}
+                  onClick={() =>
+                    navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+                  }
                 >
                   View Profile
                 </button>
@@ -102,7 +111,9 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
             <img
               src={i.img}
               alt=" "
-              onClick={() => navigate(`/user-dashboard/adwizor-profile/${i.id}`)}
+              onClick={() =>
+                navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+              }
             />
             <div className="content">
               <p
@@ -132,7 +143,9 @@ const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
                   Chat
                 </button>
                 <button
-                  onClick={() => navigate(`/counselling-session/live-2/${i.id}`)}
+                  onClick={() =>
+                    navigate(`/counselling-session/live-2/${i.id}`)
+                  }
                 >
                   Call
                 </button>

@@ -1,7 +1,7 @@
 /** @format */
 
 import { useEffect, useState } from "react";
-import { Modal, Offcanvas } from "react-bootstrap";
+import { Fade, Modal, Offcanvas } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { logoImg } from "../../assest";
@@ -145,16 +145,25 @@ export const CollegeShortlistedCanvas = ({ show, handleClose }) => {
 
 export const StudentElegibility = (props) => {
   const [myStudents, setMyStudents] = useState({ data: [] });
+  const [id, setId] = useState("");
 
   useEffect(() => {
     if (props.show === true) {
-      getApi(endPoints.adwizorStudent, {
+      getApi(endPoints.adwizor.assignedStudents, {
         setResponse: setMyStudents,
       });
     }
   }, [props]);
 
-  // console.log(myStudents)
+  const clearHandler = () => {
+    setId("");
+    props.onHide();
+  };
+
+  const saveHandler = () => {
+    props.setUserId(id);
+    props.onHide();
+  };
 
   return (
     <Modal {...props} centered>
@@ -173,17 +182,87 @@ export const StudentElegibility = (props) => {
           </p>
           <form>
             <p className="heading mb-2">Student a Student</p>
-            <select>
-              <option value='' >Select a student below</option>
-              {/* {myStudents.data.map((i , index) => (
-                <option>  </option>
-              ))} */}
+            <select onChange={(e) => setId(e.target.value)} value={id}>
+              <option value="">Select a student below</option>
+              {myStudents.data.map((i, index) => (
+                <option key={`student${index}`} value={i?.userId?._id}>
+                  {" "}
+                  {i?.userId?.fullname}{" "}
+                </option>
+              ))}
             </select>
 
             <div className="btn-container mt-3">
-              <button className="cancel">Cancel</button>
-              <button className="save">Save</button>
+              <button type="button" className="cancel" onClick={clearHandler}>
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="save"
+                onClick={() => saveHandler()}
+              >
+                Save
+              </button>
             </div>
+          </form>
+        </div>
+      </Modal.Body>
+    </Modal>
+  );
+};
+
+export const CreateStudent = (props) => {
+  const [fullname, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const payload = {
+    userType: "user",
+    fullname,
+    email,
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    postApi(endPoints.adwizor.createStudent, payload, {
+      setLoading,
+      successMsg: "New User Created !",
+      additionalFunctions: [() => props.onHide()],
+    });
+  };
+
+  return (
+    <Modal {...props} centered>
+      <Modal.Body>
+        <div className="student-elegibility-modal">
+          <div className="heading mb-3">
+            <p>Add New Student </p>
+            <i
+              className="fa-regular fa-circle-xmark"
+              onClick={() => props.onHide()}
+            ></i>
+          </div>
+
+          <form onSubmit={submitHandler}>
+            <input
+              type={"text"}
+              required
+              onChange={(e) => setFullName(e.target.value)}
+              value={fullname}
+              placeholder="Full name"
+              className="mb-3"
+            />
+            <input
+              type={"email"}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder="Email"
+              className="mb-3"
+            />
+            <button className="submit-btn" type="submit">
+              {loading ? <ClipLoader color="#fff" /> : "Create"}
+            </button>
           </form>
         </div>
       </Modal.Body>

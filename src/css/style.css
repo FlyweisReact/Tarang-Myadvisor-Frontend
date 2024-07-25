@@ -1069,6 +1069,9 @@
 .synopsis-slider .Item .heading img {
   width: 70px;
   height: 70px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
 }
 .synopsis-slider .Item a {
   text-decoration: none;
@@ -2465,10 +2468,21 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 40px;
   border-radius: 20px;
+  background-color: #fff;
+}
+.user-dashboard-profile .basic-details  .edit-icon{
+  display: flex;
+  justify-content: flex-end;
+  color: #0185c3;
+  cursor: pointer;
+}
+.user-dashboard-profile .basic-details  .edit-icon:hover{
+  color: #0185c3;
+}
+.user-dashboard-profile .basic-details .main-container{
   display: flex;
   gap: 40px;
   align-items: center;
-  background-color: #fff;
 }
 
 .user-dashboard-profile .basic-details .user-img {
@@ -5000,18 +5014,13 @@
   font-size: 10px;
 }
 .top-colleges .near-college-card .description .points {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding: 0 10px;
+
   margin-top: 10px;
 }
 .top-colleges .near-college-card .description .points li {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .top-colleges .near-college-card .description .points li p {
@@ -5022,6 +5031,7 @@
 .top-colleges .near-college-card .description .points li i {
   font-size: 4px;
   margin: 0;
+  /* margin-top: 5px; */
 }
 .top-colleges .near-college-card .btn-container {
   display: flex;
@@ -5946,6 +5956,7 @@
   font-size: 14px;
   width: 200px;
   padding: 10px;
+  outline : none ;
   border-radius: 10px;
 }
 .adwizor-panel .section-sub-heading p.title {
@@ -6013,11 +6024,10 @@
   outline: none;
 }
 
-.adwizor-panel .grid-container-for-4 {
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+
+.top-colleges .grid-container-for-4{
   align-items: flex-start;
 }
-
 .adwizor-dash-item {
   width: 207px;
   display: flex;
@@ -6141,6 +6151,26 @@
   font-weight: 600;
   border-radius: 10px;
 }
+.student-elegibility-modal form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #babcbd;
+  font-size: 14px;
+  outline: none;
+  font-weight: 600;
+}
+.student-elegibility-modal form  .submit-btn{
+  width: 164px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  color: #fff;
+  background-color: #0185c3;
+  border: 1px solid #0185c3;
+  display: block;
+  margin: auto;
+}
 .student-elegibility-modal form .btn-container {
   display: flex;
   justify-content: space-between;
@@ -6221,6 +6251,44 @@
 .adwizor-profile-section  .about-sec p{
   font-size: 16px;
 } 
+
+
+.near-college-card .detail {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+.near-college-card .detail p {
+  margin: 0;
+  font-size: 13px;
+  color: #363b51;
+}
+.near-college-card .detail p.right {text-align: right;
+}
+.near-college-card hr {
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.adwizor-panel .students-table table{
+  width: 100%;
+  margin-bottom: 3rem;
+}
+.adwizor-panel .students-table table thead tr{
+  background-color: #F1F4F9;
+}
+.adwizor-panel .students-table table thead tr th ,
+.adwizor-panel .students-table table tbody td {
+  padding: 10px;
+  font-size: 13px;
+}
+.adwizor-panel .students-table table thead tr th {
+  font-weight: 600;
+}
 
 /** Keyframes for the animation **/
 @keyframes highlightAnimation {

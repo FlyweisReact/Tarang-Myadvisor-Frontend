@@ -31,7 +31,7 @@ const RenderAdwizorCards = (item) => {
           <img src={item.img} alt="" className="mainImg" />
         </Link>
         <div className="content">
-            <p className="title"> {item.title} </p>
+          <p className="title"> {item.title} </p>
           <div className="rating">
             <i className="fa-solid fa-star"></i>
             <p>{item.rating} </p>
@@ -44,8 +44,9 @@ const RenderAdwizorCards = (item) => {
           ))}
         </div>
       </div>
+
       <div className="btn-container">
-        <Link to="/connect-with-adwizor">
+        <Link to={`/counselling-session/live-2/${item.id}`}>
           <button>Book Appointment</button>
         </Link>
         <Link to={`/user-dashboard/adwizor-profile/${item.id}`}>
@@ -58,6 +59,7 @@ const RenderAdwizorCards = (item) => {
 
 const RenderUniversityCards = (item) => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const payload = {
     universityId: item?.id,
@@ -86,20 +88,13 @@ const RenderUniversityCards = (item) => {
       ))}
 
       <hr />
-      {/* <div className="predection">
-        <p className="title">Success prediction</p>
-        <div className="flex-div">
-          <p>Sep 2024</p>
-          <p>Jan 2025</p>
-          <p>Sep 2025</p>
-        </div>
-        <div className="flex-div">
-          <button>Very High</button>
-          <button>Very High</button>
-          <button>Very High</button>
-        </div>
-      </div> */}
-      <button className="view-detail">View Details</button>
+
+      <button
+        className="view-detail"
+        onClick={() => navigate(`/college-micro-info/${item.collegeName}`)}
+      >
+        View Details
+      </button>
       {loading ? (
         <button className="create-application">
           <ClipLoader color="#fff" />
@@ -125,15 +120,17 @@ const RenderFeatureItems = (item) => {
 };
 
 const RenderSypnosisItem = (item) => {
+  const { flag, title, checkColleges, numberOfColleges, studyCost, accordion } =
+    item;
   return (
     <div className="Item">
       <div className="heading">
-        <img src={item.flag} alt="" />
+        <img src={flag} alt="" />
         <div className="content">
-          <Link to={`/study-international/${item.title}`}>
-            <p className="title"> {item.title} </p>
+          <Link to={`/study-international/${title}`}>
+            <p className="title"> Study in {title} </p>
           </Link>
-          <p className="desc">Check 170 colleges {">"}</p>
+          <p className="desc"> {checkColleges} </p>
         </div>
       </div>
 
@@ -141,14 +138,14 @@ const RenderSypnosisItem = (item) => {
         <div className="item">
           <img src={degreeImg} alt="" />
           <div className="content">
-            <p className="title">1008</p>
+            <p className="title"> {numberOfColleges} </p>
             <p className="dash">No.of Colleges</p>
           </div>
         </div>
         <div className="item">
           <img src={dollarIcon} alt="" />
           <div className="content">
-            <p className="title">32.68 k USD/Year</p>
+            <p className="title"> {studyCost} </p>
             <p className="dash">Avg. Study Cost</p>
           </div>
         </div>
@@ -158,12 +155,8 @@ const RenderSypnosisItem = (item) => {
         <p className="fw-bold">Guides</p>
         <i className="fa-solid fa-chevron-right"></i>
       </div>
-      {item.accordion.map((item, index) => (
-        <div
-          className="guides"
-          style={{ cursor: "pointer" }}
-          key={`accordion${index}`}
-        >
+      {accordion.map((item, index) => (
+        <div className="guides" key={`accordion${index}`}>
           <p> {item} </p>
           <i className="fa-solid fa-chevron-right"></i>
         </div>
@@ -180,6 +173,7 @@ const RenderFilterItems = (i) => {
       title={i.title}
       titleIcon={i.titleIcon}
       caretIcon={i.caretIcon}
+      setValue={i.setValue}
     />
   );
 };

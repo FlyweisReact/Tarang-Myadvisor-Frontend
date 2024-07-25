@@ -19,6 +19,7 @@ import {
   heartImg,
   locationHollow,
   locationSvg,
+  NearlyCollege1,
   progressSvg,
   rangkingSvg,
   ukSquare,
@@ -221,6 +222,8 @@ const ShortlistedUniversities = (item) => {
     elegibility,
     approvedBy,
     courseTitle,
+    shortlistedCount,
+    institueType,
   } = item;
 
   const payload = {
@@ -282,19 +285,26 @@ const ShortlistedUniversities = (item) => {
         <img src={collegeImg} alt="" className="college-img" />
         <div className="content">
           <div className="tags">
-            <div className="rating">
-              <p>{star} </p> <i className="fa-solid fa-star"></i>
-            </div>
-            <p className="review">({reviews} Reviews)</p>
+            {star && (
+              <div className="rating">
+                <p>{star} </p> <i className="fa-solid fa-star"></i>
+              </div>
+            )}
+            {reviews && <p className="review">({reviews} Reviews)</p>}
 
-            <div className="location">
-              <img src={locationHollow} alt="" />
-              <p> {location} </p>
-            </div>
-            <div className="location">
-              <img src={flag} alt="" />
-              <p>Private</p>
-            </div>
+            {location && (
+              <div className="location">
+                <img src={locationHollow} alt="" />
+                <p> {location} </p>
+              </div>
+            )}
+
+            {institueType && (
+              <div className="location">
+                <img src={flag} alt="" />
+                <p>Private</p>
+              </div>
+            )}
           </div>
 
           <div className="package">
@@ -337,13 +347,17 @@ const ShortlistedUniversities = (item) => {
             )}
           </div>
 
-          <div className="shortlisted-container">
-            <div className="user-images">
-              <img src={combineUser} alt="" className="user-image" />
-              <div className="skewDiv"></div>
+          {shortlistedCount && (
+            <div className="shortlisted-container">
+              <div className="user-images">
+                <img src={combineUser} alt="" className="user-image" />
+                <div className="skewDiv"></div>
+              </div>
+              <p className="shortlisted-text">
+                Shortlisted by {shortlistedCount}+ students
+              </p>
             </div>
-            <p className="shortlisted-text">Shortlisted by 1545+ students</p>
-          </div>
+          )}
         </div>
       </div>
 
@@ -364,13 +378,7 @@ const ShortlistedUniversities = (item) => {
 
         <div>
           {btnStatusCheker(status)}
-          {btn2 ? (
-            <button> {btn2} </button>
-          ) : (
-            <Link to="/user-dashboard/application-status">
-              <button> View Status </button>
-            </Link>
-          )}
+          {btn2 && <button> {btn2} </button>}
         </div>
       </div>
     </div>
@@ -414,7 +422,6 @@ const ReviewCard = () => {
           duis enim velit mollit. Exercitation veniam consequat sunt nostrud
           amet.
         </p>
-     
       </div>
     </div>
   );
@@ -431,6 +438,87 @@ const HowItWorkCard = (item) => {
   );
 };
 
+const NearCollegecard = ({ item, isUser, userId }) => {
+  const { id, img, collegeName, location, rating, description } = item;
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const payload = {
+    universityId: id,
+  };
+
+  const adwizorPayload = {
+    universityId: id,
+    userId,
+  };
+
+  const submitHandler = () => {
+    isUser
+      ? postApi(endPoints.applyOnUniversities, payload, {
+          setLoading,
+          successMsg: "Applied Successfully",
+        })
+      : postApi(endPoints.adwizor.applyforStudent, adwizorPayload, {
+          setLoading,
+          successMsg: "Applied Successfully",
+        });
+  };
+
+  return (
+    <div className="near-college-card">
+      <div className="img-container">
+        <img
+          src={img}
+          alt=""
+          className="college-img"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate(`/college-micro-info/${collegeName}`)}
+        />
+        {rating && (
+          <div className="rating">
+            <i className="fa-solid fa-star"></i>
+            <p>{rating}/10</p>
+          </div>
+        )}
+      </div>
+
+      <div className="description">
+        <div className="college-title">
+          <p className="name">{collegeName} </p>
+          <span className="location">
+            <i class="fa-solid fa-location-dot"></i>
+            {location}
+          </span>
+        </div>
+        <ul className="points">
+          {description.map(
+            (i, index) =>
+              i.desc && (
+                <li key={`detail${index}`}>
+                  {" "}
+                  {i.title} : {i.desc}
+                </li>
+              )
+          )}
+        </ul>
+
+        <div className="btn-container">
+          <button className="apply-btn" onClick={() => submitHandler()}>
+            {" "}
+            {loading ? <ClipLoader color="#fff" /> : "Apply Now"}{" "}
+          </button>
+          <button
+            className="outlined-btn"
+            onClick={() => navigate(`/college-micro-info/${collegeName}`)}
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export {
   ReviewCard,
   WorkOppurtunityCard,
@@ -441,5 +529,6 @@ export {
   NearCollegeCard,
   ShortlistedUniversities,
   BlogCard,
-  HowItWorkCard
+  HowItWorkCard,
+  NearCollegecard,
 };

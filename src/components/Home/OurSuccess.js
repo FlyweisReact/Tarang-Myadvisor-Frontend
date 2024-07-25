@@ -1,31 +1,24 @@
 /** @format */
 
-import React from "react";
-
-const data = [
-  {
-    title: "160+",
-    acheivement: "Global Colleges Listed",
-    colorCode: "#349DCF",
-  },
-  {
-    title: "3.2 k+",
-    acheivement: "Personal Mentors",
-    colorCode: "#FD9028",
-  },
-  {
-    title: "04 k+",
-    acheivement: "Admissions",
-    colorCode: "#9E72FF",
-  },
-  {
-    title: "3 k+",
-    acheivement: "Students Placed",
-    colorCode: "#2C8A00",
-  },
-];
+import React, { useState, useEffect } from "react";
+import { getApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 
 const OurSuccess = () => {
+  const [count, setCount] = useState({ data: [] });
+
+  useEffect(() => {
+    getApi(endPoints.user.ourSuccessCount, {
+      setResponse: setCount,
+    });
+  }, []);
+
+  const countList = count.data.map((i) => ({
+    title: i?.number,
+    acheivement: i?.title,
+    colorCode: i?.name,
+  }));
+
   return (
     <div className="our-success">
       <h4 className="normal-heading">Our Success In Numbers</h4>
@@ -35,7 +28,7 @@ const OurSuccess = () => {
         venenatis felis id augue
       </p>
       <div className="cards">
-        {data.map((i, index) => (
+        {countList.map((i, index) => (
           <div className="item" key={`success${index}`}>
             <p className="title">{i.title} </p>
             <p className="acheivment" style={{ color: i.colorCode }}>

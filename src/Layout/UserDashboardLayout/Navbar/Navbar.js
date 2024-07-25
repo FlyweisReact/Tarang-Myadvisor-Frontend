@@ -16,14 +16,14 @@ const Navbar = () => {
         </Link>
 
         <div>
-          <select>
-            <option>Study Abroad</option>
-          </select>
-
-          <select>
-            <option>Study India</option>
-          </select>
-
+          <Link to="/study-abroad">
+            <button>Study Abroad</button>
+          </Link>
+      
+          <Link to="/study-india">
+            <button>Study India</button>
+          </Link>
+    
           <button
             className={
               location.pathname === "/user-dashboard/write-a-review"

@@ -2,241 +2,61 @@
 
 import React, { useState, useCallback, useEffect } from "react";
 import { filterSvg } from "../../assest";
-import { Dropdown } from "antd";
+import { Dropdown, Menu } from "antd";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
-import {
-  countryArr,
-  courseArr,
-  englishScore,
-  programmLevel,
-  tutionFess,
-} from "../../constant/constant";
+import { programmLevel } from "../../constant/constant";
 import { Slider } from "../../components/Sliders/Sliders";
-import {
-  topAdwizorsConfig,
-  userProgramConfig,
-} from "../../components/Sliders/SwiperConfig";
-import {
-  RenderFilterItems,
-  RenderUniversityCards,
-} from "../../components/Sliders/SwiperComponents";
+import { userProgramConfig } from "../../components/Sliders/SwiperConfig";
+import { RenderFilterItems } from "../../components/Sliders/SwiperComponents";
 import {
   AppointmentFloatingBtn,
   LoaderComponent,
 } from "../../components/HelpingComponents";
-import { getApi } from "../../Repository/Api";
+import { getApi, postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
-import { debouncedSetQuery } from "../../utils/utils";
-
-const items = [
-  {
-    label: (
-      <>
-        <div className="user-homepage-filter-heading">
-          <p>Filters</p>
-          <i className="fa-regular fa-circle-xmark"></i>
-        </div>
-      </>
-    ),
-    key: "4",
-  },
-  {
-    label: (
-      <>
-        <div className="user-homepage-filter-input-container">
-          <input type={"checkbox"} />
-          <p>Show Commisions</p>
-        </div>
-      </>
-    ),
-    key: "0",
-  },
-  {
-    label: (
-      <>
-        <div className="user-homepage-filter-input-container">
-          <input type={"checkbox"} />
-          <p>Show GPA Score</p>
-        </div>
-      </>
-    ),
-    key: "1",
-  },
-  {
-    label: (
-      <>
-        <div className="user-homepage-filter-input-container">
-          <input type={"checkbox"} />
-          <p>Show IELTS Score</p>
-        </div>
-      </>
-    ),
-    key: "2",
-  },
-  {
-    label: (
-      <button className="user-homepage-filter-apply-btn mt-1 mb-1">
-        Apply Filters
-      </button>
-    ),
-    key: "3",
-  },
-];
-
-const optionsMenu = [
-  {
-    title: "Destination",
-    items: countryArr?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-
-    caretIcon: true,
-  },
-  {
-    title: "Program Level",
-    items: programmLevel?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-    caretIcon: true,
-  },
-  {
-    title: "Course",
-    items: courseArr?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-    caretIcon: true,
-  },
-  {
-    title: "English Score",
-    items: englishScore?.map((city, index) => ({
-      label: (
-        <>
-          <div className="antd-english-score" key={`english${index}`}>
-            <p> {city} </p>
-            <input type="text" />
-          </div>
-        </>
-      ),
-      key: index.toString(),
-    })),
-    caretIcon: true,
-  },
-  {
-    title: "Tution Fees",
-    items: tutionFess?.map((city, index) => ({
-      label: (
-        <>
-          <div className="user-homepage-filter-input-container">
-            <input type={"checkbox"} />
-            <p> {city} </p>
-          </div>
-        </>
-      ),
-      key: index.toString(),
-    })),
-    caretIcon: true,
-  },
-  {
-    title: "Destination",
-    items: countryArr?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-
-    caretIcon: true,
-  },
-  {
-    title: "Program Level",
-    items: programmLevel?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-    caretIcon: true,
-  },
-  {
-    title: "Course",
-    items: courseArr?.map((city, index) => ({
-      label: (
-        <a href={`#${city}`} className="antd-link-a">
-          {city}
-        </a>
-      ),
-      key: index.toString(),
-    })),
-    caretIcon: true,
-  },
-  {
-    title: "English Score",
-    items: englishScore?.map((city, index) => ({
-      label: (
-        <>
-          <div className="antd-english-score" key={`english${index}`}>
-            <p> {city} </p>
-            <input type="text" />
-          </div>
-        </>
-      ),
-      key: index.toString(),
-    })),
-    caretIcon: true,
-  },
-  {
-    title: "Tution Fees",
-    items: tutionFess?.map((city, index) => ({
-      label: (
-        <>
-          <div className="user-homepage-filter-input-container">
-            <input type={"checkbox"} />
-            <p> {city} </p>
-          </div>
-        </>
-      ),
-      key: index.toString(),
-    })),
-    caretIcon: true,
-  },
-];
+import { debouncedSetQuery, pushInArr } from "../../utils/utils";
+import { NearCollegecard } from "../../components/Cards/AllCards";
+import useInfiniteScroll from "react-infinite-scroll-hook";
 
 const UserProgramms = () => {
   const [query, setQuery] = useState("");
   const [data, setData] = useState({ data: [] });
   const [loading, setLoading] = useState(false);
+  const [limit, setLimit] = useState(200);
+  const [visible, setVisible] = useState(false);
+  const [showIELTS, setShowIELTS] = useState(false);
+  const [showGPA, setShowGPA] = useState(false);
+  const [courses, setCourses] = useState({ courses: [] });
+  const [allStreams, setAllStreams] = useState({ streams: [] });
+  const [allCountries, setAllCountries] = useState({ data: [] });
+  const [keyword, setKeyword] = useState([]);
   const page = 1;
-  const limit = 200;
 
   const fetchHandler = useCallback(() => {
-    getApi(endPoints.filterUniversities(query, page, limit), {
-      setResponse: setData,
-      setLoading,
-    });
-  }, [query]);
+    getApi(
+      endPoints.filterUniversities(keyword.join(","), page, limit, query),
+      {
+        setResponse: setData,
+        setLoading,
+      }
+    );
+  }, [keyword, limit, query]);
 
   useEffect(() => {
     fetchHandler();
   }, [fetchHandler]);
+
+  useEffect(() => {
+    getApi(endPoints.getAllCourse, {
+      setResponse: setCourses,
+    });
+    getApi(endPoints.getAllStreams, {
+      setResponse: setAllStreams,
+    });
+    getApi(endPoints.getAllCountries, {
+      setResponse: setAllCountries,
+    });
+  }, []);
 
   const universityArr =
     data?.data?.length > 0
@@ -245,11 +65,9 @@ const UserProgramms = () => {
           img: i?.ImageUrl?.[0],
           collegeName: i?.UniversityName,
           subject: i?.CourseTitle,
+          location: i?.location,
+          rating: i?.Star,
           description: [
-            {
-              title: "Location",
-              desc: i?.location,
-            },
             {
               title: "Campus city",
               desc: i?.campusName,
@@ -260,15 +78,157 @@ const UserProgramms = () => {
             },
             {
               title: "Application fee",
-              desc: `$${i?.applicationFee}`,
+              desc: i?.applicationFee,
             },
             {
               title: "Duration",
               desc: i?.programLength,
             },
+            showGPA && {
+              title: "GPA Score",
+              desc: i?.minGPA,
+            },
+            ,
+            showIELTS && {
+              title: "IELTS Score",
+              desc: i?.IELTS,
+            },
           ],
         }))
       : [];
+
+  const customDebounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const loadMore = customDebounce(() => {
+    if (limit === data?.totalResults || limit < data?.totalResults) {
+      setLimit(limit + 100);
+    }
+  }, 500);
+
+  const hasMore = data?.totalResults > limit;
+  const [sentryRef] = useInfiniteScroll({
+    loading,
+    hasNextPage: hasMore,
+    onLoadMore: loadMore,
+    disabled: loading,
+  });
+
+  const handleMenuClick = ({ key }) => {
+    if (key === "3") {
+      setVisible(false);
+    }
+  };
+
+  const items = [
+    {
+      label: (
+        <div className="user-homepage-filter-heading">
+          <p>Filters</p>
+          <i
+            className="fa-regular fa-circle-xmark"
+            onClick={() => setVisible(false)}
+          ></i>
+        </div>
+      ),
+      key: "4",
+    },
+    {
+      label: (
+        <div className="user-homepage-filter-input-container">
+          <input type="checkbox" onChange={() => setShowGPA(!showGPA)} />
+          <p>Show GPA Score</p>
+        </div>
+      ),
+      key: "1",
+    },
+    {
+      label: (
+        <div className="user-homepage-filter-input-container">
+          <input type="checkbox" onChange={() => setShowIELTS(!showIELTS)} />
+          <p>Show IELTS Score</p>
+        </div>
+      ),
+      key: "2",
+    },
+  ];
+
+  const menu = (
+    <Menu onClick={handleMenuClick}>
+      {items.map((item) => (
+        <Menu.Item key={item.key}>{item.label}</Menu.Item>
+      ))}
+    </Menu>
+  );
+
+  const searchKeyword = (item) => {
+    pushInArr(item, setKeyword);
+  };
+
+  // ---
+  const optionsMenu = [
+    {
+      title: "Destination",
+      items: allCountries.data.map((city, index) => ({
+        label: (
+          <a href={`#${city.ContryName}`} className="antd-link-a">
+            {city.ContryName}
+          </a>
+        ),
+        key: index.toString(),
+      })),
+      setValue: searchKeyword,
+      caretIcon: true,
+    },
+    {
+      title: "Program Level",
+      items: programmLevel?.map((city, index) => ({
+        label: (
+          <a href={`#${city}`} className="antd-link-a">
+            {city}
+          </a>
+        ),
+        key: index.toString(),
+      })),
+      caretIcon: true,
+      setValue: searchKeyword,
+    },
+    {
+      title: "Course",
+      items: courses?.courses?.map((city, index) => ({
+        label: (
+          <a href={`#${city.courseName}`} className="antd-link-a">
+            {city?.courseName}
+          </a>
+        ),
+        key: index.toString(),
+      })),
+      caretIcon: true,
+      setValue: searchKeyword,
+    },
+    {
+      title: "Streams",
+      items: allStreams?.streams?.map((city, index) => ({
+        label: (
+          <a href={`#${city.streamName}`} className="antd-link-a">
+            {city?.streamName}
+          </a>
+        ),
+        key: index.toString(),
+      })),
+      caretIcon: true,
+      setValue: searchKeyword,
+    },
+  ];
+
+
 
   return (
     <section className="user-homePage mt-2  with-bg-img">
@@ -286,7 +246,12 @@ const UserProgramms = () => {
               onChange={(e) => debouncedSetQuery(e.target.value, setQuery)}
             />
           </div>
-          <Dropdown menu={{ items }} trigger={["click"]}>
+          <Dropdown
+            overlay={menu}
+            trigger={["click"]}
+            visible={visible}
+            onVisibleChange={(flag) => setVisible(flag)}
+          >
             <button>
               Filters
               <img src={filterSvg} alt="" />
@@ -305,17 +270,20 @@ const UserProgramms = () => {
           swiperConfig={userProgramConfig}
         />
       </div>
-      {loading === true ? (
-        <LoaderComponent />
-      ) : (
-        <div className="university-slider">
-          <Slider
-            RenderSlide={RenderUniversityCards}
-            data={universityArr}
-            swiperConfig={topAdwizorsConfig}
-          />
+
+      <div className="top-colleges p-4">
+        <div className="grid-container-for-4">
+          {universityArr.map((i, index) => (
+            <NearCollegecard
+              key={`college${index}`}
+              item={i}
+              isUser={true}
+            />
+          ))}
         </div>
-      )}
+      </div>
+      {loading && <LoaderComponent />}
+      <div ref={sentryRef}></div>
 
       <AppointmentFloatingBtn />
     </section>

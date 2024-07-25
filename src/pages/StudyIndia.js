@@ -17,6 +17,8 @@ import { ShortlistedUniversities } from "../components/Cards/AllCards";
 import { topCitiesSwiperConfig } from "../components/Sliders/SwiperConfig";
 import { RenderTopCityCard } from "../components/Sliders/SwiperComponents";
 import { Swiper, SwiperSlide } from "swiper/react";
+import useInfiniteScroll from "react-infinite-scroll-hook";
+
 
 const NavigationComponent = () => {
   return (
@@ -40,13 +42,14 @@ const StudyIndia = () => {
   const [keyword, setKeyword] = useState([]);
   const [loading, setLoading] = useState(true);
   const [allCities, setAllCities] = useState({ cities: [] });
+  const [limit, setLimit] = useState(100);
 
   const fetchUniversities = useCallback(() => {
-    getApi(endPoints.filterIndianUniversitites(keyword.join(","), 1, 200), {
+    getApi(endPoints.filterIndianUniversitites(keyword.join(","), 1, limit), {
       setResponse: setUniversities,
       setLoading,
     });
-  }, [keyword]);
+  }, [keyword ,limit]);
 
   useEffect(() => {
     getApi(endPoints.studyIndiaBanner, {
@@ -85,7 +88,6 @@ const StudyIndia = () => {
           isFav: false,
           status: "Apply Now",
           location: i?.location,
-          btn2: "Download Brochure",
           id: i._id,
           reviews: i?.Review,
           fees: i?.Fees,
@@ -93,6 +95,8 @@ const StudyIndia = () => {
           avgPackage: i?.AveragePackageOffered,
           elegibility: i?.Eligibility,
           approvedBy: i?.ApprovedBy,
+          shortlistedCount: i?.TotalNoOfStudentsRegistered,
+          institueType: i?.InstituteType,
         }))
       : [];
 
@@ -188,6 +192,32 @@ const StudyIndia = () => {
     },
   ];
 
+  const customDebounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const loadMore = customDebounce(() => {
+    if (
+      limit === universities?.totalResults ||
+      limit < universities?.totalResults
+    ) {
+      setLimit(limit + 100);
+    }
+  }, 500);
+
+  const hasMore = universities?.totalResults > limit;
+  const [sentryRef] = useInfiniteScroll({
+    loading,
+    hasNextPage: hasMore,
+    onLoadMore: loadMore,
+    disabled: loading,
+  });
   return (
     <>
       <Banner img={banner?.data?.image} />
@@ -225,11 +255,11 @@ const StudyIndia = () => {
           </div>
 
           <div className="results">
-            {loading && <LoaderComponent />}
-
             {universityArr.map((i, index) => (
               <ShortlistedUniversities key={index} {...i} />
             ))}
+            {loading && <LoaderComponent />}
+            <div ref={sentryRef}></div>
           </div>
         </div>
       </section>

@@ -274,16 +274,10 @@ const AdwizorGridLayoutCard = ({
       <img
         src={img}
         alt=" "
-        onClick={() => navigate("/user-dashboard/adwizor-profile")}
+        onClick={() => navigate(`/user-dashboard/adwizor-profile/${id}`)}
       />
       <div className="content">
-        <p
-          className="title"
-          onClick={() => navigate("/user-dashboard/adwizor-profile")}
-        >
-          {" "}
-          {title}{" "}
-        </p>
+        <p className="title"> {title} </p>
 
         <div className="rating">
           <i className="fa-solid fa-star"></i>

@@ -27,6 +27,7 @@ const UserAdwizors = () => {
     img: i?.advisorId?.image,
     title: i?.advisorId?.fullname,
     rating: i?.advisorId?.averageRating,
+    id: i?.advisorId?._id,
     description: [
       i?.advisorId?.experiance,
       i?.advisorId?.state,

@@ -40,7 +40,7 @@ const UserHome = () => {
           />
         </div>
       </div>
-
+{/* 
       <div className="user-content-box">
         <div className="item">
           <p>My Favourites</p>
@@ -54,7 +54,7 @@ const UserHome = () => {
           <p>Loremipsum</p>
           <textarea />
         </div>
-      </div>
+      </div> */}
 
       <AppointmentFloatingBtn />
     </section>

@@ -59,7 +59,7 @@ const CollegeMicroInfo = () => {
 
   useEffect(() => {
     if (detail) {
-      setGalleryBanner(detail?.data?.ImageUrl?.[0]);
+      setGalleryBanner(detail?.university?.ImageUrl?.[0]);
     }
   }, [detail]);
 
@@ -67,39 +67,39 @@ const CollegeMicroInfo = () => {
     return (
       <div className="right">
         <div className="placement-report boxShadow-container margin-div">
-          <RenderIfPresent value={detail?.data?.Fees}>
+          <RenderIfPresent value={detail?.university?.Fees}>
             <div className="content-flex">
               <p className="bold">Fees : </p>
-              <p> {detail?.data?.Fees} </p>
+              <p> {detail?.university?.Fees} </p>
             </div>
           </RenderIfPresent>
-          <RenderIfPresent value={detail?.data?.applicationFee}>
+          <RenderIfPresent value={detail?.university?.applicationFee}>
             <div className="content-flex">
               <p className="bold"> Application Fees : </p>
-              <p> {detail?.data?.applicationFee} </p>
+              <p> {detail?.university?.applicationFee} </p>
             </div>
           </RenderIfPresent>
-          <RenderIfPresent value={detail?.data?.BTechFees}>
+          <RenderIfPresent value={detail?.university?.BTechFees}>
             <div className="content-flex">
               <p className="bold"> BTECH Fees : </p>
-              <p> {detail?.data?.BTechFees} </p>
+              <p> {detail?.university?.BTechFees} </p>
             </div>
           </RenderIfPresent>
-          <RenderIfPresent value={detail?.data?.costOfLiving}>
+          <RenderIfPresent value={detail?.university?.costOfLiving}>
             <div className="content-flex">
               <p className="bold">Cost of living : </p>
-              <p> {detail?.data?.costOfLiving} </p>
+              <p> {detail?.university?.costOfLiving} </p>
             </div>
           </RenderIfPresent>
-          <RenderIfPresent value={detail?.data?.grossTuition}>
+          <RenderIfPresent value={detail?.university?.grossTuition}>
             <div className="content-flex">
               <p className="bold">Gross Tuition : </p>
-              <p> {detail?.data?.grossTuition} </p>
+              <p> {detail?.university?.grossTuition} </p>
             </div>
           </RenderIfPresent>
-          <RenderIfPresent value={detail?.data?.otherFees}>
+          <RenderIfPresent value={detail?.university?.otherFees}>
             <div className="content-flex">
-              <p className="bold"> {detail?.data?.otherFees} </p>
+              <p className="bold"> {detail?.university?.otherFees} </p>
             </div>
           </RenderIfPresent>
         </div>
@@ -141,64 +141,73 @@ const CollegeMicroInfo = () => {
             <div className="left">
               <div className="detail-box boxShadow-container margin-div">
                 <h4 className="heading mb-2">
-                  {detail?.data?.UniversityName} ({detail?.data?.CourseTitle})
+                  {detail?.university?.UniversityName} (
+                  {detail?.university?.CourseTitle})
                 </h4>
-                <RenderIfPresent value={detail?.data?.AboutUniversity}>
+                <RenderIfPresent value={detail?.university?.AboutUniversity}>
                   <p className="description">
-                    {detail?.data?.AboutUniversity}{" "}
+                    {detail?.university?.AboutUniversity}{" "}
                   </p>
                 </RenderIfPresent>
-                <RenderIfPresent value={detail?.data?.programDescription}>
+                <RenderIfPresent value={detail?.university?.programDescription}>
                   <p className="description">
-                    {detail?.data?.programDescription}{" "}
+                    {detail?.university?.programDescription}{" "}
                   </p>
                 </RenderIfPresent>
-                <RenderIfPresent value={detail?.data?.ApplicationDate}>
+                <RenderIfPresent value={detail?.university?.ApplicationDate}>
                   <div className="last-date">
-                    <p className="date"> {detail?.data?.ApplicationDate} </p>
+                    <p className="date">
+                      {" "}
+                      {detail?.university?.ApplicationDate}{" "}
+                    </p>
                     <p className="desc">Application Date</p>
                   </div>
                 </RenderIfPresent>
 
                 <h4 className="heading margin-div">
-                  {detail?.data?.UniversityName} Quick facts
+                  {detail?.university?.UniversityName} Quick facts
                 </h4>
 
                 <ul className="key-points">
-                  <RenderIfPresent value={detail?.data?.HighestPackageOffered}>
+                  <RenderIfPresent
+                    value={detail?.university?.HighestPackageOffered}
+                  >
                     <li>
                       Highest package offered :{" "}
-                      {detail?.data?.HighestPackageOffered}
+                      {detail?.university?.HighestPackageOffered}
                     </li>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.AveragePackageOffered}>
+                  <RenderIfPresent
+                    value={detail?.university?.AveragePackageOffered}
+                  >
                     <li>
                       Average package offered :{" "}
-                      {detail?.data?.AveragePackageOffered}
+                      {detail?.university?.AveragePackageOffered}
                     </li>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.Ranked}>
-                    <li>{detail?.data?.Ranked}</li>
+                  <RenderIfPresent value={detail?.university?.Ranked}>
+                    <li>{detail?.university?.Ranked}</li>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.ApprovedBy}>
-                    <li>Approved By : {detail?.data?.ApprovedBy}</li>
+                  <RenderIfPresent value={detail?.university?.ApprovedBy}>
+                    <li>Approved By : {detail?.university?.ApprovedBy}</li>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.Review}>
-                    <li> {detail?.data?.Review} Reviews</li>
+                  <RenderIfPresent value={detail?.university?.Review}>
+                    <li> {detail?.university?.Review} Reviews</li>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.TotalNoOfCourses}>
-                    <li>{detail?.data?.TotalNoOfCourses}</li>
+                  <RenderIfPresent value={detail?.university?.TotalNoOfCourses}>
+                    <li>{detail?.university?.TotalNoOfCourses}</li>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.AcceptedEntranceExams}>
+                  <RenderIfPresent
+                    value={detail?.university?.AcceptedEntranceExams}
+                  >
                     <li>
                       {" "}
-                      Accepted Exams : {
-                        detail?.data?.AcceptedEntranceExams
-                      }{" "}
+                      Accepted Exams :{" "}
+                      {detail?.university?.AcceptedEntranceExams}{" "}
                     </li>
                   </RenderIfPresent>
                 </ul>
@@ -206,55 +215,55 @@ const CollegeMicroInfo = () => {
 
               <div className="detail-box boxShadow-container margin-div">
                 <h4 className="heading mb-2">
-                  {detail?.data?.UniversityName} Highlights
+                  {detail?.university?.UniversityName} Highlights
                 </h4>
                 <div className="highlights">
-                  <RenderIfPresent value={detail?.data?.InstituteType}>
+                  <RenderIfPresent value={detail?.university?.InstituteType}>
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight1} alt="" />
                         <p> Institution Type </p>
                       </div>
-                      <p> {detail?.data?.InstituteType} </p>
+                      <p> {detail?.university?.InstituteType} </p>
                     </div>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.TotalFaculty}>
+                  <RenderIfPresent value={detail?.university?.TotalFaculty}>
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight2} alt="" />
                         <p> Total Faculty </p>
                       </div>
-                      <p> {detail?.data?.TotalFaculty} </p>
+                      <p> {detail?.university?.TotalFaculty} </p>
                     </div>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.Estd}>
+                  <RenderIfPresent value={detail?.university?.Estd}>
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight3} alt="" />
                         <p> Year of Establishment </p>
                       </div>
-                      <p> {detail?.data?.Estd} </p>
+                      <p> {detail?.university?.Estd} </p>
                     </div>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.CampusArea}>
+                  <RenderIfPresent value={detail?.university?.CampusArea}>
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight6} alt="" />
                         <p> Campus Area </p>
                       </div>
-                      <p> {detail?.data?.CampusArea} </p>
+                      <p> {detail?.university?.CampusArea} </p>
                     </div>
                   </RenderIfPresent>
                   <RenderIfPresent
-                    value={detail?.data?.TotalNoOfStudentsRegistered}
+                    value={detail?.university?.TotalNoOfStudentsRegistered}
                   >
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight5} alt="" />
                         <p> Student Enrollment </p>
                       </div>
-                      <p> {detail?.data?.TotalNoOfStudentsRegistered} </p>
+                      <p> {detail?.university?.TotalNoOfStudentsRegistered} </p>
                     </div>
                   </RenderIfPresent>
                 </div>
@@ -269,27 +278,31 @@ const CollegeMicroInfo = () => {
             <div className="left">
               <div className="detail-box boxShadow-container margin-div">
                 <h4 className="heading mb-2" style={{ textAlign: "left" }}>
-                  {detail?.data?.UniversityName} Latest Update:{" "}
+                  {detail?.university?.UniversityName} Latest Update:{" "}
                 </h4>
 
                 <ul className="key-points">
-                  <RenderIfPresent value={detail?.data?.HighestPackageOffered}>
+                  <RenderIfPresent
+                    value={detail?.university?.HighestPackageOffered}
+                  >
                     <li>
                       Highest package offered :{" "}
-                      {detail?.data?.HighestPackageOffered}
+                      {detail?.university?.HighestPackageOffered}
                     </li>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.AveragePackageOffered}>
+                  <RenderIfPresent
+                    value={detail?.university?.AveragePackageOffered}
+                  >
                     <li>
                       Average package offered :{" "}
-                      {detail?.data?.AveragePackageOffered}
+                      {detail?.university?.AveragePackageOffered}
                     </li>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.Ranked}>
-                    <li>{detail?.data?.Ranked}</li>
+                  <RenderIfPresent value={detail?.university?.Ranked}>
+                    <li>{detail?.university?.Ranked}</li>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.Recruiters}>
-                    <li> Recruiters : {detail?.data?.Recruiters}</li>
+                  <RenderIfPresent value={detail?.university?.Recruiters}>
+                    <li> Recruiters : {detail?.university?.Recruiters}</li>
                   </RenderIfPresent>
                 </ul>
               </div>
@@ -303,7 +316,7 @@ const CollegeMicroInfo = () => {
             <div className="left">
               <div className="detail-box boxShadow-container margin-div">
                 <h4 className="heading mb-2">
-                  {detail?.data?.UniversityName} Course & Fees{" "}
+                  {detail?.university?.UniversityName} Course & Fees{" "}
                 </h4>
 
                 <table className="college-ranking-table margin-div">
@@ -312,20 +325,18 @@ const CollegeMicroInfo = () => {
                       <th>
                         <button>Course</button>
                       </th>
-                      {/* <th>
-                        <button>Publisher</button>
-                      </th>
+
                       <th>
-                        <button>Stream</button>
-                      </th> */}
+                        <button>Duration</button>
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {detail?.data?.CourseTitles?.map((i, index) => (
+                    {detail?.university?.courses?.map((i, index) => (
                       <tr key={`course${index}`}>
-                        <td> {i} </td>
-                        {/* <td>₹ 113,00 </td>
-                        <td>4 Years </td> */}
+                        <td> {i.courseTitle} </td>
+
+                        <td> {i?.programLevel} </td>
                       </tr>
                     ))}
                   </tbody>
@@ -342,24 +353,25 @@ const CollegeMicroInfo = () => {
               <div className="detail-box boxShadow-container margin-div">
                 <h4 className="sub-heading mb-2">
                   {" "}
-                  {detail?.data?.UniversityName} Latest Updates{" "}
+                  {detail?.university?.UniversityName} Latest Updates{" "}
                 </h4>
 
-                <RenderIfPresent value={detail?.data?.Eligibility}>
+                <RenderIfPresent value={detail?.university?.Eligibility}>
                   <p className="description mt-3">
-                    Eligibility : {detail?.data?.Eligibility}
+                    Eligibility : {detail?.university?.Eligibility}
                   </p>
                 </RenderIfPresent>
 
-                <RenderIfPresent value={detail?.data?.minEducationLevel}>
+                <RenderIfPresent value={detail?.university?.minEducationLevel}>
                   <p className="description mt-3">
-                    Minimum Education Level : {detail?.data?.minEducationLevel}
+                    Minimum Education Level :{" "}
+                    {detail?.university?.minEducationLevel}
                   </p>
                 </RenderIfPresent>
 
-                <RenderIfPresent value={detail?.data?.minGPA}>
+                <RenderIfPresent value={detail?.university?.minGPA}>
                   <p className="description mt-3">
-                    Minimum GPA : {detail?.data?.minGPA}
+                    Minimum GPA : {detail?.university?.minGPA}
                   </p>
                 </RenderIfPresent>
               </div>
@@ -373,9 +385,9 @@ const CollegeMicroInfo = () => {
             <div className="left">
               <div className="detail-box boxShadow-container margin-div">
                 <h4 className="sub-heading mt-5">
-                  {detail?.data?.UniversityName} Cut off
+                  {detail?.university?.UniversityName} Cut off
                 </h4>
-                <p className="description mt-3">{detail?.data?.Cutoff}</p>
+                <p className="description mt-3">{detail?.university?.Cutoff}</p>
               </div>
 
               <div className="detail-box boxShadow-container margin-div">
@@ -435,7 +447,7 @@ const CollegeMicroInfo = () => {
                 <div className="gallery-container">
                   <img src={galleryBanner} alt="" className="whole-img" />
                   <div className="flexbox-container">
-                    {detail?.data?.ImageUrl?.map((i, index) => (
+                    {detail?.university?.ImageUrl?.map((i, index) => (
                       <img
                         src={i}
                         alt=""
@@ -456,64 +468,73 @@ const CollegeMicroInfo = () => {
             <div className="left">
               <div className="detail-box boxShadow-container margin-div">
                 <h4 className="heading mb-2">
-                  {detail?.data?.UniversityName} ({detail?.data?.CourseTitle})
+                  {detail?.university?.UniversityName} (
+                  {detail?.university?.CourseTitle})
                 </h4>
-                <RenderIfPresent value={detail?.data?.AboutUniversity}>
+                <RenderIfPresent value={detail?.university?.AboutUniversity}>
                   <p className="description">
-                    {detail?.data?.AboutUniversity}{" "}
+                    {detail?.university?.AboutUniversity}{" "}
                   </p>
                 </RenderIfPresent>
-                <RenderIfPresent value={detail?.data?.programDescription}>
+                <RenderIfPresent value={detail?.university?.programDescription}>
                   <p className="description">
-                    {detail?.data?.programDescription}{" "}
+                    {detail?.university?.programDescription}{" "}
                   </p>
                 </RenderIfPresent>
-                <RenderIfPresent value={detail?.data?.ApplicationDate}>
+                <RenderIfPresent value={detail?.university?.ApplicationDate}>
                   <div className="last-date">
-                    <p className="date"> {detail?.data?.ApplicationDate} </p>
+                    <p className="date">
+                      {" "}
+                      {detail?.university?.ApplicationDate}{" "}
+                    </p>
                     <p className="desc">Application Date</p>
                   </div>
                 </RenderIfPresent>
 
                 <h4 className="heading margin-div">
-                  {detail?.data?.UniversityName} Quick facts
+                  {detail?.university?.UniversityName} Quick facts
                 </h4>
 
                 <ul className="key-points">
-                  <RenderIfPresent value={detail?.data?.HighestPackageOffered}>
+                  <RenderIfPresent
+                    value={detail?.university?.HighestPackageOffered}
+                  >
                     <li>
                       Highest package offered :{" "}
-                      {detail?.data?.HighestPackageOffered}
+                      {detail?.university?.HighestPackageOffered}
                     </li>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.AveragePackageOffered}>
+                  <RenderIfPresent
+                    value={detail?.university?.AveragePackageOffered}
+                  >
                     <li>
                       Average package offered :{" "}
-                      {detail?.data?.AveragePackageOffered}
+                      {detail?.university?.AveragePackageOffered}
                     </li>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.Ranked}>
-                    <li>{detail?.data?.Ranked}</li>
+                  <RenderIfPresent value={detail?.university?.Ranked}>
+                    <li>{detail?.university?.Ranked}</li>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.ApprovedBy}>
-                    <li>Approved By : {detail?.data?.ApprovedBy}</li>
+                  <RenderIfPresent value={detail?.university?.ApprovedBy}>
+                    <li>Approved By : {detail?.university?.ApprovedBy}</li>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.Review}>
-                    <li> {detail?.data?.Review} Reviews</li>
+                  <RenderIfPresent value={detail?.university?.Review}>
+                    <li> {detail?.university?.Review} Reviews</li>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.TotalNoOfCourses}>
-                    <li>{detail?.data?.TotalNoOfCourses}</li>
+                  <RenderIfPresent value={detail?.university?.TotalNoOfCourses}>
+                    <li>{detail?.university?.TotalNoOfCourses}</li>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.AcceptedEntranceExams}>
+                  <RenderIfPresent
+                    value={detail?.university?.AcceptedEntranceExams}
+                  >
                     <li>
                       {" "}
-                      Accepted Exams : {
-                        detail?.data?.AcceptedEntranceExams
-                      }{" "}
+                      Accepted Exams :{" "}
+                      {detail?.university?.AcceptedEntranceExams}{" "}
                     </li>
                   </RenderIfPresent>
                 </ul>
@@ -521,55 +542,55 @@ const CollegeMicroInfo = () => {
 
               <div className="detail-box boxShadow-container margin-div">
                 <h4 className="heading mb-2">
-                  {detail?.data?.UniversityName} Highlights
+                  {detail?.university?.UniversityName} Highlights
                 </h4>
                 <div className="highlights">
-                  <RenderIfPresent value={detail?.data?.InstituteType}>
+                  <RenderIfPresent value={detail?.university?.InstituteType}>
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight1} alt="" />
                         <p> Institution Type </p>
                       </div>
-                      <p> {detail?.data?.InstituteType} </p>
+                      <p> {detail?.university?.InstituteType} </p>
                     </div>
                   </RenderIfPresent>
 
-                  <RenderIfPresent value={detail?.data?.TotalFaculty}>
+                  <RenderIfPresent value={detail?.university?.TotalFaculty}>
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight2} alt="" />
                         <p> Total Faculty </p>
                       </div>
-                      <p> {detail?.data?.TotalFaculty} </p>
+                      <p> {detail?.university?.TotalFaculty} </p>
                     </div>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.Estd}>
+                  <RenderIfPresent value={detail?.university?.Estd}>
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight3} alt="" />
                         <p> Year of Establishment </p>
                       </div>
-                      <p> {detail?.data?.Estd} </p>
+                      <p> {detail?.university?.Estd} </p>
                     </div>
                   </RenderIfPresent>
-                  <RenderIfPresent value={detail?.data?.CampusArea}>
+                  <RenderIfPresent value={detail?.university?.CampusArea}>
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight6} alt="" />
                         <p> Campus Area </p>
                       </div>
-                      <p> {detail?.data?.CampusArea} </p>
+                      <p> {detail?.university?.CampusArea} </p>
                     </div>
                   </RenderIfPresent>
                   <RenderIfPresent
-                    value={detail?.data?.TotalNoOfStudentsRegistered}
+                    value={detail?.university?.TotalNoOfStudentsRegistered}
                   >
                     <div className="item">
                       <div className="img-container">
                         <img src={collegeHighlight5} alt="" />
                         <p> Student Enrollment </p>
                       </div>
-                      <p> {detail?.data?.TotalNoOfStudentsRegistered} </p>
+                      <p> {detail?.university?.TotalNoOfStudentsRegistered} </p>
                     </div>
                   </RenderIfPresent>
                 </div>
@@ -580,8 +601,6 @@ const CollegeMicroInfo = () => {
         );
     }
   };
-
-  console.log(detail?.data?.CourseTitles);
 
   return (
     <>
@@ -596,10 +615,10 @@ const CollegeMicroInfo = () => {
       />
       <AlertModal show={open1} onHide={() => setOpen1(false)} />
       <section className="college-micro-info-page">
-        <Banner img={detail?.data?.ImageUrl?.[0]} className="m-0" />
+        <Banner img={detail?.university?.ImageUrl?.[0]} className="m-0" />
 
         <div className="download-broacher boxShadow-container margin-div ">
-          <p className="text">{detail?.data?.ApprovedBy}</p>
+          <p className="text">{detail?.university?.ApprovedBy}</p>
           <div>
             <button onClick={() => setOpenCanvas(true)}>
               Shortlist For Common Application

@@ -9,7 +9,7 @@ import {
 import WithLayout from "../Layout/WithLayout";
 import { Slider } from "../components/Sliders/Sliders";
 import { durationArr, inTakes, tutionFees } from "../constant/constant";
-import { filterImg, usaSquare } from "../assest";
+import { filterImg } from "../assest";
 import { CollegeFilters } from "../components/Study/CollegeSection";
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
@@ -17,6 +17,7 @@ import { abroadCollegeConfig } from "../components/Sliders/SwiperConfig";
 import { RenderAbroadCollegeItems } from "../components/Sliders/SwiperComponents";
 import { ShortlistedUniversities } from "../components/Cards/AllCards";
 import { pushInArr } from "../utils/utils";
+import useInfiniteScroll from "react-infinite-scroll-hook";
 
 const StudyAbroad = () => {
   const [banner, setBanner] = useState({});
@@ -27,13 +28,14 @@ const StudyAbroad = () => {
   const [keyword, setKeyword] = useState([]);
   const [loading, setLoading] = useState(true);
   const [allCountries, setAllCountries] = useState({ data: [] });
+  const [limit, setLimit] = useState(100);
 
   const fetchUniversities = useCallback(() => {
-    getApi(endPoints.filterUniversities(keyword.join(","), 1, 200), {
+    getApi(endPoints.filterUniversities(keyword.join(","), 1, limit), {
       setResponse: setUniversities,
       setLoading,
     });
-  }, [keyword]);
+  }, [keyword, limit]);
 
   useEffect(() => {
     getApi(endPoints.studyAbroadBanner, {
@@ -60,14 +62,22 @@ const StudyAbroad = () => {
   const universityArr =
     universities?.data?.length > 0
       ? universities?.data?.map((i) => ({
-          flagImg: usaSquare,
-          title: i?.UniversityName,
+          flagImg: i?.ImageUrl?.[0],
+          title: `${i?.UniversityName} `,
+          courseTitle: i?.CourseTitle,
           collegeImg: i?.ImageUrl?.[0],
           isFav: false,
           status: "Apply Now",
           location: i?.location,
-          btn2: "Download Brochure",
           id: i._id,
+          reviews: i?.Review,
+          fees: i?.Fees,
+          star: i?.Star,
+          avgPackage: i?.AveragePackageOffered,
+          elegibility: i?.Eligibility,
+          approvedBy: i?.ApprovedBy,
+          shortlistedCount: i?.TotalNoOfStudentsRegistered,
+          institueType: i?.InstituteType,
         }))
       : [];
 
@@ -168,6 +178,33 @@ const StudyAbroad = () => {
     title: i?.ContryName,
   }));
 
+  const customDebounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const loadMore = customDebounce(() => {
+    if (
+      limit === universities?.totalResults ||
+      limit < universities?.totalResults
+    ) {
+      setLimit(limit + 100);
+    }
+  }, 500);
+
+  const hasMore = universities?.totalResults > limit;
+  const [sentryRef] = useInfiniteScroll({
+    loading,
+    hasNextPage: hasMore,
+    onLoadMore: loadMore,
+    disabled: loading,
+  });
+
   return (
     <>
       <Banner img={banner?.data?.image} />
@@ -199,11 +236,11 @@ const StudyAbroad = () => {
           </div>
 
           <div className="results">
-            {loading && <LoaderComponent />}
-
             {universityArr.map((i, index) => (
               <ShortlistedUniversities key={index} {...i} />
             ))}
+            {loading && <LoaderComponent />}
+            <div ref={sentryRef}></div>
           </div>
         </div>
       </section>

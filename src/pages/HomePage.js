@@ -20,7 +20,6 @@ import {
   RenderStudentTestimonialCard,
   RenderSypnosisItem,
 } from "../components/Sliders/SwiperComponents";
-import { sypnosisData } from "../constant/constant";
 import { Link } from "react-router-dom";
 import { HowItWorkCard } from "../components/Cards/AllCards";
 
@@ -46,6 +45,7 @@ const HomePage = () => {
   const [topColleges, setTopColleges] = useState({ data: [] });
   const [blogs, setBlogs] = useState({ data: [] });
   const [howItWorks, setHowItWorks] = useState({ data: [] });
+  const [sypnosisSummary, setSypnosisSummary] = useState({ data: [] });
 
   const howItWorksList = howItWorks.data.map((i) => ({
     img: i?.image,
@@ -90,6 +90,9 @@ const HomePage = () => {
     });
     getApi(endPoints.getHowItWorks, {
       setResponse: setHowItWorks,
+    });
+    getApi(endPoints.user.getAllSypnosis, {
+      setResponse: setSypnosisSummary,
     });
   }, []);
 
@@ -163,32 +166,48 @@ const HomePage = () => {
     url = "/study-abroad";
   }
 
+  const sypnosisList = sypnosisSummary.data.map((i) => ({
+    flag: i?.countryImage,
+    title: i?.countryName,
+    checkColleges: i?.checkColleges,
+    numberOfColleges: i?.noOfColleges,
+    studyCost: i?.avgStudyCost,
+    accordion: [
+      i?.whyStudyInCountry,
+      i?.SOPForCountry,
+      i?.examsForStudyingCountry,
+      i?.postStudyOpportunitiesInCountry,
+    ],
+  }));
+
   return (
     <>
       <AdwizorBanner />
       <AdwizorCards topAdwizor={true} topAdwizorData={adwizorsData} />
 
-      <section className="how-it-works">
-        <h4 className="normal-heading">How It Works</h4>
-        <div className="steps-container">
-          <svg
-            className="curved-line"
-            viewBox="0 0 1000 300"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M 0 100 Q 250 0 500 100 T 1000 100"
-              fill="transparent"
-              stroke="#333"
-              stroke-width="2"
-              stroke-dasharray="5,5"
-            />
-          </svg>
-          {howItWorksList.map((i, index) => (
-            <HowItWorkCard {...i} key={`work${index}`} />
-          ))}
-        </div>
-      </section>
+      {howItWorksList?.length > 0 && (
+        <section className="how-it-works">
+          <h4 className="normal-heading">How It Works</h4>
+          <div className="steps-container">
+            <svg
+              className="curved-line"
+              viewBox="0 0 1000 300"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M 0 100 Q 250 0 500 100 T 1000 100"
+                fill="transparent"
+                stroke="#333"
+                stroke-width="2"
+                stroke-dasharray="5,5"
+              />
+            </svg>
+            {howItWorksList.map((i, index) => (
+              <HowItWorkCard {...i} key={`work${index}`} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="features">
         <h4 className="normal-heading">Why Choose Us</h4>
@@ -243,7 +262,7 @@ const HomePage = () => {
         <h4 className="normal-heading"> Destination Synopsis / Summary</h4>
         <section className="synopsis-slider">
           <Slider
-            data={sypnosisData}
+            data={sypnosisList}
             swiperConfig={sypnosisConfig}
             RenderSlide={RenderSypnosisItem}
           />

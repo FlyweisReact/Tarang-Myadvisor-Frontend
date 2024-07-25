@@ -18,8 +18,10 @@ const endPoints = {
     `user/getAll/University?page=${page}&limit=${limit}`,
   applyOnUniversities: `user/apply`,
   appliedUniversities: "user/my/University",
-  filterUniversities: (search, page, limit) =>
-    `user/search/Universities?keyword=${search}&page=${page}&limit=${limit}`,
+  filterUniversities: (search, page, limit, search2) =>
+    `user/search?keyword=${search}&page=${page}&limit=${limit}&keyword1=${
+      search2 ? search2 : ""
+    }`,
   allShortlistedUniversity: `user/getMylistedUniversities`,
   shortlistUniversity: "user/addUniversityInMyProfile",
   uploadUserDocument: "user/createUserDocument",
@@ -47,7 +49,6 @@ const endPoints = {
     }&page=${page}&limit=${limit}`,
   filterIndianUniversitites: (search, page, limit) =>
     `user/universityByContry?contryType=India&keyword=${search}&page=${page}&limit=${limit}`,
-  // ---
   getUniversityDetails: (id) => `user/getUniversityById/${id}`,
   getNews: (search) => `user/getNewsByType/${search}`,
   getAdwizorsBlogs: "user/getAllBlogs/VERIFIED",
@@ -57,10 +58,21 @@ const endPoints = {
   user: {
     getAdwizorSlots: "advisor/getAdvisor/ByIdSlot",
     createAppointment: (id) => `user/createAppointment/${id}`,
-    confirmAppointment : "user/verifyOtpAndBookAppointment",
-    getAdwizorProfile : (id) =>  `user/getadvisorProfileReviewAndBlog/${id}`,
-    getUniversitiesCourse : (name) => `user/university/courses/${name}?page=1&limit=10`,
-    getLiveAdwizors  : "user/getAllAdvisorsLiveStatus"
+    confirmAppointment: "user/verifyOtpAndBookAppointment",
+    getAdwizorProfile: (id) => `user/getadvisorProfileReviewAndBlog/${id}`,
+    getUniversitiesCourse: (name) =>
+      `user/university/courses/${name}?page=1&limit=10`,
+    getLiveAdwizors: "user/getAllAdvisorsLiveStatus",
+    // -----
+    getUserMessages: "user/getUserMessagesofAdvisor",
+    referUser: "user/refer",
+    ourSuccessCount: "user/getAllSuccessInNumbers",
+    getAllSypnosis: "user/getAllDestinations",
+  },
+  adwizor: {
+    applyforStudent: "advisor/applyAdvisorStudentUniversity",
+    assignedStudents: "advisor/assignByAdmin",
+    createStudent : "advisor/AddStudent",
   },
 };
 

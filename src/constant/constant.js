@@ -74,7 +74,6 @@ import {
   NearlyCollege4,
 } from "../assest";
 
-const citiesArr = ["Mumbai", "Banglore", "Chennai", "Delhi", "Kerala"];
 
 const countryArr = ["India", "Australia", "USA", "Canada", "German", "UK"];
 
@@ -1411,7 +1410,7 @@ const adwizorSidebarArr = [
   {
     icon: <i className="fa-solid fa-graduation-cap"></i>,
     title: "Students",
-    link: "/adwizor-dashboard",
+    link: "/adwizor-panel/students",
   },
   {
     icon: <i className="fa-solid fa-file"></i>,
@@ -1463,7 +1462,6 @@ export {
   allAdwiozordsArr,
   documentTabArr,
   documentTabArr2,
-  citiesArr,
   countryArr,
   prefferedSubjectArr,
   tutionFees,

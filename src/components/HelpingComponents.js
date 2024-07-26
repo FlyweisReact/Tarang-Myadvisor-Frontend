@@ -5,6 +5,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { GoToTopImg, touristImg1, touristImg2 } from "../assest";
+import { putApi } from "../Repository/Api";
+import endPoints from "../Repository/apiConfig";
+import LoginModal from "./Modals/LoginModal";
 
 const CustomeDropdown = ({
   items,
@@ -46,116 +49,288 @@ const CustomeDropdown = ({
   );
 };
 
-const AdwizorCards = ({ topAdwizor, topAdwizorData, allAdwizors }) => {
+const AdwizorCards = ({
+  topAdwizor,
+  topAdwizorData,
+  allAdwizors,
+  isLive = false,
+}) => {
   const navigate = useNavigate();
-  if (topAdwizor) {
-    return (
-      <div className="top-adwizors">
-        <h4 className="normal-heading">Find Top Adwizors</h4>
-        <div className="cards">
-          {topAdwizorData.map((i, index) => (
-            <div className="item" key={`topadwizor${index}`}>
-              <div className="detail">
-                <img
-                  src={i.img}
-                  alt=""
-                  className="mainImg"
-                  onClick={() =>
-                    navigate(`/user-dashboard/adwizor-profile/${i.id}`)
-                  }
-                />
-                <div className="content">
-                  <p className="title">{i.title} </p>
-                  <div className="rating">
-                    <i className="fa-solid fa-star"></i>
-                    <p> {i.rating} </p>
+  const [loading, setLoading] = useState(false);
+  const isLoggedIn = localStorage.getItem("user-token") ? true : false;
+  const [show, setShow] = useState(false);
+  console.log(isLoggedIn);
+
+  // send request to live adwizors for meeting
+  const sendRequest = (id) => {
+    putApi(
+      endPoints.user.joinLiveMeeting(id),
+      {},
+      {
+        successMsg: "Request Sended !",
+        setLoading,
+      }
+    );
+  };
+
+  // if (topAdwizor) {
+  //   return (
+  //     <div className="top-adwizors">
+  //       <h4 className="normal-heading">Find Top Adwizors</h4>
+  //       <div className="cards">
+  //         {topAdwizorData.map((i, index) => (
+  //           <div className="item" key={`topadwizor${index}`}>
+  //             <div className="detail">
+  //               <img
+  //                 src={i.img}
+  //                 alt=""
+  //                 className="mainImg"
+  //                 onClick={() =>
+  //                   navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+  //                 }
+  //               />
+  //               <div className="content">
+  //                 <p className="title">{i.title} </p>
+  //                 <div className="rating">
+  //                   <i className="fa-solid fa-star"></i>
+  //                   <p> {i.rating} </p>
+  //                 </div>
+  //                 {i.description.map((item, index) => (
+  //                   <p className="faded" key={`desc${index}`}>
+  //                     {" "}
+  //                     {item}{" "}
+  //                   </p>
+  //                 ))}
+  //               </div>
+  //             </div>
+  //             <div className="btn-container">
+  //               <button
+  //                 onClick={() =>
+  //                   navigate(`/counselling-session/live-2/${i.id}`)
+  //                 }
+  //               >
+  //                 Book Appointment
+  //               </button>
+  //               <button
+  //                 onClick={() =>
+  //                   navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+  //                 }
+  //               >
+  //                 View Profile
+  //               </button>
+  //             </div>
+  //           </div>
+  //         ))}
+  //       </div>
+
+  //       <button className="all" onClick={() => navigate("/find-an-adwizor")}>
+  //         See All
+  //       </button>
+  //     </div>
+  //   );
+  // } else {
+  //   return (
+  //     <div className="verfied-adwizor margin-div">
+  //       {allAdwizors.map((i, index) => (
+  //         <div className="main" key={`allAdwizor${index}`}>
+  //           <img
+  //             src={i.img}
+  //             alt=" "
+  //             onClick={() =>
+  //               navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+  //             }
+  //           />
+  //           <div className="content">
+  //             <p
+  //               className="title"
+  //               onClick={() => navigate("/user-dashboard/adwizor-profile")}
+  //             >
+  //               {" "}
+  //               {i.title}{" "}
+  //             </p>
+
+  //             <div className="rating">
+  //               <i className="fa-solid fa-star"></i>
+  //               <p> {i.rating} </p>
+  //             </div>
+  //             {i.description.map((item, index) => (
+  //               <p className="faded" key={`desc${index}`}>
+  //                 {item}
+  //               </p>
+  //             ))}
+  //             {isLive ? (
+  //               <div className="btn-container">
+  //                 <button className="outlined">Chat</button>
+  //                 <button onClick={() => sendRequest(i.id)}>
+  //                   {loading ? <ClipLoader color="#fff" /> : "Call"}{" "}
+  //                 </button>
+  //               </div>
+  //             ) : (
+  //               <div className="btn-container">
+  //                 <button
+  //                   className="outlined"
+  //                   onClick={() =>
+  //                     navigate(`/user-dashboard/my-messages/${i.title}`)
+  //                   }
+  //                 >
+  //                   Chat
+  //                 </button>
+  //                 <button
+  //                   onClick={() =>
+  //                     navigate(`/counselling-session/live-2/${i.id}`)
+  //                   }
+  //                 >
+  //                   Call
+  //                 </button>
+  //               </div>
+  //             )}
+  //           </div>
+  //         </div>
+  //       ))}
+  //     </div>
+  //   );
+  // }
+
+  return (
+    <>
+      <LoginModal show={show} onHide={() => setShow(false)} />
+      {topAdwizor ? (
+        <div className="top-adwizors">
+          <h4 className="normal-heading">Find Top Adwizors</h4>
+          <div className="cards">
+            {topAdwizorData.map((i, index) => (
+              <div className="item" key={`topadwizor${index}`}>
+                <div className="detail">
+                  <img
+                    src={i.img}
+                    alt=""
+                    className="mainImg"
+                    onClick={() =>
+                      navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+                    }
+                  />
+                  <div className="content">
+                    <p className="title">{i.title} </p>
+                    <div className="rating">
+                      <i className="fa-solid fa-star"></i>
+                      <p> {i.rating} </p>
+                    </div>
+                    {i.description.map((item, index) => (
+                      <p className="faded" key={`desc${index}`}>
+                        {" "}
+                        {item}{" "}
+                      </p>
+                    ))}
                   </div>
-                  {i.description.map((item, index) => (
-                    <p className="faded" key={`desc${index}`}>
-                      {" "}
-                      {item}{" "}
-                    </p>
-                  ))}
                 </div>
+                {isLoggedIn ? (
+                  <div className="btn-container">
+                    <button
+                      onClick={() =>
+                        navigate(`/counselling-session/live-2/${i.id}`)
+                      }
+                    >
+                      Book Appointment
+                    </button>
+                    <button
+                      onClick={() =>
+                        navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+                      }
+                    >
+                      View Profile
+                    </button>
+                  </div>
+                ) : (
+                  <div className="btn-container">
+                    <button onClick={() => setShow(true)}>
+                      Book Appointment
+                    </button>
+                    <button
+                      onClick={() =>
+                        navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+                      }
+                    >
+                      View Profile
+                    </button>
+                  </div>
+                )}
               </div>
-              <div className="btn-container">
-                <button
-                  onClick={() =>
-                    navigate(`/counselling-session/live-2/${i.id}`)
-                  }
+            ))}
+          </div>
+
+          <button className="all" onClick={() => navigate("/find-an-adwizor")}>
+            See All
+          </button>
+        </div>
+      ) : (
+        <div className="verfied-adwizor margin-div">
+          {allAdwizors.map((i, index) => (
+            <div className="main" key={`allAdwizor${index}`}>
+              <img
+                src={i.img}
+                alt=""
+                onClick={() =>
+                  navigate(`/user-dashboard/adwizor-profile/${i.id}`)
+                }
+              />
+              <div className="content">
+                <p
+                  className="title"
+                  onClick={() => navigate("/user-dashboard/adwizor-profile")}
                 >
-                  Book Appointment
-                </button>
-                <button
-                  onClick={() =>
-                    navigate(`/user-dashboard/adwizor-profile/${i.id}`)
-                  }
-                >
-                  View Profile
-                </button>
+                  {" "}
+                  {i.title}{" "}
+                </p>
+
+                <div className="rating">
+                  <i className="fa-solid fa-star"></i>
+                  <p> {i.rating} </p>
+                </div>
+                {i.description.map((item, index) => (
+                  <p className="faded" key={`desc${index}`}>
+                    {item}
+                  </p>
+                ))}
+                {!isLoggedIn ? (
+                  <div className="btn-container">
+                    <button className="outlined" onClick={() => setShow(true)}>
+                      Chat
+                    </button>
+                    <button onClick={() => setShow(true)}>Call</button>
+                  </div>
+                ) : isLive ? (
+                  <div className="btn-container">
+                    <button className="outlined">Chat</button>
+                    <button onClick={() => sendRequest(i.id)}>
+                      {loading ? <ClipLoader color="#fff" /> : "Call"}{" "}
+                    </button>
+                  </div>
+                ) : (
+                  <div className="btn-container">
+                    <button
+                      className="outlined"
+                      onClick={() =>
+                        navigate(`/user-dashboard/my-messages/${i.title}`)
+                      }
+                    >
+                      Chat
+                    </button>
+                    <button
+                      onClick={() =>
+                        navigate(`/counselling-session/live-2/${i.id}`)
+                      }
+                    >
+                      Call
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
-
-        <button className="all" onClick={() => navigate("/find-an-adwizor")}>
-          See All
-        </button>
-      </div>
-    );
-  } else {
-    return (
-      <div className="verfied-adwizor margin-div">
-        {allAdwizors.map((i, index) => (
-          <div className="main" key={`allAdwizor${index}`}>
-            <img
-              src={i.img}
-              alt=" "
-              onClick={() =>
-                navigate(`/user-dashboard/adwizor-profile/${i.id}`)
-              }
-            />
-            <div className="content">
-              <p
-                className="title"
-                onClick={() => navigate("/user-dashboard/adwizor-profile")}
-              >
-                {" "}
-                {i.title}{" "}
-              </p>
-
-              <div className="rating">
-                <i className="fa-solid fa-star"></i>
-                <p> {i.rating} </p>
-              </div>
-              {i.description.map((item, index) => (
-                <p className="faded" key={`desc${index}`}>
-                  {item}
-                </p>
-              ))}
-              <div className="btn-container">
-                <button
-                  className="outlined"
-                  onClick={() =>
-                    navigate(`/user-dashboard/my-messages/${i.title}`)
-                  }
-                >
-                  Chat
-                </button>
-                <button
-                  onClick={() =>
-                    navigate(`/counselling-session/live-2/${i.id}`)
-                  }
-                >
-                  Call
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
+      )}
+    </>
+  );
 };
 
 const Banner = ({ img, className }) => {

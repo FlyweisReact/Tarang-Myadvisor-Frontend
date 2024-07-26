@@ -63,16 +63,28 @@ const endPoints = {
     getUniversitiesCourse: (name) =>
       `user/university/courses/${name}?page=1&limit=10`,
     getLiveAdwizors: "user/getAllAdvisorsLiveStatus",
-    // -----
     getUserMessages: "user/getUserMessagesofAdvisor",
     referUser: "user/refer",
     ourSuccessCount: "user/getAllSuccessInNumbers",
     getAllSypnosis: "user/getAllDestinations",
+    //-----
+    searchCourses: (query) => `user/searchCoursesByName?courseName=${query}`,
+    filterStates: (query) => `user/searchStatesByName?stateName=${query}`,
+    filterStreams: (query) => `user/searchStreamsByName?streamName=${query}`,
+    joinLiveMeeting: (id) => `user/JoinMeeting/${id}`,
   },
   adwizor: {
     applyforStudent: "advisor/applyAdvisorStudentUniversity",
     assignedStudents: "advisor/assignByAdmin",
-    createStudent : "advisor/AddStudent",
+    // ---
+    createStudent: "advisor/AddStudent",
+    goLive: "advisor/createMeetingRoomBooking",
+    getRequestMeetingUser: (id) => `advisor/getRequestedUser/${id}`,
+    completeMeeting: (id) => `advisor/completeMeetingRoomBooking/${id}`,
+    getUserProfile: (id) => `advisor/getUserProfile/${id}`,
+    acceptMeetingRequest: (id) => `advisor/AcceptMeetingRequest/${id}`,
+    rejectMeetingRequest: (id) => `advisor/RejectMeetingRequest/${id}`,
+    joinedUser: (id) => `advisor/getJoinUser/${id}`,
   },
 };
 

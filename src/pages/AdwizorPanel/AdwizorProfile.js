@@ -1,14 +1,14 @@
 /** @format */
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { ClipLoader } from "react-spinners";
 import { customerReview1, customerReview2, uploadSvg } from "../../assest";
-import { BlogCard, ReviewCard } from "../../components/Cards/AllCards";
+import { BlogCard } from "../../components/Cards/AllCards";
 import { Slider } from "../../components/Sliders/Sliders";
 import { RenderCustomerReviewsCard } from "../../components/Sliders/SwiperComponents";
 import { customerReviewConfig } from "../../components/Sliders/SwiperConfig";
 import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
-import { getApi, putApi } from "../../Repository/Api";
+import { getApi, postApi, putApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import Form from "react-bootstrap/Form";
 
@@ -25,29 +25,6 @@ const itemStyle = {
   maxWidth: "100%",
 };
 
-const data = [
-  {
-    img: customerReview1,
-    title: "Floyd Miles",
-    desc: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.  Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco",
-  },
-  {
-    img: customerReview2,
-    title: "Ronald Richards",
-    desc: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.  Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco",
-  },
-  {
-    img: customerReview1,
-    title: "Floyd Miles",
-    desc: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.  Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco",
-  },
-  {
-    img: customerReview2,
-    title: "Ronald Richards",
-    desc: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.  Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco",
-  },
-];
-
 const ExtraComponent = () => {
   return (
     <div className="navigation-container">
@@ -62,7 +39,7 @@ const ExtraComponent = () => {
 };
 
 const AdwizorProfile = () => {
-  const [profile, setProfile] = useState({ findReview : []});
+  const [profile, setProfile] = useState({ findReview: [] });
   const [fullname, setFullname] = useState("");
   const [state, setState] = useState("");
   const [destinationCountry, setDestinationCountry] = useState("");
@@ -234,24 +211,33 @@ const AdwizorProfile = () => {
     publishedOn: i?.createdAt?.slice(0, 10),
   }));
 
-
-  const reviewsList = profile.findReview.map((i) => (
-    {
-      img : i?.userId?.image , 
-      rating  : i?.rating,
-      title : i?.userId?.fullname , 
-      description :i?.description
-    }
-  ))
+  const reviewsList = profile.findReview.map((i) => ({
+    img: i?.userId?.image,
+    rating: i?.rating,
+    title: i?.userId?.fullname,
+    description: i?.description,
+  }));
 
   const updateStatus = () => {
-    const payload = {
-      liveStatus: !profile?.data?.liveStatus,
-    };
-    putApi(endPoints.updateAdwizorStatus, payload, {
-      successMsg: "Status Updated !",
-      additionalFunctions : [fetchHandler]
-    });
+    if (profile?.data?.liveStatus === true) {
+      putApi(
+        endPoints.adwizor.completeMeeting(profile?.data?.currentMeetingRoom),
+        {},
+        {
+          successMsg: "Status Updated !",
+          additionalFunctions: [fetchHandler],
+        }
+      );
+    } else {
+      postApi(
+        endPoints.adwizor.goLive,
+        {},
+        {
+          successMsg: "Status Updated !",
+          additionalFunctions: [fetchHandler],
+        }
+      );
+    }
   };
 
   return (
@@ -264,7 +250,7 @@ const AdwizorProfile = () => {
           label="Status"
           checked={profile?.data?.liveStatus}
           onClick={updateStatus}
-          style={{cursor : 'pointer'}}
+          style={{ cursor: "pointer" }}
         />
       </div>
 
@@ -573,7 +559,6 @@ const AdwizorProfile = () => {
               ))}
             </div>
           </div>
-         
         </div>
       </form>
     </section>

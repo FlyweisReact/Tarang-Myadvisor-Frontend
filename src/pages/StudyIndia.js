@@ -19,7 +19,6 @@ import { RenderTopCityCard } from "../components/Sliders/SwiperComponents";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 
-
 const NavigationComponent = () => {
   return (
     <>
@@ -36,20 +35,41 @@ const NavigationComponent = () => {
 const StudyIndia = () => {
   const [banner, setBanner] = useState({});
   const [universities, setUniversities] = useState({ data: [] });
-  const [courses, setCourses] = useState({ courses: [] });
-  const [allStates, setAllStates] = useState({ states: [] });
-  const [allStreams, setAllStreams] = useState({ streams: [] });
+  const [courses, setCourses] = useState({ data: [] });
+  const [allStates, setAllStates] = useState({ data: [] });
+  const [allStreams, setAllStreams] = useState({ data: [] });
   const [keyword, setKeyword] = useState([]);
   const [loading, setLoading] = useState(true);
   const [allCities, setAllCities] = useState({ cities: [] });
   const [limit, setLimit] = useState(100);
+  const [courseQuery, setCourseQuery] = useState("");
+  const [stateQuery, setStateQuery] = useState("");
+  const [streamQuery, setStreamQuery] = useState("");
 
   const fetchUniversities = useCallback(() => {
     getApi(endPoints.filterIndianUniversitites(keyword.join(","), 1, limit), {
       setResponse: setUniversities,
       setLoading,
     });
-  }, [keyword ,limit]);
+  }, [keyword, limit]);
+
+  useEffect(() => {
+    getApi(endPoints.user.searchCourses(courseQuery), {
+      setResponse: setCourses,
+    });
+  }, [courseQuery]);
+
+  useEffect(() => {
+    getApi(endPoints.user.filterStates(stateQuery), {
+      setResponse: setAllStates,
+    });
+  }, [stateQuery]);
+
+  useEffect(() => {
+    getApi(endPoints.user.filterStreams(streamQuery), {
+      setResponse: setAllStreams,
+    });
+  }, [streamQuery]);
 
   useEffect(() => {
     getApi(endPoints.studyIndiaBanner, {
@@ -57,15 +77,6 @@ const StudyIndia = () => {
     });
     getApi(endPoints.getAllCities, {
       setResponse: setAllCities,
-    });
-    getApi(endPoints.getAllCourse, {
-      setResponse: setCourses,
-    });
-    getApi(endPoints.getAllStates, {
-      setResponse: setAllStates,
-    });
-    getApi(endPoints.getAllStreams, {
-      setResponse: setAllStreams,
     });
   }, []);
 
@@ -78,27 +89,24 @@ const StudyIndia = () => {
     fetchUniversities();
   }, [fetchUniversities]);
 
-  const universityArr =
-    universities?.data?.length > 0
-      ? universities?.data?.map((i) => ({
-          flagImg: i?.ImageUrl?.[0],
-          title: `${i?.UniversityName} `,
-          courseTitle: i?.CourseTitle,
-          collegeImg: i?.ImageUrl?.[0],
-          isFav: false,
-          status: "Apply Now",
-          location: i?.location,
-          id: i._id,
-          reviews: i?.Review,
-          fees: i?.Fees,
-          star: i?.Star,
-          avgPackage: i?.AveragePackageOffered,
-          elegibility: i?.Eligibility,
-          approvedBy: i?.ApprovedBy,
-          shortlistedCount: i?.TotalNoOfStudentsRegistered,
-          institueType: i?.InstituteType,
-        }))
-      : [];
+  const universityArr = universities?.data?.map((i) => ({
+    flagImg: i?.ImageUrl?.[0],
+    title: `${i?.UniversityName} `,
+    courseTitle: i?.CourseTitle,
+    collegeImg: i?.ImageUrl?.[0],
+    isFav: false,
+    status: "Apply Now",
+    location: i?.location,
+    id: i._id,
+    reviews: i?.Review,
+    fees: i?.Fees,
+    star: i?.Star,
+    avgPackage: i?.AveragePackageOffered,
+    elegibility: i?.Eligibility,
+    approvedBy: i?.ApprovedBy,
+    shortlistedCount: i?.TotalNoOfStudentsRegistered,
+    institueType: i?.InstituteType,
+  }));
 
   const filterationData = {
     title: "Private Colleges / Government Colleges",
@@ -108,23 +116,26 @@ const StudyIndia = () => {
       {
         title: "Courses",
         placeholder: "Find Courses",
-        list: courses?.courses?.map((i) => i?.courseName),
+        list: courses?.data?.map((i) => i?.courseName),
         setValue: setKeyword,
         value: keyword,
+        inputValue: setCourseQuery,
       },
       {
         title: "State",
         placeholder: "Find State",
-        list: allStates?.states?.map((i) => i?.stateName),
+        list: allStates?.data?.map((i) => i?.stateName),
         setValue: setKeyword,
         value: keyword,
+        inputValue: setStateQuery,
       },
       {
         title: "Stream",
         placeholder: "Find Stream",
-        list: allStreams?.streams?.map((i) => i?.streamName),
+        list: allStreams?.data?.map((i) => i?.streamName),
         setValue: setKeyword,
         value: keyword,
+        inputValue: setStreamQuery,
       },
     ],
   };
@@ -136,7 +147,7 @@ const StudyIndia = () => {
   const optionsMenu = [
     {
       title: "Subject",
-      items: courses?.courses?.map((city, index) => ({
+      items: courses?.data?.map((city, index) => ({
         label: (
           <a href={`#${city}`} className="antd-link-a">
             {city?.courseName}

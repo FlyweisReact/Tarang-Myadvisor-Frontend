@@ -104,7 +104,11 @@ const ConnectAdwizor = () => {
 
   return (
     <>
-      <AdwizorCards allAdwizors={adwizorsData} topAdwizor={false} />
+      <AdwizorCards
+        allAdwizors={adwizorsData}
+        topAdwizor={false}
+        isLive={true}
+      />
       {/* <div className="book-adwizor margin-div">
         <div className="left">
           <h2>Book your 1-1 call with Experts</h2>

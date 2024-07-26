@@ -5980,6 +5980,15 @@
   margin: auto;
   outline: none;
 }
+.adwizor-panel .update-profile select {
+  width: 100%;
+  padding: 10px;
+  background-color: #e7e7e7;
+  border: 1px solid #3f3f3f;
+  border-radius: 5px;
+  margin: auto;
+  outline: none;
+}
 .adwizor-panel .update-profile .profile-pic-container {
   width: 92px;
   height: 92px;
@@ -6289,6 +6298,29 @@
 .adwizor-panel .students-table table thead tr th {
   font-weight: 600;
 }
+
+
+.adwizor-panel .user-dashboard-profile .basic-details .user-img{
+  border: 1px solid #C3CAD4;
+  border-radius: 100%;
+  background-color: #C3CAD4;
+}
+.adwizor-panel .students-table .accept-request{
+  background-color: #0185c3;
+  color: #fff;
+  border: 1px solid #0185c3;
+  padding: 4px;
+  font-size: 14px;
+}
+.adwizor-panel .students-table .reject-request{
+  background-color: #C63C51;
+  color: #fff;
+  border: 1px solid #C63C51;
+  padding: 4px;
+  font-size: 14px;
+}
+
+
 
 /** Keyframes for the animation **/
 @keyframes highlightAnimation {

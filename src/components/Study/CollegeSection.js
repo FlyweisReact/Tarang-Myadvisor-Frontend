@@ -19,7 +19,7 @@ import {
   fillHeart,
   fillBookmark,
 } from "../../assest";
-import { pushInArr } from "../../utils/utils";
+import { debouncedSetQuery, pushInArr } from "../../utils/utils";
 
 const CollegeFilters = ({ data }) => {
   return (
@@ -39,7 +39,13 @@ const CollegeFilters = ({ data }) => {
 
               <div className="search">
                 <i className="fa-solid fa-magnifying-glass"></i>
-                <input type={"search"} placeholder={i.placeholder} />
+                <input
+                  type={"search"}
+                  placeholder={i.placeholder}
+                  onChange={(e) =>
+                    debouncedSetQuery(e.target.value, i.inputValue)
+                  }
+                />
               </div>
 
               <ul>

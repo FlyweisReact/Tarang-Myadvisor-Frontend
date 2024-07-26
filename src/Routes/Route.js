@@ -40,6 +40,8 @@ import ViewUserChat from "../pages/UserDashboard/ViewUserChat";
 import AdwizorProgramms from '../pages/AdwizorPanel/AdwizorProgramms'
 import AdwizorStudents from "../pages/AdwizorPanel/AdwizorStudents";
 import AdwizorStudentProfile from "../pages/AdwizorPanel/AdwizorStudentProfile";
+import AdwizorLiveRoom from "../pages/AdwizorPanel/AdwizorLiveRoom";
+import AdwizorApplications from "../pages/AdwizorPanel/AdwizorApplications";
 
 const allRoutes = [
   {
@@ -194,15 +196,22 @@ const allRoutes = [
     route: "/adwizor-panel/programs",
     component: <AdwizorProgramms />,
   },
-  // ---
-  
   {
     route: "/adwizor-panel/students",
     component: <AdwizorStudents />,
   },
+  //---
   {
     route: "/adwizor-panel/students/:id",
     component: <AdwizorStudentProfile />,
+  },
+  {
+    route: "/adwizor-panel/live-room",
+    component: <AdwizorLiveRoom />,
+  },
+  {
+    route: "/adwizor-panel/student-applications",
+    component: <AdwizorApplications />,
   },
 ];
 

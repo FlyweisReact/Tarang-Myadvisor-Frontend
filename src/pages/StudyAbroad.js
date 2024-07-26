@@ -22,13 +22,16 @@ import useInfiniteScroll from "react-infinite-scroll-hook";
 const StudyAbroad = () => {
   const [banner, setBanner] = useState({});
   const [universities, setUniversities] = useState({ data: [] });
-  const [courses, setCourses] = useState({ courses: [] });
-  const [allStates, setAllStates] = useState({ states: [] });
-  const [allStreams, setAllStreams] = useState({ streams: [] });
+  const [courses, setCourses] = useState({ data: [] });
+  const [allStates, setAllStates] = useState({ data: [] });
+  const [allStreams, setAllStreams] = useState({ data: [] });
   const [keyword, setKeyword] = useState([]);
   const [loading, setLoading] = useState(true);
   const [allCountries, setAllCountries] = useState({ data: [] });
   const [limit, setLimit] = useState(100);
+  const [courseQuery, setCourseQuery] = useState("");
+  const [stateQuery, setStateQuery] = useState("");
+  const [ streamQuery  , setStreamQuery ] = useState("")
 
   const fetchUniversities = useCallback(() => {
     getApi(endPoints.filterUniversities(keyword.join(","), 1, limit), {
@@ -38,17 +41,26 @@ const StudyAbroad = () => {
   }, [keyword, limit]);
 
   useEffect(() => {
-    getApi(endPoints.studyAbroadBanner, {
-      setResponse: setBanner,
-    });
-    getApi(endPoints.getAllCourse, {
+    getApi(endPoints.user.searchCourses(courseQuery), {
       setResponse: setCourses,
     });
-    getApi(endPoints.getAllStates, {
+  }, [courseQuery]);
+
+  useEffect(() => {
+    getApi(endPoints.user.filterStates(stateQuery), {
       setResponse: setAllStates,
     });
-    getApi(endPoints.getAllStreams, {
+  }, [stateQuery]);
+
+  useEffect(() => {
+    getApi(endPoints.user.filterStreams(streamQuery), {
       setResponse: setAllStreams,
+    });
+  }, [streamQuery]);
+
+  useEffect(() => {
+    getApi(endPoints.studyAbroadBanner, {
+      setResponse: setBanner,
     });
     getApi(endPoints.getAllCountries, {
       setResponse: setAllCountries,
@@ -59,27 +71,24 @@ const StudyAbroad = () => {
     fetchUniversities();
   }, [fetchUniversities]);
 
-  const universityArr =
-    universities?.data?.length > 0
-      ? universities?.data?.map((i) => ({
-          flagImg: i?.ImageUrl?.[0],
-          title: `${i?.UniversityName} `,
-          courseTitle: i?.CourseTitle,
-          collegeImg: i?.ImageUrl?.[0],
-          isFav: false,
-          status: "Apply Now",
-          location: i?.location,
-          id: i._id,
-          reviews: i?.Review,
-          fees: i?.Fees,
-          star: i?.Star,
-          avgPackage: i?.AveragePackageOffered,
-          elegibility: i?.Eligibility,
-          approvedBy: i?.ApprovedBy,
-          shortlistedCount: i?.TotalNoOfStudentsRegistered,
-          institueType: i?.InstituteType,
-        }))
-      : [];
+  const universityArr = universities?.data?.map((i) => ({
+    flagImg: i?.ImageUrl?.[0],
+    title: `${i?.UniversityName} `,
+    courseTitle: i?.CourseTitle,
+    collegeImg: i?.ImageUrl?.[0],
+    isFav: false,
+    status: "Apply Now",
+    location: i?.location,
+    id: i._id,
+    reviews: i?.Review,
+    fees: i?.Fees,
+    star: i?.Star,
+    avgPackage: i?.AveragePackageOffered,
+    elegibility: i?.Eligibility,
+    approvedBy: i?.ApprovedBy,
+    shortlistedCount: i?.TotalNoOfStudentsRegistered,
+    institueType: i?.InstituteType,
+  }));
 
   const filterationData = {
     title: "Private Colleges / Government Colleges",
@@ -89,23 +98,26 @@ const StudyAbroad = () => {
       {
         title: "Courses",
         placeholder: "Find Courses",
-        list: courses?.courses?.map((i) => i?.courseName),
+        list: courses?.data?.map((i) => i?.courseName),
         setValue: setKeyword,
         value: keyword,
+        inputValue: setCourseQuery,
       },
       {
         title: "State",
         placeholder: "Find State",
-        list: allStates?.states?.map((i) => i?.stateName),
+        list: allStates?.data?.map((i) => i?.stateName),
         setValue: setKeyword,
         value: keyword,
+        inputValue: setStateQuery,
       },
       {
         title: "Stream",
         placeholder: "Find Stream",
-        list: allStreams?.streams?.map((i) => i?.streamName),
+        list: allStreams?.data?.map((i) => i?.streamName),
         setValue: setKeyword,
         value: keyword,
+        inputValue: setStreamQuery,
       },
     ],
   };
@@ -117,7 +129,7 @@ const StudyAbroad = () => {
   const optionsMenu = [
     {
       title: "Subject",
-      items: courses?.courses?.map((city, index) => ({
+      items: courses?.data?.map((city, index) => ({
         label: (
           <a href={`#${city}`} className="antd-link-a">
             {city?.courseName}

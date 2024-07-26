@@ -1419,6 +1419,11 @@ const adwizorSidebarArr = [
   },
   {
     icon: <i className="fa-solid fa-calendar-days"></i>,
+    title: "Live Room",
+    link: "/adwizor-panel/live-room",
+  },
+  {
+    icon: <i className="fa-solid fa-calendar-days"></i>,
     title: "My Appointments",
     link: "/adwizor-dashboard",
   },

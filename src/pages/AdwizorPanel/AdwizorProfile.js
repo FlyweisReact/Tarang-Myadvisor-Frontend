@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { ClipLoader } from "react-spinners";
-import { customerReview1, customerReview2, uploadSvg } from "../../assest";
+import { uploadSvg } from "../../assest";
 import { BlogCard } from "../../components/Cards/AllCards";
 import { Slider } from "../../components/Sliders/Sliders";
 import { RenderCustomerReviewsCard } from "../../components/Sliders/SwiperComponents";
@@ -74,6 +74,9 @@ const AdwizorProfile = () => {
     professionalExperiance: "",
     passport: "",
   });
+  const [currentLocation, setCurrentLocation] = useState("");
+  const [studyDestination, setStudyDestination] = useState("");
+  const [waitTime, setWaitTime] = useState("");
   const [blogs, setBlogs] = useState({ data: [] });
 
   const handleFileChange = (e) => {
@@ -115,6 +118,9 @@ const AdwizorProfile = () => {
   fd.append("landMark", landMark);
   fd.append("otherInfo", otherInfo);
   fd.append("aboutMe", aboutME);
+  fd.append("currentLocation", currentLocation);
+  fd.append("waitTime", waitTime);
+  fd.append("studyDestination", studyDestination);
 
   const fetchHandler = () => {
     getApi(endPoints.getAdwizorProfile, {
@@ -195,6 +201,9 @@ const AdwizorProfile = () => {
       setOtherInfo(profile?.data?.otherInfo);
       setAboutme(profile?.data?.aboutMe);
       setSubjectExpertise(profile?.data?.subjectExperties);
+      setCurrentLocation(profile?.data?.currentLocation);
+      setStudyDestination(profile?.data?.studyDestination);
+      setWaitTime(profile?.data?.waitTime);
     }
   }, [profile]);
 
@@ -440,6 +449,39 @@ const AdwizorProfile = () => {
           className="mt-2"
           onChange={(e) => setHelpedStudent(e.target.value)}
           value={helpedStudent}
+        />
+
+        <div className="section-sub-heading mt-3">
+          <p className="title">Current Location</p>
+        </div>
+
+        <input
+          type={"text"}
+          className="mt-2"
+          onChange={(e) => setCurrentLocation(e.target.value)}
+          value={currentLocation}
+        />
+
+        <div className="section-sub-heading mt-3">
+          <p className="title">Study Destination</p>
+        </div>
+
+        <input
+          type={"text"}
+          className="mt-2"
+          onChange={(e) => setStudyDestination(e.target.value)}
+          value={studyDestination}
+        />
+
+        <div className="section-sub-heading mt-3">
+          <p className="title">Wait Time</p>
+        </div>
+
+        <input
+          type={"text"}
+          className="mt-2"
+          onChange={(e) => setWaitTime(e.target.value)}
+          value={waitTime}
         />
 
         <div className="section-sub-heading mt-3">

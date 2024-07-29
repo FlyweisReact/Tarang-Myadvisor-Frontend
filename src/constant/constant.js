@@ -74,7 +74,6 @@ import {
   NearlyCollege4,
 } from "../assest";
 
-
 const countryArr = ["India", "Australia", "USA", "Canada", "German", "UK"];
 
 const prefferedSubjectArr = [
@@ -163,66 +162,39 @@ const userDashboardSidebar = [
     link: "/user-dashboard/programms",
   },
   {
-    img: adwizorSvg,
+    icon: <i className="fa-solid fa-asterisk"></i>,
+    title: "Write Review",
+    link: "/user-dashboard/write-a-review",
+  },
+  {
+    icon: <i className="fa-solid fa-user-doctor"></i>,
     title: "My Adwizor",
     link: "/user-dashboard/my-adwizors",
   },
   {
-    img: universitySvg,
+    icon: <i className="fa-solid fa-building-columns"></i>,
     title: "My Universities",
     link: "/user-dashboard/my-universities",
   },
   {
-    img: IcRoundChat,
+    icon: <i className="fa-solid fa-message"></i>,
     title: "My Messages",
     link: "/user-dashboard/my-messages",
   },
 
   {
-    img: MdiShare,
+    icon: <i className="fa-solid fa-share"></i>,
     title: "Refer a friend",
     link: "/user-dashboard/refer-earn",
   },
   {
-    img: MdiAbout,
+    icon: <i className="fa-solid fa-circle-info"></i>,
     title: "How It Works",
     link: "/user-dashboard/how-it-works",
   },
 ];
 
-const userDashboardSidebar2 = [
-  {
-    img: HomeSvg,
-    title: "Home",
-    link: "/user-dashboard/home",
-  },
-  {
-    img: MdiShare,
-    title: "Refer a friend",
-    link: "/user-dashboard/refer-earn",
-  },
-  {
-    img: universitySvg,
-    title: "My Universities",
-    link: "/user-dashboard/my-universities",
-  },
-  {
-    icon: <i className="fa-solid fa-file"></i>,
-    title: "My Documents",
-    link: "/user-dashboard/documents",
-  },
-];
-
-const userProfileTab = [
-  "Profile Overview",
-  // "Activities",
-  // "Notes",
-  "Addresses",
-  // "History",
-  "My Universities",
-  // "Documents",
-  // "Adwizor",
-];
+const userProfileTab = ["Profile Overview", "Addresses", "My Universities"];
 
 const universityCardArr = [
   {
@@ -1415,7 +1387,7 @@ const adwizorSidebarArr = [
   {
     icon: <i className="fa-solid fa-file"></i>,
     title: "Applications",
-    link: "/adwizor-dashboard",
+    link: "/adwizor-panel/student-applications",
   },
   {
     icon: <i className="fa-solid fa-calendar-days"></i>,
@@ -1425,12 +1397,12 @@ const adwizorSidebarArr = [
   {
     icon: <i className="fa-solid fa-calendar-days"></i>,
     title: "My Appointments",
-    link: "/adwizor-dashboard",
+    link: "/adwizor-panel/appointments",
   },
   {
     icon: <i className="fa-solid fa-clipboard-check"></i>,
     title: "My Task",
-    link: "/adwizor-dashboard",
+    link: "/adwizor-panel/tasks",
   },
   {
     icon: <i className="fa-solid fa-spinner"></i>,
@@ -1442,6 +1414,21 @@ const adwizorSidebarArr = [
     icon: <i className="fa-solid fa-arrow-trend-up"></i>,
     title: "Analysis",
     link: "/adwizor-dashboard",
+  },
+  {
+    img: IcRoundChat,
+    title: "My Messages",
+    link: "/adwizor-panel/message",
+  },
+  {
+    icon: <i class="fa-solid fa-calendar-days"></i>,
+    title: "Calender",
+    link: "/adwizor-panel/calender",
+  },
+  {
+    icon: <i class="fa-solid fa-calendar-days"></i>,
+    title: "My Blogs",
+    link: "/adwizor-panel/my-blogs",
   },
   {
     icon: <i className="fa-solid fa-user"></i>,
@@ -1456,7 +1443,6 @@ export {
   chennaiColleges,
   mumbaiColleges,
   topDelhiUniversities,
-  userDashboardSidebar2,
   exploreDestinationArr,
   infuluncerCardConstant,
   tutionFess,

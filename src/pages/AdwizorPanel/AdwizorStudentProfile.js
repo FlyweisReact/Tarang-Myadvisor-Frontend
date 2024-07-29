@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import { uploadSvg } from "../../assest";
 import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
-import { getApi } from "../../Repository/Api";
+import { getApi, putApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
 const AdwizorStudentProfile = () => {
@@ -34,16 +35,79 @@ const AdwizorStudentProfile = () => {
   const [martialStatus, setMartialStatus] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [ loading ,setLoading ] = useState(false)
 
-  useEffect(() => {
+  const fetchHandler = () => {
     getApi(endPoints.adwizor.getUserProfile(id), {
       setResponse: setProfile,
     });
+  };
+
+  useEffect(() => {
+    fetchHandler();
   }, [id]);
 
   const uploadDocument = (name) => {
     const target = document.getElementById(name);
     target.click();
+  };
+
+  useEffect(() => {
+    if (profile) {
+      const item = profile.data;
+      setFullName(item?.fullname);
+      setEmail(item?.email);
+      setPhone(item?.phone);
+      setDestinationCountry(item?.destinationCountry);
+      setPrefferedIntake(item?.preferredIntake);
+      setPreferrefDegree(item?.preferredDegree);
+      setYourHighestLevelOfEducation(item?.yourHighestLevelOfEducation);
+      setYourHighestLevelOfEducationYear(item?.yourHighestLevelOfEducationYear);
+      setGradesORPercentage(item?.gradesORpercentage);
+      setValidPassport(item?.validPassport);
+      setduolingoStatus(item?.duolingoStatus);
+      setAlreadyUniversityAdmin(item?.alreadyUniversityAdmit);
+      setLookingFor(item?.lookingFor);
+      setBookingConfirmation(item?.givenGRE);
+      setGivenGRE(item?.alreadyUniversityAdmit);
+      setDob(item?.dob);
+      setGender(item?.gender);
+      setMartialStatus(item?.martialStatus);
+      setCity(item?.city);
+      setState(item?.state);
+    }
+  }, [profile]);
+
+  const fd = new FormData();
+  fd.append("fullname", fullname);
+  fd.append("email", email);
+  fd.append("phone", phone);
+  fd.append("destinationCountry", destinationCountry);
+  fd.append("preferredIntake", preferredIntake);
+  fd.append("preferredDegree", preferredDegree);
+  fd.append("yourHighestLevelOfEducation", yourHighestLevelOfEducation);
+  fd.append("yourHighestLevelOfEducationYear", yourHighestLevelOfEducationYear);
+  fd.append("gradesORpercentage", gradesORpercentage);
+  fd.append("validPassport", validPassport);
+  fd.append("duolingoStatus", duolingoStatus);
+  fd.append("alreadyUniversityAdmit", alreadyUniversityAdmit);
+  fd.append("lookingFor", lookingFor);
+  fd.append("bookingConfirmation", bookingConfirmation);
+  fd.append("givenGRE", givenGRE);
+  fd.append("image", image);
+  fd.append("dob", dob);
+  fd.append("gender", gender);
+  fd.append("martialStatus", martialStatus);
+  fd.append("state", state);
+  fd.append("city", city);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    putApi(endPoints.adwizor.updateUserProfile(id), fd, {
+      successMsg: "Updated !",
+      setLoading ,
+      additionalFunctions: [fetchHandler],
+    });
   };
 
   return (
@@ -73,7 +137,7 @@ const AdwizorStudentProfile = () => {
         </div>
       </div>
 
-      <form className="update-profile">
+      <form className="update-profile" onSubmit={submitHandler}>
         <div className="section-sub-heading">
           <p className="title">Basic Details</p>
         </div>
@@ -281,7 +345,7 @@ const AdwizorStudentProfile = () => {
               </option>
             </select>
           </div>
-          <div className="item" style={{maxWidth : '100%'}} >
+          <div className="item" style={{ maxWidth: "100%" }}>
             <select
               value={alreadyUniversityAdmit}
               onChange={(e) => setAlreadyUniversityAdmin(e.target.value)}
@@ -292,54 +356,64 @@ const AdwizorStudentProfile = () => {
             </select>
           </div>
 
-          <div className="item" style={{maxWidth : '100%'}}>
+          <div className="item" style={{ maxWidth: "100%" }}>
             <select
               value={lookingFor}
               onChange={(e) => setLookingFor(e.target.value)}
             >
               <option value="">What are you looking for?</option>
-              <option value="I want University Shortlist">I want University Shortlist</option>
-              <option value="I want Admission Help">I want Admission Help</option>
+              <option value="I want University Shortlist">
+                I want University Shortlist
+              </option>
+              <option value="I want Admission Help">
+                I want Admission Help
+              </option>
               <option value="I want PR/Job only">I want PR/Job only</option>
-              <option value="I want to check Admit Eligibility">I want to check Admit Eligibility</option>
-              <option value="I want Visa Assistance">I want Visa Assistance</option>
-              <option value="I want IELTS Preparation">I want IELTS Preparation</option>
+              <option value="I want to check Admit Eligibility">
+                I want to check Admit Eligibility
+              </option>
+              <option value="I want Visa Assistance">
+                I want Visa Assistance
+              </option>
+              <option value="I want IELTS Preparation">
+                I want IELTS Preparation
+              </option>
             </select>
           </div>
-          <div className="item" style={{maxWidth : '100%'}}>
+          <div className="item" style={{ maxWidth: "100%" }}>
             <select
               value={bookingConfirmation}
               onChange={(e) => setBookingConfirmation(e.target.value)}
             >
-              <option value="">Do you have an exam booking confirmation?</option>
+              <option value="">
+                Do you have an exam booking confirmation?
+              </option>
               <option value="YES">YES</option>
               <option value="NO">NO</option>
             </select>
           </div>
-          <div className="item" style={{maxWidth : '100%'}}>
+          <div className="item" style={{ maxWidth: "100%" }}>
             <select
               value={givenGRE}
               onChange={(e) => setGivenGRE(e.target.value)}
             >
               <option value="">How You Given GRE</option>
               <option value="Already Given">Already Given</option>
-          <option value="Taken date in next 2 months">
-            Taken date in next 2 months
-          </option>
-          <option value="Plannig to give in next 2 months">
-            Plannig to give in next 2 months
-          </option>
-          <option value="No plan for GRE as of now">
-            No plan for GRE as of now
-          </option>
+              <option value="Taken date in next 2 months">
+                Taken date in next 2 months
+              </option>
+              <option value="Plannig to give in next 2 months">
+                Plannig to give in next 2 months
+              </option>
+              <option value="No plan for GRE as of now">
+                No plan for GRE as of now
+              </option>
             </select>
           </div>
-
-      
         </div>
 
-        <button className="upload-document-btn mt-3" type="button">
-          <span>Next </span>
+        <button className="upload-document-btn mt-3" type="submit">
+          <span> { loading ? <ClipLoader color="#fff" /> : "Submit"} </span>
         </button>
       </form>
     </section>

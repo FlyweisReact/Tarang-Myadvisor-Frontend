@@ -1,0 +1,42 @@
+/**
+ * for mobile devices
+ *
+ * @format
+ */
+
+@media (max-width: 768px) {
+  .homepage {
+    padding: 10px;
+  }
+  .adwizor-banner .right{
+    display: none;
+  }
+  .adwizor-banner .left{
+    width: 100%;
+  }
+  .adwizor-banner .left h3{
+    font-size: 25px;
+  }
+  .adwizor-banner .left .content{
+    padding: 20px;
+  }
+  .adwizor-banner .left .highlighted {
+    font-size: 28px;
+  }
+  .adwizor-banner .adwizor-search{
+    border-radius: 0;
+    padding:20px;
+  }
+  .adwizor-banner .adwizor-search .search-bar .dropdown-button {
+    font-size: 14px;
+    min-width: 100px;
+  }
+ 
+  .how-it-works .curved-line{
+    display: none;
+  }
+  .normal-heading{
+    font-size: 20px;
+  }
+ 
+}

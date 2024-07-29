@@ -1,62 +1,27 @@
 /** @format */
 
 import React, { useState } from "react";
-import {
-  pauseIcon,
-  sampleVideo,
-  closeIcon,
-  testimonialIcon1,
-  testimonialIcon3,
-  testimonialIcon2,
-  testimonialIcon,
-} from "../../assest";
+import { pauseIcon, closeIcon } from "../../assest";
 
-const items = [
-  {
-    id: 1,
-    img: testimonialIcon,
-    title: "Sahara Thakur",
-    desc: "Alex University , Canada",
-  },
-  {
-    id: 2,
-    img: testimonialIcon1,
-    title: "Nisha Bansali",
-    desc: "Mex University , Australia",
-  },
-  {
-    id: 3,
-    img: testimonialIcon2,
-    title: "Mishra",
-    desc: "Alex University , Canada",
-  },
-
-  {
-    id: 4,
-    img: testimonialIcon3,
-    title: "Vishal Joseph",
-    desc: "Mex University , Australia",
-  },
-];
-
-const Testimonial = () => {
+const Testimonial = ({ data }) => {
   const [show, setShow] = useState(false);
   const [id, setId] = useState(0);
+
   return (
     <section className="testimonial-section">
       <h4 className="normal-heading">Testimonials Videos</h4>
 
       <div className="Main">
-        {items.map((i, index) => (
+        {data.map((i, index) => (
           <div
             className="item"
             key={`testimonial${index}`}
-            style={{ backgroundImage: `url(${i.img})` }}
+            style={{ backgroundImage: `url(${i.image})` }}
           >
             {show === true && id === i.id ? (
               <React.Fragment>
                 <video className="video-container" controls autoPlay>
-                  <source src={sampleVideo} type="video/mp4" />
+                  <source src={i.video} type="video/mp4" />
                 </video>
 
                 <img
@@ -79,7 +44,7 @@ const Testimonial = () => {
                 />
                 <div className="content">
                   <p className="title"> {i.title} </p>
-                  <p className="desc"> {i.desc} </p>
+                  <p className="desc"> {i.description} </p>
                 </div>
               </React.Fragment>
             )}

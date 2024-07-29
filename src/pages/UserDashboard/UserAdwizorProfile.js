@@ -25,7 +25,7 @@ const ExtraComponent = () => {
 };
 
 const UserAdwizorProfile = () => {
-  const [profile, setProfile] = useState({ reviews: [], blogs: [] });
+  const [profile, setProfile] = useState({ reviews: [], blogs: [], data: {} });
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -49,6 +49,8 @@ const UserAdwizorProfile = () => {
     publishedOn: i?.createdAt?.slice(0, 10),
   }));
 
+  console.log(profile);
+
   return (
     <section className="user-homePage mt-3">
       <section className="adwizor-profile-section boxShadow-container margin-div">
@@ -59,23 +61,55 @@ const UserAdwizorProfile = () => {
             <p> {profile?.data?.language} </p>
             <p>Experience : {profile?.data?.years} Years </p>
             <p> {profile?.data?.helpedStudent} </p>
-            <div className="btn-container mt-3">
-              <button
-                className="outline"
-                onClick={() =>
-                  navigate(`/counselling-session/live-2/${profile?.data?._id}`)
-                }
-              >
-                Chat
-              </button>
-              <button
-                onClick={() =>
-                  navigate(`/counselling-session/live-2/${profile?.data?._id}`)
-                }
-              >
-                Call
-              </button>
-            </div>
+            <p> Location : {profile.data?.currentLocation} </p>
+            <p> Study destination : {profile.data?.studyDestination} </p>
+            <p> Subject expertise : {profile.data?.subjectExperties} </p>
+            {profile.data?.liveStatus === true ? (
+              <div className="btn-container mt-3">
+                <button
+                  className="outline"
+                  onClick={() =>
+                    navigate(
+                      `/counselling-session/live-2/${profile?.data?._id}`
+                    )
+                  }
+                >
+                  Chat <br /> Wait time : {profile.data?.waitTime}
+                </button>
+                <button
+                  onClick={() =>
+                    navigate(
+                      `/counselling-session/live-2/${profile?.data?._id}`
+                    )
+                  }
+                >
+                  Call
+                  <br /> Wait time : {profile.data?.waitTime}
+                </button>
+              </div>
+            ) : (
+              <div className="btn-container mt-3">
+                <button
+                  className="outline"
+                  onClick={() =>
+                    navigate(
+                      `/counselling-session/live-2/${profile?.data?._id}`
+                    )
+                  }
+                >
+                  Chat{" "}
+                </button>
+                <button
+                  onClick={() =>
+                    navigate(
+                      `/counselling-session/live-2/${profile?.data?._id}`
+                    )
+                  }
+                >
+                  Call{" "}
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="about-sec">

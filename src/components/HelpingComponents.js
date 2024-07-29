@@ -59,7 +59,6 @@ const AdwizorCards = ({
   const [loading, setLoading] = useState(false);
   const isLoggedIn = localStorage.getItem("user-token") ? true : false;
   const [show, setShow] = useState(false);
-  console.log(isLoggedIn);
 
   // send request to live adwizors for meeting
   const sendRequest = (id) => {
@@ -73,123 +72,6 @@ const AdwizorCards = ({
     );
   };
 
-  // if (topAdwizor) {
-  //   return (
-  //     <div className="top-adwizors">
-  //       <h4 className="normal-heading">Find Top Adwizors</h4>
-  //       <div className="cards">
-  //         {topAdwizorData.map((i, index) => (
-  //           <div className="item" key={`topadwizor${index}`}>
-  //             <div className="detail">
-  //               <img
-  //                 src={i.img}
-  //                 alt=""
-  //                 className="mainImg"
-  //                 onClick={() =>
-  //                   navigate(`/user-dashboard/adwizor-profile/${i.id}`)
-  //                 }
-  //               />
-  //               <div className="content">
-  //                 <p className="title">{i.title} </p>
-  //                 <div className="rating">
-  //                   <i className="fa-solid fa-star"></i>
-  //                   <p> {i.rating} </p>
-  //                 </div>
-  //                 {i.description.map((item, index) => (
-  //                   <p className="faded" key={`desc${index}`}>
-  //                     {" "}
-  //                     {item}{" "}
-  //                   </p>
-  //                 ))}
-  //               </div>
-  //             </div>
-  //             <div className="btn-container">
-  //               <button
-  //                 onClick={() =>
-  //                   navigate(`/counselling-session/live-2/${i.id}`)
-  //                 }
-  //               >
-  //                 Book Appointment
-  //               </button>
-  //               <button
-  //                 onClick={() =>
-  //                   navigate(`/user-dashboard/adwizor-profile/${i.id}`)
-  //                 }
-  //               >
-  //                 View Profile
-  //               </button>
-  //             </div>
-  //           </div>
-  //         ))}
-  //       </div>
-
-  //       <button className="all" onClick={() => navigate("/find-an-adwizor")}>
-  //         See All
-  //       </button>
-  //     </div>
-  //   );
-  // } else {
-  //   return (
-  //     <div className="verfied-adwizor margin-div">
-  //       {allAdwizors.map((i, index) => (
-  //         <div className="main" key={`allAdwizor${index}`}>
-  //           <img
-  //             src={i.img}
-  //             alt=" "
-  //             onClick={() =>
-  //               navigate(`/user-dashboard/adwizor-profile/${i.id}`)
-  //             }
-  //           />
-  //           <div className="content">
-  //             <p
-  //               className="title"
-  //               onClick={() => navigate("/user-dashboard/adwizor-profile")}
-  //             >
-  //               {" "}
-  //               {i.title}{" "}
-  //             </p>
-
-  //             <div className="rating">
-  //               <i className="fa-solid fa-star"></i>
-  //               <p> {i.rating} </p>
-  //             </div>
-  //             {i.description.map((item, index) => (
-  //               <p className="faded" key={`desc${index}`}>
-  //                 {item}
-  //               </p>
-  //             ))}
-  //             {isLive ? (
-  //               <div className="btn-container">
-  //                 <button className="outlined">Chat</button>
-  //                 <button onClick={() => sendRequest(i.id)}>
-  //                   {loading ? <ClipLoader color="#fff" /> : "Call"}{" "}
-  //                 </button>
-  //               </div>
-  //             ) : (
-  //               <div className="btn-container">
-  //                 <button
-  //                   className="outlined"
-  //                   onClick={() =>
-  //                     navigate(`/user-dashboard/my-messages/${i.title}`)
-  //                   }
-  //                 >
-  //                   Chat
-  //                 </button>
-  //                 <button
-  //                   onClick={() =>
-  //                     navigate(`/counselling-session/live-2/${i.id}`)
-  //                   }
-  //                 >
-  //                   Call
-  //                 </button>
-  //               </div>
-  //             )}
-  //           </div>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   );
-  // }
 
   return (
     <>

@@ -24,7 +24,7 @@ const UserHome = () => {
           title: i?.fullname,
           rating: i?.averageRating,
           description: [i?.experiance, i?.state, i?.helpedStudent],
-          id : i._id
+          id: i._id,
         }))
       : [];
 
@@ -40,21 +40,6 @@ const UserHome = () => {
           />
         </div>
       </div>
-{/* 
-      <div className="user-content-box">
-        <div className="item">
-          <p>My Favourites</p>
-          <textarea />
-        </div>
-        <div className="item">
-          <p>Loremipsum</p>
-          <textarea />
-        </div>
-        <div className="item">
-          <p>Loremipsum</p>
-          <textarea />
-        </div>
-      </div> */}
 
       <AppointmentFloatingBtn />
     </section>

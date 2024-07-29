@@ -39,13 +39,14 @@ const StudentNavigation = () => {
 const HomePage = () => {
   const [features, setFeatures] = useState({});
   const [studentThoughts, setStudentThoughts] = useState({ data: [] });
-  const [adwizors, setAdwizors] = useState({});
+  const [adwizors, setAdwizors] = useState({ data: [] });
   const [allCountries, setAllCountries] = useState({ data: [] });
   const [countryName, setCountryName] = useState("Us");
   const [topColleges, setTopColleges] = useState({ data: [] });
   const [blogs, setBlogs] = useState({ data: [] });
   const [howItWorks, setHowItWorks] = useState({ data: [] });
   const [sypnosisSummary, setSypnosisSummary] = useState({ data: [] });
+  const [testimonials, setTestimonials] = useState({ data: [] });
 
   const howItWorksList = howItWorks.data.map((i) => ({
     img: i?.image,
@@ -94,6 +95,9 @@ const HomePage = () => {
     getApi(endPoints.user.getAllSypnosis, {
       setResponse: setSypnosisSummary,
     });
+    getApi(endPoints.user.getAllTestimonial, {
+      setResponse: setTestimonials,
+    });
   }, []);
 
   useEffect(() => {
@@ -103,16 +107,13 @@ const HomePage = () => {
     }
   }, [allCountries]);
 
-  const adwizorsData =
-    adwizors?.data?.length > 0
-      ? adwizors?.data?.slice(0, 6)?.map((i) => ({
-          img: i?.image,
-          title: i?.fullname,
-          rating: i?.averageRating,
-          description: [i?.experiance, i?.state, i?.helpedStudent],
-          id: i._id,
-        }))
-      : [];
+  const adwizorsData = adwizors.data.slice(0, 6)?.map((i) => ({
+    img: i?.image,
+    title: i?.fullname,
+    rating: i?.averageRating,
+    description: [i?.experiance, i?.state, i?.helpedStudent],
+    id: i._id,
+  }));
 
   const collegeDetails = topColleges.data.map((i, index) => [
     `#${index + 1}`,
@@ -180,10 +181,20 @@ const HomePage = () => {
     ],
   }));
 
+  const testimonialList = testimonials.data.map((i, index) => ({
+    id: index,
+    title: i.title,
+    description: i?.description,
+    image: i?.imagePath,
+    video: i?.videoPath,
+  }));
+
   return (
     <>
       <AdwizorBanner />
-      <AdwizorCards topAdwizor={true} topAdwizorData={adwizorsData} />
+      {adwizorsData?.length > 0 && (
+        <AdwizorCards topAdwizor={true} topAdwizorData={adwizorsData} />
+      )}
 
       {howItWorksList?.length > 0 && (
         <section className="how-it-works">
@@ -209,87 +220,97 @@ const HomePage = () => {
         </section>
       )}
 
-      <section className="features">
-        <h4 className="normal-heading">Why Choose Us</h4>
-        <div className="slider-container">
-          <Slider
-            data={featureData}
-            swiperConfig={featureConfig}
-            RenderSlide={RenderFeatureItems}
-          />
-        </div>
-      </section>
+      {featureData?.length > 0 && (
+        <section className="features">
+          <h4 className="normal-heading">Why Choose Us</h4>
+          <div className="slider-container">
+            <Slider
+              data={featureData}
+              swiperConfig={featureConfig}
+              RenderSlide={RenderFeatureItems}
+            />
+          </div>
+        </section>
+      )}
 
-      <Testimonial />
-      <section className="college-table">
-        <div className="head">
-          <h4 className="normal-heading">Top 10 Featured Colleges</h4>
-          <Link to={url}>View All</Link>
-        </div>
-        <div className="destination">
-          <ul>
-            <li>
-              <i className="fa-solid fa-bars-staggered"></i>Destinations
-              <i className="fa-solid fa-chevron-down"></i>
-            </li>
-            {allCountries.data.map((i, index) => (
-              <li
-                key={`countries${index}`}
-                className={`${countryName === i.ContryName ? "active" : ""}`}
-                onClick={() => setCountryName(i.ContryName)}
-              >
-                {" "}
-                {i.ContryName}{" "}
+      {testimonialList?.length > 0 && <Testimonial data={testimonialList} />}
+
+      {collegeDetails?.length > 0 && (
+        <section className="college-table">
+          <div className="head">
+            <h4 className="normal-heading">Top 10 Featured Colleges</h4>
+            <Link to={url}>View All</Link>
+          </div>
+          <div className="destination">
+            <ul>
+              <li>
+                <i className="fa-solid fa-bars-staggered"></i>Destinations
+                <i className="fa-solid fa-chevron-down"></i>
               </li>
+              {allCountries.data.map((i, index) => (
+                <li
+                  key={`countries${index}`}
+                  className={`${countryName === i.ContryName ? "active" : ""}`}
+                  onClick={() => setCountryName(i.ContryName)}
+                >
+                  {" "}
+                  {i.ContryName}{" "}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <TableLayout
+            thead={[
+              "CH Rank",
+              "College",
+              "Ranking",
+              "Application Date",
+              "Fees",
+              "Cutoff",
+            ]}
+            tbody={collegeDetails}
+            className="college-table"
+          />
+        </section>
+      )}
+
+      {sypnosisList?.length > 0 && (
+        <section className="margin-div">
+          <h4 className="normal-heading"> Destination Synopsis / Summary</h4>
+          <section className="synopsis-slider">
+            <Slider
+              data={sypnosisList}
+              swiperConfig={sypnosisConfig}
+              RenderSlide={RenderSypnosisItem}
+            />
+          </section>
+        </section>
+      )}
+
+      {studentThoughts?.data?.length > 0 && (
+        <section className="margin-div">
+          <h4 className="normal-heading">What Students say about us? </h4>
+          <section className="student-testimonial-slider">
+            <Slider
+              data={studentThoughts?.data}
+              swiperConfig={studentTestimonialConfig}
+              RenderSlide={RenderStudentTestimonialCard}
+              ExtraComponent={StudentNavigation}
+            />
+          </section>
+        </section>
+      )}
+
+      {blogsList?.length > 0 && (
+        <section className="margin-div">
+          <h4 className="normal-heading">Our Adwizors blogs </h4>
+          <div className="adwizor-blog-container">
+            {blogsList.map((i, index) => (
+              <InfluencerCard key={`infulencerCard${index}`} {...i} />
             ))}
-          </ul>
-        </div>
-        <TableLayout
-          thead={[
-            "CH Rank",
-            "College",
-            "Ranking",
-            "Application Date",
-            "Fees",
-            "Cutoff",
-          ]}
-          tbody={collegeDetails}
-          className="college-table"
-        />
-      </section>
-
-      <section className="margin-div">
-        <h4 className="normal-heading"> Destination Synopsis / Summary</h4>
-        <section className="synopsis-slider">
-          <Slider
-            data={sypnosisList}
-            swiperConfig={sypnosisConfig}
-            RenderSlide={RenderSypnosisItem}
-          />
+          </div>
         </section>
-      </section>
-
-      <section className="margin-div">
-        <h4 className="normal-heading">What Students say about us? </h4>
-        <section className="student-testimonial-slider">
-          <Slider
-            data={studentThoughts?.data}
-            swiperConfig={studentTestimonialConfig}
-            RenderSlide={RenderStudentTestimonialCard}
-            ExtraComponent={StudentNavigation}
-          />
-        </section>
-      </section>
-
-      <section className="margin-div">
-        <h4 className="normal-heading">Our Adwizors blogs </h4>
-        <div className="adwizor-blog-container">
-          {blogsList.map((i, index) => (
-            <InfluencerCard key={`infulencerCard${index}`} {...i} />
-          ))}
-        </div>
-        {/* <button className="view-more-btn mt-4">View More</button> */}
-      </section>
+      )}
 
       <section className="margin-div">
         <OurSuccess />

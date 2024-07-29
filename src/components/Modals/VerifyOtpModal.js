@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { verifyOtpImg } from "../../assest";
 import OtpInput from "../OtpInput";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import { ClipLoader } from "react-spinners";
@@ -42,12 +42,14 @@ const VerifyOtpModal = (props) => {
         <img src={verifyOtpImg} alt="" className="main-img" />
         <form onSubmit={submitHandler}>
           <div className="content">
-            <p className="head">OTP Sent to +91 1234567890 / Email Id</p>
-            <a href="/">Change</a>
-            <p>Enter OTP (0:26)</p>
+            <p className="head">OTP Sent to mobile number / Email Id</p>
+            <Link to='/user-dashboard/profile'>
+              Change
+            </Link>
+            {/* <p>Enter OTP (0:26)</p> */}
           </div>
           <OtpInput length={4} onChange={handleOtpChange} />
-          <button className="resend-btn">Resend</button>
+          {/* <button className="resend-btn">Resend</button> */}
           <button className="continue" type="submit">
             {loading ? <ClipLoader color="#fff" /> : "Submit"}
           </button>

@@ -37,11 +37,16 @@ import UserRefer from "../pages/UserDashboard/UserRefer";
 import UserUniversities from "../pages/UserDashboard/UserUniversities";
 import UserWriteReview from "../pages/UserDashboard/UserWriteReview";
 import ViewUserChat from "../pages/UserDashboard/ViewUserChat";
-import AdwizorProgramms from '../pages/AdwizorPanel/AdwizorProgramms'
+import AdwizorProgramms from "../pages/AdwizorPanel/AdwizorProgramms";
 import AdwizorStudents from "../pages/AdwizorPanel/AdwizorStudents";
 import AdwizorStudentProfile from "../pages/AdwizorPanel/AdwizorStudentProfile";
 import AdwizorLiveRoom from "../pages/AdwizorPanel/AdwizorLiveRoom";
 import AdwizorApplications from "../pages/AdwizorPanel/AdwizorApplications";
+import AdwizorMessages from "../pages/AdwizorPanel/AdwizorMessages";
+import AdwizorCalender from "../pages/AdwizorPanel/AdwizorCalender";
+import AdwizorBlogs from "../pages/AdwizorPanel/AdwizorBlogs";
+import AdwizorApppointments from "../pages/AdwizorPanel/AdwizorApppointments";
+import AdwizorTasks from "../pages/AdwizorPanel/AdwizorTasks";
 
 const allRoutes = [
   {
@@ -209,9 +214,30 @@ const allRoutes = [
     route: "/adwizor-panel/live-room",
     component: <AdwizorLiveRoom />,
   },
+  //----
   {
     route: "/adwizor-panel/student-applications",
     component: <AdwizorApplications />,
+  },
+  {
+    route: "/adwizor-panel/message",
+    component: <AdwizorMessages />,
+  },
+  {
+    route: "/adwizor-panel/calender",
+    component: <AdwizorCalender />,
+  },
+  {
+    route: "/adwizor-panel/my-blogs",
+    component: <AdwizorBlogs />,
+  },
+  {
+    route: "/adwizor-panel/appointments",
+    component: <AdwizorApppointments />,
+  },
+  {
+    route: "/adwizor-panel/tasks",
+    component: <AdwizorTasks />,
   },
 ];
 

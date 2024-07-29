@@ -1,60 +1,136 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
-import { getApi } from "../../Repository/Api";
+import { getApi, postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
 const MessageBox = ({ item }) => {
-  const navigate = useNavigate();
   return (
-    <div
-      className="item"
-      onClick={() => navigate(`/user-dashboard/my-messages/${item.title}`)}
-    >
-      <img src={item.img} alt="" className="user-avatar" />
+    <div className={`item ${item.sendBy === "adwizor" ? "active" : ""}`}>
+      <img src={item.advisorId?.image} alt="" className="user-avatar" />
       <div className="content">
-        <p className="title"> {item.title} </p>
+        <p className="title"> {item.advisorId?.fullname} </p>
         <p className="title"> {item.subject} </p>
-        <p className="desc">{item.desc}</p>
-        <p className="desc"> {item.date} </p>
+        <p className="desc">{item.message}</p>
+        <p className="desc"> {item.createdAt?.slice(0, 10)} </p>
       </div>
     </div>
   );
 };
 
 const UserChat = () => {
+  const [tab, setTab] = useState("create");
   const [messages, setMessages] = useState({ data: [] });
+  const [advisorId, setAdwizorId] = useState("");
+  const [adwizors, setAdwizors] = useState({ data: [] });
+  const [subject, setSubject] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
-  const messageList = messages.data.map((i) => ({
-    img: i?.advisorId?.image,
-    title: i?.advisorId?.fullname,
-    desc: i?.message,
-    date: i?.createdAt?.slice(0, 10),
-    subject: i?.subject,
-  }));
-
-  useEffect(() => {
+  const fetchData = () => {
     getApi(endPoints.user.getUserMessages, {
       setResponse: setMessages,
     });
+  };
+
+  const payload = {
+    advisorId,
+    subject,
+    message,
+    desc: "desc",
+    sendBy: "user",
+  };
+
+  useEffect(() => {
+    fetchData();
+    getApi(endPoints.userAdwizors, {
+      setResponse: setAdwizors,
+    });
   }, []);
+
+  //send message
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    postApi(endPoints.user.sendMessage, payload, {
+      successMsg: "Success !",
+      setLoading,
+      additionalFunctions: [fetchData],
+    });
+  };
 
   return (
     <section className="user-homePage mt-3 with-bg-img">
-      <div className="heading">
-        <p>My Messages</p>
-      </div>
-
-      <div className="application-status mt-3 mb-3">
-        <div className="message-box">
-          {messageList.map((i, index) => (
-            <MessageBox item={i} key={index} />
-          ))}
+      <div className="user-dashboard-profile">
+        <div className="tab">
+          <ul>
+            <li
+              onClick={() => setTab("create")}
+              className={`${tab === "create" ? "active" : ""}`}
+            >
+              New Message
+            </li>
+            <li
+              onClick={() => setTab("history")}
+              className={`${tab === "history" ? "active" : ""}`}
+            >
+              Application History
+            </li>
+          </ul>
         </div>
       </div>
+
+      {tab === "create" && (
+        <div className="application-status mt-3 mb-3">
+          <div className="refer-earn">
+            <div className="detail-form">
+              <form onSubmit={submitHandler}>
+                <select required onChange={(e) => setAdwizorId(e.target.value)}>
+                  <option value="">Select Adwizor</option>
+                  {adwizors.data.map((i) => (
+                    <option value={i?.advisorId?._id} key={i?.advisorId?._id}>
+                      {" "}
+                      {i?.advisorId?.fullname}{" "}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  type={"text"}
+                  placeholder="Subject"
+                  required
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+                <input
+                  type={"text"}
+                  placeholder="Description"
+                  required
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+                <button className="submit-btn" type="submit">
+                  {loading ? <ClipLoader color="#fff" /> : "Submit"}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {tab === "history" && (
+        <div className="application-status mt-3 mb-3">
+          <div className="message-box">
+            {messages.data
+              ?.slice()
+              ?.reverse()
+              .map((i, index) => (
+                <MessageBox item={i} key={index} />
+              ))}
+          </div>
+        </div>
+      )}
+
       <AppointmentFloatingBtn />
     </section>
   );

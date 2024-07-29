@@ -1,22 +1,61 @@
 /** @format */
 
 import { useEffect, useState } from "react";
-import { Fade, Modal, Offcanvas } from "react-bootstrap";
+import { Modal, Offcanvas } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { logoImg } from "../../assest";
-import { getApi, postApi } from "../../Repository/Api";
+import { getApi, postApi, putApi, showMsg } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import OtpInput from "../OtpInput";
 
 export const EnterOtpModal = (props) => {
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
+  const [countDownTime, setCountDownTime] = useState(0);
   const navigate = useNavigate();
+
+  const startCountdown = () => {
+    setCountDownTime(20);
+    const countdownInterval = setInterval(() => {
+      setCountDownTime((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(countdownInterval);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+  };
+
+  useEffect(() => {
+    if (props.show === true) {
+      startCountdown();
+    }
+  }, [props]);
 
   const payload = {
     email: localStorage.getItem("otpEmail"),
     otp: parseFloat(otp),
+  };
+
+  const showOtp = (res) => {
+    const otp = res.data.otp;
+    showMsg("", otp, "success");
+  };
+
+  //resend otp
+  const resendOtpHandler = () => {
+    const payload = {
+      email: localStorage.getItem("otpEmail"),
+    };
+    const url =
+      props.userType === "advisor"
+        ? endPoints.adwizor.resendOtp
+        : endPoints.user.resendOtp;
+    postApi(url, payload, {
+      additionalFunctions: [(res) => showOtp(res), () => startCountdown()],
+    });
   };
 
   const handleOtpChange = (otpValue) => {
@@ -66,7 +105,21 @@ export const EnterOtpModal = (props) => {
               {loading ? <ClipLoader color="#fff" /> : "Submit"}
             </button>
           </form>
-          <p className="not-recieved">Not received your code? 0:22</p>
+
+          {countDownTime === 0 ? (
+            <p
+              className="resend-otp"
+              style={{ cursor: "pointer" }}
+              onClick={() => resendOtpHandler()}
+            >
+              Resent OTP
+            </p>
+          ) : (
+            <p className="not-recieved">
+              Not received your code? 0:
+              {countDownTime > 9 ? countDownTime : `0${countDownTime}`}{" "}
+            </p>
+          )}
         </div>
       </Modal.Body>
     </Modal>
@@ -144,7 +197,12 @@ export const CollegeShortlistedCanvas = ({ show, handleClose }) => {
 };
 
 export const StudentElegibility = (props) => {
-  const [myStudents, setMyStudents] = useState({ data: [] });
+  const [myStudents, setMyStudents] = useState({
+    data: {
+      AddedUser: [],
+      assign: [],
+    },
+  });
   const [id, setId] = useState("");
 
   useEffect(() => {
@@ -184,10 +242,16 @@ export const StudentElegibility = (props) => {
             <p className="heading mb-2">Student a Student</p>
             <select onChange={(e) => setId(e.target.value)} value={id}>
               <option value="">Select a student below</option>
-              {myStudents.data.map((i, index) => (
-                <option key={`student${index}`} value={i?.userId?._id}>
+              {myStudents.data.assign.map((i, index) => (
+                <option key={`assign${index}`} value={i?.userId?._id}>
                   {" "}
                   {i?.userId?.fullname}{" "}
+                </option>
+              ))}
+              {myStudents.data.AddedUser.map((i, index) => (
+                <option key={`AddedUser${index}`} value={i?._id}>
+                  {" "}
+                  {i?.fullname}{" "}
                 </option>
               ))}
             </select>
@@ -262,6 +326,138 @@ export const CreateStudent = (props) => {
             />
             <button className="submit-btn" type="submit">
               {loading ? <ClipLoader color="#fff" /> : "Create"}
+            </button>
+          </form>
+        </div>
+      </Modal.Body>
+    </Modal>
+  );
+};
+
+export const SlotUpdater = (props) => {
+  const [isAvailable, setIsAvailable] = useState("false");
+  const [loading, setLoading] = useState(false);
+
+  const payload = {
+    slotUpdates: [
+      {
+        date: props?.data?.date,
+        slotInString: [props?.data?.slotInString],
+        isAvailable: isAvailable === "false" ? false : true,
+      },
+    ],
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    putApi(endPoints.adwizor.updateSlot, payload, {
+      setLoading,
+      additionalFunctions: [() => props.onHide(), props.fetchData],
+    });
+  };
+
+  return (
+    <Modal {...props} centered>
+      <Modal.Body>
+        <div className="student-elegibility-modal">
+          <div className="heading mb-3">
+            <p>Update slot availability </p>
+            <i
+              className="fa-regular fa-circle-xmark"
+              onClick={() => props.onHide()}
+            ></i>
+          </div>
+
+          <form onSubmit={submitHandler}>
+            <select required onChange={(e) => setIsAvailable(e.target.value)}>
+              <option value="">Select your prefrence</option>
+              <option value="true"> Available </option>
+              <option value="false"> Not Available </option>
+            </select>
+            <button className="submit-btn mt-3" type="submit">
+              {loading ? <ClipLoader color="#fff" /> : "Submit"}
+            </button>
+          </form>
+        </div>
+      </Modal.Body>
+    </Modal>
+  );
+};
+
+export const CreateBlog = (props) => {
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  const fd = new FormData();
+  fd.append("image", image);
+  fd.append("title", title);
+  fd.append("content", content);
+  fd.append("author", props?.author);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    postApi(endPoints.adwizor.createBlog, fd, {
+      successMsg: "Created !",
+      setLoading,
+      additionalFunctions: [() => props.onHide(), props.fetchHandler],
+    });
+  };
+
+  const updateHandler = (e) => {
+    e.preventDefault();
+    putApi(endPoints.adwizor.updateBlog(props.prevData.id), fd, {
+      successMsg: "Updated !",
+      setLoading,
+      additionalFunctions: [() => props.onHide(), props.fetchHandler],
+    });
+  };
+
+  useEffect(() => {
+    if (props.show === true && props.type === "edit") {
+      setTitle(props.prevData.title);
+      setContent(props.prevData.description);
+    } else {
+      setTitle("");
+      setContent("");
+    }
+  }, [props]);
+
+  return (
+    <Modal {...props} centered>
+      <Modal.Body>
+        <div className="student-elegibility-modal">
+          <div className="heading mb-3">
+            <p>{props.type === "edit" ? "Update Blog" : "Add New Blog"}</p>
+            <i
+              className="fa-regular fa-circle-xmark"
+              onClick={() => props.onHide()}
+            ></i>
+          </div>
+
+          <form
+            onSubmit={props.type === "edit" ? updateHandler : submitHandler}
+          >
+            <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+            <input
+              type="text"
+              placeholder="Title"
+              onChange={(e) => setTitle(e.target.value)}
+              className="mt-3"
+              required
+              value={title}
+            />
+            <textarea
+              type="text"
+              placeholder="Description"
+              onChange={(e) => setContent(e.target.value)}
+              required
+              className="mt-3"
+              value={content}
+            />
+            <button className="submit-btn mt-3" type="submit">
+              {loading ? <ClipLoader color="#fff" /> : "Submit"}
             </button>
           </form>
         </div>

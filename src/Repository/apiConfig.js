@@ -67,16 +67,18 @@ const endPoints = {
     referUser: "user/refer",
     ourSuccessCount: "user/getAllSuccessInNumbers",
     getAllSypnosis: "user/getAllDestinations",
-    //-----
     searchCourses: (query) => `user/searchCoursesByName?courseName=${query}`,
     filterStates: (query) => `user/searchStatesByName?stateName=${query}`,
     filterStreams: (query) => `user/searchStreamsByName?streamName=${query}`,
     joinLiveMeeting: (id) => `user/JoinMeeting/${id}`,
+    //---
+    sendMessage: "user/sendMessageUserToAdvisor",
+    resendOtp: "user/resendOtp",
+    getAllTestimonial: "user/getAll/Testimonials",
   },
   adwizor: {
     applyforStudent: "advisor/applyAdvisorStudentUniversity",
     assignedStudents: "advisor/assignByAdmin",
-    // ---
     createStudent: "advisor/AddStudent",
     goLive: "advisor/createMeetingRoomBooking",
     getRequestMeetingUser: (id) => `advisor/getRequestedUser/${id}`,
@@ -85,6 +87,20 @@ const endPoints = {
     acceptMeetingRequest: (id) => `advisor/AcceptMeetingRequest/${id}`,
     rejectMeetingRequest: (id) => `advisor/RejectMeetingRequest/${id}`,
     joinedUser: (id) => `advisor/getJoinUser/${id}`,
+    // ---
+    studentApplications: "advisor/myStudentapplication",
+    myMessage: "advisor/getAdvisorMessages",
+    sendMessage: "advisor/sendMessageAdvisor",
+    getSlot: "advisor/getAdvisor/ByIdSlot",
+    updateSlot: "advisor/advisorSlotUpdate",
+    myBlogs: "advisor/getAllBlogs",
+    createBlog: "advisor/addBlog",
+    removeBlog: (id) => `advisor/deleteBlog/${id}`,
+    updateBlog: (id) => `advisor/updateBlog/${id}`,
+    updateUserProfile: (id) => `advisor/updateProfileByAdvisor/${id}`,
+    getAppointments: (id) =>
+      `advisor/appointmentsById/?appointmentStatus=${id}`,
+    resendOtp: "advisor/resendOtp",
   },
 };
 

@@ -20,7 +20,7 @@ import ShortlistedCollege from "../pages/ShortlistedCollege";
 import ChooseDestination from "../pages/StudentAbroad/ChooseDestination";
 import StudyAbroad from "../pages/StudyAbroad";
 import StudyIndia from "../pages/StudyIndia";
-import StudyInternational from "../pages/StudyInternational";
+import StudyInternational from "../pages/StudyInternational.js";
 import StudyInternationalFeature from "../pages/StudyInternationalFeature";
 import UserAdwizorProfile from "../pages/UserDashboard/UserAdwizorProfile";
 import UserAdwizors from "../pages/UserDashboard/UserAdwizors";
@@ -205,7 +205,6 @@ const allRoutes = [
     route: "/adwizor-panel/students",
     component: <AdwizorStudents />,
   },
-  //---
   {
     route: "/adwizor-panel/students/:id",
     component: <AdwizorStudentProfile />,

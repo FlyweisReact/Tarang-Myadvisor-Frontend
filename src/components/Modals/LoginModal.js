@@ -59,7 +59,6 @@ const LoginModal = (props) => {
   const handleEmail = (e) => {
     setEmail(e.target.value);
     localStorage.setItem("otpEmail", e.target.value);
-    localStorage.setItem("user-type" , userType)
   };
 
   return (

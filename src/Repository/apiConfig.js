@@ -71,10 +71,15 @@ const endPoints = {
     filterStates: (query) => `user/searchStatesByName?stateName=${query}`,
     filterStreams: (query) => `user/searchStreamsByName?streamName=${query}`,
     joinLiveMeeting: (id) => `user/JoinMeeting/${id}`,
-    //---
     sendMessage: "user/sendMessageUserToAdvisor",
     resendOtp: "user/resendOtp",
     getAllTestimonial: "user/getAll/Testimonials",
+    //----
+    getCountryStudyDetails: (id) =>
+      `user/getCountryDetailsDestinationByType?contryType=${id}`,
+    getTutionFees: "admin/getUniversityTuitionFees",
+    getMsgSubject : "admin/getAllSubjects",
+
   },
   adwizor: {
     applyforStudent: "advisor/applyAdvisorStudentUniversity",
@@ -87,7 +92,6 @@ const endPoints = {
     acceptMeetingRequest: (id) => `advisor/AcceptMeetingRequest/${id}`,
     rejectMeetingRequest: (id) => `advisor/RejectMeetingRequest/${id}`,
     joinedUser: (id) => `advisor/getJoinUser/${id}`,
-    // ---
     studentApplications: "advisor/myStudentapplication",
     myMessage: "advisor/getAdvisorMessages",
     sendMessage: "advisor/sendMessageAdvisor",
@@ -101,6 +105,9 @@ const endPoints = {
     getAppointments: (id) =>
       `advisor/appointmentsById/?appointmentStatus=${id}`,
     resendOtp: "advisor/resendOtp",
+    //----
+    updateApplicationStatus: (id) => `advisor/updateApplicationStatus/${id}`,
+    getSources : "advisor/getSources"
   },
 };
 

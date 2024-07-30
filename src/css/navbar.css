@@ -47,3 +47,9 @@
   height: 32px;
   cursor: pointer;
 }
+
+
+.header .fa-bars{
+  font-size: 20px;
+  cursor: pointer;
+}

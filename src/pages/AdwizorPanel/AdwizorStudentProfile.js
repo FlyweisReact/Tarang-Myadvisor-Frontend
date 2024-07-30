@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { uploadSvg } from "../../assest";
@@ -35,7 +34,8 @@ const AdwizorStudentProfile = () => {
   const [martialStatus, setMartialStatus] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [ loading ,setLoading ] = useState(false)
+  const [preferredDestination, setPreferredDestination] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const fetchHandler = () => {
     getApi(endPoints.adwizor.getUserProfile(id), {
@@ -74,6 +74,7 @@ const AdwizorStudentProfile = () => {
       setGender(item?.gender);
       setMartialStatus(item?.martialStatus);
       setCity(item?.city);
+      setPreferredDestination(item?.preferredDestination);
       setState(item?.state);
     }
   }, [profile]);
@@ -100,12 +101,13 @@ const AdwizorStudentProfile = () => {
   fd.append("martialStatus", martialStatus);
   fd.append("state", state);
   fd.append("city", city);
+  fd.append("preferredDestination", preferredDestination);
 
   const submitHandler = (e) => {
     e.preventDefault();
     putApi(endPoints.adwizor.updateUserProfile(id), fd, {
       successMsg: "Updated !",
-      setLoading ,
+      setLoading,
       additionalFunctions: [fetchHandler],
     });
   };
@@ -121,16 +123,43 @@ const AdwizorStudentProfile = () => {
           <div className="main-container" style={{ alignItems: "flex-start" }}>
             <img src={profile?.data?.image} alt="" className="user-img" />
             <div className="content">
-              <h4>{profile?.data?.fullname}</h4>
+              <h4>Basic Details</h4>
+
               <div className="item">
-                <p>
-                  {" "}
-                  <i
-                    className="fa-solid fa-location-dot"
-                    style={{ marginRight: "2px" }}
-                  />{" "}
-                  {profile?.data?.city} , {profile?.data?.state}{" "}
-                </p>
+                <p>Full Name</p>
+                <p> {profile?.data?.fullname} </p>
+              </div>
+              <div className="item">
+                <p>DOB</p>
+                <p> {profile?.data?.dob} </p>
+              </div>
+              <div className="item">
+                <p>Gender</p>
+                <p> {profile?.data?.gender} </p>
+              </div>
+              <div className="item">
+                <p>Martial Status</p>
+                <p> {profile?.data?.martialStatus} </p>
+              </div>
+            </div>
+            <div className="blank" />
+            <div className="content">
+              <h4>Contact Details</h4>
+              <div className="item">
+                <p>Mobile Number</p>
+                <p> {profile?.data?.phone} </p>
+              </div>
+              <div className="item">
+                <p>Email</p>
+                <p> {profile?.data?.email} </p>
+              </div>
+              <div className="item">
+                <p>City</p>
+                <p>{profile?.data?.city}</p>
+              </div>
+              <div className="item">
+                <p>State</p>
+                <p>{profile?.data?.state}</p>
               </div>
             </div>
           </div>
@@ -410,10 +439,17 @@ const AdwizorStudentProfile = () => {
               </option>
             </select>
           </div>
+          <div className="item" style={{ maxWidth: "100%" }}>
+            <input
+              type="text"
+              onChange={(e) => setPreferredDestination(e.target.value)}
+              value={preferredDestination}
+            />
+          </div>
         </div>
 
         <button className="upload-document-btn mt-3" type="submit">
-          <span> { loading ? <ClipLoader color="#fff" /> : "Submit"} </span>
+          <span> {loading ? <ClipLoader color="#fff" /> : "Submit"} </span>
         </button>
       </form>
     </section>

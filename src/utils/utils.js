@@ -1,7 +1,9 @@
 /** @format */
 
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { LOGOUT } from "../store/authSlice";
 
 const debouncedSetQuery = (term, setSearch) => {
   clearTimeout(debouncedSetQuery.timeoutId);
@@ -38,13 +40,16 @@ const LogOutHandler = () => {
 
 const stringCutter = (text, length) => {
   if (text?.length > length) {
-    return `${text?.slice(0 ,length)}...`;
+    return `${text?.slice(0, length)}...`;
   } else {
     return text;
   }
 };
 
-
+const LogoutHandler = (dispatch, navigate) => {
+  dispatch(LOGOUT());
+  navigate("/");
+};
 
 export {
   debouncedSetQuery,
@@ -52,4 +57,5 @@ export {
   ScrollToTop,
   LogOutHandler,
   stringCutter,
+  LogoutHandler,
 };

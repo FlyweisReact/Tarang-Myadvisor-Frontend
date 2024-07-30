@@ -29,6 +29,7 @@ const UserChat = () => {
   const [subject, setSubject] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [subjects, setSubjects] = useState({ data: [] });
 
   const fetchData = () => {
     getApi(endPoints.user.getUserMessages, {
@@ -48,6 +49,9 @@ const UserChat = () => {
     fetchData();
     getApi(endPoints.userAdwizors, {
       setResponse: setAdwizors,
+    });
+    getApi(endPoints.user.getMsgSubject, {
+      setResponse: setSubjects,
     });
   }, []);
 
@@ -97,12 +101,16 @@ const UserChat = () => {
                     </option>
                   ))}
                 </select>
-                <input
-                  type={"text"}
-                  placeholder="Subject"
-                  required
-                  onChange={(e) => setSubject(e.target.value)}
-                />
+
+                <select required onChange={(e) => setSubject(e.target.value)}>
+                  <option value="">Select Subject</option>
+                  {subjects.data.map((i) => (
+                    <option value={i?._id} key={i?._id}>
+                      {" "}
+                      {i?.subject}{" "}
+                    </option>
+                  ))}
+                </select>
                 <input
                   type={"text"}
                   placeholder="Description"

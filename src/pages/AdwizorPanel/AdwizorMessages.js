@@ -22,12 +22,18 @@ const MessageBox = ({ item }) => {
 
 const AdwizorMessages = () => {
   const [tab, setTab] = useState("create");
-  const [users, setUsers] = useState({ data: [] });
+  const [users, setUsers] = useState({
+    data: {
+      AddedUser: [],
+      assign: [],
+    },
+  });
   const [userId, setUserId] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState({ data: [] });
+  const [subjects, setSubjects] = useState({ data: [] });
 
   const fetchData = () => {
     getApi(endPoints.adwizor.myMessage, {
@@ -40,6 +46,9 @@ const AdwizorMessages = () => {
       setResponse: setUsers,
     });
     fetchData();
+    getApi(endPoints.user.getMsgSubject, {
+      setResponse: setSubjects,
+    });
   }, []);
 
   const payload = {
@@ -89,19 +98,29 @@ const AdwizorMessages = () => {
                 <form onSubmit={submitHandler}>
                   <select required onChange={(e) => setUserId(e.target.value)}>
                     <option value="">Select User</option>
-                    {users.data.map((i) => (
-                      <option value={i?.userId?._id} key={i?.userId?._id}>
+
+                    {users.data.assign.map((i, index) => (
+                      <option key={`assign${index}`} value={i?.userId?._id}>
                         {" "}
                         {i?.userId?.fullname}{" "}
                       </option>
                     ))}
+                    {users.data.AddedUser.map((i, index) => (
+                      <option key={`AddedUser${index}`} value={i?._id}>
+                        {" "}
+                        {i?.fullname}{" "}
+                      </option>
+                    ))}
                   </select>
-                  <input
-                    type={"text"}
-                    placeholder="Subject"
-                    required
-                    onChange={(e) => setSubject(e.target.value)}
-                  />
+                  <select required onChange={(e) => setSubject(e.target.value)}>
+                    <option value="">Select Subject</option>
+                    {subjects.data.map((i) => (
+                      <option value={i?._id} key={i?._id}>
+                        {" "}
+                        {i?.subject}{" "}
+                      </option>
+                    ))}
+                  </select>
                   <input
                     type={"text"}
                     placeholder="Description"

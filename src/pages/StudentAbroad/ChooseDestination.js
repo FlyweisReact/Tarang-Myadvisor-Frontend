@@ -1,11 +1,11 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ProgressBar } from "../../components/HelpingComponents";
 import { autraliaFlag, canadaFlag, ukFlag, usaFlag } from "../../assest/index";
 import { useNavigate } from "react-router-dom";
 import endPoints from "../../Repository/apiConfig";
-import { putApi } from "../../Repository/Api";
+import { getApi, putApi } from "../../Repository/Api";
 import { ClipLoader } from "react-spinners";
 import { TouristImage } from "../../components/HelpingComponents";
 
@@ -585,6 +585,12 @@ const StepComponent7 = ({
   setMartialStatus,
   setCity,
   setState,
+  setPreferredDestination,
+  gender,
+  state,
+  martialStatus,
+  city,
+  preferredDestination,
 }) => {
   return (
     <>
@@ -641,13 +647,13 @@ const StepComponent7 = ({
           value={dob}
           onChange={(e) => setDob(e.target.value)}
         />
-        <select onChange={(e) => setGender(e.target.value)}>
+        <select value={gender} onChange={(e) => setGender(e.target.value)}>
           <option>Select Gender</option>
           <option value="MALE">Male</option>
           <option value="FEMALE">Female</option>
           <option value="OTHER">Other</option>
         </select>
-        <select onChange={(e) => setMartialStatus(e.target.value)}>
+        <select value={martialStatus} onChange={(e) => setMartialStatus(e.target.value)}>
           <option>Maritial Status</option>
           <option value="YES">Yes</option>
           <option value="NO">No</option>
@@ -655,12 +661,20 @@ const StepComponent7 = ({
         <input
           type="text"
           placeholder="City"
+          value={city}
           onChange={(e) => setCity(e.target.value)}
         />
         <input
           type="text"
+          value={state}
           placeholder="State"
           onChange={(e) => setState(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Preferred Destination"
+          value={preferredDestination}
+          onChange={(e) => setPreferredDestination(e.target.value)}
         />
 
         <button className="continue" onClick={submitHandler}>
@@ -696,7 +710,9 @@ const ChooseDestination = () => {
   const [martialStatus, setMartialStatus] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [preferredDestination, setPreferredDestination] = useState("");
   const [loading, setLoading] = useState(false);
+  const [profile, setProfile] = useState({ data: {} });
 
   const navigate = useNavigate();
 
@@ -734,6 +750,7 @@ const ChooseDestination = () => {
   fd.append("lookingFor", lookingFor);
   fd.append("bookingConfirmation", bookingConfirmation);
   fd.append("givenGRE", givenGRE);
+  fd.append("preferredDestination", preferredDestination);
 
   const submitHandler = () => {
     putApi(endPoints.updateUserProfile, fd, {
@@ -741,6 +758,40 @@ const ChooseDestination = () => {
       additionalFunctions: [() => navigate("/")],
     });
   };
+
+  useEffect(() => {
+    getApi(endPoints.getUserProfile, {
+      setResponse: setProfile,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (profile) {
+      setFullName(profile.data?.fullname);
+      setEmail(profile.data?.email);
+      setPhone(profile.data?.phone);
+      setDestinationCountry(profile.data?.destinationCountry);
+      setPrefferedIntake(profile.data?.preferredIntake);
+      setPreferrefDegree(profile.data?.preferredDegree);
+      setYourHighestLevelOfEducation(profile.data?.yourHighestLevelOfEducation);
+      setYourHighestLevelOfEducationYear(
+        profile.data?.yourHighestLevelOfEducationYear
+      );
+      setGradesORPercentage(profile.data?.gradesORpercentage);
+      setValidPassport(profile.data?.validPassport);
+      setduolingoStatus(profile.data?.duolingoStatus);
+      setAlreadyUniversityAdmin(profile.data?.alreadyUniversityAdmit);
+      setLookingFor(profile.data?.lookingFor?.[0]);
+      setBookingConfirmation(profile.data?.bookingConfirmation);
+      setGivenGRE(profile.data?.givenGRE);
+      setDob(profile.data?.dob);
+      setGender(profile.data?.gender);
+      setMartialStatus(profile.data?.martialStatus);
+      setCity(profile.data?.city);
+      setState(profile.data?.state);
+      setPreferredDestination(profile.data?.preferredDestination);
+    }
+  }, [profile]);
 
   const renderStepComponent = () => {
     switch (step) {
@@ -869,10 +920,16 @@ const ChooseDestination = () => {
                 setImage={setImage}
                 setDob={setDob}
                 dob={dob}
+                gender={gender}
                 setGender={setGender}
                 setMartialStatus={setMartialStatus}
+                martialStatus={martialStatus}
+                city={city}
+                state={state}
+                preferredDestination={preferredDestination}
                 setCity={setCity}
                 setState={setState}
+                setPreferredDestination={setPreferredDestination}
               />
             }
             width={"100%"}

@@ -199,7 +199,7 @@ const UserProfile = () => {
         return <UniversityTab data={allUniversities.data.universities} />;
 
       default:
-        return <ProfileTab />;
+        return <ProfileTab data={profileData?.data} />;
     }
   };
 

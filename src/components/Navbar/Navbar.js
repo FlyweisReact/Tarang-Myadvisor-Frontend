@@ -6,12 +6,16 @@ import "../../css/navbar.css";
 import { Link } from "react-router-dom";
 import LoginModal from "../Modals/LoginModal";
 import { userRounded } from "../../assest/index";
+import { MobileBar } from "../Modals/Modals";
+import { useSelector } from "react-redux";
+import { isAuthenticated } from "../../store/authSlice";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const isLoggedIn = localStorage.getItem("user-token") ? true : false;
+  const isLoggedIn = useSelector(isAuthenticated);
   const userType = localStorage.getItem("user-type");
+  const [showBar, setShowBar] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,12 +29,13 @@ const Navbar = () => {
   return (
     <>
       <LoginModal show={open} onHide={() => setOpen(false)} />
+      <MobileBar show={showBar} handleClose={() => setShowBar(false)} />
       {isMobile ? (
         <div className="header">
           <Link to={"/"}>
             <img src={logoImg} alt="" className="logo" />
           </Link>
-          <i className="fa-solid fa-bars"></i>
+          <i className="fa-solid fa-bars" onClick={() => setShowBar(true)}></i>
         </div>
       ) : (
         <div className="header">

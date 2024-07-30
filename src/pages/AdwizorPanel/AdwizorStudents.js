@@ -16,11 +16,17 @@ const AdwizorStudents = () => {
   });
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
+
+  const fetchHandler = () => {
     getApi(endPoints.adwizor.assignedStudents, {
       setResponse: setStudents,
     });
-  }, []);
+  
+  }
+
+  useEffect(() => {
+    fetchHandler()
+    }, []);
 
   const addedUserList = students.data.AddedUser.map((i) => [
     i?.fullname,
@@ -51,7 +57,7 @@ const AdwizorStudents = () => {
 
   return (
     <section className="adwizor-panel">
-      <CreateStudent show={show} onHide={() => setShow(false)} />
+      <CreateStudent show={show} onHide={() => setShow(false)} fetchHandler={fetchHandler} />
       <div className="section-heading">
         <p className="title">Student Profile List</p>
         <button onClick={() => setShow(true)}>Add New Student</button>

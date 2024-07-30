@@ -254,7 +254,7 @@ const ShortlistedUniversities = (item) => {
             <Link to={`/college-micro-info/${title}`}>
               <p> {title} </p>
             </Link>
-            <p style={{ fontSize: "25px" }}> {courseTitle} </p>
+            <p  className="course-title"> {courseTitle} </p>
           </div>
         </div>
         <div className="actions">
@@ -290,7 +290,7 @@ const ShortlistedUniversities = (item) => {
                 <p>{star} </p> <i className="fa-solid fa-star"></i>
               </div>
             )}
-            {reviews && <p className="review">({reviews} Reviews)</p>}
+            {reviews && <p className="review"> ( {reviews} Reviews)</p>}
 
             {location && (
               <div className="location">

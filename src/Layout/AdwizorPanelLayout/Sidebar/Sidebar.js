@@ -1,17 +1,16 @@
 /** @format */
 
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { adwizorSidebarArr } from "../../../constant/constant";
+import { LogoutHandler } from "../../../utils/utils";
 
 const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const LogOutHandler = () => {
-    localStorage.clear();
-    navigate("/");
-  };
   return (
     <div className="user-sidebar">
       <ul>
@@ -27,7 +26,7 @@ const Sidebar = () => {
           </li>
         ))}
 
-        <li onClick={LogOutHandler}>
+        <li onClick={() => LogoutHandler(dispatch, navigate)}>
           <i class="fa-solid fa-right-from-bracket"></i>
           <span> Log Out </span>
         </li>

@@ -8,7 +8,7 @@ import {
 } from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
 import { Slider } from "../components/Sliders/Sliders";
-import { durationArr, inTakes, tutionFees } from "../constant/constant";
+import { durationArr, inTakes } from "../constant/constant";
 import { filterImg } from "../assest";
 import { CollegeFilters } from "../components/Study/CollegeSection";
 import { getApi } from "../Repository/Api";
@@ -31,7 +31,10 @@ const StudyAbroad = () => {
   const [limit, setLimit] = useState(100);
   const [courseQuery, setCourseQuery] = useState("");
   const [stateQuery, setStateQuery] = useState("");
-  const [ streamQuery  , setStreamQuery ] = useState("")
+  const [streamQuery, setStreamQuery] = useState("");
+  const [tutionFees, setTutionFees] = useState({
+    data: [],
+  });
 
   const fetchUniversities = useCallback(() => {
     getApi(endPoints.filterUniversities(keyword.join(","), 1, limit), {
@@ -64,6 +67,9 @@ const StudyAbroad = () => {
     });
     getApi(endPoints.getAllCountries, {
       setResponse: setAllCountries,
+    });
+    getApi(endPoints.user.getTutionFees, {
+      setResponse: setTutionFees,
     });
   }, []);
 
@@ -142,11 +148,11 @@ const StudyAbroad = () => {
       setValue: searchKeyword,
     },
     {
-      title: "Tution Fee (USD)",
-      items: tutionFees?.map((city, index) => ({
+      title: "Tution Fee",
+      items: tutionFees.data.map((city, index) => ({
         label: (
-          <a href={`#${city}`} className="antd-link-a">
-            {city}
+          <a href={`#${city?.tuitionFees}`} className="antd-link-a">
+            {city?.tuitionFees}
           </a>
         ),
         key: index.toString(),

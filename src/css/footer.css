@@ -1,89 +1,141 @@
+/** @format */
+
 .Footer {
-    padding: 40px;
-    padding-bottom: 0;
-    position: relative;
+  padding: 40px;
+  padding-bottom: 0;
+  position: relative;
+}
+.Footer .curve-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.Footer .upper-sec {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+.Footer .upper-sec .left {
+  width: 189px;
+  height: 189px;
+}
+.Footer .upper-sec .left img {
+  width: 189px;
+  height: 189px;
+}
+.Footer .upper-sec .web-links {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.Footer .upper-sec .web-links ul {
+  padding: 0;
+  list-style: none;
+}
+.Footer .upper-sec .web-links ul li {
+  color: #353535;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+.Footer .upper-sec .web-links ul li a {
+  text-decoration: none;
+  color: #353535;
+  font-size: 18px;
+  font-weight: 600;
+}
+.Footer .upper-sec .web-links ul li.heading {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+  color: #000;
+}
+.Footer .social-link {
+  width: 100%;
+  border-bottom: 1px solid #c8c8c8;
+}
+.Footer .social-link .icons {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 200px;
+  background-color: #eff5ff;
+  padding: 10px;
+}
+.Footer .social-link .icons img {
+  width: 20px;
+  height: 20px;
+}
+.Footer .t-c {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  margin-top: 20px;
+}
+.Footer .t-c p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  padding-right: 10px;
+}
+.Footer .t-c p.border-l {
+  border-right: 1px solid black;
+}
+
+@media (max-width: 768px) {
+  .Footer {
+    padding: 20px;
+    background-image: url(../assest/Images/footer-2.png);
   }
-  .Footer .curve-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  .Footer .upper-sec{
+    flex-direction: column;
   }
-  .Footer .upper-sec {
-    display: flex;
-    align-items: flex-start;
-    gap: 40px;
-  }
-  .Footer .upper-sec .left {
-    width: 189px;
-    height: 189px;
+  .Footer .upper-sec .left  {
+    width: 60px;
+    height: 60px;
   }
   .Footer .upper-sec .left img {
-    width: 189px;
-    height: 189px;
+    width: 60px;
+    height: 60px;
   }
-  .Footer .upper-sec .web-links {
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-    gap: 40px;
-    justify-content: space-evenly;
-  }
-  .Footer .upper-sec .web-links ul {
-    padding: 0;
-    list-style: none;
-  }
-  .Footer .upper-sec .web-links ul li {
-    color: #353535;
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 15px;
-  }
-  .Footer .upper-sec .web-links ul li a{
-    text-decoration: none;
-    color: #353535;
-    font-size: 18px;
-    font-weight: 600;
+  .Footer .upper-sec .web-links{
+    justify-content: space-between;
   }
   .Footer .upper-sec .web-links ul li.heading {
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 0;
-    color: #000;
+    font-size: 16px;
   }
-  .Footer .social-link {
-    width: 100%;
-    border-bottom: 1px solid #c8c8c8;
+  .Footer .upper-sec .web-links ul li a{
+    font-size: 14px;
   }
-  .Footer .social-link .icons {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 200px;
-    background-color: #eff5ff;
-    padding: 10px;
-  }
-  .Footer .social-link .icons img {
-    width: 20px;
-    height: 20px;
-  }
-  .Footer .t-c {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
+  .Footer .social-link .icons{
     margin-top: 20px;
   }
-  .Footer .t-c p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
-    padding-right: 10px;
+  .Footer .social-link{
+    border-bottom: 0;
+  }
+  .Footer .t-c{
+    flex-direction: column;
+    
+    align-items: flex-start;
   }
   .Footer .t-c p.border-l {
-    border-right: 1px solid black;
+    border: none;
   }
-  
+  .Footer .curve-img{
+    display: none;
+  }
+  .Footer .t-c p{
+    font-size: 12px;
+  }
+  .Footer .upper-sec .web-links ul li{
+    margin-top: 0px;
+  }
+}

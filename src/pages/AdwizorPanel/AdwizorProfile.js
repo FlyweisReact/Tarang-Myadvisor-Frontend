@@ -77,6 +77,7 @@ const AdwizorProfile = () => {
   const [currentLocation, setCurrentLocation] = useState("");
   const [studyDestination, setStudyDestination] = useState("");
   const [waitTime, setWaitTime] = useState("");
+  const [advertisementStatement, setAdvertisementStatement] = useState("");
   const [blogs, setBlogs] = useState({ data: [] });
 
   const handleFileChange = (e) => {
@@ -121,6 +122,7 @@ const AdwizorProfile = () => {
   fd.append("currentLocation", currentLocation);
   fd.append("waitTime", waitTime);
   fd.append("studyDestination", studyDestination);
+  fd.append("advertisementStatement", advertisementStatement);
 
   const fetchHandler = () => {
     getApi(endPoints.getAdwizorProfile, {
@@ -204,6 +206,7 @@ const AdwizorProfile = () => {
       setCurrentLocation(profile?.data?.currentLocation);
       setStudyDestination(profile?.data?.studyDestination);
       setWaitTime(profile?.data?.waitTime);
+      setAdvertisementStatement(profile?.data?.advertisementStatement);
     }
   }, [profile]);
 
@@ -438,6 +441,17 @@ const AdwizorProfile = () => {
           rows={3}
           onChange={(e) => setAboutme(e.target.value)}
           value={aboutME}
+        />
+
+        <div className="section-sub-heading mt-3">
+          <p className="title">Advertisement Headline</p>
+        </div>
+
+        <textarea
+          className="mt-2"
+          rows={3}
+          onChange={(e) => setAdvertisementStatement(e.target.value)}
+          value={advertisementStatement}
         />
 
         <div className="section-sub-heading mt-3">

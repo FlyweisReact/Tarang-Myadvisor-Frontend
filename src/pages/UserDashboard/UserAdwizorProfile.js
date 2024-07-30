@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BlogCard } from "../../components/Cards/AllCards";
-import { AppointmentFloatingBtn } from "../../components/HelpingComponents";
 import { Slider } from "../../components/Sliders/Sliders";
 import { RenderCustomerReviewsCard } from "../../components/Sliders/SwiperComponents";
 import { customerReviewConfig } from "../../components/Sliders/SwiperConfig";
@@ -35,21 +34,23 @@ const UserAdwizorProfile = () => {
     });
   }, [id]);
 
-  const reviewsList = profile.reviews.map((i) => ({
-    img: i?.userId?.image,
-    rating: i?.rating,
-    title: i?.userId?.fullname,
-    description: i?.description,
-  }));
+  const reviewsList = profile.reviews
+    .filter((i) => i?.reviewStatus === "APPROVED")
+    .map((i) => ({
+      img: i?.userId?.image,
+      rating: i?.rating,
+      title: i?.userId?.fullname,
+      description: i?.description,
+    }));
 
-  const blogsList = profile.blogs.map((i) => ({
-    img: i?.imagePath,
-    title: i?.title,
-    description: i?.content,
-    publishedOn: i?.createdAt?.slice(0, 10),
-  }));
-
-  console.log(profile);
+  const blogsList = profile.blogs
+    .filter((i) => i?.blogStatus === "VERIFIED")
+    .map((i) => ({
+      img: i?.imagePath,
+      title: i?.title,
+      description: i?.content,
+      publishedOn: i?.createdAt?.slice(0, 10),
+    }));
 
   return (
     <section className="user-homePage mt-3">
@@ -64,6 +65,7 @@ const UserAdwizorProfile = () => {
             <p> Location : {profile.data?.currentLocation} </p>
             <p> Study destination : {profile.data?.studyDestination} </p>
             <p> Subject expertise : {profile.data?.subjectExperties} </p>
+            <p> {profile.data?.advertisementStatement} </p>
             {profile.data?.liveStatus === true ? (
               <div className="btn-container mt-3">
                 <button
@@ -145,7 +147,6 @@ const UserAdwizorProfile = () => {
           </div>
         )}
       </section>
-      <AppointmentFloatingBtn />
     </section>
   );
 };

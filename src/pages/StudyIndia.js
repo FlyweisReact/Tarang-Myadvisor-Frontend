@@ -8,7 +8,7 @@ import {
 } from "../components/HelpingComponents";
 import WithLayout from "../Layout/WithLayout";
 import { filterImg } from "../assest";
-import { durationArr, inTakes, tutionFees } from "../constant/constant";
+import { durationArr, inTakes } from "../constant/constant";
 import { CollegeFilters } from "../components/Study/CollegeSection";
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
@@ -45,6 +45,7 @@ const StudyIndia = () => {
   const [courseQuery, setCourseQuery] = useState("");
   const [stateQuery, setStateQuery] = useState("");
   const [streamQuery, setStreamQuery] = useState("");
+  const [tutionFees, setTutionFees] = useState({ data: [] });
 
   const fetchUniversities = useCallback(() => {
     getApi(endPoints.filterIndianUniversitites(keyword.join(","), 1, limit), {
@@ -77,6 +78,9 @@ const StudyIndia = () => {
     });
     getApi(endPoints.getAllCities, {
       setResponse: setAllCities,
+    });
+    getApi(endPoints.user.getTutionFees, {
+      setResponse: setTutionFees,
     });
   }, []);
 
@@ -161,10 +165,10 @@ const StudyIndia = () => {
     },
     {
       title: "Tution Fee (USD)",
-      items: tutionFees?.map((city, index) => ({
+      items: tutionFees.data.map((city, index) => ({
         label: (
-          <a href={`#${city}`} className="antd-link-a">
-            {city}
+          <a href={`#${city?.tuitionFees}`} className="antd-link-a">
+            {city?.tuitionFees}
           </a>
         ),
         key: index.toString(),
@@ -234,7 +238,7 @@ const StudyIndia = () => {
       <Banner img={banner?.data?.image} />
 
       <section className="top-cities-slider margin-div">
-        <h4 className="normal-heading text-start">Top Cities</h4>
+        <h4 className="normal-heading text-start mb-2">Top Study Places</h4>
 
         <section className="generic-slider">
           <Swiper {...topCitiesSwiperConfig}>

@@ -130,11 +130,6 @@ const HomePage = () => {
     </div>,
     <div className="college-name">
       <div className="content">
-        <p className="desc">{i.Ranked}</p>
-      </div>
-    </div>,
-    <div className="college-name">
-      <div className="content">
         <p className="desc text-center">{i.ApplicationDate}</p>
       </div>
     </div>,
@@ -263,7 +258,6 @@ const HomePage = () => {
             thead={[
               "CH Rank",
               "College",
-              "Ranking",
               "Application Date",
               "Fees",
               "Cutoff",

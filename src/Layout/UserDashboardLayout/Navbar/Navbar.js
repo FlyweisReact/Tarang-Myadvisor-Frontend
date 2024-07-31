@@ -12,7 +12,6 @@ const Navbar = () => {
         <Link to={"/"}>
           <img src={logoImg} alt="" className="logo" />
         </Link>
-
         <div>
           <Link to="/user-dashboard/my-messages">
             <img src={bellIcon} alt="" />

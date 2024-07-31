@@ -24,12 +24,16 @@ const RenderAbroadCollegeItems = (item) => {
 };
 
 const RenderAdwizorCards = (item) => {
+  const navigate = useNavigate();
   return (
     <div className="card">
       <div className="detail">
-        <Link to={`/user-dashboard/adwizor-profile/${item.id}`}>
-          <img src={item.img} alt="" className="mainImg" />
-        </Link>
+        <img
+          src={item.img}
+          alt=""
+          className="mainImg"
+          onClick={() => navigate(`/user-dashboard/adwizor-profile/${item.id}`)}
+        />
         <div className="content">
           <p className="title"> {item.title} </p>
           <div className="rating">
@@ -46,12 +50,17 @@ const RenderAdwizorCards = (item) => {
       </div>
 
       <div className="btn-container">
-        <Link to={`/counselling-session/live-2/${item.id}`}>
-          <button>Book Appointment</button>
-        </Link>
-        <Link to={`/user-dashboard/adwizor-profile/${item.id}`}>
-          <button>View Profile</button>
-        </Link>
+        <button
+          onClick={() => navigate(`/counselling-session/live-2/${item.id}`)}
+        >
+          Book Appointment
+        </button>
+
+        <button
+          onClick={() => navigate(`/user-dashboard/adwizor-profile/${item.id}`)}
+        >
+          View Profile
+        </button>
       </div>
     </div>
   );

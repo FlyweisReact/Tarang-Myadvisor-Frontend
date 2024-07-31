@@ -47,6 +47,7 @@ import AdwizorCalender from "../pages/AdwizorPanel/AdwizorCalender";
 import AdwizorBlogs from "../pages/AdwizorPanel/AdwizorBlogs";
 import AdwizorApppointments from "../pages/AdwizorPanel/AdwizorApppointments";
 import AdwizorTasks from "../pages/AdwizorPanel/AdwizorTasks";
+import AdwizorReviews from "../pages/AdwizorPanel/AdwizorReviews";
 
 const allRoutes = [
   {
@@ -237,6 +238,10 @@ const allRoutes = [
   {
     route: "/adwizor-panel/tasks",
     component: <AdwizorTasks />,
+  },
+  {
+    route: "/adwizor-panel/my-reviews",
+    component: <AdwizorReviews />,
   },
 ];
 

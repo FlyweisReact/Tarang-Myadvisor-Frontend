@@ -121,12 +121,12 @@ const AdwizorMessages = () => {
                       </option>
                     ))}
                   </select>
-                  <input
-                    type={"text"}
-                    placeholder="Description"
-                    required
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
+                  <textarea
+                  placeholder="Description"
+                  onChange={(e) => setMessage(e.target.value)}
+                  maxLength={500}
+                  value={message}
+                />
                   <button className="submit-btn" type="submit">
                     {loading ? <ClipLoader color="#fff" /> : "Submit"}
                   </button>

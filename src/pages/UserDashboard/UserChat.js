@@ -111,11 +111,11 @@ const UserChat = () => {
                     </option>
                   ))}
                 </select>
-                <input
-                  type={"text"}
+                <textarea
                   placeholder="Description"
-                  required
                   onChange={(e) => setMessage(e.target.value)}
+                  maxLength={500}
+                  value={message}
                 />
                 <button className="submit-btn" type="submit">
                   {loading ? <ClipLoader color="#fff" /> : "Submit"}

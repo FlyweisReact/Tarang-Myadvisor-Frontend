@@ -44,7 +44,7 @@ const endPoints = {
   userAdwizors: "user/assign/advisor",
   adwizorStudent: "advisor/myStudent",
   getTopTenColleges: (search, page, limit) =>
-    `user/getTopTenUniversitiesCountry?contryType=${
+    `admin/getTopUniversitiesByCountry?contryType=${
       search ? search : ""
     }&page=${page}&limit=${limit}`,
   filterIndianUniversitites: (search, page, limit) =>
@@ -74,12 +74,10 @@ const endPoints = {
     sendMessage: "user/sendMessageUserToAdvisor",
     resendOtp: "user/resendOtp",
     getAllTestimonial: "user/getAll/Testimonials",
-    //----
     getCountryStudyDetails: (id) =>
       `user/getCountryDetailsDestinationByType?contryType=${id}`,
     getTutionFees: "admin/getUniversityTuitionFees",
-    getMsgSubject : "admin/getAllSubjects",
-
+    getMsgSubject: "admin/getAllSubjects",
   },
   adwizor: {
     applyforStudent: "advisor/applyAdvisorStudentUniversity",
@@ -105,9 +103,13 @@ const endPoints = {
     getAppointments: (id) =>
       `advisor/appointmentsById/?appointmentStatus=${id}`,
     resendOtp: "advisor/resendOtp",
-    //----
     updateApplicationStatus: (id) => `advisor/updateApplicationStatus/${id}`,
-    getSources : "advisor/getSources"
+    getSources: "advisor/getSources",
+    //-----
+    createReview: "advisor/advisorWriteReview",
+    getAllReviews: "advisor/getAllReviews",
+    updateReview: (id) => `advisor/updateReview/${id}`,
+    deleteReview: (id) => `advisor/deleteReview/${id}`,
   },
 };
 

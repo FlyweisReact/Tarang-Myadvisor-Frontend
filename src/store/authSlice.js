@@ -13,7 +13,8 @@ const authSlice = createSlice({
     LOGIN: (state, action) => {
       state.isAuthenticated = true;
       const token = action.payload?.data?.res?.token;
-      const userType = action.payload?.data?.userType;
+      const userType = action.payload?.userType;
+      console.log(action.payload)
       localStorage.setItem("user-token", token);
       localStorage.setItem("user-type", userType);
     },

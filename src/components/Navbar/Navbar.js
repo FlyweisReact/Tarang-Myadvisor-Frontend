@@ -26,6 +26,7 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <>
       <LoginModal show={open} onHide={() => setOpen(false)} />

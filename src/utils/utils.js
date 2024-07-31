@@ -1,7 +1,6 @@
 /** @format */
 
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { LOGOUT } from "../store/authSlice";
 

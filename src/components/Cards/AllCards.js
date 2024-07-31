@@ -49,39 +49,62 @@ const ExploreDestinationCard = (item) => {
   );
 };
 
-const TopUniversitiesCard = () => {
+const TopUniversitiesCard = (item) => {
+  const { img, universityTitle, ranking, location, courseName, id } = item;
+  const [isLoading, setIsLoading] = useState(false);
+  const payload = {
+    universityId: id,
+  };
+  const shortlistHandler = () => {
+    postApi(endPoints.shortlistUniversity, payload, {
+      successMsg: "Shortlisted",
+    });
+  };
+
+  const applyHandler = () => {
+    postApi(endPoints.applyOnUniversities, payload, {
+      successMsg: "Applied Successfully",
+      setLoading: setIsLoading,
+    });
+  };
+
   return (
     <div className="top-universities-card">
       <div className="head">
         <div className="title">
-          <img src={ukSquare} alt="" />
-          <p>Stanford University , UK</p>
+          <img src={img} alt="" />
+          <p> {universityTitle} </p>
         </div>
-        <img src={heartImg} alt="" className="heart-img" />
+        <img
+          src={heartImg}
+          onClick={shortlistHandler}
+          alt=""
+          className="heart-img"
+        />
       </div>
       <hr />
       <div className="content">
         <div className="description">
           <img src={fileSvg} alt="" />
           <div>
-            <p className="faded">5.5</p>
-            <p className="title">Minimum IELTS Required</p>
+            <p className="title"> {courseName} </p>
           </div>
         </div>
         <div className="description">
           <img src={rangkingSvg} alt="" />
           <div>
-            <p className="faded">701 - 750</p>
-            <p className="title">Ranking</p>
+            <p className="title">{ranking} </p>
           </div>
         </div>
         <div className="description">
           <img src={locationSvg} alt="" />
           <div>
-            <p className="title">Footscary , Australia</p>
+            <p className="title"> {location} </p>
           </div>
         </div>
-        <button className="apply">Apply Now</button>
+        <button className="apply" onClick={applyHandler}>
+          {isLoading ? <ClipLoader color="#fff" /> : "Apply Now"}
+        </button>
       </div>
     </div>
   );
@@ -96,7 +119,7 @@ const TopProgramCard = (item) => {
         <p className="title">{title}</p>
         <p className="desc">{desc}</p>
       </div>
-      <i className="fa-solid fa-angle-right"></i>
+      {/* <i className="fa-solid fa-angle-right"></i> */}
     </div>
   );
 };
@@ -254,7 +277,7 @@ const ShortlistedUniversities = (item) => {
             <Link to={`/college-micro-info/${title}`}>
               <p> {title} </p>
             </Link>
-            <p  className="course-title"> {courseTitle} </p>
+            <p className="course-title"> {courseTitle} </p>
           </div>
         </div>
         <div className="actions">

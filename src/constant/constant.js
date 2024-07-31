@@ -161,11 +161,7 @@ const userDashboardSidebar = [
     title: "Program & School",
     link: "/user-dashboard/programms",
   },
-  {
-    icon: <i className="fa-solid fa-asterisk"></i>,
-    title: "Write Review",
-    link: "/user-dashboard/write-a-review",
-  },
+
   {
     icon: <i className="fa-solid fa-user-doctor"></i>,
     title: "My Adwizor",
@@ -191,6 +187,11 @@ const userDashboardSidebar = [
     icon: <i className="fa-solid fa-circle-info"></i>,
     title: "How It Works",
     link: "/user-dashboard/how-it-works",
+  },
+  {
+    icon: <i className="fa-solid fa-asterisk"></i>,
+    title: "Write Review",
+    link: "/user-dashboard/write-a-review",
   },
 ];
 
@@ -1400,16 +1401,10 @@ const adwizorSidebarArr = [
     link: "/adwizor-panel/appointments",
   },
   {
-    icon: <i className="fa-solid fa-clipboard-check"></i>,
-    title: "My Task",
-    link: "/adwizor-panel/tasks",
-  },
-  {
     icon: <i className="fa-solid fa-spinner"></i>,
     title: "Train Hub",
     link: "/adwizor-dashboard",
   },
-
   {
     icon: <i className="fa-solid fa-arrow-trend-up"></i>,
     title: "Analysis",
@@ -1434,6 +1429,11 @@ const adwizorSidebarArr = [
     icon: <i className="fa-solid fa-user"></i>,
     title: "My Profile",
     link: "/adwizor-panel/my-profile",
+  },
+  {
+    icon: <i className="fa-solid fa-star"></i>,
+    title: "Reviews",
+    link: "/adwizor-panel/my-reviews",
   },
 ];
 

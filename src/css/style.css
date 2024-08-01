@@ -6546,6 +6546,27 @@ width: 179px;
 color: #f8a401;
 }
 
+.train-hub-card{
+  max-width: 320px;
+padding: 0;
+}
+.train-hub-card video {
+  width: 100%;
+}
+.train-hub-card p {
+  margin: 0;
+}
+.train-hub-card .content {
+  padding: 10px;
+}
+.train-hub-card p.title{
+  font-size: 16px;
+  font-weight: 600;
+}
+.train-hub-card p.desc{
+  font-size: 14px}
+
+
 /** Keyframes for the animation **/
 @keyframes highlightAnimation {
   0% {

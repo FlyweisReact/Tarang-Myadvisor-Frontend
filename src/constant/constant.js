@@ -1403,12 +1403,12 @@ const adwizorSidebarArr = [
   {
     icon: <i className="fa-solid fa-spinner"></i>,
     title: "Train Hub",
-    link: "/adwizor-dashboard",
+    link: "/adwizor-panel/train-hub",
   },
   {
     icon: <i className="fa-solid fa-arrow-trend-up"></i>,
     title: "Analysis",
-    link: "/adwizor-dashboard",
+    link: "/adwizor-panel/analysis",
   },
   {
     img: IcRoundChat,

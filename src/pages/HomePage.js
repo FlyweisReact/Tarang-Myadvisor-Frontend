@@ -47,6 +47,7 @@ const HomePage = () => {
   const [howItWorks, setHowItWorks] = useState({ data: [] });
   const [sypnosisSummary, setSypnosisSummary] = useState({ data: [] });
   const [testimonials, setTestimonials] = useState({ data: [] });
+  const [ banner , setBanner ] = useState({ data : {}})
 
   const howItWorksList = howItWorks.data.map((i) => ({
     img: i?.image,
@@ -97,6 +98,9 @@ const HomePage = () => {
     });
     getApi(endPoints.user.getAllTestimonial, {
       setResponse: setTestimonials,
+    });
+    getApi(endPoints.user.getHomepageBanner, {
+      setResponse: setBanner,
     });
   }, []);
 
@@ -186,7 +190,7 @@ const HomePage = () => {
 
   return (
     <>
-      <AdwizorBanner />
+      <AdwizorBanner data={banner.data} />
       {adwizorsData?.length > 0 && (
         <AdwizorCards topAdwizor={true} topAdwizorData={adwizorsData} />
       )}

@@ -78,6 +78,8 @@ const endPoints = {
       `user/getCountryDetailsDestinationByType?contryType=${id}`,
     getTutionFees: "admin/getUniversityTuitionFees",
     getMsgSubject: "admin/getAllSubjects",
+    //--
+    getHomepageBanner : "user/getBannerFront"
   },
   adwizor: {
     applyforStudent: "advisor/applyAdvisorStudentUniversity",
@@ -105,11 +107,12 @@ const endPoints = {
     resendOtp: "advisor/resendOtp",
     updateApplicationStatus: (id) => `advisor/updateApplicationStatus/${id}`,
     getSources: "advisor/getSources",
-    //-----
     createReview: "advisor/advisorWriteReview",
     getAllReviews: "advisor/getAllReviews",
     updateReview: (id) => `advisor/updateReview/${id}`,
     deleteReview: (id) => `advisor/deleteReview/${id}`,
+    //----
+    getTrainHub  : "advisor/getTrainHubs"
   },
 };
 

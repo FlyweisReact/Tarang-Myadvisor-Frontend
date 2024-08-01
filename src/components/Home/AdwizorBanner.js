@@ -7,7 +7,7 @@ import { getApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import { CustomeDropdown } from "../HelpingComponents";
 
-const AdwizorBanner = () => {
+const AdwizorBanner = ({ data }) => {
   const navigate = useNavigate();
   const [courses, setCourses] = useState({ courses: [] });
   const [allCountries, setAllCountries] = useState({ data: [] });
@@ -66,42 +66,43 @@ const AdwizorBanner = () => {
       caretIcon: true,
     },
   ];
-  return (
-    <section className="adwizor-banner">
-      <div className="left">
-        <div className="content">
-          <h4 className="highlighted">Connect</h4>
-          <h3>
-            With Top Adwizor for <br /> Specialised & Dedicated guidance
-          </h3>
-        </div>
-        <div className="adwizor-search">
-          <h2>Find Adwizor</h2>
-          <div className="search-bar">
-            {optionsMenu.map((i, index) => (
-              <CustomeDropdown
-                items={i.items}
-                className={"dropdown-button"}
-                title={i.title}
-                titleIcon={i.titleIcon}
-                caretIcon={i.caretIcon}
-                key={index}
-              />
-            ))}
 
-            <button
-              className="search-icon-button"
-              onClick={() => navigate("/find-an-adwizor")}
-            >
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
+  return (
+    data?.title && (
+      <section className="adwizor-banner">
+        <div className="left">
+          <div className="content">
+            <h4 className="highlighted"> {data?.title} </h4>
+            <h3>{data?.description}</h3>
+          </div>
+          <div className="adwizor-search">
+            <h2>Find Adwizor</h2>
+            <div className="search-bar">
+              {optionsMenu.map((i, index) => (
+                <CustomeDropdown
+                  items={i.items}
+                  className={"dropdown-button"}
+                  title={i.title}
+                  titleIcon={i.titleIcon}
+                  caretIcon={i.caretIcon}
+                  key={index}
+                />
+              ))}
+
+              <button
+                className="search-icon-button"
+                onClick={() => navigate("/find-an-adwizor")}
+              >
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="right">
-        <img src={homepageImg} alt="" />
-      </div>
-    </section>
+        <div className="right">
+          <img src={data?.image} alt="" />
+        </div>
+      </section>
+    )
   );
 };
 

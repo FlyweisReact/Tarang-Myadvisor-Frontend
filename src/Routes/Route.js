@@ -48,6 +48,8 @@ import AdwizorBlogs from "../pages/AdwizorPanel/AdwizorBlogs";
 import AdwizorApppointments from "../pages/AdwizorPanel/AdwizorApppointments";
 import AdwizorTasks from "../pages/AdwizorPanel/AdwizorTasks";
 import AdwizorReviews from "../pages/AdwizorPanel/AdwizorReviews";
+import TrainHub from "../pages/AdwizorPanel/TrainHub.js";
+import Analysis from "../pages/AdwizorPanel/Analysis.js";
 
 const allRoutes = [
   {
@@ -242,6 +244,15 @@ const allRoutes = [
   {
     route: "/adwizor-panel/my-reviews",
     component: <AdwizorReviews />,
+  },
+  //---
+  {
+    route: "/adwizor-panel/train-hub",
+    component: <TrainHub />,
+  },
+  {
+    route: "/adwizor-panel/analysis",
+    component: <Analysis />,
   },
 ];
 

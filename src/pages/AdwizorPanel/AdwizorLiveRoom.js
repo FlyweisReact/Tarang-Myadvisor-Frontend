@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import TableLayout from "../../components/TableLayout";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { getApi, putApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
@@ -143,4 +143,4 @@ const AdwizorLiveRoom = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorLiveRoom);
+export default DashboardLayout(AdwizorLiveRoom);

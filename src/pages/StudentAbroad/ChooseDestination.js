@@ -56,20 +56,43 @@ const StepComponent1 = ({
   destinationCountry,
   options,
   setDestinationCountry,
+  isMobile,
 }) => {
   return (
     <>
-      <div className="page-head">
-        <button className="skipBtns" type="button" onClick={() => backStep()}>
-          <i className="fa-solid fa-arrow-left"></i> Back
-        </button>
-        <h3>
-          We would love to know more about your <br /> study abroad path
-        </h3>
-        <button className="skipBtns" onClick={() => nextStep()}>
-          SKIP <i className="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+      {isMobile ? (
+        <div className="page-head mobile-page-head">
+          <div className="btns">
+            <button
+              className="skipBtns"
+              type="button"
+              onClick={() => backStep()}
+            >
+              <i className="fa-solid fa-arrow-left"></i> Back
+            </button>
+            <button className="skipBtns " onClick={() => nextStep()}>
+              SKIP <i className="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <h3>
+            We would love to know more about your <br /> study abroad path
+          </h3>
+        </div>
+      ) : (
+        <div className="page-head">
+          <button className="skipBtns" type="button" onClick={() => backStep()}>
+            <i className="fa-solid fa-arrow-left"></i> Back
+          </button>
+          <h3>
+            We would love to know more about your <br /> study abroad path
+          </h3>
+          <button className="skipBtns " onClick={() => nextStep()}>
+            SKIP <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      )}
+
       <div className="choose-from-options-page">
         <h4>Choose Your Destination</h4>
         <div className="cards">
@@ -101,21 +124,43 @@ const StepComponent2 = ({
   preferredIntake,
   setPreferrefDegree,
   preferredDegree,
+  isMobile,
 }) => {
   return (
     <>
-      <div className="page-head">
-        <button className="skipBtns" type="button" onClick={() => backStep()}>
-          {" "}
-          <i className="fa-solid fa-arrow-left"></i>Back
-        </button>
-        <h3 className="alert">
-          Alert : September Has A Higher Acceptance Rate
-        </h3>
-        <button className="skipBtns" onClick={() => nextStep()}>
-          SKIP <i className="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+      {isMobile ? (
+        <div className="page-head mobile-page-head">
+          <div className="btns">
+            <button
+              className="skipBtns"
+              type="button"
+              onClick={() => backStep()}
+            >
+              {" "}
+              <i className="fa-solid fa-arrow-left"></i>Back
+            </button>
+            <button className="skipBtns" onClick={() => nextStep()}>
+              SKIP <i className="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+          <h3 className="alert">
+            Alert : September Has A Higher Acceptance Rate
+          </h3>
+        </div>
+      ) : (
+        <div className="page-head">
+          <button className="skipBtns" type="button" onClick={() => backStep()}>
+            {" "}
+            <i className="fa-solid fa-arrow-left"></i>Back
+          </button>
+          <h3 className="alert">
+            Alert : September Has A Higher Acceptance Rate
+          </h3>
+          <button className="skipBtns" onClick={() => nextStep()}>
+            SKIP <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      )}
 
       <div className="choose-from-options-page">
         <h4>What's your preferred Intake?</h4>
@@ -203,21 +248,44 @@ const StepComponent3 = ({
   gradesORpercentage,
   setValidPassport,
   validPassport,
+  isMobile,
 }) => {
   return (
     <>
-      <div className="page-head">
-        <button className="skipBtns" type="button" onClick={() => backStep()}>
-          {" "}
-          <i className="fa-solid fa-arrow-left"></i>Back
-        </button>
-        <button className="degree-btn">
-          <i className="fa-solid fa-graduation-cap"></i> Masters
-        </button>
-        <button className="skipBtns" onClick={() => nextStep()}>
-          SKIP <i className="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+      {isMobile ? (
+        <div className="page-head mobile-page-head">
+          <div className="btns">
+            <button
+              className="skipBtns"
+              type="button"
+              onClick={() => backStep()}
+            >
+              {" "}
+              <i className="fa-solid fa-arrow-left"></i>Back
+            </button>
+            <button className="skipBtns" onClick={() => nextStep()}>
+              SKIP <i className="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+        </div>
+      ) : (
+        <div className="page-head">
+          <button className="skipBtns" type="button" onClick={() => backStep()}>
+            {" "}
+            <i className="fa-solid fa-arrow-left"></i>Back
+          </button>
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+          <button className="skipBtns" onClick={() => nextStep()}>
+            SKIP <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      )}
 
       <div className="choose-from-options-page">
         <h4>What's your highest level of education?</h4>
@@ -312,22 +380,45 @@ const StepComponent4 = ({
   alreadyUniversityAdmit,
   lookingFor,
   setLookingFor,
+  isMobile,
 }) => {
   return (
     <>
       {" "}
-      <div className="page-head">
-        <button className="skipBtns" type="button" onClick={() => backStep()}>
-          {" "}
-          <i className="fa-solid fa-arrow-left"></i>Back
-        </button>
-        <button className="degree-btn">
-          <i className="fa-solid fa-graduation-cap"></i> Masters
-        </button>
-        <button className="skipBtns" onClick={() => nextStep()}>
-          SKIP <i className="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+      {isMobile ? (
+        <div className="page-head mobile-page-head">
+          <div className="btns">
+            <button
+              className="skipBtns"
+              type="button"
+              onClick={() => backStep()}
+            >
+              {" "}
+              <i className="fa-solid fa-arrow-left"></i>Back
+            </button>
+            <button className="skipBtns" onClick={() => nextStep()}>
+              SKIP <i className="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+        </div>
+      ) : (
+        <div className="page-head">
+          <button className="skipBtns" type="button" onClick={() => backStep()}>
+            {" "}
+            <i className="fa-solid fa-arrow-left"></i>Back
+          </button>
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+          <button className="skipBtns" onClick={() => nextStep()}>
+            SKIP <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      )}
       <div className="choose-from-options-page">
         <h4>IELTS/TOEFL/PTE/Duolingo status</h4>
         <select
@@ -419,22 +510,45 @@ const StepComponent5 = ({
   setLookingFor,
   setBookingConfirmation,
   bookingConfirmation,
+  isMobile,
 }) => {
   return (
     <>
       {" "}
-      <div className="page-head">
-        <button className="skipBtns" type="button" onClick={() => backStep()}>
-          {" "}
-          <i className="fa-solid fa-arrow-left"></i>Back
-        </button>
-        <button className="degree-btn">
-          <i className="fa-solid fa-graduation-cap"></i> Masters
-        </button>
-        <button className="skipBtns" onClick={() => nextStep()}>
-          SKIP <i className="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+      {isMobile ? (
+        <div className="page-head mobile-page-head">
+          <div className="btns">
+            <button
+              className="skipBtns"
+              type="button"
+              onClick={() => backStep()}
+            >
+              {" "}
+              <i className="fa-solid fa-arrow-left"></i>Back
+            </button>
+            <button className="skipBtns" onClick={() => nextStep()}>
+              SKIP <i className="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+        </div>
+      ) : (
+        <div className="page-head">
+          <button className="skipBtns" type="button" onClick={() => backStep()}>
+            {" "}
+            <i className="fa-solid fa-arrow-left"></i>Back
+          </button>
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+          <button className="skipBtns" onClick={() => nextStep()}>
+            SKIP <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      )}
       <div className="choose-from-options-page">
         <h4>IELTS/TOEFL/PTE/Duolingo status</h4>
         <select
@@ -527,21 +641,49 @@ const StepComponent5 = ({
   );
 };
 
-const StepComponent6 = ({ backStep, nextStep, setGivenGRE, givenGRE }) => {
+const StepComponent6 = ({
+  backStep,
+  nextStep,
+  setGivenGRE,
+  givenGRE,
+  isMobile,
+}) => {
   return (
     <>
-      <div className="page-head">
-        <button className="skipBtns" type="button" onClick={() => backStep()}>
-          {" "}
-          <i className="fa-solid fa-arrow-left"></i>Back
-        </button>
-        <button className="degree-btn">
-          <i className="fa-solid fa-graduation-cap"></i> Masters
-        </button>
-        <button className="skipBtns" onClick={() => nextStep()}>
-          SKIP <i className="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+      {isMobile ? (
+        <div className="page-head mobile-page-head">
+          <div className="btns">
+            <button
+              className="skipBtns"
+              type="button"
+              onClick={() => backStep()}
+            >
+              {" "}
+              <i className="fa-solid fa-arrow-left"></i>Back
+            </button>
+            <button className="skipBtns" onClick={() => nextStep()}>
+              SKIP <i className="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+        </div>
+      ) : (
+        <div className="page-head">
+          <button className="skipBtns" type="button" onClick={() => backStep()}>
+            {" "}
+            <i className="fa-solid fa-arrow-left"></i>Back
+          </button>
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+          <button className="skipBtns" onClick={() => nextStep()}>
+            SKIP <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      )}
 
       <div className="choose-from-options-page">
         <h4>How You Given GRE</h4>
@@ -591,24 +733,50 @@ const StepComponent7 = ({
   martialStatus,
   city,
   preferredDestination,
+  isMobile,
 }) => {
   return (
     <>
-      <div className="page-head">
-        <button className="skipBtns" type="button" onClick={() => backStep()}>
-          {" "}
-          <i className="fa-solid fa-arrow-left"></i>Back
-        </button>
-        <button className="degree-btn">
-          <i className="fa-solid fa-graduation-cap"></i> Masters
-        </button>
-        <button
-          className="skipBtns"
-          onClick={() => navigate("/user-dashboard/home")}
-        >
-          SKIP <i className="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+      {isMobile ? (
+        <div className="page-head mobile-page-head">
+          <div className="btns">
+            <button
+              className="skipBtns"
+              type="button"
+              onClick={() => backStep()}
+            >
+              {" "}
+              <i className="fa-solid fa-arrow-left"></i>Back
+            </button>
+            <button
+              className="skipBtns"
+              onClick={() => navigate("/user-dashboard/home")}
+            >
+              SKIP <i className="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+        </div>
+      ) : (
+        <div className="page-head">
+          <button className="skipBtns" type="button" onClick={() => backStep()}>
+            {" "}
+            <i className="fa-solid fa-arrow-left"></i>Back
+          </button>
+          <button className="degree-btn">
+            <i className="fa-solid fa-graduation-cap"></i> Masters
+          </button>
+          <button
+            className="skipBtns"
+            onClick={() => navigate("/user-dashboard/home")}
+          >
+            SKIP <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      )}
 
       <div className="choose-from-options-page">
         <h4>Just one last step to get an University Shortlist</h4>
@@ -653,7 +821,10 @@ const StepComponent7 = ({
           <option value="FEMALE">Female</option>
           <option value="OTHER">Other</option>
         </select>
-        <select value={martialStatus} onChange={(e) => setMartialStatus(e.target.value)}>
+        <select
+          value={martialStatus}
+          onChange={(e) => setMartialStatus(e.target.value)}
+        >
           <option>Maritial Status</option>
           <option value="YES">Yes</option>
           <option value="NO">No</option>
@@ -713,8 +884,18 @@ const ChooseDestination = () => {
   const [preferredDestination, setPreferredDestination] = useState("");
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState({ data: {} });
-
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const backStep = () => {
     if (step === 1) {
@@ -805,6 +986,7 @@ const ChooseDestination = () => {
                 destinationCountry={destinationCountry}
                 options={options}
                 setDestinationCountry={setDestinationCountry}
+                isMobile={isMobile}
               />
             }
           />
@@ -820,6 +1002,7 @@ const ChooseDestination = () => {
                 preferredIntake={preferredIntake}
                 setPreferrefDegree={setPreferrefDegree}
                 preferredDegree={preferredDegree}
+                isMobile={isMobile}
               />
             }
             width={"30%"}
@@ -844,6 +1027,7 @@ const ChooseDestination = () => {
                 gradesORpercentage={gradesORpercentage}
                 setValidPassport={setValidPassport}
                 validPassport={validPassport}
+                isMobile={isMobile}
               />
             }
             width={"45%"}
@@ -862,6 +1046,7 @@ const ChooseDestination = () => {
                 alreadyUniversityAdmit={alreadyUniversityAdmit}
                 lookingFor={lookingFor}
                 setLookingFor={setLookingFor}
+                isMobile={isMobile}
               />
             }
             width={"60%"}
@@ -882,6 +1067,7 @@ const ChooseDestination = () => {
                 setLookingFor={setLookingFor}
                 setBookingConfirmation={setBookingConfirmation}
                 bookingConfirmation={bookingConfirmation}
+                isMobile={isMobile}
               />
             }
             width={"75%"}
@@ -896,6 +1082,7 @@ const ChooseDestination = () => {
                 nextStep={nextStep}
                 setGivenGRE={setGivenGRE}
                 givenGRE={givenGRE}
+                isMobile={isMobile}
               />
             }
             width={"90%"}
@@ -930,6 +1117,7 @@ const ChooseDestination = () => {
                 setCity={setCity}
                 setState={setState}
                 setPreferredDestination={setPreferredDestination}
+                isMobile={isMobile}
               />
             }
             width={"100%"}
@@ -945,6 +1133,7 @@ const ChooseDestination = () => {
                 destinationCountry={destinationCountry}
                 options={options}
                 setDestinationCountry={setDestinationCountry}
+                isMobile={isMobile}
               />
             }
           />

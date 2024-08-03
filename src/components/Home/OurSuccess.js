@@ -23,11 +23,7 @@ const OurSuccess = () => {
     countList?.length > 0 && (
       <div className="our-success">
         <h4 className="normal-heading">Our Success In Numbers</h4>
-        <p className="desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          sed magna eget nibh in turpis. Consequat duis diam lacus arcu.
-          Faucibus venenatis felis id augue
-        </p>
+        
         <div className="cards">
           {countList.map((i, index) => (
             <div className="item" key={`success${index}`}>

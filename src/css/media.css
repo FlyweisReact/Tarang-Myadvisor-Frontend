@@ -15,7 +15,11 @@
   .work-oppurtunity h4,
   .univeristy-accordion h4.title,
   .faq-accordion .accordion-body,
-  .visa-banner .content h4.title {
+  .visa-banner .content h4.title,
+  .college-micro-info-page .college-info .left .detail-box .heading,
+  .choose-destination-page .page-head h2.bold-text,
+  .live-session-select-timing h4.title,
+  .our-success .cards .item .title {
     font-size: 20px;
   }
 
@@ -35,7 +39,20 @@
   .why-study-international .count-list li,
   .top-program-card .content p.desc,
   .visa-banner .content p.desc,
-  .login-modal .Login-div .right-div form .select-btn button {
+  .login-modal .Login-div .right-div form .select-btn button,
+  .college-micro-info-page .college-info .left .detail-box .description,
+  .user-homePage .write-a-review form button,
+  .college-micro-info-page .right .placement-report .content-flex p,
+  .college-ranking-table thead tr th button,
+  .college-ranking-table td,
+  .adwizor-panel .section-heading button,
+  .adwizor-dash-item p,
+  .user-homePage .filter-div-container p.result,
+  .adwizor-panel .select-student-container button,
+  .user-blogs .cards .main .content .btn-container button,
+  .choose-destination-page .page-head h3,
+  .choose-destination-page .choose-from-options-page button.continue,
+  .our-success .cards .item .acheivment {
     font-size: 14px;
   }
 
@@ -45,7 +62,9 @@
   .top-program-card .content p.title,
   .why-study-international button.read-more,
   .country-card .content p.title,
-  .monthly-expense-card .title {
+  .monthly-expense-card .title,
+  .adwizor-panel .section-heading p.title,
+  .user-blogs .cards .main .head .detail p.title {
     font-size: 16px;
   }
 
@@ -217,23 +236,155 @@
     width: 40px;
     height: 40px;
   }
-  .user-dashboard .user-sidebar{
+  .user-dashboard .user-sidebar {
     display: none;
   }
-  .user-dashboard .remains{
+  .user-dashboard .remains {
     width: 100%;
   }
-  .adwizors-swiper .card .detail{
+  .adwizors-swiper .card .detail {
     flex-direction: column;
   }
-  .adwizors-swiper .card .detail .mainImg{
+  .adwizors-swiper .card .detail .mainImg {
     width: 100%;
   }
-  .adwizors-swiper .card .detail .mainImg{
+  .adwizors-swiper .card .detail .mainImg {
     object-position: top center;
   }
-  .adwizors-swiper .card .btn-container button{
+  .adwizors-swiper .card .btn-container {
+    flex-wrap: wrap;
+  }
+  .adwizors-swiper .card .btn-container button {
     width: 100%;
+  }
+  .user-panel-nav .fa-bars {
+    display: block;
+  }
+
+  .user-dashboard-profile .basic-details {
+    padding: 20px;
+  }
+  .user-dashboard-profile .basic-details .main-container {
+    flex-direction: column;
+  }
+  .user-dashboard-profile .basic-details .blank {
+    display: none;
+  }
+  .user-dashboard-profile .basic-details .content {
+    width: 100%;
+  }
+  .user-dashboard-profile .univeristy-tab {
+    padding: 20px;
+  }
+  .user-homePage .filter-div-container .filteration-div {
+    flex-direction: column;
+  }
+  .user-homePage .filter-div-container .filteration-div .search {
+    width: 100%;
+    padding: 10px;
+  }
+  .user-homePage .filter-div-container .filteration-div button {
+    align-self: flex-end;
+  }
+  .book-appointment {
+    font-size: 14px;
+  }
+  .filter-college-section .result-div .results .main .head .actions img {
+    width: 20px;
+    height: 20px;
+  }
+  .user-homePage .application-status {
+    padding: 10px;
+  }
+  .college-micro-info-page .college-info {
+    flex-direction: column;
+  }
+  .college-micro-info-page .college-info .left {
+    width: 100%;
+  }
+  .college-micro-info-page
+    .college-info
+    .left
+    .detail-box
+    .gallery-container
+    .flexbox-container
+    img {
+    width: 140px;
+  }
+  .adwizor-dash-item {
+    width: 160px;
+  }
+  .grid-container-for-4 {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  .adwizor-panel .section-heading button {
+    width: 160px;
+  }
+  .train-hub-card {
+    max-width: 100%;
+  }
+  .live-session-date-selector-Item {
+    width: 100px;
+    height: 80px;
+  }
+  .live-session-date-selector-buttons_container {
+    padding: 10px;
+  }
+  .live-session-select-timing .grid-container .item {
+    width: 140px;
+  }
+  .live-session-select-timing .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  .adwizor-panel .update-profile .item {
+    max-width: 100%;
+  }
+  .choose-destination-page .page-head {
+    padding: 10px;
+    flex-direction: column;
+  }
+  .choose-destination-page .page-head div {
+    width: 100%;
+    text-align: center;
+  }
+  .choose-destination-page .choose-from-options-page button.continue {
+    max-width: 300px;
+  }
+  .tourist-img-container {
+    display: none;
+  }
+  .our-success {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .our-success .cards {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-gap: 10px;
+  }
+  .our-success .cards .item {
+    width: 160px;
+    height: auto;
+  }
+  .our-success .cards .item .acheivment {
+    text-align: center;
+  }
+  .mobile-bar-container {
+    background-color: #349dcf !important;
+  }
+  .choose-destination-page .page-head .skipBtns{
+    width: 120px;
+    font-size: 14px;
+  }
+  .choose-destination-page .mobile-page-head h3{
+    width: 100%;
+    text-align: center;
+  }
+  .choose-destination-page .mobile-page-head .btns{
+    display: flex;
+    justify-content: space-between;
+  }
+  .choose-destination-page .page-head .degree-btn{
+    margin: auto;
   }
 }
 

@@ -3,10 +3,10 @@
 import { Badge } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import { CreateBlog } from "../../components/Modals/Modals";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
 import { deleteApi, getApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import { ClipLoader } from "react-spinners";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 
 const BlogCard = ({ item, fetchHandler, setType, setBlogData, setOpen }) => {
   const { img, title, description, publishedOn, status, id } = item;
@@ -134,4 +134,4 @@ const AdwizorBlogs = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorBlogs);
+export default DashboardLayout(AdwizorBlogs);

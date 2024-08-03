@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CreateStudent } from "../../components/Modals/Modals";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { getApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
@@ -90,4 +90,4 @@ const AdwizorStudents = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorStudents);
+export default DashboardLayout(AdwizorStudents);

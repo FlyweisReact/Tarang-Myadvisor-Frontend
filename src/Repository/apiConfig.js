@@ -28,7 +28,6 @@ const endPoints = {
   getAllCourse: "admin/getAllCourses",
   getAllStates: "admin/getAllStates",
   getAllStreams: "admin/getAllStreams",
-  // new api
   giveReview: "user/writeReviewToSelectedAdvisor",
   verifyAdwizorOtp: "advisor/verifyOtp",
   searchAdwizor: (search, page, limit) =>
@@ -78,8 +77,8 @@ const endPoints = {
       `user/getCountryDetailsDestinationByType?contryType=${id}`,
     getTutionFees: "admin/getUniversityTuitionFees",
     getMsgSubject: "admin/getAllSubjects",
-    //--
-    getHomepageBanner : "user/getBannerFront"
+    getHomepageBanner : "user/getBannerFront",
+    userAppointments : "user/getAll/Appointments"
   },
   adwizor: {
     applyforStudent: "advisor/applyAdvisorStudentUniversity",
@@ -111,8 +110,8 @@ const endPoints = {
     getAllReviews: "advisor/getAllReviews",
     updateReview: (id) => `advisor/updateReview/${id}`,
     deleteReview: (id) => `advisor/deleteReview/${id}`,
-    //----
-    getTrainHub  : "advisor/getTrainHubs"
+    getTrainHub  : "advisor/getTrainHubs",
+    getReports : "advisor/advisorStats"
   },
 };
 

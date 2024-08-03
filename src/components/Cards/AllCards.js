@@ -211,6 +211,13 @@ const ShortlistedUniversities = (item) => {
           Enrollment
         </button>
       );
+    } else if (status === "ACCEPTANCE") {
+      return (
+        <button className="verified">
+          <img src={verifiedSvg} alt="" />
+          Acceptance
+        </button>
+      );
     } else if (status === "SHORTLIST") {
       return (
         <button className="pending">
@@ -247,6 +254,7 @@ const ShortlistedUniversities = (item) => {
     courseTitle,
     shortlistedCount,
     institueType,
+    btnAvailable
   } = item;
 
   const payload = {
@@ -280,29 +288,31 @@ const ShortlistedUniversities = (item) => {
             <p className="course-title"> {courseTitle} </p>
           </div>
         </div>
-        <div className="actions">
-          {isFav ? (
-            <img src={fillHeart} alt="" />
-          ) : (
-            <img
-              src={heartImg}
-              alt=""
-              style={{ cursor: "pointer" }}
-              onClick={shortlistHandler}
-            />
-          )}
-          <div className="blank"></div>
-          {isFav ? (
-            <img src={fillBookmark} alt="" />
-          ) : (
-            <img
-              src={bookmarkImg}
-              style={{ cursor: "pointer" }}
-              alt=""
-              onClick={shortlistHandler}
-            />
-          )}
-        </div>
+        {!btnAvailable && (
+          <div className="actions">
+            {isFav ? (
+              <img src={fillHeart} alt="" />
+            ) : (
+              <img
+                src={heartImg}
+                alt=""
+                style={{ cursor: "pointer" }}
+                onClick={shortlistHandler}
+              />
+            )}
+            <div className="blank"></div>
+            {isFav ? (
+              <img src={fillBookmark} alt="" />
+            ) : (
+              <img
+                src={bookmarkImg}
+                style={{ cursor: "pointer" }}
+                alt=""
+                onClick={shortlistHandler}
+              />
+            )}
+          </div>
+        )}
       </div>
       <div className="details">
         <img src={collegeImg} alt="" className="college-img" />

@@ -17,6 +17,7 @@ import {
 import { useParams } from "react-router-dom";
 import { getApi } from "../Repository/Api";
 import endPoints from "../Repository/apiConfig";
+import WithLayout from "../Layout/WithLayout";
 
 const tabs = [
   "About Us",
@@ -615,16 +616,18 @@ const CollegeMicroInfo = () => {
       />
       <AlertModal show={open1} onHide={() => setOpen1(false)} />
       <section className="college-micro-info-page">
-        <Banner img={detail?.university?.ImageUrl?.[0]} className="m-0" />
+        <Banner img={detail?.university?.ImageUrl?.[0]} />
 
-        <div className="download-broacher boxShadow-container margin-div ">
-          <p className="text">{detail?.university?.ApprovedBy}</p>
-          <div>
+        {detail?.university?.ApprovedBy && (
+          <div className="download-broacher boxShadow-container margin-div ">
+            <p className="text">{detail?.university?.ApprovedBy}</p>
+            {/* <div>
             <button onClick={() => setOpenCanvas(true)}>
               Shortlist For Common Application
             </button>
+          </div> */}
           </div>
-        </div>
+        )}
 
         <ul className="college-tabs margin-div boxShadow-container ">
           {tabs.map((i, index) => (
@@ -644,4 +647,5 @@ const CollegeMicroInfo = () => {
   );
 };
 
-export default WrappedComponent({ WrappedComponent: CollegeMicroInfo });
+// export default WrappedComponent({ WrappedComponent: CollegeMicroInfo });
+export default WithLayout(CollegeMicroInfo);

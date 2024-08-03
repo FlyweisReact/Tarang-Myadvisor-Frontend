@@ -1,16 +1,11 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import WithLayout from "../Layout/WithLayout";
 
 const StudyInternationalFeature = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <section>
       <div className="text-banner mt-5 mb-5">

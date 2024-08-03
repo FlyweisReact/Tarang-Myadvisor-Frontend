@@ -5,7 +5,6 @@ import { Slider } from "../../components/Sliders/Sliders";
 import {
   topCitiesArr,
   topProgrammsArr,
-  collegeDetails,
 } from "../../constant/constant";
 import { RenderTopCityCard } from "../../components/Sliders/SwiperComponents";
 import {
@@ -52,6 +51,8 @@ const CollegeHomepage = () => {
     img: i?.ImageUrl?.[0],
     collegeName: i?.UniversityName,
   }));
+
+  const collegeDetails =[]
 
   return (
     <section>

@@ -9,12 +9,12 @@ import { StudentElegibility } from "../../components/Modals/Modals";
 import { Slider } from "../../components/Sliders/Sliders";
 import { RenderFilterItems } from "../../components/Sliders/SwiperComponents";
 import { userProgramConfig } from "../../components/Sliders/SwiperConfig";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
 import { getApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import { debouncedSetQuery, pushInArr } from "../../utils/utils";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import { programmLevel } from "../../constant/constant";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 
 const AdwizorProgramms = () => {
   const [show, setShow] = useState(false);
@@ -294,4 +294,4 @@ const AdwizorProgramms = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorProgramms);
+export default DashboardLayout(AdwizorProgramms);

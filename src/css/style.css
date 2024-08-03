@@ -206,7 +206,7 @@
 .login-modal .Login-div .left-div img {
   width: 100%;
   object-fit: cover;
-    object-position: center;
+  object-position: center;
 }
 .login-modal .Login-div .right-div {
   /* width: 50%; */
@@ -235,7 +235,7 @@
 }
 
 .login-modal .Login-div .right-div form .select-btn button {
-width: 179px;
+  width: 179px;
 
   background-color: #c8c8c8;
   padding: 10px;
@@ -1775,7 +1775,7 @@ width: 179px;
   border: 1px solid #e7e7e7;
   padding: 5px;
 }
-.filter-college-section .result-div .results .main .head .title .course-title{
+.filter-college-section .result-div .results .main .head .title .course-title {
   font-size: 25px;
 }
 .filter-college-section .result-div .results .main .head .title p {
@@ -2406,7 +2406,6 @@ width: 179px;
   align-items: center;
   gap: 10px;
   margin-top: 20px;
-  flex-wrap: wrap;
 }
 .adwizors-swiper .card .btn-container button {
   width: 157px;
@@ -3358,6 +3357,7 @@ width: 179px;
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .user-homePage .refer-earn img.refer-img {
@@ -5161,6 +5161,7 @@ width: 179px;
   list-style: none;
   gap: 20px;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .college-tabs li {
   font-size: 14px;
@@ -6301,7 +6302,7 @@ width: 179px;
   background-color: #ffff;
   color: #0185c3;
 }
-.adwizor-profile-section .info .content{
+.adwizor-profile-section .info .content {
   flex: 1;
 }
 .adwizor-profile-section .info .content .btn-container button {
@@ -6399,7 +6400,7 @@ width: 179px;
   width: 49px;
   height: 49px;
   border-radius: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 .appointment-card .profile-container p {
@@ -6478,8 +6479,7 @@ width: 179px;
   list-style: none;
   margin: 0;
   font-size: 15px;
-  font-weight: 600;
-  color: #1a3b5a;
+  color: #fff;
   margin-top: 10px;
 }
 
@@ -6488,12 +6488,12 @@ width: 179px;
   color: inherit;
 }
 .mobile-bar .login-btn {
-  background-color: #0185c3;
+  background-color: #fff;
   width: 100px;
   height: 37px;
-  color: #fff;
+  color: #0185c3;
   border-radius: 50px;
-  border: 1px solid #0185c3;
+  border: 1px solid #fff;
   font-size: 14px;
   font-weight: bold;
   margin-top: 10px;
@@ -6501,21 +6501,82 @@ width: 179px;
 .mobile-bar .user-img {
   margin-top: 10px;
 }
-
-.adwizor-reviews-page .grid-container-for-3{
-  align-items: flex-start;
+.mobile-bar .user-icon-img {
+  border: 1px solid #fff;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  border-radius: 100%;
+  color: #fff;
+  cursor: pointer;
 }
-.adwizor-reviews-page .grid-container-for-3 .customer-review-card{
+
+.mobile-bar .profile_View {
+  align-items: flex-start;
+  display: flex;
+  gap: 20px;
+}
+.mobile-bar .profile_View img {
+  border-radius: 100%;
+  height: 70px;
+  object-fit: cover;
+  width: 70px;
+}
+.mobile-bar .profile_View .content {
+  flex: 1;
+}
+.mobile-bar .profile_View .content p {
   margin: 0;
 }
-.adwizor-reviews-page .grid-container-for-3 .customer-review-card .content .btn-container { 
-  display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: 10px;
-    
+.mobile-bar .profile_View .content .title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
 }
-.adwizor-reviews-page .grid-container-for-3 .customer-review-card .content .btn-container button{ 
+.mobile-bar .profile_View .content .email {
+  color: #fff;
+  font-size: 16px;
+}
+.mobile-bar .profile_View  .content a {
+  font-size: 14px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+.mobile-bar .empty{
+  background-color: #fff;
+  height: 1px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+.adwizor-reviews-page .grid-container-for-3 {
+  align-items: flex-start;
+}
+.adwizor-reviews-page .grid-container-for-3 .customer-review-card {
+  margin: 0;
+}
+.adwizor-reviews-page
+  .grid-container-for-3
+  .customer-review-card
+  .content
+  .btn-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+.adwizor-reviews-page
+  .grid-container-for-3
+  .customer-review-card
+  .content
+  .btn-container
+  button {
   width: 50%;
   padding: 10px;
   border: 1px solid #0185c3;
@@ -6524,31 +6585,36 @@ width: 179px;
   border-radius: 5px;
   font-size: 12px;
 }
-.adwizor-reviews-page .grid-container-for-3 .customer-review-card .content .btn-container button.cancel{ 
+.adwizor-reviews-page
+  .grid-container-for-3
+  .customer-review-card
+  .content
+  .btn-container
+  button.cancel {
   background-color: #b43f3f;
   border: 1px solid #b43f3f;
 }
 
-.create-review-modal .stars p{
+.create-review-modal .stars p {
   font-size: 14px;
   margin: 0;
 }
-.create-review-modal .stars  .main{
+.create-review-modal .stars .main {
   display: flex;
   gap: 5px;
   align-items: center;
   margin-top: 5px;
 }
-.create-review-modal .stars  .main i{
+.create-review-modal .stars .main i {
   cursor: pointer;
 }
-.create-review-modal .stars  .main i.selected{
-color: #f8a401;
+.create-review-modal .stars .main i.selected {
+  color: #f8a401;
 }
 
-.train-hub-card{
+.train-hub-card {
   max-width: 320px;
-padding: 0;
+  padding: 0;
 }
 .train-hub-card video {
   width: 100%;
@@ -6559,13 +6625,51 @@ padding: 0;
 .train-hub-card .content {
   padding: 10px;
 }
-.train-hub-card p.title{
+.train-hub-card p.title {
   font-size: 16px;
   font-weight: 600;
 }
-.train-hub-card p.desc{
-  font-size: 14px}
-
+.train-hub-card p.desc {
+  font-size: 14px;
+}
+.user-panel-bar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.user-panel-container {
+  background-color: #0185c3 !important;
+}
+.user-panel-bar ul li {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  color: #000;
+}
+.user-panel-bar ul li.active {
+  color: #fff;
+}
+.user-panel-nav .fa-bars {
+  display: none;
+}
+.appointment-card {
+  padding: 20px;
+}
+.appointment-card .dropdown {
+  width: 100%;
+  margin-top: 10px;
+}
+.appointment-card .dropdown button{
+  width: 100%;
+  background-color: #349dcf;
+  border: 1px solid #349dcf;
+}
+.appointment-card .dropdown div{
+  width: 100%;
+}
 
 /** Keyframes for the animation **/
 @keyframes highlightAnimation {

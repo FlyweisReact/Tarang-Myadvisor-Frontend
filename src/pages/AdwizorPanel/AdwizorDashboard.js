@@ -1,8 +1,9 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Img11, Img12, Img13, Img14, Img15, Img16 } from "../../assest";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { getApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
@@ -39,6 +40,7 @@ const AdwizorDashboard = () => {
       fullname: "",
     },
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
     getApi(endPoints.getAdwizorProfile, {
@@ -50,7 +52,9 @@ const AdwizorDashboard = () => {
     <section className="adwizor-panel">
       <div className="section-heading">
         <p className="title">Welcome , {profile.data.fullname}</p>
-        <button>Add New Student</button>
+        <button onClick={() => navigate("/adwizor-panel/students")}>
+          Add New Student
+        </button>
       </div>
 
       <div className="grid-container-for-4" style={{ paddingTop: "40px" }}>
@@ -68,4 +72,4 @@ const AdwizorDashboard = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorDashboard);
+export default DashboardLayout(AdwizorDashboard);

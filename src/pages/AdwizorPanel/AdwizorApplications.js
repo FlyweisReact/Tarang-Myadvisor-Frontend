@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UpdateApplication } from "../../components/Modals/Modals";
 import TableLayout from "../../components/TableLayout";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { getApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
@@ -13,9 +13,14 @@ const btnStatusCheker = (status) => {
     return <button className="filled status-btn">Applied</button>;
   } else if (status === "OFFER") {
     return <button className="offer status-btn">Offer</button>;
-  } else if (status === "ENROLLMENT") {
+  }
+   else if (status === "ENROLLMENT") {
     return <button className="verified status-btn">Enrollment</button>;
-  } else if (status === "SHORTLIST") {
+  } 
+   else if (status === "ACCEPTANCE") {
+    return <button className="verified status-btn">Acceptance</button>;
+  } 
+  else if (status === "SHORTLIST") {
     return <button className="pending status-btn">Shortlist</button>;
   } else {
     return <button> {status} </button>;
@@ -99,4 +104,4 @@ const AdwizorApplications = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorApplications);
+export default DashboardLayout(AdwizorApplications);

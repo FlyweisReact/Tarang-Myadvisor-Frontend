@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Modal, Offcanvas } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
-import { logoImg, userRounded } from "../../assest";
+import { logoImg } from "../../assest";
 import {
   getApi,
   postApi,
@@ -16,7 +16,12 @@ import endPoints from "../../Repository/apiConfig";
 import OtpInput from "../OtpInput";
 import LoginModal from "./LoginModal";
 import { LOGIN } from "../../store/authSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  adwizorSidebarArr,
+  userDashboardSidebar,
+} from "../../constant/constant";
+import { LogoutHandler } from "../../utils/utils";
 
 export const EnterOtpModal = (props) => {
   const [otp, setOtp] = useState("");
@@ -103,7 +108,7 @@ export const EnterOtpModal = (props) => {
       postApiWithRedux(url, payload, {
         setLoading,
         dispatchFunc: [(res) => LOGINMODULE(res)],
-        additionalFunctions: [props.onHide(), navigationHandler],
+        additionalFunctions: [ () => props.onHide(), navigationHandler],
       })
     );
   };
@@ -574,6 +579,7 @@ export const UpdateApplication = (props) => {
               <option value="">Select your prefrence</option>
               <option value="OFFER"> Offer </option>
               <option value="ENROLLMENT">Enrollment </option>
+              <option value="ACCEPTANCE">Acceptance </option>
             </select>
             <button className="submit-btn mt-3" type="submit">
               {loading ? <ClipLoader color="#fff" /> : "Submit"}
@@ -587,8 +593,21 @@ export const UpdateApplication = (props) => {
 
 export const MobileBar = ({ show, handleClose }) => {
   const [open, setOpen] = useState(false);
+  const [profile, setProfile] = useState({});
   const isLoggedIn = localStorage.getItem("user-token") ? true : false;
   const userType = localStorage.getItem("user-type");
+
+  useEffect(() => {
+    if (userType === "advisor" && show) {
+      getApi(endPoints.getAdwizorProfile, {
+        setResponse: setProfile,
+      });
+    } else {
+      getApi(endPoints.getUserProfile, {
+        setResponse: setProfile,
+      });
+    }
+  }, [userType, show]);
 
   const openModal = () => {
     handleClose();
@@ -598,9 +617,32 @@ export const MobileBar = ({ show, handleClose }) => {
   return (
     <>
       <LoginModal show={open} onHide={() => setOpen(false)} />
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        className="mobile-bar-container"
+      >
         <Offcanvas.Header closeButton />
         <Offcanvas.Body className="mobile-bar">
+          {isLoggedIn && (
+            <>
+              <div class="profile_View">
+                <img src={profile?.data?.image} alt="" />
+                <div class="content">
+                  <p class="title"> {profile?.data?.fullname} </p>
+                  <p class="email"> {profile?.data?.email} </p>
+                  {userType === "advisor" ? (
+                    <Link to="/adwizor-panel/my-profile">View profile</Link>
+                  ) : (
+                    <Link to="/user-dashboard/profile">View profile</Link>
+                  )}
+                </div>
+              </div>
+
+              <div className="empty" />
+            </>
+          )}
+
           <ul>
             <li>
               <Link to={"/find-an-adwizor"}> FInd an Adwizor</Link>
@@ -618,17 +660,7 @@ export const MobileBar = ({ show, handleClose }) => {
               </Link>
             </li>
           </ul>
-          {isLoggedIn ? (
-            userType === "advisor" ? (
-              <Link to="/adwizor-panel/my-profile">
-                <img src={userRounded} alt="" className="user-img" />
-              </Link>
-            ) : (
-              <Link to="/user-dashboard/home">
-                <img src={userRounded} alt="" className="user-img" />
-              </Link>
-            )
-          ) : (
+          {!isLoggedIn && (
             <button className="login-btn" onClick={() => openModal()}>
               Log In
             </button>
@@ -735,5 +767,58 @@ export const CreateReview = (props) => {
         </div>
       </Modal.Body>
     </Modal>
+  );
+};
+
+export const UserPanelBar = ({ show, handleClose }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const userType = localStorage.getItem("user-type");
+  return (
+    <>
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        className="user-panel-container"
+      >
+        <Offcanvas.Header closeButton />
+        <Offcanvas.Body className="user-panel-bar">
+          <ul>
+            {userType === "advisor"
+              ? adwizorSidebarArr.map((i, index) => (
+                  <li
+                    key={index}
+                    className={`${
+                      location.pathname === i.link ? "active" : ""
+                    }`}
+                    onClick={() => navigate(i.link)}
+                  >
+                    {i.img && <img src={i.img} alt="" />}
+                    {i.icon}
+                    <span> {i.title} </span>
+                  </li>
+                ))
+              : userDashboardSidebar.map((i, index) => (
+                  <li
+                    key={index}
+                    className={`${
+                      location.pathname === i.link ? "active" : ""
+                    }`}
+                    onClick={() => navigate(i.link)}
+                  >
+                    {i.img && <img src={i.img} alt="" />}
+                    {i.icon}
+                    <span> {i.title} </span>
+                  </li>
+                ))}
+            <li onClick={() => LogoutHandler(dispatch, navigate)}>
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span> Log Out </span>
+            </li>
+          </ul>
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
   );
 };

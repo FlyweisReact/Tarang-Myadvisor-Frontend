@@ -1,13 +1,13 @@
 /** @format */
 
 import React, { useState, useEffect, useRef } from "react";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { getApi, postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import { SlotUpdater } from "../../components/Modals/Modals";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 
 function getSlot(myOne) {
   const getTime = new Date(myOne)?.toLocaleTimeString([], {
@@ -111,6 +111,29 @@ const AdwizorCalender = () => {
     afterChange: (current) => {
       setCurrentIndex(current);
     },
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 7,
+          slidesToScroll: 7,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+    ],
   };
 
   const nextSlide = () => {
@@ -204,4 +227,4 @@ const AdwizorCalender = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorCalender);
+export default DashboardLayout(AdwizorCalender);

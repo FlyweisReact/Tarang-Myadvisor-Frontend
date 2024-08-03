@@ -5,7 +5,7 @@ import { Badge } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
 import { RatingComponent } from "../../components/HelpingComponents";
 import { CreateReview } from "../../components/Modals/Modals";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { deleteApi, getApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
@@ -123,4 +123,4 @@ const AdwizorReviews = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorReviews);
+export default DashboardLayout(AdwizorReviews);

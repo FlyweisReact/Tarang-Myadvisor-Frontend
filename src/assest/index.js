@@ -224,8 +224,10 @@ import Img14 from "./Images/AdwizorDashboard/4.png";
 import Img15 from "./Images/AdwizorDashboard/5.png";
 import Img16 from "./Images/AdwizorDashboard/6.png";
 import Img17 from "./Images/AdwizorDashboard/7.png";
+import userIcon from './Images/userPsd.jpg'
 
 export {
+  userIcon,
   Img11,
   Img12,
   Img13,

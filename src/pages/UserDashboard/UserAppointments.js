@@ -1,27 +1,31 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { getApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
+import { Dropdown } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ item }) => {
+  const navigate = useNavigate();
   return (
     <div className="appointment-card boxShadow-container">
       <div className="profile-container">
-        <img src={item?.userId?.image} alt="" />
+        <img src={item?.advisorId?.image} alt="" />
         <div className="info">
-          <p className="title"> {item?.userId?.fullname} </p>
+          <p className="title"> {item?.advisorId?.fullname} </p>
           <p className="desc">
             {" "}
             <i
               className="fa-solid fa-location-dot"
               style={{ marginRight: "2px" }}
             />{" "}
-            {item?.userId?.state} , {item?.userId?.city}
+            {item?.advisorId?.state} , {item?.advisorId?.city}
           </p>
         </div>
       </div>
+
       <hr />
       <div className="flex-container">
         <div className="item">
@@ -33,19 +37,37 @@ const Card = ({ item }) => {
           <span> {item?.appoinmentTime} </span>
         </div>
       </div>
+      <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          Book new appointment
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item
+            onClick={() =>
+              navigate(`/counselling-session/live-2/${item?.advisorId?._id}`)
+            }
+          >
+            Existed adwizors
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => navigate("/find-an-adwizor")}>
+            New adwizors
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </div>
   );
 };
 
-const AdwizorApppointments = () => {
+const UserAppointments = () => {
   const [tab, setTab] = useState("APPOINTMENTBOOKED");
   const [data, setData] = useState({ data: [] });
 
   useEffect(() => {
-    getApi(endPoints.adwizor.getAppointments(tab), {
+    getApi(endPoints.user.userAppointments, {
       setResponse: setData,
     });
-  }, [tab]);
+  }, []);
 
   return (
     <section className="adwizor-panel">
@@ -83,4 +105,4 @@ const AdwizorApppointments = () => {
   );
 };
 
-export default DashboardLayout(AdwizorApppointments);
+export default DashboardLayout(UserAppointments);

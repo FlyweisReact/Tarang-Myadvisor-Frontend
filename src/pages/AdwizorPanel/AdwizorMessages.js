@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { ClipLoader } from "react-spinners";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { getApi, postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
@@ -152,4 +152,4 @@ const AdwizorMessages = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorMessages);
+export default DashboardLayout(AdwizorMessages);

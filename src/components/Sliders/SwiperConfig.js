@@ -107,7 +107,7 @@ const sypnosisConfig = {
 const userProgramConfig = {
   spaceBetween: 20,
   loop: true,
-  slidesPerView: 1,
+  slidesPerView: 2,
   autoplay: {
     delay: 0,
     disableOnInteraction: false,
@@ -117,7 +117,8 @@ const userProgramConfig = {
   resistanceRatio: 0,
   breakpoints: {
     768: {
-      slidesPerView: 1,
+      slidesPerView: 2,
+     
     },
     900: {
       slidesPerView: 5,
@@ -126,6 +127,8 @@ const userProgramConfig = {
       slidesPerView: 6,
     },
   },
+  modules: [Autoplay],
+
 };
 
 const customerReviewConfig = {
@@ -187,7 +190,7 @@ const callExpertConfig = {
 const topCitiesSwiperConfig = {
   spaceBetween: 20,
   loop: true,
-  slidesPerView: 9,
+  slidesPerView: 3,
   navigation: {
     nextEl: ".next-nav-btn",
     prevEl: ".prev-nav-btn",

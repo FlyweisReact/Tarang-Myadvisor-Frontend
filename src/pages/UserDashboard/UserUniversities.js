@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { usaSquare } from "../../assest";
 import { ShortlistedUniversities } from "../../components/Cards/AllCards";
 import {
   AppointmentFloatingBtn,
@@ -21,7 +20,7 @@ const nav = [
     value: "SHORTLIST",
   },
   {
-    label: "Applied",
+    label: "Applied", 
     value: "APPLIED",
   },
   {
@@ -31,6 +30,10 @@ const nav = [
   {
     label: "Enrollment",
     value: "ENROLLMENT",
+  },
+  {
+    label: "Acceptance",
+    value: "ACCEPTANCE",
   },
 ];
 
@@ -64,6 +67,7 @@ const UserUniversities = () => {
       ? data?.data?.map((i) => ({
           flagImg: i?.universityId?.ImageUrl?.[0],
           title: i?.universityId?.UniversityName,
+          courseTitle: i?.universityId?.CourseTitle,
           collegeImg: i?.universityId?.ImageUrl?.[0],
           isFav: i?.applicationStatus === "SHORTLIST" ? true : false,
           isSaved: i?.applicationStatus === "SHORTLIST" ? true : false,
@@ -76,6 +80,7 @@ const UserUniversities = () => {
           avgPackage: i?.universityId?.AveragePackageOffered,
           elegibility: i?.universityId?.Eligibility,
           approvedBy: i?.universityId?.ApprovedBy,
+          btnAvailable : true 
         }))
       : [];
 

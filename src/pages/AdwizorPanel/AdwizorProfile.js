@@ -7,10 +7,10 @@ import { BlogCard } from "../../components/Cards/AllCards";
 import { Slider } from "../../components/Sliders/Sliders";
 import { RenderCustomerReviewsCard } from "../../components/Sliders/SwiperComponents";
 import { customerReviewConfig } from "../../components/Sliders/SwiperConfig";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
 import { getApi, postApi, putApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import Form from "react-bootstrap/Form";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 
 const mainStyle = {
   backgroundColor: "transparent",
@@ -621,4 +621,4 @@ const AdwizorProfile = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorProfile);
+export default DashboardLayout(AdwizorProfile);

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { uploadSvg } from "../../assest";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { getApi, putApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
@@ -456,4 +456,4 @@ const AdwizorStudentProfile = () => {
   );
 };
 
-export default AdwizorLayout(AdwizorStudentProfile);
+export default DashboardLayout(AdwizorStudentProfile);

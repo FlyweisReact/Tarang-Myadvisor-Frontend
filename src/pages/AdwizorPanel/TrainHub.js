@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AdwizorLayout from "../../Layout/AdwizorPanelLayout/AdwizorLayout";
+import DashboardLayout from "../../Layout/UserDashboardLayout/DashboardLayout";
 import { getApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 
@@ -41,4 +41,4 @@ const TrainHub = () => {
   );
 };
 
-export default AdwizorLayout(TrainHub);
+export default DashboardLayout(TrainHub);

@@ -15,8 +15,8 @@ import {
 import endPoints from "../../Repository/apiConfig";
 import OtpInput from "../OtpInput";
 import LoginModal from "./LoginModal";
-import { LOGIN } from "../../store/authSlice";
-import { useDispatch } from "react-redux";
+import { isAuthenticated, LOGIN } from "../../store/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import {
   adwizorSidebarArr,
   userDashboardSidebar,
@@ -108,7 +108,7 @@ export const EnterOtpModal = (props) => {
       postApiWithRedux(url, payload, {
         setLoading,
         dispatchFunc: [(res) => LOGINMODULE(res)],
-        additionalFunctions: [ () => props.onHide(), navigationHandler],
+        additionalFunctions: [() => props.onHide(), navigationHandler],
       })
     );
   };
@@ -594,20 +594,22 @@ export const UpdateApplication = (props) => {
 export const MobileBar = ({ show, handleClose }) => {
   const [open, setOpen] = useState(false);
   const [profile, setProfile] = useState({});
-  const isLoggedIn = localStorage.getItem("user-token") ? true : false;
+  const isLoggedIn = useSelector(isAuthenticated);
   const userType = localStorage.getItem("user-type");
 
   useEffect(() => {
-    if (userType === "advisor" && show) {
-      getApi(endPoints.getAdwizorProfile, {
-        setResponse: setProfile,
-      });
-    } else {
-      getApi(endPoints.getUserProfile, {
-        setResponse: setProfile,
-      });
+    if (isLoggedIn) {
+      if (userType === "advisor" && show) {
+        getApi(endPoints.getAdwizorProfile, {
+          setResponse: setProfile,
+        });
+      } else {
+        getApi(endPoints.getUserProfile, {
+          setResponse: setProfile,
+        });
+      }
     }
-  }, [userType, show]);
+  }, [userType, show, isLoggedIn]);
 
   const openModal = () => {
     handleClose();

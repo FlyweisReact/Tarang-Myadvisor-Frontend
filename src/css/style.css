@@ -3190,7 +3190,6 @@
   gap: 10px;
   align-items: flex-start;
   border-bottom: 1px solid #dddddd;
-  cursor: pointer;
   padding: 20px;
 }
 .user-homePage .message-box .item.active {

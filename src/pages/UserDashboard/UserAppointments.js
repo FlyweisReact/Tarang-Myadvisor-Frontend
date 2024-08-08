@@ -37,6 +37,19 @@ const Card = ({ item }) => {
           <span> {item?.appoinmentTime} </span>
         </div>
       </div>
+      <div className="flex-container">
+        <div className="item">
+          <span>Status</span>{" "}
+        </div>
+        <div className="item">
+          <span>
+            {" "}
+            {item?.appointmentStatus === "APPOINTMENTBOOKED"
+              ? "Booked"
+              : "Pending"}{" "}
+          </span>
+        </div>
+      </div>
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Book new appointment
@@ -60,7 +73,6 @@ const Card = ({ item }) => {
 };
 
 const UserAppointments = () => {
-  const [tab, setTab] = useState("APPOINTMENTBOOKED");
   const [data, setData] = useState({ data: [] });
 
   useEffect(() => {
@@ -74,27 +86,6 @@ const UserAppointments = () => {
       <div className="section-heading">
         <p className="title">My Appointments</p>
       </div>
-
-      <section className="user-homePage mt-4 mb-3">
-        <div className="user-dashboard-profile">
-          <div className="tab">
-            <ul>
-              <li
-                className={`${tab === "APPOINTMENTBOOKED" ? "active" : ""}`}
-                onClick={() => setTab("APPOINTMENTBOOKED")}
-              >
-                Confirmed
-              </li>
-              <li
-                className={`${tab === "PENDING" ? "active" : ""}`}
-                onClick={() => setTab("PENDING")}
-              >
-                Pending
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
 
       <div className="grid-container-for-3 appointment-card-box">
         {data.data.map((i, index) => (

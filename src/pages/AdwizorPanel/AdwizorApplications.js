@@ -13,14 +13,11 @@ const btnStatusCheker = (status) => {
     return <button className="filled status-btn">Applied</button>;
   } else if (status === "OFFER") {
     return <button className="offer status-btn">Offer</button>;
-  }
-   else if (status === "ENROLLMENT") {
+  } else if (status === "ENROLLMENT") {
     return <button className="verified status-btn">Enrollment</button>;
-  } 
-   else if (status === "ACCEPTANCE") {
+  } else if (status === "ACCEPTANCE") {
     return <button className="verified status-btn">Acceptance</button>;
-  } 
-  else if (status === "SHORTLIST") {
+  } else if (status === "SHORTLIST") {
     return <button className="pending status-btn">Shortlist</button>;
   } else {
     return <button> {status} </button>;
@@ -54,7 +51,7 @@ const AdwizorApplications = () => {
           {item?.fullname}
         </Link>
       ),
-      i?.appliedAt?.slice(0, 10),
+      i?.createdAt?.slice(0, 10),
       <Link to={`/college-micro-info/${i?.universityId?.UniversityName}`}>
         {i?.universityId?.UniversityName}
       </Link>,

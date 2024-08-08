@@ -115,7 +115,7 @@ const AdwizorMessages = () => {
                   <select required onChange={(e) => setSubject(e.target.value)}>
                     <option value="">Select Subject</option>
                     {subjects.data.map((i) => (
-                      <option value={i?._id} key={i?._id}>
+                      <option value={i?.subject} key={i?._id}>
                         {" "}
                         {i?.subject}{" "}
                       </option>

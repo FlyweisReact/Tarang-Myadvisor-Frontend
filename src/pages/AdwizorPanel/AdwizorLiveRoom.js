@@ -67,7 +67,7 @@ const AdwizorLiveRoom = () => {
       {
         successMsg: "Accepted !",
         setLoading,
-        additionalFunctions: [fetchHandler],
+        additionalFunctions: [fetchHandler ,fetchJoinedUsers],
       }
     );
   };

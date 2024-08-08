@@ -105,7 +105,7 @@ const UserChat = () => {
                 <select required onChange={(e) => setSubject(e.target.value)}>
                   <option value="">Select Subject</option>
                   {subjects.data.map((i) => (
-                    <option value={i?._id} key={i?._id}>
+                    <option value={i?.subject} key={i?._id}>
                       {" "}
                       {i?.subject}{" "}
                     </option>
@@ -125,6 +125,8 @@ const UserChat = () => {
           </div>
         </div>
       )}
+
+      {console.log(messages)}
 
       {tab === "history" && (
         <div className="application-status mt-3 mb-3">

@@ -170,9 +170,7 @@ const UserProfile = () => {
   const [profileData, setProfileData] = useState({});
   const [address, setAddress] = useState({});
   const [allUniversities, setAllUniversities] = useState({
-    data: {
-      universities: {},
-    },
+    data: [],
   });
 
   useEffect(() => {
@@ -187,6 +185,8 @@ const UserProfile = () => {
     });
   }, []);
 
+  console.log(allUniversities);
+
   const renderComponent = () => {
     switch (activeTab) {
       case "Profile Overview":
@@ -196,7 +196,7 @@ const UserProfile = () => {
         return <AddressTab data={address?.data} />;
 
       case "My Universities":
-        return <UniversityTab data={allUniversities.data.universities} />;
+        return <UniversityTab data={allUniversities.data} />;
 
       default:
         return <ProfileTab data={profileData?.data} />;

@@ -111,7 +111,8 @@ const endPoints = {
     updateReview: (id) => `advisor/updateReview/${id}`,
     deleteReview: (id) => `advisor/deleteReview/${id}`,
     getTrainHub  : "advisor/getTrainHubs",
-    getReports : "advisor/advisorStats"
+    getReports : "advisor/advisorStats",
+    login : "advisor/signup"
   },
 };
 

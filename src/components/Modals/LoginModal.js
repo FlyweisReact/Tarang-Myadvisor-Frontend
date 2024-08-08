@@ -46,21 +46,31 @@ const LoginModal = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    postApi(endPoints.userSignup, payload, {
-      setLoading,
-      additionalFunctions: [
-        props.onHide,
-        () => setIsOtpModal(true),
-        (res) => showOtp(res),
-      ],
-    });
+    if (userType === "user") {
+      postApi(endPoints.userSignup, payload, {
+        setLoading,
+        additionalFunctions: [
+          props.onHide,
+          () => setIsOtpModal(true),
+          (res) => showOtp(res),
+        ],
+      });
+    } else {
+      postApi(endPoints.adwizor.login, payload, {
+        setLoading,
+        additionalFunctions: [
+          props.onHide,
+          () => setIsOtpModal(true),
+          (res) => showOtp(res),
+        ],
+      });
+    }
   };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
     localStorage.setItem("otpEmail", e.target.value);
   };
-
   return (
     <>
       <EnterOtpModal

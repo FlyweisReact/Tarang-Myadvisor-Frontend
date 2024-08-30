@@ -83,7 +83,7 @@ const LoginModal = (props) => {
         <Modal.Body className="login-modal">
           <div className="Login-div">
             <div className="left-div">
-              <img src={response?.data?.image} alt="" />
+              <img src={response.data.image} alt="" />
             </div>
             <div className="right-div">
               <form onSubmit={submitHandler}>
